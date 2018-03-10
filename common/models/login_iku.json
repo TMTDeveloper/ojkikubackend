@@ -1,0 +1,22 @@
+{
+  "name": "LOGIN_IKU",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "USERNAME": {
+      "type": "string",
+      "required": true
+    },
+    "PASSWORD": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

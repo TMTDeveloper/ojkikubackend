@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "LOGIN_IKU": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "IKU",
+    "password": "zenhuw",
+    "name": "LOGIN_IKU",
+    "user": "zenhuw",
+    "connector": "mssql"
+  }
+}
