@@ -38,5 +38,21 @@
   "LOGIN_IKU": {
     "dataSource": "LOGIN_IKU",
     "public": true
+  },
+  "trn_iku_hd": {
+    "dataSource": "TRN_IKU_HD",
+    "public": true
+  },
+  "m_iku": {
+    "dataSource": "M_IKU",
+    "public": true
+  },
+  "trn_iku_dt": {
+    "dataSource": "TRN_IKU_DT",
+    "public": true
+  },
+  "m_bank": {
+    "dataSource": "M_BANK",
+    "public": true
   }
 }

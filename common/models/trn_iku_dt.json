@@ -1,0 +1,53 @@
+{
+    "name": "trn_iku_dt",
+    "base": "PersistedModel",
+    "idInjection": false,
+    "options": {
+      "validateUpsert": true
+    },
+    "properties": {
+      "YEAR": {
+        "type": "string",
+        "required": true,
+        "id": true
+      },
+      "NO_IKU": {
+        "type": "string",
+        "required": true
+      },
+      "BANK": {
+        "type": "number",
+        "required": true
+      },
+      "TW1": {
+        "type": "number",
+        "required": true
+      },
+      "TW2": {
+        "type": "number",
+        "required": true
+      },
+      "TW3": {
+        "type": "number",
+        "required": true
+      },
+      "TW4": {
+        "type": "number",
+        "required": true
+      },
+      "DATE_CREATED": {
+        "type": "date",
+        "required": true
+      },
+      "DATE_MODIFIED": {
+        "type": "date",
+        "required": true
+      }
+
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
+  }
+  

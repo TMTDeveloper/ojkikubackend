@@ -1,0 +1,31 @@
+{
+  "name": "m_bank",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "BANK_NO": {
+      "type": "string",
+      "required": true,
+      "id": true
+    },
+    "DESCRIPTION": {
+      "type": "string",
+      "required": true
+    },
+    "DATE_CREATED": {
+      "type": "date",
+      "required": true
+    },
+    "DATE_MODIFIED": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
