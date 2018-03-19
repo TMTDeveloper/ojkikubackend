@@ -23,6 +23,16 @@
     "user": "zenhuw",
     "connector": "mssql"
   },
+  "TRN_IKU_HD_TARGET": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "IKU",
+    "password": "zenhuw",
+    "name": "TRN_IKU_HD_TARGET",
+    "user": "zenhuw",
+    "connector": "mssql"
+  },
   "M_IKU": {
     "host": "localhost",
     "port": 1433,
@@ -53,5 +63,4 @@
     "user": "zenhuw",
     "connector": "mssql"
   }
-
 }

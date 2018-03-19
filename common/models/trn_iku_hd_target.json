@@ -1,42 +1,22 @@
 {
-  "name": "trn_iku_dt",
+  "name": "trn_iku_hd_target",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
-    "validateUpsert": true,
-    "idInjection": false,
-    "forceId": false
+    "validateUpsert": true
   },
-  "forceId": false,
   "properties": {
     "YEAR": {
       "type": "string",
       "required": true,
       "id": 1
     },
-    "NO_IKU": {
+    "IKU_TYPE": {
       "type": "string",
       "required": true,
       "id": 2
     },
-    "BANK": {
-      "type": "number",
-      "required": true,
-      "id": 3
-    },
-    "TW1": {
-      "type": "number",
-      "required": true
-    },
-    "TW2": {
-      "type": "number",
-      "required": true
-    },
-    "TW3": {
-      "type": "number",
-      "required": true
-    },
-    "TW4": {
+    "PERCENTAGE": {
       "type": "number",
       "required": true
     },
