@@ -1,0 +1,49 @@
+{
+    "name": "m_usersys",
+    "base": "PersistedModel",
+    "idInjection": false,
+    "options": {
+      "validateUpsert": true
+    },
+    "properties": {
+      "NIP": {
+        "type": "string",
+        "required": true,
+        "id": true
+      },
+      "NAMA": {
+        "type": "string",
+        "required": true
+      },
+      "JABATAN": {
+        "type": "string",
+        "required": true
+      },
+      "TEAM": {
+        "type": "string",
+        "required": true
+      },
+      "BANK": {
+        "type": "string",
+        "required": true
+      },
+      "PASSWORD": {
+        "type": "string",
+        "required": true
+      },
+      "DATE_CREATED": {
+        "type": "date",
+        "required": true
+      },
+      "DATE_MODIFIED": {
+        "type": "date",
+        "required": true
+      }
+
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
+  }
+  

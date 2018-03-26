@@ -58,5 +58,17 @@
   "trn_iku_hd_target": {
     "dataSource": "TRN_IKU_HD_TARGET",
     "public": true
+  },
+  "m_usersys": {
+    "dataSource": "M_USERSYS",
+    "public": true
+  },
+  "trn_realisasi_iku": {
+    "dataSource": "TRN_REALISASI_IKU",
+    "public": true
+  },
+  "report": {
+    "dataSource": "report",
+    "public": true
   }
 }

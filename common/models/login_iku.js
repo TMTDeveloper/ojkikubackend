@@ -1,53 +1,53 @@
-var util = require('util');
-var jwt = require('jsonwebtoken')
+var util = require("util");
+var jwt = require("jsonwebtoken");
 
-'use strict';
+("use strict");
 
-module.exports = function (Loginiku) {
-  var app = require('../../server/server');
+module.exports = function(Loginiku) {
+  var app = require("../../server/server");
   // var Loginiku = app.models.User;
 
   //   app.post( function (req, res) {
 
   // 	//parse user credentials from request body
 
-var secretKey = {
-  'secret': 'ilovescotchyscotch'
-}
+  var secretKey = {
+    secret: "ilovescotchyscotch"
+  };
 
-
-
-
-
-  Loginiku.loginuser = function (req, cb) {
-    console.log(JSON.stringify(req))
-    Loginiku.find({
-      where: {
-        USERNAME: req.email,
-        PASSWORD: req.password
-      }
-    }, (err, res) => {
-      if (util.isNullOrUndefined(res[0])) {
-        var data = {
-          name: "error",
-          status: "401",
-          message: "Wrong user/password"
+  Loginiku.loginuser = function(req, cb) {
+    console.log(JSON.stringify(req));
+    var app = require("../../server/server");
+    var MUSERSYS = app.models.m_usersys;
+    MUSERSYS.find(
+      {
+        where: {
+          and: [{ NIP: req.email }, { PASSWORD: req.password }]
         }
-        cb(data)
-
-      } else {
+      },
+      (err, res) => {
+        console.log(err);
+        if (util.isNullOrUndefined(res[0])) {
+          var data = {
+            name: "error",
+            status: "401",
+            message: "Wrong user/password"
+          };
+          cb(data);
+        } else {
           console.log(res[0]);
           var payload = res[0];
-        var token = jwt.sign(payload.toJSON(), secretKey.secret, {
-            expiresIn: '1h' // expires in 24 hours
+          var token = jwt.sign(payload.toJSON(), secretKey.secret, {
+            expiresIn: "1h" // expires in 24 hours
           });
-          var data={
-              token:token,
-          }
-        cb(null, data);
+          var data = {
+            token: token
+          };
+          console.log(data);
+          cb(null, data);
+        }
       }
-    })
-
+    );
 
     //   if (err) {
     //     //custom logger
@@ -56,27 +56,23 @@ var secretKey = {
     //       "error": "login failed"
     //     });
     //   }
-
   };
 
-
-  Loginiku.remoteMethod(
-    'loginuser', {
-      accepts: [
-          {
-        arg: 'user',
-        type: 'Object',
-        http: { source: 'body' }
+  Loginiku.remoteMethod("loginuser", {
+    accepts: [
+      {
+        arg: "user",
+        type: "Object",
+        http: { source: "body" }
       }
     ],
-      http: {
-        path: '/login',
-        verb: 'post'
-      },
-      returns: {
-        arg: 'data',
-        type: 'Object'
-      }
+    http: {
+      path: "/login",
+      verb: "post"
+    },
+    returns: {
+      arg: "data",
+      type: "Object"
     }
-  )
+  });
 };

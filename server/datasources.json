@@ -62,5 +62,35 @@
     "name": "M_BANK",
     "user": "zenhuw",
     "connector": "mssql"
+  },
+  "M_USERSYS": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "IKU",
+    "password": "zenhuw",
+    "name": "M_USERSYS",
+    "user": "zenhuw",
+    "connector": "mssql"
+  },
+  "TRN_REALISASI_IKU": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "IKU",
+    "password": "zenhuw",
+    "name": "TRN_REALISASI_IKU",
+    "user": "zenhuw",
+    "connector": "mssql"
+  },
+  "report": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "IKU",
+    "password": "zenhuw",
+    "name": "report",
+    "user": "zenhuw",
+    "connector": "mssql"
   }
 }
