@@ -3,7 +3,7 @@ webpackJsonp(["iku.module"],{
 /***/ "./src/app/pages/iku/iku.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>\r\n    Input IKU\r\n  </nb-card-header>\r\n\r\n  <nb-card-body>\r\n    <div class=\"holdertable\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n\r\n    <div class=\"container-btn mt-2\">\r\n      <button class=\"btn btn-success btn-demo\" [routerLink]=\"['./iku-header']\" routerLinkActive=\"disableInput\" [disabled]=\"disableInput\">Input New Period</button>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>\r\n    Input IKU\r\n  </nb-card-header>\r\n\r\n  <nb-card-body>\r\n    <div class=\"holdertable\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n\r\n    <div class=\"container-btn mt-2\">\r\n      <button class=\"btn btn-success btn-demo\" [routerLink]=\"['./iku-header']\" routerLinkActive=\"disableInput\" >Input New Period</button>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
