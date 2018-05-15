@@ -1,0 +1,47 @@
+{
+  "name": "mst_bank",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ID_BANK": {
+      "type": "string",
+      "required": true,
+      "id": true
+    },
+    "INISIAL": {
+      "type": "string",
+      "required": true
+    },
+    "DESCRIPTION": {
+      "type": "string",
+      "required": true
+    },
+    "FLAG_ACTIVE": {
+      "type": "string",
+      "required": true
+    },
+    "USER_CREATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATETIME_CREATED": {
+      "type": "date",
+      "required": true
+    },
+    "USER_UPDATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATETIME_UPDATED": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

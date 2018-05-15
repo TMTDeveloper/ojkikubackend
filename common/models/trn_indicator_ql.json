@@ -1,0 +1,58 @@
+{
+  "name": "trn_indicator_ql",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "KODE_IKU": {
+      "type": "string",
+      "required": true,
+      "id": 1
+    },
+    "TAHUN_INDICATOR": {
+      "type": "number",
+      "required": true,
+      "id": 2
+    },
+    "PERIODE": {
+      "type": "string",
+      "required": true,
+      "id": 3
+    },
+    "NO_DETAIL": {
+      "type": "number",
+      "required": true,
+      "id": 4
+    },
+    "TIPE_DATA": {
+      "type": "string",
+      "required": true
+    },
+    "DESKRIPSI": {
+      "type": "string",
+      "required": true
+    },
+    "USER_CREATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATETIME_CREATED": {
+      "type": "date",
+      "required": true
+    },
+    "USER_UPDATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATETIME_UPDATED": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -3,7 +3,7 @@ var jwt = require("jsonwebtoken");
 
 ("use strict");
 
-module.exports = function(Loginiku) {
+module.exports = function (Loginiku) {
   var app = require("../../server/server");
   // var Loginiku = app.models.User;
 
@@ -15,14 +15,17 @@ module.exports = function(Loginiku) {
     secret: "ilovescotchyscotch"
   };
 
-  Loginiku.loginuser = function(req, cb) {
+  Loginiku.loginuser = function (req, cb) {
     console.log(JSON.stringify(req));
     var app = require("../../server/server");
-    var MUSERSYS = app.models.m_usersys;
-    MUSERSYS.find(
-      {
+    var MSTUSER = app.models.mst_user;
+    MSTUSER.find({
         where: {
-          and: [{ NIP: req.email }, { PASSWORD: req.password }]
+          and: [{
+            ID_USER: req.email
+          }, {
+            PASSWORD: req.password
+          }]
         }
       },
       (err, res) => {
@@ -59,13 +62,13 @@ module.exports = function(Loginiku) {
   };
 
   Loginiku.remoteMethod("loginuser", {
-    accepts: [
-      {
-        arg: "user",
-        type: "Object",
-        http: { source: "body" }
+    accepts: [{
+      arg: "user",
+      type: "Object",
+      http: {
+        source: "body"
       }
-    ],
+    }],
     http: {
       path: "/login",
       verb: "post"

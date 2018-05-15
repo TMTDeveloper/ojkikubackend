@@ -83,6 +83,16 @@
     "user": "zenhuw",
     "connector": "mssql"
   },
+  "TRN_IKU_QUAL": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "IKU",
+    "password": "zenhuw",
+    "name": "TRN_IKU_QUAL",
+    "user": "zenhuw",
+    "connector": "mssql"
+  },
   "report": {
     "host": "localhost",
     "port": 1433,
@@ -90,6 +100,16 @@
     "database": "IKU",
     "password": "zenhuw",
     "name": "report",
+    "user": "zenhuw",
+    "connector": "mssql"
+  },
+  "ikudb": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "IKU",
+    "password": "zenhuw",
+    "name": "ikudb",
     "user": "zenhuw",
     "connector": "mssql"
   }

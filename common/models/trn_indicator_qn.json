@@ -1,0 +1,77 @@
+{
+  "name": "trn_indicator_qn",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "KODE_IKU": {
+      "type": "string",
+      "required": true,
+      "id": 1
+    },
+    "TAHUN_INDICATOR": {
+      "type": "number",
+      "required": true,
+      "id": 2
+    },
+    "PERIODE": {
+      "type": "string",
+      "required": true,
+      "id": 3
+    },
+    "KODE_INDIKATOR": {
+      "type": "string",
+      "required": true
+    },
+    "THRESHOLD": {
+      "type": "number",
+      "required": true
+    },
+    "INDIKATOR_1_DESC": {
+      "type": "string",
+      "required": true
+    },
+    "INDIKATOR_2_DESC": {
+      "type": "string",
+      "required": true
+    },
+    "INDIKATOR_3_DESC": {
+      "type": "string",
+      "required": true
+    },
+    "REALISASI_1_DESC": {
+      "type": "string",
+      "required": true
+    },
+    "REALISASI_2_DESC": {
+      "type": "string",
+      "required": true
+    },
+    "REALISASI_3_DESC": {
+      "type": "string",
+      "required": true
+    },
+    "USER_CREATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATETIME_CREATED": {
+      "type": "date",
+      "required": true
+    },
+    "USER_UPDATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATETIME_UPDATED": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

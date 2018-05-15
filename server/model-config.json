@@ -67,8 +67,59 @@
     "dataSource": "TRN_REALISASI_IKU",
     "public": true
   },
+  "trn_iku_qual": {
+    "dataSource": "TRN_IKU_QUAL",
+    "public": true
+  },
   "report": {
     "dataSource": "report",
     "public": true
+  },
+  "mst_bank": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "mst_user": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "mst_user_bank": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "mst_iku": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "trn_realization_qn": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "trn_indicator_qn": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "trn_realization_qn_dtl": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "trn_indicator_qn_dtl": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "trn_indicator_ql": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "trn_realization_ql": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "trn_realization_ql_dtl": {
+    "dataSource": "ikudb",
+    "public": true
   }
+
+
+
 }
