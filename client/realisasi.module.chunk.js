@@ -1,856 +1,140 @@
 webpackJsonp(["realisasi.module"],{
 
-/***/ "./node_modules/ngx-toastr/esm5/ngx-toastr.js":
+/***/ "./src/app/pages/realisasi/realisasi-qualitative/realisasi.qualitative.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\r\n  <nb-card-header>Input Realisasi Qualitative</nb-card-header>\r\n  <nb-card-body>\r\n    <form #myForm=\"ngForm\" (ngSubmit)=\"register(myForm)\">\r\n  \r\n      <div ngModelGroup=\"iku\">\r\n        <div *ngFor=\"let ikuId of ikuIds; let i=index;\">\r\n          <div ngModelGroup=\"{{ikuId}}\">\r\n            <div class=\"row\">\r\n             \r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n    </form>\r\n  </nb-card-body>\r\n\r\n</nb-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/realisasi/realisasi-qualitative/realisasi.qualitative.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export ComponentPortal */
-/* unused harmony export BasePortalHost */
-/* unused harmony export Overlay */
-/* unused harmony export OVERLAY_PROVIDERS */
-/* unused harmony export OverlayContainer */
-/* unused harmony export OverlayRef */
-/* unused harmony export ToastContainerDirective */
-/* unused harmony export ToastContainerModule */
-/* unused harmony export Toast */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ToastrService; });
-/* unused harmony export ToastPackage */
-/* unused harmony export DefaultGlobalConfig */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ToastrModule; });
-/* unused harmony export ToastRef */
-/* unused harmony export ToastInjector */
-/* unused harmony export TOAST_CONFIG */
-/* unused harmony export ToastNoAnimation */
-/* unused harmony export ToastNoAnimationModule */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__("./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_animations__ = __webpack_require__("./node_modules/@angular/animations/esm5/animations.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-
-
-
-
-
-
-
-var ComponentPortal = /** @class */ (function () {
-    function ComponentPortal(component, injector) {
-        this.component = component;
-        this.injector = injector;
-    }
-    ComponentPortal.prototype.attach = function (host, newestOnTop) {
-        this._attachedHost = host;
-        return host.attach(this, newestOnTop);
-    };
-    ComponentPortal.prototype.detach = function () {
-        var host = this._attachedHost;
-        if (host) {
-            this._attachedHost = undefined;
-            return host.detach();
-        }
-    };
-    Object.defineProperty(ComponentPortal.prototype, "isAttached", {
-        get: function () {
-            return this._attachedHost != null;
-        },
-        enumerable: true,
-        configurable: true
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RealisasiQualitativeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-    ComponentPortal.prototype.setAttachedHost = function (host) {
-        this._attachedHost = host;
-    };
-    return ComponentPortal;
-}());
-var BasePortalHost = /** @class */ (function () {
-    function BasePortalHost() {
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
-    BasePortalHost.prototype.attach = function (portal, newestOnTop) {
-        this._attachedPortal = portal;
-        return this.attachComponentPortal(portal, newestOnTop);
-    };
-    BasePortalHost.prototype.detach = function () {
-        if (this._attachedPortal) {
-            this._attachedPortal.setAttachedHost();
-        }
-        this._attachedPortal = undefined;
-        if (this._disposeFn) {
-            this._disposeFn();
-            this._disposeFn = undefined;
-        }
-    };
-    BasePortalHost.prototype.setDisposeFn = function (fn) {
-        this._disposeFn = fn;
-    };
-    return BasePortalHost;
-}());
-var DomPortalHost = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __extends */])(DomPortalHost, _super);
-    function DomPortalHost(_hostDomElement, _componentFactoryResolver, _appRef) {
-        var _this = _super.call(this) || this;
-        _this._hostDomElement = _hostDomElement;
-        _this._componentFactoryResolver = _componentFactoryResolver;
-        _this._appRef = _appRef;
-        return _this;
+};
+
+
+
+
+
+
+var RealisasiQualitativeComponent = /** @class */ (function () {
+    function RealisasiQualitativeComponent(modalService, service, route) {
+        this.modalService = modalService;
+        this.service = service;
+        this.route = route;
+        this.count = 1;
+        this.yearPeriode = __WEBPACK_IMPORTED_MODULE_3_moment__().format("YYYY");
+        this.ikuIds = [1];
+        this.tableData = new Array();
+        this.loadData();
     }
-    DomPortalHost.prototype.attachComponentPortal = function (portal, newestOnTop) {
+    RealisasiQualitativeComponent.prototype.loadData = function () {
         var _this = this;
-        var componentFactory = this._componentFactoryResolver.resolveComponentFactory(portal.component);
-        var componentRef;
-        componentRef = componentFactory.create(portal.injector);
-        this._appRef.attachView(componentRef.hostView);
-        this.setDisposeFn(function () {
-            _this._appRef.detachView(componentRef.hostView);
-            componentRef.destroy();
-        });
-        if (newestOnTop) {
-            this._hostDomElement.insertBefore(this._getComponentRootNode(componentRef), this._hostDomElement.firstChild);
-        }
-        else {
-            this._hostDomElement.appendChild(this._getComponentRootNode(componentRef));
-        }
-        return componentRef;
-    };
-    DomPortalHost.prototype._getComponentRootNode = function (componentRef) {
-        return (((componentRef.hostView)).rootNodes[0]);
-    };
-    return DomPortalHost;
-}(BasePortalHost));
-var OverlayRef = /** @class */ (function () {
-    function OverlayRef(_portalHost) {
-        this._portalHost = _portalHost;
-    }
-    OverlayRef.prototype.attach = function (portal, newestOnTop) {
-        if (newestOnTop === void 0) { newestOnTop = true; }
-        return this._portalHost.attach(portal, newestOnTop);
-    };
-    OverlayRef.prototype.detach = function () {
-        return this._portalHost.detach();
-    };
-    return OverlayRef;
-}());
-var OverlayContainer = /** @class */ (function () {
-    function OverlayContainer() {
-    }
-    OverlayContainer.prototype.getContainerElement = function () {
-        if (!this._containerElement) {
-            this._createContainer();
-        }
-        return this._containerElement;
-    };
-    OverlayContainer.prototype._createContainer = function () {
-        var container = document.createElement('div');
-        container.classList.add('overlay-container');
-        document.body.appendChild(container);
-        this._containerElement = container;
-    };
-    return OverlayContainer;
-}());
-var Overlay = /** @class */ (function () {
-    function Overlay(_overlayContainer, _componentFactoryResolver, _appRef) {
-        this._overlayContainer = _overlayContainer;
-        this._componentFactoryResolver = _componentFactoryResolver;
-        this._appRef = _appRef;
-        this._paneElements = {};
-    }
-    Overlay.prototype.create = function (positionClass, overlayContainer) {
-        return this._createOverlayRef(this.getPaneElement(positionClass, overlayContainer));
-    };
-    Overlay.prototype.getPaneElement = function (positionClass, overlayContainer) {
-        if (positionClass === void 0) { positionClass = ''; }
-        if (!this._paneElements[positionClass]) {
-            this._paneElements[positionClass] = this._createPaneElement(positionClass, overlayContainer);
-        }
-        return this._paneElements[positionClass];
-    };
-    Overlay.prototype._createPaneElement = function (positionClass, overlayContainer) {
-        var pane = document.createElement('div');
-        pane.id = 'toast-container';
-        pane.classList.add(positionClass);
-        pane.classList.add('toast-container');
-        if (!overlayContainer) {
-            this._overlayContainer.getContainerElement().appendChild(pane);
-        }
-        else {
-            overlayContainer.getContainerElement().appendChild(pane);
-        }
-        return pane;
-    };
-    Overlay.prototype._createPortalHost = function (pane) {
-        return new DomPortalHost(pane, this._componentFactoryResolver, this._appRef);
-    };
-    Overlay.prototype._createOverlayRef = function (pane) {
-        return new OverlayRef(this._createPortalHost(pane));
-    };
-    return Overlay;
-}());
-Overlay.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */] },
-];
-Overlay.ctorParameters = function () { return [
-    { type: OverlayContainer, },
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["p" /* ComponentFactoryResolver */], },
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["g" /* ApplicationRef */], },
-]; };
-var OVERLAY_PROVIDERS = [
-    Overlay,
-    OverlayContainer,
-];
-var ToastContainerDirective = /** @class */ (function () {
-    function ToastContainerDirective(el) {
-        this.el = el;
-    }
-    ToastContainerDirective.prototype.getContainerElement = function () {
-        return this.el.nativeElement;
-    };
-    return ToastContainerDirective;
-}());
-ToastContainerDirective.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* Directive */], args: [{
-                selector: '[toastContainer]',
-                exportAs: 'toastContainer',
-            },] },
-];
-ToastContainerDirective.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ElementRef */], },
-]; };
-var ToastContainerModule = /** @class */ (function () {
-    function ToastContainerModule() {
-    }
-    return ToastContainerModule;
-}());
-ToastContainerModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */], args: [{
-                declarations: [ToastContainerDirective],
-                exports: [ToastContainerDirective],
-            },] },
-];
-ToastContainerModule.ctorParameters = function () { return []; };
-var ToastPackage = /** @class */ (function () {
-    function ToastPackage(toastId, config, message, title, toastType, toastRef) {
-        var _this = this;
-        this.toastId = toastId;
-        this.config = config;
-        this.message = message;
-        this.title = title;
-        this.toastType = toastType;
-        this.toastRef = toastRef;
-        this._onTap = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
-        this._onAction = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
-        this.toastRef.afterClosed().subscribe(function () {
-            _this._onAction.complete();
-            _this._onTap.complete();
-        });
-    }
-    ToastPackage.prototype.triggerTap = function () {
-        this._onTap.next();
-        this._onTap.complete();
-    };
-    ToastPackage.prototype.onTap = function () {
-        return this._onTap.asObservable();
-    };
-    ToastPackage.prototype.triggerAction = function (action) {
-        this._onAction.next(action);
-    };
-    ToastPackage.prototype.onAction = function () {
-        return this._onAction.asObservable();
-    };
-    return ToastPackage;
-}());
-var ToastRef = /** @class */ (function () {
-    function ToastRef(_overlayRef) {
-        this._overlayRef = _overlayRef;
-        this._afterClosed = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
-        this._activate = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
-        this._manualClose = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
-    }
-    ToastRef.prototype.manualClose = function () {
-        this._manualClose.next();
-        this._manualClose.complete();
-    };
-    ToastRef.prototype.manualClosed = function () {
-        return this._manualClose.asObservable();
-    };
-    ToastRef.prototype.close = function () {
-        this._overlayRef.detach();
-        this._afterClosed.next();
-        this._afterClosed.complete();
-        this._manualClose.complete();
-        this._activate.complete();
-    };
-    ToastRef.prototype.afterClosed = function () {
-        return this._afterClosed.asObservable();
-    };
-    ToastRef.prototype.isInactive = function () {
-        return this._activate.isStopped;
-    };
-    ToastRef.prototype.activate = function () {
-        this._activate.next();
-        this._activate.complete();
-    };
-    ToastRef.prototype.afterActivate = function () {
-        return this._activate.asObservable();
-    };
-    return ToastRef;
-}());
-var ToastInjector = /** @class */ (function () {
-    function ToastInjector(_toastPackage, _parentInjector) {
-        this._toastPackage = _toastPackage;
-        this._parentInjector = _parentInjector;
-    }
-    ToastInjector.prototype.get = function (token, notFoundValue) {
-        if (token === ToastPackage && this._toastPackage) {
-            return this._toastPackage;
-        }
-        return this._parentInjector.get(token, notFoundValue);
-    };
-    return ToastInjector;
-}());
-var TOAST_CONFIG = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* InjectionToken */]('ToastConfig');
-var ToastrService = /** @class */ (function () {
-    function ToastrService(token, overlay, _injector, sanitizer, ngZone) {
-        this.overlay = overlay;
-        this._injector = _injector;
-        this.sanitizer = sanitizer;
-        this.ngZone = ngZone;
-        this.currentlyActive = 0;
-        this.toasts = [];
-        this.index = 0;
-        var defaultConfig = new token.defaults;
-        this.toastrConfig = Object.assign({}, defaultConfig, token.config);
-        this.toastrConfig.iconClasses = Object.assign({}, defaultConfig.iconClasses, token.config.iconClasses);
-    }
-    ToastrService.prototype.show = function (message, title, override, type) {
-        if (override === void 0) { override = {}; }
-        if (type === void 0) { type = ''; }
-        return this._preBuildNotification(type, message, title, this.applyConfig(override));
-    };
-    ToastrService.prototype.success = function (message, title, override) {
-        if (override === void 0) { override = {}; }
-        var type = this.toastrConfig.iconClasses.success || '';
-        return this._preBuildNotification(type, message, title, this.applyConfig(override));
-    };
-    ToastrService.prototype.error = function (message, title, override) {
-        if (override === void 0) { override = {}; }
-        var type = this.toastrConfig.iconClasses.error || '';
-        return this._preBuildNotification(type, message, title, this.applyConfig(override));
-    };
-    ToastrService.prototype.info = function (message, title, override) {
-        if (override === void 0) { override = {}; }
-        var type = this.toastrConfig.iconClasses.info || '';
-        return this._preBuildNotification(type, message, title, this.applyConfig(override));
-    };
-    ToastrService.prototype.warning = function (message, title, override) {
-        if (override === void 0) { override = {}; }
-        var type = this.toastrConfig.iconClasses.warning || '';
-        return this._preBuildNotification(type, message, title, this.applyConfig(override));
-    };
-    ToastrService.prototype.clear = function (toastId) {
-        try {
-            for (var _a = Object(__WEBPACK_IMPORTED_MODULE_0_tslib__["c" /* __values */])(this.toasts), _b = _a.next(); !_b.done; _b = _a.next()) {
-                var toast = _b.value;
-                if (toastId !== undefined) {
-                    if (toast.toastId === toastId) {
-                        toast.toastRef.manualClose();
-                        return;
-                    }
-                }
-                else {
-                    toast.toastRef.manualClose();
-                }
-            }
-        }
-        catch (e_1_1) { e_1 = { error: e_1_1 }; }
-        finally {
-            try {
-                if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
-            }
-            finally { if (e_1) throw e_1.error; }
-        }
-        var e_1, _c;
-    };
-    ToastrService.prototype.remove = function (toastId) {
-        var found = this._findToast(toastId);
-        if (!found) {
-            return false;
-        }
-        found.activeToast.toastRef.close();
-        this.toasts.splice(found.index, 1);
-        this.currentlyActive = this.currentlyActive - 1;
-        if (!this.toastrConfig.maxOpened || !this.toasts.length) {
-            return false;
-        }
-        if (this.currentlyActive <= +this.toastrConfig.maxOpened && this.toasts[this.currentlyActive]) {
-            var p = this.toasts[this.currentlyActive].toastRef;
-            if (!p.isInactive()) {
-                this.currentlyActive = this.currentlyActive + 1;
-                p.activate();
-            }
-        }
-        return true;
-    };
-    ToastrService.prototype.isDuplicate = function (message) {
-        for (var i = 0; i < this.toasts.length; i++) {
-            if (this.toasts[i].message === message) {
-                return true;
-            }
-        }
-        return false;
-    };
-    ToastrService.prototype.applyConfig = function (override) {
-        if (override === void 0) { override = {}; }
-        return Object.assign({}, this.toastrConfig, override);
-    };
-    ToastrService.prototype._findToast = function (toastId) {
-        for (var i = 0; i < this.toasts.length; i++) {
-            if (this.toasts[i].toastId === toastId) {
-                return { index: i, activeToast: this.toasts[i] };
-            }
-        }
-        return null;
-    };
-    ToastrService.prototype._preBuildNotification = function (toastType, message, title, config) {
-        var _this = this;
-        if (config.onActivateTick) {
-            return this.ngZone.run(function () { return _this._buildNotification(toastType, message, title, config); });
-        }
-        return this._buildNotification(toastType, message, title, config);
-    };
-    ToastrService.prototype._buildNotification = function (toastType, message, title, config) {
-        var _this = this;
-        if (!config.toastComponent) {
-            throw new Error('toastComponent required');
-        }
-        if (message && this.toastrConfig.preventDuplicates && this.isDuplicate(message)) {
-            return null;
-        }
-        this.previousToastMessage = message;
-        var keepInactive = false;
-        if (this.toastrConfig.maxOpened && this.currentlyActive >= this.toastrConfig.maxOpened) {
-            keepInactive = true;
-            if (this.toastrConfig.autoDismiss) {
-                this.clear(this.toasts[this.toasts.length - 1].toastId);
-            }
-        }
-        var overlayRef = this.overlay.create(config.positionClass, this.overlayContainer);
-        this.index = this.index + 1;
-        var sanitizedMessage = message;
-        if (message && config.enableHtml) {
-            sanitizedMessage = this.sanitizer.sanitize(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_2" /* SecurityContext */].HTML, message);
-        }
-        var toastRef = new ToastRef(overlayRef);
-        var toastPackage = new ToastPackage(this.index, config, sanitizedMessage, title, toastType, toastRef);
-        var toastInjector = new ToastInjector(toastPackage, this._injector);
-        var component = new ComponentPortal(config.toastComponent, toastInjector);
-        var ins = {
-            toastId: this.index,
-            message: message || '',
-            toastRef: toastRef,
-            onShown: toastRef.afterActivate(),
-            onHidden: toastRef.afterClosed(),
-            onTap: toastPackage.onTap(),
-            onAction: toastPackage.onAction(),
-            portal: overlayRef.attach(component, this.toastrConfig.newestOnTop),
-        };
-        if (!keepInactive) {
-            setTimeout(function () {
-                ins.toastRef.activate();
-                _this.currentlyActive = _this.currentlyActive + 1;
+        this.service.getreq("M_IKUS").subscribe(function (response) {
+            _this.ikuData = response;
+            console.log(JSON.stringify(_this.ikuData));
+            (function (error) {
+                console.log(error);
             });
-        }
-        this.toasts.push(ins);
-        return ins;
-    };
-    return ToastrService;
-}());
-ToastrService.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */] },
-];
-ToastrService.ctorParameters = function () { return [
-    { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Inject */], args: [TOAST_CONFIG,] },] },
-    { type: Overlay, },
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["D" /* Injector */], },
-    { type: __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["c" /* DomSanitizer */], },
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["O" /* NgZone */], },
-]; };
-var Toast = /** @class */ (function () {
-    function Toast(toastrService, toastPackage, ngZone) {
-        var _this = this;
-        this.toastrService = toastrService;
-        this.toastPackage = toastPackage;
-        this.ngZone = ngZone;
-        this.width = -1;
-        this.toastClasses = '';
-        this.state = {
-            value: 'inactive',
-            params: {
-                easeTime: this.toastPackage.config.easeTime,
-                easing: 'ease-in',
-            },
-        };
-        this.message = toastPackage.message;
-        this.title = toastPackage.title;
-        this.options = toastPackage.config;
-        this.toastClasses = toastPackage.toastType + " " + toastPackage.config.toastClass;
-        this.sub = toastPackage.toastRef.afterActivate().subscribe(function () {
-            _this.activateToast();
         });
-        this.sub1 = toastPackage.toastRef.manualClosed().subscribe(function () {
-            _this.remove();
+    };
+    RealisasiQualitativeComponent.prototype.remove = function (i) {
+        this.ikuIds.splice(i, 1);
+    };
+    RealisasiQualitativeComponent.prototype.add = function () {
+        this.ikuIds.push(++this.count);
+    };
+    RealisasiQualitativeComponent.prototype.register = function (myForm) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
+            });
         });
-    }
-    Toast.prototype.ngOnDestroy = function () {
-        this.sub.unsubscribe();
-        this.sub1.unsubscribe();
-        clearInterval(this.intervalId);
-        clearTimeout(this.timeout);
     };
-    Toast.prototype.activateToast = function () {
-        var _this = this;
-        this.state = Object.assign({}, this.state, { value: 'active' });
-        if (!this.options.disableTimeOut && this.options.timeOut) {
-            this.outsideTimeout(function () { return _this.remove(); }, this.options.timeOut);
-            this.hideTime = new Date().getTime() + this.options.timeOut;
-            if (this.options.progressBar) {
-                this.outsideInterval(function () { return _this.updateProgress(); }, 10);
-            }
-        }
-    };
-    Toast.prototype.updateProgress = function () {
-        if (this.width === 0 || this.width === 100 || !this.options.timeOut) {
-            return;
-        }
-        var now = new Date().getTime();
-        var remaining = this.hideTime - now;
-        this.width = (remaining / this.options.timeOut) * 100;
-        if (this.options.progressAnimation === 'increasing') {
-            this.width = 100 - this.width;
-        }
-        if (this.width <= 0) {
-            this.width = 0;
-        }
-        if (this.width >= 100) {
-            this.width = 100;
-        }
-    };
-    Toast.prototype.remove = function () {
-        var _this = this;
-        if (this.state.value === 'removed') {
-            return;
-        }
-        clearTimeout(this.timeout);
-        this.state = Object.assign({}, this.state, { value: 'removed' });
-        this.outsideTimeout(function () { return _this.toastrService.remove(_this.toastPackage.toastId); }, +this.toastPackage.config.easeTime);
-    };
-    Toast.prototype.tapToast = function () {
-        if (this.state.value === 'removed') {
-            return;
-        }
-        this.toastPackage.triggerTap();
-        if (this.options.tapToDismiss) {
-            this.remove();
-        }
-    };
-    Toast.prototype.stickAround = function () {
-        if (this.state.value === 'removed') {
-            return;
-        }
-        clearTimeout(this.timeout);
-        this.options.timeOut = 0;
-        this.hideTime = 0;
-        clearInterval(this.intervalId);
-        this.width = 0;
-    };
-    Toast.prototype.delayedHideToast = function () {
-        var _this = this;
-        if (this.options.disableTimeOut
-            || this.options.extendedTimeOut === 0
-            || this.state.value === 'removed') {
-            return;
-        }
-        this.outsideTimeout(function () { return _this.remove(); }, this.options.extendedTimeOut);
-        this.options.timeOut = this.options.extendedTimeOut;
-        this.hideTime = new Date().getTime() + (this.options.timeOut || 0);
-        this.width = -1;
-        if (this.options.progressBar) {
-            this.outsideInterval(function () { return _this.updateProgress(); }, 10);
-        }
-    };
-    Toast.prototype.outsideTimeout = function (func, timeout) {
-        var _this = this;
-        if (this.ngZone) {
-            this.ngZone.runOutsideAngular(function () { return _this.timeout = setTimeout(function () { return _this.runInsideAngular(func); }, timeout); });
-        }
-        else {
-            this.timeout = setTimeout(function () { return func(); }, timeout);
-        }
-    };
-    Toast.prototype.outsideInterval = function (func, timeout) {
-        var _this = this;
-        if (this.ngZone) {
-            this.ngZone.runOutsideAngular(function () { return _this.intervalId = setInterval(function () { return _this.runInsideAngular(func); }, timeout); });
-        }
-        else {
-            this.intervalId = setInterval(function () { return func(); }, timeout);
-        }
-    };
-    Toast.prototype.runInsideAngular = function (func) {
-        if (this.ngZone) {
-            this.ngZone.run(function () { return func(); });
-        }
-        else {
-            func();
-        }
-    };
-    return Toast;
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["NgForm"])
+    ], RealisasiQualitativeComponent.prototype, "myForm", void 0);
+    RealisasiQualitativeComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-realisasi-qualitative",
+            template: __webpack_require__("./src/app/pages/realisasi/realisasi-qualitative/realisasi.qualitative.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_4__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* Router */]])
+    ], RealisasiQualitativeComponent);
+    return RealisasiQualitativeComponent;
 }());
-Toast.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */], args: [{
-                selector: '[toast-component]',
-                template: "\n  <button *ngIf=\"options.closeButton\" (click)=\"remove()\" class=\"toast-close-button\" aria-label=\"Close\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n  <div *ngIf=\"title\" [class]=\"options.titleClass\" [attr.aria-label]=\"title\">\n    {{ title }}\n  </div>\n  <div *ngIf=\"message && options.enableHtml\" role=\"alertdialog\" aria-live=\"polite\"\n    [class]=\"options.messageClass\" [innerHTML]=\"message\">\n  </div>\n  <div *ngIf=\"message && !options.enableHtml\" role=\"alertdialog\" aria-live=\"polite\"\n    [class]=\"options.messageClass\" [attr.aria-label]=\"message\">\n    {{ message }}\n  </div>\n  <div *ngIf=\"options.progressBar\">\n    <div class=\"toast-progress\" [style.width]=\"width + '%'\"></div>\n  </div>\n  ",
-                animations: [
-                    Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["j" /* trigger */])('flyInOut', [
-                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["g" /* state */])('inactive', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["h" /* style */])({
-                            display: 'none',
-                            opacity: 0,
-                        })),
-                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["g" /* state */])('active', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["h" /* style */])({})),
-                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["g" /* state */])('removed', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["h" /* style */])({ opacity: 0 })),
-                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["i" /* transition */])('inactive => active', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["e" /* animate */])('{{ easeTime }}ms {{ easing }}')),
-                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["i" /* transition */])('active => removed', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["e" /* animate */])('{{ easeTime }}ms {{ easing }}')),
-                    ]),
-                ],
-                preserveWhitespaces: false,
-            },] },
-];
-Toast.ctorParameters = function () { return [
-    { type: ToastrService, },
-    { type: ToastPackage, },
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["O" /* NgZone */], },
-]; };
-Toast.propDecorators = {
-    "toastClasses": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["y" /* HostBinding */], args: ['class',] },],
-    "state": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["y" /* HostBinding */], args: ['@flyInOut',] },],
-    "tapToast": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* HostListener */], args: ['click',] },],
-    "stickAround": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* HostListener */], args: ['mouseenter',] },],
-    "delayedHideToast": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* HostListener */], args: ['mouseleave',] },],
-};
-var DefaultGlobalConfig = /** @class */ (function () {
-    function DefaultGlobalConfig() {
-        this.maxOpened = 0;
-        this.autoDismiss = false;
-        this.newestOnTop = true;
-        this.preventDuplicates = false;
-        this.iconClasses = {
-            error: 'toast-error',
-            info: 'toast-info',
-            success: 'toast-success',
-            warning: 'toast-warning',
-        };
-        this.toastComponent = Toast;
-        this.closeButton = false;
-        this.timeOut = 5000;
-        this.extendedTimeOut = 1000;
-        this.enableHtml = false;
-        this.progressBar = false;
-        this.toastClass = 'toast';
-        this.positionClass = 'toast-top-right';
-        this.titleClass = 'toast-title';
-        this.messageClass = 'toast-message';
-        this.easing = 'ease-in';
-        this.easeTime = 300;
-        this.tapToDismiss = true;
-        this.onActivateTick = false;
-        this.progressAnimation = 'decreasing';
-    }
-    return DefaultGlobalConfig;
-}());
-var ToastrModule = /** @class */ (function () {
-    function ToastrModule(parentModule) {
-        if (parentModule) {
-            throw new Error('ToastrModule is already loaded. It should only be imported in your application\'s main module.');
-        }
-    }
-    ToastrModule.forRoot = function (config) {
-        if (config === void 0) { config = {}; }
-        return {
-            ngModule: ToastrModule,
-            providers: [
-                { provide: TOAST_CONFIG, useValue: { config: config, defaults: DefaultGlobalConfig } },
-                OverlayContainer,
-                Overlay,
-                ToastrService,
-            ],
-        };
-    };
-    return ToastrModule;
-}());
-ToastrModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */], args: [{
-                imports: [__WEBPACK_IMPORTED_MODULE_5__angular_common__["b" /* CommonModule */]],
-                exports: [Toast],
-                declarations: [Toast],
-                entryComponents: [Toast],
-            },] },
-];
-ToastrModule.ctorParameters = function () { return [
-    { type: ToastrModule, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["P" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["_4" /* SkipSelf */] },] },
-]; };
-var ToastNoAnimation = /** @class */ (function () {
-    function ToastNoAnimation(toastrService, toastPackage, appRef) {
-        var _this = this;
-        this.toastrService = toastrService;
-        this.toastPackage = toastPackage;
-        this.appRef = appRef;
-        this.width = -1;
-        this.toastClasses = '';
-        this.state = 'inactive';
-        this.message = toastPackage.message;
-        this.title = toastPackage.title;
-        this.options = toastPackage.config;
-        this.toastClasses = toastPackage.toastType + " " + toastPackage.config.toastClass;
-        this.sub = toastPackage.toastRef.afterActivate().subscribe(function () {
-            _this.activateToast();
-        });
-        this.sub1 = toastPackage.toastRef.manualClosed().subscribe(function () {
-            _this.remove();
-        });
-    }
-    ToastNoAnimation.prototype.ngOnDestroy = function () {
-        this.sub.unsubscribe();
-        this.sub1.unsubscribe();
-        clearInterval(this.intervalId);
-        clearTimeout(this.timeout);
-    };
-    ToastNoAnimation.prototype.activateToast = function () {
-        var _this = this;
-        this.state = 'active';
-        if (!this.options.disableTimeOut && this.options.timeOut) {
-            this.timeout = setTimeout(function () {
-                _this.remove();
-            }, this.options.timeOut);
-            this.hideTime = new Date().getTime() + this.options.timeOut;
-            if (this.options.progressBar) {
-                this.intervalId = setInterval(function () { return _this.updateProgress(); }, 10);
-            }
-        }
-        if (this.options.onActivateTick) {
-            this.appRef.tick();
-        }
-    };
-    ToastNoAnimation.prototype.updateProgress = function () {
-        if (this.width === 0 || this.width === 100 || !this.options.timeOut) {
-            return;
-        }
-        var now = new Date().getTime();
-        var remaining = this.hideTime - now;
-        this.width = remaining / this.options.timeOut * 100;
-        if (this.options.progressAnimation === 'increasing') {
-            this.width = 100 - this.width;
-        }
-        if (this.width <= 0) {
-            this.width = 0;
-        }
-        if (this.width >= 100) {
-            this.width = 100;
-        }
-    };
-    ToastNoAnimation.prototype.remove = function () {
-        var _this = this;
-        if (this.state === 'removed') {
-            return;
-        }
-        clearTimeout(this.timeout);
-        this.state = 'removed';
-        this.timeout = setTimeout(function () { return _this.toastrService.remove(_this.toastPackage.toastId); });
-    };
-    ToastNoAnimation.prototype.tapToast = function () {
-        if (this.state === 'removed') {
-            return;
-        }
-        this.toastPackage.triggerTap();
-        if (this.options.tapToDismiss) {
-            this.remove();
-        }
-    };
-    ToastNoAnimation.prototype.stickAround = function () {
-        if (this.state === 'removed') {
-            return;
-        }
-        clearTimeout(this.timeout);
-        this.options.timeOut = 0;
-        this.hideTime = 0;
-        clearInterval(this.intervalId);
-        this.width = 0;
-    };
-    ToastNoAnimation.prototype.delayedHideToast = function () {
-        var _this = this;
-        if (this.options.disableTimeOut
-            || this.options.extendedTimeOut === 0
-            || this.state === 'removed') {
-            return;
-        }
-        this.timeout = setTimeout(function () { return _this.remove(); }, this.options.extendedTimeOut);
-        this.options.timeOut = this.options.extendedTimeOut;
-        this.hideTime = new Date().getTime() + (this.options.timeOut || 0);
-        this.width = -1;
-        if (this.options.progressBar) {
-            this.intervalId = setInterval(function () { return _this.updateProgress(); }, 10);
-        }
-    };
-    return ToastNoAnimation;
-}());
-ToastNoAnimation.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */], args: [{
-                selector: '[toast-component]',
-                template: "\n  <button *ngIf=\"options.closeButton\" (click)=\"remove()\" class=\"toast-close-button\" aria-label=\"Close\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n  <div *ngIf=\"title\" [class]=\"options.titleClass\" [attr.aria-label]=\"title\">\n    {{ title }}\n  </div>\n  <div *ngIf=\"message && options.enableHtml\" role=\"alert\" aria-live=\"polite\"\n    [class]=\"options.messageClass\" [innerHTML]=\"message\">\n  </div>\n  <div *ngIf=\"message && !options.enableHtml\" role=\"alert\" aria-live=\"polite\"\n    [class]=\"options.messageClass\" [attr.aria-label]=\"message\">\n    {{ message }}\n  </div>\n  <div *ngIf=\"options.progressBar\">\n    <div class=\"toast-progress\" [style.width]=\"width + '%'\"></div>\n  </div>\n  ",
-            },] },
-];
-ToastNoAnimation.ctorParameters = function () { return [
-    { type: ToastrService, },
-    { type: ToastPackage, },
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["g" /* ApplicationRef */], },
-]; };
-ToastNoAnimation.propDecorators = {
-    "toastClasses": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["y" /* HostBinding */], args: ['class',] },],
-    "tapToast": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* HostListener */], args: ['click',] },],
-    "stickAround": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* HostListener */], args: ['mouseenter',] },],
-    "delayedHideToast": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* HostListener */], args: ['mouseleave',] },],
-};
-var ToastNoAnimationModule = /** @class */ (function () {
-    function ToastNoAnimationModule() {
-    }
-    return ToastNoAnimationModule;
-}());
-ToastNoAnimationModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */], args: [{
-                imports: [__WEBPACK_IMPORTED_MODULE_5__angular_common__["b" /* CommonModule */]],
-                declarations: [ToastNoAnimation],
-                exports: [ToastNoAnimation],
-                entryComponents: [ToastNoAnimation],
-            },] },
-];
-ToastNoAnimationModule.ctorParameters = function () { return []; };
 
-
-//# sourceMappingURL=ngx-toastr.js.map
 
 
 /***/ }),
 
-/***/ "./src/app/pages/realisasi/realisasi.component.html":
+/***/ "./src/app/pages/realisasi/realisasi-quantitative/realisasi.quantitative.component.html":
 /***/ (function(module, exports) {
 
 module.exports = "<nb-card>\r\n  <nb-card-header *ngIf=\"user.BANK==''\">Access Denied!</nb-card-header>\r\n  <nb-card-header *ngIf=\"user.BANK\">Input Realisasi {{user.BANK_DESCRIPTION}} Tahun {{yearPeriode}}</nb-card-header>\r\n</nb-card>\r\n\r\n<div *ngIf=\"user.BANK!=''\">\r\n  <nb-card *ngFor=\"let item of data; let i=index;\">\r\n    <nb-card-header>{{item.IKU_NAME}}</nb-card-header>\r\n    <nb-card-body>\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <label>Triwulan 1</label>\r\n          <input type=\"number\" [(ngModel)]=\"data[i].TW1\" class=\"form-control\">\r\n        </div>\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <label>Triwulan 2</label>\r\n          <input type=\"number\" [(ngModel)]=\"data[i].TW2\" class=\"form-control\">\r\n        </div>\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <label>Triwulan 3</label>\r\n          <input type=\"number\" [(ngModel)]=\"data[i].TW3\" class=\"form-control\">\r\n        </div>\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <label>Triwulan 4</label>\r\n          <input type=\"number\" [(ngModel)]=\"data[i].TW4\" class=\"form-control\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <button type=\"button\" class=\"btn btn-success\" (click)=\"submit(data[i])\"> SUBMIT </button>\r\n        </div>\r\n      </div>\r\n    </nb-card-body>\r\n  </nb-card>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/realisasi/realisasi.component.ts":
+/***/ "./src/app/pages/realisasi/realisasi-quantitative/realisasi.quantitative.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RealisasiComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RealisasiQuantitativeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("./node_modules/moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
@@ -871,8 +155,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var RealisasiComponent = /** @class */ (function () {
-    function RealisasiComponent(service, authService, toastr) {
+var RealisasiQuantitativeComponent = /** @class */ (function () {
+    function RealisasiQuantitativeComponent(service, authService, toastr) {
         var _this = this;
         this.service = service;
         this.authService = authService;
@@ -892,8 +176,8 @@ var RealisasiComponent = /** @class */ (function () {
             }
         });
     }
-    RealisasiComponent.prototype.ngOnInit = function () { };
-    RealisasiComponent.prototype.loadData = function () {
+    RealisasiQuantitativeComponent.prototype.ngOnInit = function () { };
+    RealisasiQuantitativeComponent.prototype.loadData = function () {
         var _this = this;
         var trnRealisasiPost = {
             YEAR: this.yearPeriode,
@@ -920,7 +204,7 @@ var RealisasiComponent = /** @class */ (function () {
             console.log(error);
         });
     };
-    RealisasiComponent.prototype.submit = function (data) {
+    RealisasiQuantitativeComponent.prototype.submit = function (data) {
         var _this = this;
         this.service
             .postreq("trn_realisasi_ikus/postrealisasi", data)
@@ -928,14 +212,54 @@ var RealisasiComponent = /** @class */ (function () {
             _this.toastr.success("Data Saved!");
         });
     };
-    RealisasiComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: "ngx-realisasi",
-            template: __webpack_require__("./src/app/pages/realisasi/realisasi.component.html")
+    RealisasiQuantitativeComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-realisasi-qualitative",
+            template: __webpack_require__("./src/app/pages/realisasi/realisasi-quantitative/realisasi.quantitative.component.html")
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__["a" /* BackendService */],
             __WEBPACK_IMPORTED_MODULE_3__nebular_auth__["e" /* NbAuthService */],
             __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]])
+    ], RealisasiQuantitativeComponent);
+    return RealisasiQuantitativeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/realisasi/realisasi.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<router-outlet></router-outlet>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/realisasi/realisasi.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RealisasiComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var RealisasiComponent = /** @class */ (function () {
+    function RealisasiComponent() {
+    }
+    RealisasiComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-realisasi",
+            template: __webpack_require__("./src/app/pages/realisasi/realisasi.component.html")
+        }),
+        __metadata("design:paramtypes", [])
     ], RealisasiComponent);
     return RealisasiComponent;
 }());
@@ -972,7 +296,7 @@ var RealisasiModule = /** @class */ (function () {
     function RealisasiModule() {
     }
     RealisasiModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* Ng2SmartTableModule */], __WEBPACK_IMPORTED_MODULE_2__realisasi_router_module__["a" /* RealisasiRouterModule */], __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["a" /* ToastrModule */].forRoot()],
             declarations: __WEBPACK_IMPORTED_MODULE_2__realisasi_router_module__["b" /* routedComponents */].slice(),
             entryComponents: [],
@@ -995,6 +319,8 @@ var RealisasiModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__realisasi_component__ = __webpack_require__("./src/app/pages/realisasi/realisasi.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__realisasi_quantitative_realisasi_quantitative_component__ = __webpack_require__("./src/app/pages/realisasi/realisasi-quantitative/realisasi.quantitative.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__realisasi_qualitative_realisasi_qualitative_component__ = __webpack_require__("./src/app/pages/realisasi/realisasi-qualitative/realisasi.qualitative.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1004,17 +330,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var routes = [
     {
         path: "",
-        component: __WEBPACK_IMPORTED_MODULE_2__realisasi_component__["a" /* RealisasiComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_2__realisasi_component__["a" /* RealisasiComponent */],
+        children: [
+            {
+                path: "realisasi-quantitative",
+                component: __WEBPACK_IMPORTED_MODULE_3__realisasi_quantitative_realisasi_quantitative_component__["a" /* RealisasiQuantitativeComponent */]
+            }, {
+                path: "realisasi-qualitative",
+                component: __WEBPACK_IMPORTED_MODULE_4__realisasi_qualitative_realisasi_qualitative_component__["a" /* RealisasiQualitativeComponent */]
+            }
+        ]
     }
 ];
 var RealisasiRouterModule = /** @class */ (function () {
     function RealisasiRouterModule() {
     }
     RealisasiRouterModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(routes)],
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]]
         })
@@ -1022,7 +359,7 @@ var RealisasiRouterModule = /** @class */ (function () {
     return RealisasiRouterModule;
 }());
 
-var routedComponents = [__WEBPACK_IMPORTED_MODULE_2__realisasi_component__["a" /* RealisasiComponent */]];
+var routedComponents = [__WEBPACK_IMPORTED_MODULE_2__realisasi_component__["a" /* RealisasiComponent */], __WEBPACK_IMPORTED_MODULE_3__realisasi_quantitative_realisasi_quantitative_component__["a" /* RealisasiQuantitativeComponent */], __WEBPACK_IMPORTED_MODULE_4__realisasi_qualitative_realisasi_qualitative_component__["a" /* RealisasiQualitativeComponent */]];
 
 
 /***/ })

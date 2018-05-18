@@ -24,7 +24,7 @@ var DashboardComponent = /** @class */ (function () {
     function DashboardComponent() {
     }
     DashboardComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-dashboard",
             template: __webpack_require__("./src/app/pages/dashboard/dashboard.component.html")
         })
@@ -57,7 +57,7 @@ var DashboardModule = /** @class */ (function () {
     function DashboardModule() {
     }
     DashboardModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__theme_theme_module__["a" /* ThemeModule */],
             ],
@@ -86,19 +86,53 @@ var MENU_ITEMS = [
         home: true
     },
     {
-        title: "Input IKU",
-        icon: "nb-locked",
-        link: "/pages/iku"
-    },
-    {
-        title: "Input Realisasi",
-        icon: "nb-compose",
-        link: "/pages/realisasi"
-    },
-    {
         title: "Reporting",
         icon: "nb-bar-chart",
         link: "/pages/report"
+    },
+    {
+        title: "Master",
+        icon: "nb-locked",
+        children: [
+            {
+                title: "Bank",
+                link: "/pages/master/master-bank"
+            },
+            {
+                title: "User",
+                link: "/pages/master/master-user"
+            },
+            {
+                title: "User Bank",
+                link: "/pages/master/user-bank"
+            },
+            {
+                title: "Iku",
+                link: "/pages/master/iku"
+            }
+        ]
+    },
+    {
+        title: "Transaction",
+        icon: "nb-locked",
+        children: [
+            {
+                title: "Indicator Quantitative",
+                link: "/pages/transaction/indicator-quantitative"
+            },
+            {
+                title: "Realisasi Quantitative",
+                link: "/pages/transaction/realisasi-quantitative"
+            },
+            {
+                title: "Indicator Qualitative",
+                link: "/pages/transaction/indicator-qualitative"
+            },
+            {
+                title: "Realisasi Qualitative",
+                link: "/pages/transaction/realisasi-qualitative"
+            }
+        ]
     }
 ];
 // {
@@ -175,6 +209,14 @@ var routes = [
             {
                 path: "realisasi",
                 loadChildren: "./realisasi/realisasi.module#RealisasiModule"
+            },
+            {
+                path: "master",
+                loadChildren: "./master/master.module#MasterModule"
+            },
+            {
+                path: "transaction",
+                loadChildren: "./transaction/transaction.module#TransactionModule"
             }
         ]
     }
@@ -183,7 +225,7 @@ var PagesRoutingModule = /** @class */ (function () {
     function PagesRoutingModule() {
     }
     PagesRoutingModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_0__angular_router__["d" /* RouterModule */].forChild(routes)],
             exports: [__WEBPACK_IMPORTED_MODULE_0__angular_router__["d" /* RouterModule */]]
         })
@@ -215,7 +257,7 @@ var PagesComponent = /** @class */ (function () {
         this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["a" /* MENU_ITEMS */];
     }
     PagesComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-pages",
             template: "\n    <ngx-sample-layout>\n      <nb-menu [items]=\"menu\"></nb-menu>\n      <router-outlet></router-outlet>\n    </ngx-sample-layout>\n  "
         })
@@ -254,7 +296,7 @@ var PagesModule = /** @class */ (function () {
     function PagesModule() {
     }
     PagesModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_3__pages_routing_module__["a" /* PagesRoutingModule */], __WEBPACK_IMPORTED_MODULE_4__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard_module__["a" /* DashboardModule */]],
             declarations: PAGES_COMPONENTS.slice()
         })

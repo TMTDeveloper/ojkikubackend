@@ -3,7 +3,7 @@ webpackJsonp(["report.module"],{
 /***/ "./src/app/pages/report/report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>\r\n    View Report\r\n  </nb-card-header>\r\n\r\n  <nb-card-body>\r\n    <div class=\"holdertable\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\">\r\n      </ng2-smart-table>\r\n    </div>\r\n\r\n\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<!-- <nb-card>\r\n  <nb-card-header>\r\n    View Report\r\n  </nb-card-header>\r\n\r\n  <nb-card-body>\r\n    <div class=\"holdertable\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\">\r\n      </ng2-smart-table>\r\n    </div>\r\n\r\n\r\n\r\n  </nb-card-body>\r\n</nb-card> -->\r\n\r\n<nb-card>\r\n  <nb-card-body>\r\n    On Progress\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -121,7 +121,7 @@ var ReportComponent = /** @class */ (function () {
         }
     };
     ReportComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-report",
             template: __webpack_require__("./src/app/pages/report/report.component.html")
         }),
@@ -160,7 +160,7 @@ var ReportModule = /** @class */ (function () {
     function ReportModule() {
     }
     ReportModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* Ng2SmartTableModule */], __WEBPACK_IMPORTED_MODULE_2__report_router_module__["a" /* ReportRouterModule */]],
             declarations: __WEBPACK_IMPORTED_MODULE_2__report_router_module__["b" /* routedComponents */].slice(),
             entryComponents: [],
@@ -202,7 +202,7 @@ var ReportRouterModule = /** @class */ (function () {
     function ReportRouterModule() {
     }
     ReportRouterModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(routes)],
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]]
         })

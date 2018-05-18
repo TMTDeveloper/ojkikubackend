@@ -33702,8 +33702,8 @@ return hooks;
 
 var noop = function () { };
 var COMPLETER_CONTROL_VALUE_ACCESSOR = {
-    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NG_VALUE_ACCESSOR */],
-    useExisting: Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* forwardRef */])(function () { return CompleterCmp; }),
+    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["NG_VALUE_ACCESSOR"],
+    useExisting: Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return CompleterCmp; }),
     multi: true
 };
 var CompleterCmp = (function () {
@@ -33728,15 +33728,15 @@ var CompleterCmp = (function () {
         this.selectOnClick = false;
         this.selectOnFocus = false;
         this.autoHighlight = false;
-        this.selected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.highlighted = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.blurEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.click = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.focusEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.opened = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.keyup = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.keydown = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.control = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]("");
+        this.selected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.highlighted = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.blurEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.click = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.focusEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.opened = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.keyup = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.keydown = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.control = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]("");
         this.displaySearching = true;
         this.displayNoResults = true;
         this._textNoResults = __WEBPACK_IMPORTED_MODULE_4__globals__["e" /* TEXT_NO_RESULTS */];
@@ -33904,7 +33904,7 @@ var CompleterCmp = (function () {
         return this._open;
     };
     CompleterCmp.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */], args: [{
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
                     selector: "ng2-completer",
                     template: "\n        <div class=\"completer-holder\" ctrCompleter>\n            <input #ctrInput [attr.id]=\"inputId.length > 0 ? inputId : null\" type=\"search\" class=\"completer-input\" ctrInput [ngClass]=\"inputClass\"\n                [(ngModel)]=\"searchStr\" (ngModelChange)=\"onChange($event)\" [attr.name]=\"inputName\" [placeholder]=\"placeholder\"\n                [attr.maxlength]=\"maxChars\" [tabindex]=\"fieldTabindex\" [disabled]=\"disableInput\"\n                [clearSelected]=\"clearSelected\" [clearUnselected]=\"clearUnselected\"\n                [overrideSuggested]=\"overrideSuggested\" [openOnFocus]=\"openOnFocus\" [fillHighlighted]=\"fillHighlighted\" \n                [openOnClick]=\"openOnClick\" [selectOnClick]=\"selectOnClick\" [selectOnFocus]=\"selectOnFocus\"\n                (blur)=\"onBlur()\" (focus)=\"onFocus()\" (keyup)=\"onKeyup($event)\" (keydown)=\"onKeydown($event)\" (click)=\"onClick($event)\"\n                autocomplete=\"off\" autocorrect=\"off\" autocapitalize=\"off\" />\n\n            <div class=\"completer-dropdown-holder\"\n                *ctrList=\"dataService;\n                    minSearchLength: minSearchLength;\n                    pause: pause;\n                    autoMatch: autoMatch;\n                    initialValue: initialValue;\n                    autoHighlight: autoHighlight;\n                    displaySearching: displaySearching;\n                    let items = results;\n                    let searchActive = searching;\n                    let isInitialized = searchInitialized;\n                    let isOpen = isOpen;\">\n                <div class=\"completer-dropdown\" ctrDropdown *ngIf=\"isInitialized && isOpen && (( items?.length > 0|| (displayNoResults && !searchActive)) || (searchActive && displaySearching))\">\n                    <div *ngIf=\"searchActive && displaySearching\" class=\"completer-searching\">{{_textSearching}}</div>\n                    <div *ngIf=\"!searchActive && (!items || items?.length === 0)\" class=\"completer-no-results\">{{_textNoResults}}</div>\n                    <div class=\"completer-row-wrapper\" *ngFor=\"let item of items; let rowIndex=index\">\n                        <div class=\"completer-row\" [ctrRow]=\"rowIndex\" [dataItem]=\"item\">\n                            <div *ngIf=\"item.image || item.image === ''\" class=\"completer-image-holder\">\n                                <img *ngIf=\"item.image != ''\" src=\"{{item.image}}\" class=\"completer-image\" />\n                                <div *ngIf=\"item.image === ''\" class=\"completer-image-default\"></div>\n                            </div>\n                            <div class=\"completer-item-text\" [ngClass]=\"{'completer-item-text-image': item.image || item.image === '' }\">\n                                <completer-list-item class=\"completer-title\" [text]=\"item.title\" [matchClass]=\"matchClass\" [searchStr]=\"searchStr\" [type]=\"'title'\"></completer-list-item>\n                                <completer-list-item *ngIf=\"item.description && item.description != ''\" class=\"completer-description\" [text]=\"item.description\"\n                                    [matchClass]=\"matchClass\" [searchStr]=\"searchStr\" [type]=\"'description'\">\n                                </completer-list-item>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    ",
                     styles: ["\n    .completer-dropdown {\n        border-color: #ececec;\n        border-width: 1px;\n        border-style: solid;\n        border-radius: 2px;\n        width: 250px;\n        padding: 6px;\n        cursor: pointer;\n        z-index: 9999;\n        position: absolute;\n        margin-top: -6px;\n        background-color: #ffffff;\n    }\n\n    .completer-row {\n        padding: 5px;\n        color: #000000;\n        margin-bottom: 4px;\n        clear: both;\n        display: inline-block;\n        width: 103%;\n    }\n\n    .completer-selected-row {\n        background-color: lightblue;\n        color: #ffffff;\n    }\n\n    .completer-description {\n        font-size: 14px;\n    }\n\n    .completer-image-default {\n        width: 16px;\n        height: 16px;\n        background-image: url(\"demo/res/img/default.png\");\n    }\n\n    .completer-image-holder {\n        float: left;\n        width: 10%;\n    }\n    .completer-item-text-image {\n        float: right;\n        width: 90%;\n    }\n    "],
@@ -33914,45 +33914,45 @@ var CompleterCmp = (function () {
     /** @nocollapse */
     CompleterCmp.ctorParameters = function () { return [
         { type: __WEBPACK_IMPORTED_MODULE_3__services_completer_service__["a" /* CompleterService */], },
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectorRef */], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"], },
     ]; };
     CompleterCmp.propDecorators = {
-        'dataService': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'inputName': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'inputId': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'pause': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'minSearchLength': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'maxChars': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'overrideSuggested': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'clearSelected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'clearUnselected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'fillHighlighted': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'placeholder': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'matchClass': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'fieldTabindex': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'autoMatch': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'disableInput': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'inputClass': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'autofocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'openOnFocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'openOnClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'selectOnClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'selectOnFocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'initialValue': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'autoHighlight': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'selected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'highlighted': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'blurEvent': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */], args: ["blur",] },],
-        'click': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'focusEvent': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */], args: ["focus",] },],
-        'opened': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'keyup': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'keydown': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'completer': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ViewChild */], args: [__WEBPACK_IMPORTED_MODULE_2__directives_ctr_completer__["a" /* CtrCompleter */],] },],
-        'ctrInput': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ViewChild */], args: ["ctrInput",] },],
-        'datasource': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'textNoResults': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'textSearching': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+        'dataService': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'inputName': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'inputId': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'pause': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'minSearchLength': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'maxChars': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'overrideSuggested': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'clearSelected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'clearUnselected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'fillHighlighted': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'placeholder': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'matchClass': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'fieldTabindex': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'autoMatch': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'disableInput': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'inputClass': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'autofocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'openOnFocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'openOnClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'selectOnClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'selectOnFocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'initialValue': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'autoHighlight': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'selected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'highlighted': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'blurEvent': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"], args: ["blur",] },],
+        'click': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'focusEvent': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"], args: ["focus",] },],
+        'opened': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'keyup': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'keydown': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'completer': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"], args: [__WEBPACK_IMPORTED_MODULE_2__directives_ctr_completer__["a" /* CtrCompleter */],] },],
+        'ctrInput': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"], args: ["ctrInput",] },],
+        'datasource': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'textNoResults': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'textSearching': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
     };
     return CompleterCmp;
 }());
@@ -34000,7 +34000,7 @@ var CompleterListItemCmp = (function () {
         }
     };
     CompleterListItemCmp.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */], args: [{
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
                     selector: "completer-list-item",
                     template: "<span class=\"completer-list-item-holder\" [ngClass]=\"{'completer-title': type === 'title', 'completer-description': type === 'description'}\" >\n        <span class=\"completer-list-item\" *ngFor=\"let part of parts\" [ngClass]=\"part.isMatch ? matchClass : null\">{{part.text}}</span>\n    </span>"
                 },] },
@@ -34008,10 +34008,10 @@ var CompleterListItemCmp = (function () {
     /** @nocollapse */
     CompleterListItemCmp.ctorParameters = function () { return []; };
     CompleterListItemCmp.propDecorators = {
-        'text': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'searchStr': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'matchClass': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'type': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+        'text': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'searchStr': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'matchClass': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'type': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
     };
     return CompleterListItemCmp;
 }());
@@ -34029,10 +34029,10 @@ var CompleterListItemCmp = (function () {
 
 var CtrCompleter = (function () {
     function CtrCompleter() {
-        this.selected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.highlighted = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.opened = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.dataSourceChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.selected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.highlighted = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.opened = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.dataSourceChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this._hasHighlighted = false;
         this._hasSelected = false;
         this._cancelBlur = false;
@@ -34149,17 +34149,17 @@ var CtrCompleter = (function () {
         configurable: true
     });
     CtrCompleter.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Directive */], args: [{
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{
                     selector: "[ctrCompleter]",
                 },] },
     ];
     /** @nocollapse */
     CtrCompleter.ctorParameters = function () { return []; };
     CtrCompleter.propDecorators = {
-        'selected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'highlighted': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'opened': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'dataSourceChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
+        'selected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'highlighted': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'opened': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'dataSourceChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
     };
     return CtrCompleter;
 }());
@@ -34329,17 +34329,17 @@ var CtrDropdown = (function () {
             parseInt(css.marginTop, 10) + parseInt(css.marginBottom, 10);
     };
     CtrDropdown.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Directive */], args: [{
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{
                     selector: "[ctrDropdown]",
                 },] },
     ];
     /** @nocollapse */
     CtrDropdown.ctorParameters = function () { return [
-        { type: __WEBPACK_IMPORTED_MODULE_1__ctr_completer__["a" /* CtrCompleter */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* Host */] },] },
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */], },
+        { type: __WEBPACK_IMPORTED_MODULE_1__ctr_completer__["a" /* CtrCompleter */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Host"] },] },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
     ]; };
     CtrDropdown.propDecorators = {
-        'onMouseDown': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["mousedown", ["$event"],] },],
+        'onMouseDown': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["mousedown", ["$event"],] },],
     };
     return CtrDropdown;
 }());
@@ -34390,7 +34390,7 @@ var CtrInput = (function () {
         this.openOnClick = false;
         this.selectOnClick = false;
         this.selectOnFocus = false;
-        this.ngModelChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.ngModelChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this._searchStr = "";
         this._displayStr = "";
         this.blurTimer = null;
@@ -34590,32 +34590,32 @@ var CtrInput = (function () {
         this.completer.clear();
     };
     CtrInput.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Directive */], args: [{
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{
                     selector: "[ctrInput]",
                 },] },
     ];
     /** @nocollapse */
     CtrInput.ctorParameters = function () { return [
-        { type: __WEBPACK_IMPORTED_MODULE_3__ctr_completer__["a" /* CtrCompleter */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* Host */] },] },
-        { type: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* NgModel */], },
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */], },
+        { type: __WEBPACK_IMPORTED_MODULE_3__ctr_completer__["a" /* CtrCompleter */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Host"] },] },
+        { type: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["NgModel"], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
     ]; };
     CtrInput.propDecorators = {
-        'clearSelected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */], args: ["clearSelected",] },],
-        'clearUnselected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */], args: ["clearUnselected",] },],
-        'overrideSuggested': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */], args: ["overrideSuggested",] },],
-        'fillHighlighted': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */], args: ["fillHighlighted",] },],
-        'openOnFocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */], args: ["openOnFocus",] },],
-        'openOnClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */], args: ["openOnClick",] },],
-        'selectOnClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */], args: ["selectOnClick",] },],
-        'selectOnFocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */], args: ["selectOnFocus",] },],
-        'ngModelChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */] },],
-        'keyupHandler': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["keyup", ["$event"],] },],
-        'pasteHandler': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["paste", ["$event"],] },],
-        'keydownHandler': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["keydown", ["$event"],] },],
-        'onBlur': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["blur", ["$event"],] },],
-        'onfocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["focus", [],] },],
-        'onClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["click", ["$event"],] },],
+        'clearSelected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ["clearSelected",] },],
+        'clearUnselected': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ["clearUnselected",] },],
+        'overrideSuggested': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ["overrideSuggested",] },],
+        'fillHighlighted': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ["fillHighlighted",] },],
+        'openOnFocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ["openOnFocus",] },],
+        'openOnClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ["openOnClick",] },],
+        'selectOnClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ["selectOnClick",] },],
+        'selectOnFocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ["selectOnFocus",] },],
+        'ngModelChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'keyupHandler': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["keyup", ["$event"],] },],
+        'pasteHandler': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["paste", ["$event"],] },],
+        'keydownHandler': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["keydown", ["$event"],] },],
+        'onBlur': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["blur", ["$event"],] },],
+        'onfocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["focus", [],] },],
+        'onClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["click", ["$event"],] },],
     };
     return CtrInput;
 }());
@@ -34842,25 +34842,25 @@ var CtrList = (function () {
         }
     };
     CtrList.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* Directive */], args: [{
+        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Directive"], args: [{
                     selector: "[ctrList]",
                 },] },
     ];
     /** @nocollapse */
     CtrList.ctorParameters = function () { return [
-        { type: __WEBPACK_IMPORTED_MODULE_5__ctr_completer__["a" /* CtrCompleter */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["x" /* Host */] },] },
-        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* TemplateRef */], },
-        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* ViewContainerRef */], },
-        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["k" /* ChangeDetectorRef */], },
+        { type: __WEBPACK_IMPORTED_MODULE_5__ctr_completer__["a" /* CtrCompleter */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Host"] },] },
+        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["TemplateRef"], },
+        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewContainerRef"], },
+        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ChangeDetectorRef"], },
     ]; };
     CtrList.propDecorators = {
-        'ctrListMinSearchLength': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* Input */] },],
-        'ctrListPause': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* Input */] },],
-        'ctrListAutoMatch': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* Input */] },],
-        'ctrListAutoHighlight': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* Input */] },],
-        'ctrListDisplaySearching': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* Input */] },],
-        'dataService': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* Input */], args: ["ctrList",] },],
-        'initialValue': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* Input */], args: ["ctrListInitialValue",] },],
+        'ctrListMinSearchLength': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"] },],
+        'ctrListPause': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"] },],
+        'ctrListAutoMatch': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"] },],
+        'ctrListAutoHighlight': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"] },],
+        'ctrListDisplaySearching': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"] },],
+        'dataService': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"], args: ["ctrList",] },],
+        'initialValue': [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"], args: ["ctrListInitialValue",] },],
     };
     return CtrList;
 }());
@@ -34925,22 +34925,22 @@ var CtrRow = (function () {
         return this._item;
     };
     CtrRow.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Directive */], args: [{
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{
                     selector: "[ctrRow]",
                 },] },
     ];
     /** @nocollapse */
     CtrRow.ctorParameters = function () { return [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */], },
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Renderer */], },
-        { type: __WEBPACK_IMPORTED_MODULE_1__ctr_dropdown__["a" /* CtrDropdown */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* Host */] },] },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"], },
+        { type: __WEBPACK_IMPORTED_MODULE_1__ctr_dropdown__["a" /* CtrDropdown */], decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Host"] },] },
     ]; };
     CtrRow.propDecorators = {
-        'ctrRow': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'dataItem': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
-        'onClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["click", ["$event"],] },],
-        'onMouseEnter': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["mouseenter", ["$event"],] },],
-        'onMouseDown': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */], args: ["mousedown", ["$event"],] },],
+        'ctrRow': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'dataItem': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'onClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["click", ["$event"],] },],
+        'onMouseEnter': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["mouseenter", ["$event"],] },],
+        'onMouseDown': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ["mousedown", ["$event"],] },],
     };
     return CtrRow;
 }());
@@ -35058,10 +35058,10 @@ var Ng2CompleterModule = (function () {
     function Ng2CompleterModule() {
     }
     Ng2CompleterModule.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */], args: [{
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"], args: [{
                     imports: [
-                        __WEBPACK_IMPORTED_MODULE_12__angular_common__["b" /* CommonModule */],
-                        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormsModule */],
+                        __WEBPACK_IMPORTED_MODULE_12__angular_common__["CommonModule"],
+                        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormsModule"],
                         __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */]
                     ],
                     declarations: [
@@ -35296,12 +35296,12 @@ var CompleterService = (function () {
             .titleField(titleField);
     };
     CompleterService.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */] },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"] },
     ];
     /** @nocollapse */
     CompleterService.ctorParameters = function () { return [
-        { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Inject */], args: [__WEBPACK_IMPORTED_MODULE_1__local_data__["a" /* LocalData */],] },] },
-        { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Inject */], args: [__WEBPACK_IMPORTED_MODULE_2__remote_data__["a" /* RemoteData */],] },] },
+        { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"], args: [__WEBPACK_IMPORTED_MODULE_1__local_data__["a" /* LocalData */],] },] },
+        { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"], args: [__WEBPACK_IMPORTED_MODULE_2__remote_data__["a" /* RemoteData */],] },] },
     ]; };
     return CompleterService;
 }());
@@ -35337,7 +35337,7 @@ var LocalData = (function (_super) {
     __extends(LocalData, _super);
     function LocalData() {
         var _this = _super.call(this) || this;
-        _this.dataSourceChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        _this.dataSourceChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         return _this;
     }
     LocalData.prototype.data = function (data) {
@@ -35374,7 +35374,7 @@ var LocalData = (function (_super) {
         return _super.prototype.convertToItem.call(this, data);
     };
     LocalData.decorators = [
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */] },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"] },
     ];
     /** @nocollapse */
     LocalData.ctorParameters = function () { return []; };
@@ -35415,7 +35415,7 @@ var RemoteData = (function (_super) {
     function RemoteData(http) {
         var _this = _super.call(this) || this;
         _this.http = http;
-        _this.dataSourceChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        _this.dataSourceChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         _this._urlFormater = null;
         _this._dataField = null;
         return _this;
@@ -35544,15 +35544,15 @@ var CustomEditComponent = (function (_super) {
     return CustomEditComponent;
 }(__WEBPACK_IMPORTED_MODULE_1__edit_cell_default__["a" /* EditCellDefault */]));
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ViewChild */])('dynamicTarget', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewContainerRef */] }),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('dynamicTarget', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"] }),
     __metadata("design:type", Object)
 ], CustomEditComponent.prototype, "dynamicTarget", void 0);
 CustomEditComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'table-cell-custom-editor',
         template: "\n    <ng-template #dynamicTarget></ng-template>\n  ",
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* ComponentFactoryResolver */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentFactoryResolver"]])
 ], CustomEditComponent);
 
 //# sourceMappingURL=custom-edit.component.js.map
@@ -35598,7 +35598,7 @@ var DefaultEditComponent = (function (_super) {
     return DefaultEditComponent;
 }(__WEBPACK_IMPORTED_MODULE_1__edit_cell_default__["a" /* EditCellDefault */]));
 DefaultEditComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'table-cell-default-editor',
         template: "<div [ngSwitch]=\"getEditorType()\"><select-editor *ngSwitchCase=\"'list'\" [cell]=\"cell\" [inputClass]=\"inputClass\" (onClick)=\"onClick($event)\" (onEdited)=\"onEdited($event)\" (onStopEditing)=\"onStopEditing()\"></select-editor><textarea-editor *ngSwitchCase=\"'textarea'\" [cell]=\"cell\" [inputClass]=\"inputClass\" (onClick)=\"onClick($event)\" (onEdited)=\"onEdited($event)\" (onStopEditing)=\"onStopEditing()\"></textarea-editor><checkbox-editor *ngSwitchCase=\"'checkbox'\" [cell]=\"cell\" [inputClass]=\"inputClass\" (onClick)=\"onClick($event)\"></checkbox-editor><completer-editor *ngSwitchCase=\"'completer'\" [cell]=\"cell\"></completer-editor><input-editor *ngSwitchDefault [cell]=\"cell\" [inputClass]=\"inputClass\" (onClick)=\"onClick($event)\" (onEdited)=\"onEdited($event)\" (onStopEditing)=\"onStopEditing()\"></input-editor></div>",
     }),
@@ -35630,7 +35630,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var EditCellDefault = (function () {
     function EditCellDefault() {
         this.inputClass = '';
-        this.edited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.edited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     EditCellDefault.prototype.onEdited = function (event) {
         this.edited.next(event);
@@ -35647,15 +35647,15 @@ var EditCellDefault = (function () {
 }());
 
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_set_cell__["a" /* Cell */])
 ], EditCellDefault.prototype, "cell", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], EditCellDefault.prototype, "inputClass", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], EditCellDefault.prototype, "edited", void 0);
 //# sourceMappingURL=edit-cell-default.js.map
@@ -35683,7 +35683,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var EditCellComponent = (function () {
     function EditCellComponent() {
         this.inputClass = '';
-        this.edited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.edited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     EditCellComponent.prototype.onEdited = function (event) {
         this.edited.next(event);
@@ -35695,19 +35695,19 @@ var EditCellComponent = (function () {
     return EditCellComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_set_cell__["a" /* Cell */])
 ], EditCellComponent.prototype, "cell", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], EditCellComponent.prototype, "inputClass", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], EditCellComponent.prototype, "edited", void 0);
 EditCellComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'table-cell-edit-mode',
         template: "\n      <div [ngSwitch]=\"getEditorType()\">\n        <table-cell-custom-editor *ngSwitchCase=\"'custom'\"\n                                  [cell]=\"cell\"\n                                  [inputClass]=\"inputClass\"\n                                  (edited)=\"onEdited($event)\">\n        </table-cell-custom-editor>\n        <table-cell-default-editor *ngSwitchDefault\n                                  [cell]=\"cell\"\n                                  [inputClass]=\"inputClass\"\n                                  (edited)=\"onEdited($event)\">\n        </table-cell-default-editor>\n      </div>\n    ",
     })
@@ -35758,7 +35758,7 @@ var CheckboxEditorComponent = (function (_super) {
     return CheckboxEditorComponent;
 }(__WEBPACK_IMPORTED_MODULE_1__default_editor__["a" /* DefaultEditor */]));
 CheckboxEditorComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'checkbox-editor',
         styles: [":host input,:host textarea{width:100%;line-height:normal;padding:.375em .75em} /*# sourceMappingURL=editor.component.css.map */ "],
         template: "\n    <input [ngClass]=\"inputClass\"\n           type=\"checkbox\"\n           class=\"form-control\"\n           [name]=\"cell.getId()\"\n           [disabled]=\"!cell.isEditable()\"\n           [checked]=\"cell.getValue() == (cell.getColumn().getConfig()?.true || true)\"\n           (click)=\"onClick.emit($event)\"\n           (change)=\"onChange($event)\">\n    ",
@@ -35822,7 +35822,7 @@ var CompleterEditorComponent = (function (_super) {
     return CompleterEditorComponent;
 }(__WEBPACK_IMPORTED_MODULE_2__default_editor__["a" /* DefaultEditor */]));
 CompleterEditorComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'completer-editor',
         template: "\n    <ng2-completer [(ngModel)]=\"completerStr\"\n                   [dataService]=\"cell.getColumn().getConfig().completer.dataService\"\n                   [minSearchLength]=\"cell.getColumn().getConfig().completer.minSearchLength || 0\"\n                   [pause]=\"cell.getColumn().getConfig().completer.pause || 0\"\n                   [placeholder]=\"cell.getColumn().getConfig().completer.placeholder || 'Start typing...'\"\n                   (selected)=\"onEditedCompleter($event)\">\n    </ng2-completer>\n    ",
     }),
@@ -35853,31 +35853,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var DefaultEditor = (function () {
     function DefaultEditor() {
-        this.onStopEditing = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.onEdited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.onClick = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.onStopEditing = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.onEdited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.onClick = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     return DefaultEditor;
 }());
 
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_set_cell__["a" /* Cell */])
 ], DefaultEditor.prototype, "cell", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], DefaultEditor.prototype, "inputClass", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], DefaultEditor.prototype, "onStopEditing", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], DefaultEditor.prototype, "onEdited", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], DefaultEditor.prototype, "onClick", void 0);
 //# sourceMappingURL=default-editor.js.map
@@ -35920,7 +35920,7 @@ var InputEditorComponent = (function (_super) {
     return InputEditorComponent;
 }(__WEBPACK_IMPORTED_MODULE_1__default_editor__["a" /* DefaultEditor */]));
 InputEditorComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'input-editor',
         styles: [":host input,:host textarea{width:100%;line-height:normal;padding:.375em .75em} /*# sourceMappingURL=editor.component.css.map */ "],
         template: "\n    <input [ngClass]=\"inputClass\"\n           class=\"form-control\"\n           [(ngModel)]=\"cell.newValue\"\n           [name]=\"cell.getId()\"\n           [placeholder]=\"cell.getTitle()\"\n           [disabled]=\"!cell.isEditable()\"\n           (click)=\"onClick.emit($event)\"\n           (keydown.enter)=\"onEdited.emit($event)\"\n           (keydown.esc)=\"onStopEditing.emit()\">\n    ",
@@ -35968,7 +35968,7 @@ var SelectEditorComponent = (function (_super) {
     return SelectEditorComponent;
 }(__WEBPACK_IMPORTED_MODULE_1__default_editor__["a" /* DefaultEditor */]));
 SelectEditorComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'select-editor',
         template: "\n    <select [ngClass]=\"inputClass\"\n            class=\"form-control\"\n            [(ngModel)]=\"cell.newValue\"\n            [name]=\"cell.getId()\"\n            [disabled]=\"!cell.isEditable()\"\n            (click)=\"onClick.emit($event)\"\n            (keydown.enter)=\"onEdited.emit($event)\"\n            (keydown.esc)=\"onStopEditing.emit()\">\n\n        <option *ngFor=\"let option of cell.getColumn().getConfig()?.list\" [value]=\"option.value\"\n                [selected]=\"option.value === cell.getValue()\">{{ option.title }}\n        </option>\n    </select>\n    ",
     }),
@@ -36015,7 +36015,7 @@ var TextareaEditorComponent = (function (_super) {
     return TextareaEditorComponent;
 }(__WEBPACK_IMPORTED_MODULE_1__default_editor__["a" /* DefaultEditor */]));
 TextareaEditorComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'textarea-editor',
         styles: [":host input,:host textarea{width:100%;line-height:normal;padding:.375em .75em} /*# sourceMappingURL=editor.component.css.map */ "],
         template: "\n    <textarea [ngClass]=\"inputClass\"\n              class=\"form-control\"\n              [(ngModel)]=\"cell.newValue\"\n              [name]=\"cell.getId()\"\n              [disabled]=\"!cell.isEditable()\"\n              [placeholder]=\"cell.getTitle()\"\n              (click)=\"onClick.emit($event)\"\n              (keydown.enter)=\"onEdited.emit($event)\"\n              (keydown.esc)=\"onStopEditing.emit()\">\n    </textarea>\n    ",
@@ -36081,19 +36081,19 @@ var CustomViewComponent = (function () {
     return CustomViewComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_set_cell__["a" /* Cell */])
 ], CustomViewComponent.prototype, "cell", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ViewChild */])('dynamicTarget', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewContainerRef */] }),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('dynamicTarget', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"] }),
     __metadata("design:type", Object)
 ], CustomViewComponent.prototype, "dynamicTarget", void 0);
 CustomViewComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'custom-view-component',
         template: "\n    <ng-template #dynamicTarget></ng-template>\n  ",
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* ComponentFactoryResolver */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentFactoryResolver"]])
 ], CustomViewComponent);
 
 //# sourceMappingURL=custom-view.component.js.map
@@ -36124,13 +36124,13 @@ var ViewCellComponent = (function () {
     return ViewCellComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_set_cell__["a" /* Cell */])
 ], ViewCellComponent.prototype, "cell", void 0);
 ViewCellComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'table-cell-view-mode',
-        changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectionStrategy */].OnPush,
+        changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush,
         template: "\n    <div [ngSwitch]=\"cell.getColumn().type\">\n        <custom-view-component *ngSwitchCase=\"'custom'\" [cell]=\"cell\"></custom-view-component>\n        <div *ngSwitchCase=\"'html'\" [innerHTML]=\"cell.getValue()\"></div>\n        <div *ngSwitchDefault>{{ cell.getValue() }}</div>\n    </div>\n    ",
     })
 ], ViewCellComponent);
@@ -36166,7 +36166,7 @@ var CellComponent = (function () {
         this.inputClass = '';
         this.mode = 'inline';
         this.isInEditing = false;
-        this.edited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.edited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     CellComponent.prototype.onEdited = function (event) {
         if (this.isNew) {
@@ -36179,47 +36179,47 @@ var CellComponent = (function () {
     return CellComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], CellComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3__lib_data_set_row__["a" /* Row */])
 ], CellComponent.prototype, "row", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], CellComponent.prototype, "editConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], CellComponent.prototype, "createConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Boolean)
 ], CellComponent.prototype, "isNew", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_set_cell__["a" /* Cell */])
 ], CellComponent.prototype, "cell", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], CellComponent.prototype, "inputClass", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], CellComponent.prototype, "mode", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Boolean)
 ], CellComponent.prototype, "isInEditing", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], CellComponent.prototype, "edited", void 0);
 CellComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-smart-table-cell',
         template: "\n    <table-cell-view-mode *ngIf=\"!isInEditing\" [cell]=\"cell\"></table-cell-view-mode>\n    <table-cell-edit-mode *ngIf=\"isInEditing\" [cell]=\"cell\"\n                          [inputClass]=\"inputClass\"\n                          (edited)=\"onEdited($event)\">\n    </table-cell-edit-mode>\n  ",
     })
@@ -36289,10 +36289,10 @@ var CellModule = (function () {
     return CellModule;
 }());
 CellModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_3_ng2_completer__["b" /* Ng2CompleterModule */],
         ],
         declarations: CELL_COMPONENTS.slice(),
@@ -36341,7 +36341,7 @@ var CheckboxFilterComponent = (function (_super) {
     function CheckboxFilterComponent() {
         var _this = _super.call(this) || this;
         _this.filterActive = false;
-        _this.inputControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]();
+        _this.inputControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
         return _this;
     }
     CheckboxFilterComponent.prototype.ngOnInit = function () {
@@ -36366,7 +36366,7 @@ var CheckboxFilterComponent = (function (_super) {
     return CheckboxFilterComponent;
 }(__WEBPACK_IMPORTED_MODULE_2__default_filter__["a" /* DefaultFilter */]));
 CheckboxFilterComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'checkbox-filter',
         template: "\n    <input type=\"checkbox\" [formControl]=\"inputControl\" [ngClass]=\"inputClass\" class=\"form-control\">\n    <a href=\"#\" *ngIf=\"filterActive\"\n                (click)=\"resetFilter($event)\">{{column.getFilterConfig()?.resetText || 'reset'}}</a>\n  ",
     }),
@@ -36446,7 +36446,7 @@ var CompleterFilterComponent = (function (_super) {
     return CompleterFilterComponent;
 }(__WEBPACK_IMPORTED_MODULE_3__default_filter__["a" /* DefaultFilter */]));
 CompleterFilterComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'completer-filter',
         template: "\n    <ng2-completer [(ngModel)]=\"query\"\n                   (ngModelChange)=\"inputTextChanged($event)\"\n                   [dataService]=\"column.getFilterConfig().completer.dataService\"\n                   [minSearchLength]=\"column.getFilterConfig().completer.minSearchLength || 0\"\n                   [pause]=\"column.getFilterConfig().completer.pause || 0\"\n                   [placeholder]=\"column.getFilterConfig().completer.placeholder || 'Start typing...'\"\n                   (selected)=\"completerContent.next($event)\">\n    </ng2-completer>\n  ",
     }),
@@ -36478,7 +36478,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DefaultFilter = (function () {
     function DefaultFilter() {
         this.delay = 300;
-        this.filter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.filter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     DefaultFilter.prototype.ngOnDestroy = function () {
         if (this.changesSubscription) {
@@ -36492,19 +36492,19 @@ var DefaultFilter = (function () {
 }());
 
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], DefaultFilter.prototype, "query", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], DefaultFilter.prototype, "inputClass", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_set_column__["a" /* Column */])
 ], DefaultFilter.prototype, "column", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], DefaultFilter.prototype, "filter", void 0);
 //# sourceMappingURL=default-filter.js.map
@@ -36551,7 +36551,7 @@ var InputFilterComponent = (function (_super) {
     __extends(InputFilterComponent, _super);
     function InputFilterComponent() {
         var _this = _super.call(this) || this;
-        _this.inputControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]();
+        _this.inputControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
         return _this;
     }
     InputFilterComponent.prototype.ngOnInit = function () {
@@ -36565,7 +36565,7 @@ var InputFilterComponent = (function (_super) {
     return InputFilterComponent;
 }(__WEBPACK_IMPORTED_MODULE_5__default_filter__["a" /* DefaultFilter */]));
 InputFilterComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'input-filter',
         template: "\n    <input [(ngModel)]=\"query\"\n           [ngClass]=\"inputClass\"\n           [formControl]=\"inputControl\"\n           class=\"form-control\"\n           type=\"text\"\n           placeholder=\"{{ column.title }}\" />\n  ",
     }),
@@ -36616,7 +36616,7 @@ var SelectFilterComponent = (function (_super) {
     __extends(SelectFilterComponent, _super);
     function SelectFilterComponent() {
         var _this = _super.call(this) || this;
-        _this.inputControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]();
+        _this.inputControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
         return _this;
     }
     SelectFilterComponent.prototype.ngOnInit = function () {
@@ -36630,7 +36630,7 @@ var SelectFilterComponent = (function (_super) {
     return SelectFilterComponent;
 }(__WEBPACK_IMPORTED_MODULE_5__default_filter__["a" /* DefaultFilter */]));
 SelectFilterComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'select-filter',
         template: "\n    <select [ngClass]=\"inputClass\"\n            class=\"form-control\"\n            [(ngModel)]=\"query\"\n            [formControl]=\"inputControl\">\n\n        <option value=\"\">{{ column.getFilterConfig().selectText }}</option>\n        <option *ngFor=\"let option of column.getFilterConfig().list\" [value]=\"option.value\">\n          {{ option.title }}\n        </option>\n    </select>\n  ",
     }),
@@ -36664,7 +36664,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var FilterComponent = (function () {
     function FilterComponent() {
         this.inputClass = '';
-        this.filter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.filter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.query = '';
     }
     FilterComponent.prototype.ngOnChanges = function (changes) {
@@ -36700,23 +36700,23 @@ var FilterComponent = (function () {
     return FilterComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_set_column__["a" /* Column */])
 ], FilterComponent.prototype, "column", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_source_data_source__["a" /* DataSource */])
 ], FilterComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], FilterComponent.prototype, "inputClass", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], FilterComponent.prototype, "filter", void 0);
 FilterComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-smart-table-filter',
         styles: [":host .ng2-smart-filter /deep/ input,:host .ng2-smart-filter /deep/ select{width:100%;line-height:normal;padding:.375em .75em;font-weight:400}:host .ng2-smart-filter /deep/ input[type=search]{box-sizing:inherit}:host .ng2-smart-filter /deep/ .completer-dropdown-holder{font-weight:400}:host .ng2-smart-filter /deep/ a{font-weight:400} /*# sourceMappingURL=filter.component.css.map */ "],
         template: "\n    <div class=\"ng2-smart-filter\" *ngIf=\"column.isFilterable\" [ngSwitch]=\"column.getFilterType()\">\n      <select-filter *ngSwitchCase=\"'list'\"\n                     [query]=\"query\"\n                     [ngClass]=\"inputClass\"\n                     [column]=\"column\"\n                     (filter)=\"onFilter($event)\">\n      </select-filter>\n      <checkbox-filter *ngSwitchCase=\"'checkbox'\"\n                       [query]=\"query\"\n                       [ngClass]=\"inputClass\"\n                       [column]=\"column\"\n                       (filter)=\"onFilter($event)\">\n      </checkbox-filter>\n      <completer-filter *ngSwitchCase=\"'completer'\"\n                        [query]=\"query\"\n                        [ngClass]=\"inputClass\"\n                        [column]=\"column\"\n                        (filter)=\"onFilter($event)\">\n      </completer-filter>\n      <input-filter *ngSwitchDefault\n                    [query]=\"query\"\n                    [ngClass]=\"inputClass\"\n                    [column]=\"column\"\n                    (filter)=\"onFilter($event)\">\n      </input-filter>\n    </div>\n  ",
@@ -36769,11 +36769,11 @@ var FilterModule = (function () {
     return FilterModule;
 }());
 FilterModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* ReactiveFormsModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
             __WEBPACK_IMPORTED_MODULE_3_ng2_completer__["b" /* Ng2CompleterModule */],
         ],
         declarations: FILTER_COMPONENTS.slice(),
@@ -36806,7 +36806,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PagerComponent = (function () {
     function PagerComponent() {
         this.perPageSelect = [];
-        this.changePage = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.changePage = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.count = 0;
     }
     PagerComponent.prototype.ngOnChanges = function (changes) {
@@ -36900,19 +36900,19 @@ var PagerComponent = (function () {
     return PagerComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_source_data_source__["a" /* DataSource */])
 ], PagerComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Array)
 ], PagerComponent.prototype, "perPageSelect", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], PagerComponent.prototype, "changePage", void 0);
 PagerComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-smart-table-pager',
         styles: [".ng2-smart-pagination{display:inline-flex;font-size:.875em;padding:0}.ng2-smart-pagination .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.ng2-smart-pagination .ng2-smart-page-item{display:inline}.ng2-smart-pagination .page-link-next,.ng2-smart-pagination .page-link-prev{font-size:10px}:host{display:flex;justify-content:space-between}:host select{margin:1rem 0 1rem 1rem}:host label{margin:1rem 0 1rem 1rem;line-height:2.5rem} /*# sourceMappingURL=pager.component.css.map */ "],
         template: "\n    <nav *ngIf=\"shouldShow()\" class=\"ng2-smart-pagination-nav\">\n      <ul class=\"ng2-smart-pagination pagination\">\n        <li class=\"ng2-smart-page-item page-item\" [ngClass]=\"{disabled: getPage() == 1}\">\n          <a class=\"ng2-smart-page-link page-link\" href=\"#\"\n          (click)=\"getPage() == 1 ? false : paginate(1)\" aria-label=\"First\">\n            <span aria-hidden=\"true\">&laquo;</span>\n            <span class=\"sr-only\">First</span>\n          </a>\n        </li>\n        <li class=\"ng2-smart-page-item page-item\" [ngClass]=\"{disabled: getPage() == 1}\">\n          <a class=\"ng2-smart-page-link page-link page-link-prev\" href=\"#\"\n             (click)=\"getPage() == 1 ? false : prev()\" aria-label=\"Prev\">\n            <span aria-hidden=\"true\">&lt;</span>\n            <span class=\"sr-only\">Prev</span>\n          </a>\n        </li>\n        <li class=\"ng2-smart-page-item page-item\"\n        [ngClass]=\"{active: getPage() == page}\" *ngFor=\"let page of getPages()\">\n          <span class=\"ng2-smart-page-link page-link\"\n          *ngIf=\"getPage() == page\">{{ page }} <span class=\"sr-only\">(current)</span></span>\n          <a class=\"ng2-smart-page-link page-link\" href=\"#\"\n          (click)=\"paginate(page)\" *ngIf=\"getPage() != page\">{{ page }}</a>\n        </li>\n\n        <li class=\"ng2-smart-page-item page-item\"\n            [ngClass]=\"{disabled: getPage() == getLast()}\">\n          <a class=\"ng2-smart-page-link page-link page-link-next\" href=\"#\"\n             (click)=\"getPage() == getLast() ? false : next()\" aria-label=\"Next\">\n            <span aria-hidden=\"true\">&gt;</span>\n            <span class=\"sr-only\">Next</span>\n          </a>\n        </li>\n        \n        <li class=\"ng2-smart-page-item page-item\"\n        [ngClass]=\"{disabled: getPage() == getLast()}\">\n          <a class=\"ng2-smart-page-link page-link\" href=\"#\"\n          (click)=\"getPage() == getLast() ? false : paginate(getLast())\" aria-label=\"Last\">\n            <span aria-hidden=\"true\">&raquo;</span>\n            <span class=\"sr-only\">Last</span>\n          </a>\n        </li>\n      </ul>\n    </nav>\n    \n    <nav *ngIf=\"perPageSelect && perPageSelect.length > 0\" class=\"ng2-smart-pagination-per-page\">\n      <label for=\"per-page\">\n        Per Page:\n      </label>\n      <select (change)=\"onChangePerPage($event)\" [(ngModel)]=\"currentPerPage\" id=\"per-page\">\n        <option *ngFor=\"let item of perPageSelect\" [value]=\"item\">{{ item }}</option>\n      </select>\n    </nav>\n  ",
@@ -36948,10 +36948,10 @@ var PagerModule = (function () {
     return PagerModule;
 }());
 PagerModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
         ],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_3__pager_component__["a" /* PagerComponent */],
@@ -37006,19 +37006,19 @@ var TbodyCreateCancelComponent = (function () {
     return TbodyCreateCancelComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], TbodyCreateCancelComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_set_row__["a" /* Row */])
 ], TbodyCreateCancelComponent.prototype, "row", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], TbodyCreateCancelComponent.prototype, "editConfirm", void 0);
 TbodyCreateCancelComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-st-tbody-create-cancel',
         template: "\n    <a href=\"#\" class=\"ng2-smart-action ng2-smart-action-edit-save\"\n        [innerHTML]=\"saveButtonContent\" (click)=\"onSave($event)\"></a>\n    <a href=\"#\" class=\"ng2-smart-action ng2-smart-action-edit-cancel\"\n        [innerHTML]=\"cancelButtonContent\" (click)=\"onCancelEdit($event)\"></a>\n  ",
     })
@@ -37050,7 +37050,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var TbodyCustomComponent = (function () {
     function TbodyCustomComponent() {
-        this.custom = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.custom = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     TbodyCustomComponent.prototype.onCustom = function (action, event) {
         event.preventDefault();
@@ -37064,25 +37064,25 @@ var TbodyCustomComponent = (function () {
     return TbodyCustomComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_grid__["a" /* Grid */])
 ], TbodyCustomComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_set_row__["a" /* Row */])
 ], TbodyCustomComponent.prototype, "row", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Object)
 ], TbodyCustomComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TbodyCustomComponent.prototype, "custom", void 0);
 TbodyCustomComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-st-tbody-custom',
-        changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectionStrategy */].OnPush,
+        changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush,
         template: "\n      <a *ngFor=\"let action of grid.getSetting('actions.custom')\" href=\"#\"\n         class=\"ng2-smart-action ng2-smart-action-custom-custom\" \n         [innerHTML]=\"action.title\"\n         (click)=\"onCustom(action, $event)\"></a>\n        "
     })
 ], TbodyCustomComponent);
@@ -37115,9 +37115,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var TbodyEditDeleteComponent = (function () {
     function TbodyEditDeleteComponent() {
-        this.edit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.delete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.editRowSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.edit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.delete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.editRowSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     TbodyEditDeleteComponent.prototype.onEdit = function (event) {
         event.preventDefault();
@@ -37155,41 +37155,41 @@ var TbodyEditDeleteComponent = (function () {
     return TbodyEditDeleteComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], TbodyEditDeleteComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_set_row__["a" /* Row */])
 ], TbodyEditDeleteComponent.prototype, "row", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3__lib_data_source_data_source__["a" /* DataSource */])
 ], TbodyEditDeleteComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], TbodyEditDeleteComponent.prototype, "deleteConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], TbodyEditDeleteComponent.prototype, "editConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TbodyEditDeleteComponent.prototype, "edit", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TbodyEditDeleteComponent.prototype, "delete", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TbodyEditDeleteComponent.prototype, "editRowSelect", void 0);
 TbodyEditDeleteComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-st-tbody-edit-delete',
-        changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectionStrategy */].OnPush,
+        changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush,
         template: "\n    <a href=\"#\" *ngIf=\"isActionEdit\" class=\"ng2-smart-action ng2-smart-action-edit-edit\"\n        [innerHTML]=\"editRowButtonContent\" (click)=\"onEdit($event)\"></a>\n    <a href=\"#\" *ngIf=\"isActionDelete\" class=\"ng2-smart-action ng2-smart-action-delete-delete\"\n        [innerHTML]=\"deleteRowButtonContent\" (click)=\"onDelete($event)\"></a>\n  ",
     })
 ], TbodyEditDeleteComponent);
@@ -37220,16 +37220,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var Ng2SmartTableTbodyComponent = (function () {
     function Ng2SmartTableTbodyComponent() {
-        this.save = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.cancel = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.edit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.delete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.custom = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.edited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.userSelectRow = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.editRowSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.multipleSelectRow = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.rowHover = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.save = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.cancel = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.edit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.delete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.custom = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.edited = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.userSelectRow = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.editRowSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.multipleSelectRow = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.rowHover = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     Ng2SmartTableTbodyComponent.prototype.ngOnChanges = function () {
         this.isMultiSelectVisible = this.grid.isMultiSelectVisible();
@@ -37245,67 +37245,67 @@ var Ng2SmartTableTbodyComponent = (function () {
     return Ng2SmartTableTbodyComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], Ng2SmartTableTbodyComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_source_data_source__["a" /* DataSource */])
 ], Ng2SmartTableTbodyComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], Ng2SmartTableTbodyComponent.prototype, "deleteConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], Ng2SmartTableTbodyComponent.prototype, "editConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Function)
 ], Ng2SmartTableTbodyComponent.prototype, "rowClassFunction", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "save", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "cancel", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "edit", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "delete", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "custom", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "edited", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "userSelectRow", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "editRowSelect", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "multipleSelectRow", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTbodyComponent.prototype, "rowHover", void 0);
 Ng2SmartTableTbodyComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: '[ng2-st-tbody]',
         styles: [":host .ng2-smart-row.selected{background:rgba(0,0,0,.05)}:host .ng2-smart-row .ng2-smart-actions.ng2-smart-action-multiple-select{text-align:center} /*# sourceMappingURL=tbody.component.css.map */ "],
         template: "<tr *ngFor=\"let row of grid.getRows()\" (click)=\"userSelectRow.emit(row)\" (mouseover)=\"rowHover.emit(row)\" class=\"ng2-smart-row\" [className]=\"rowClassFunction(row)\" [ngClass]=\"{selected: row.isSelected}\"><td *ngIf=\"isMultiSelectVisible\" class=\"ng2-smart-actions ng2-smart-action-multiple-select\" (click)=\"multipleSelectRow.emit(row)\"><input type=\"checkbox\" class=\"form-control\" [ngModel]=\"row.isSelected\"></td><td *ngIf=\"!row.isInEditing && showActionColumnLeft\" class=\"ng2-smart-actions\"><ng2-st-tbody-custom [grid]=\"grid\" (custom)=\"custom.emit($event)\" [row]=\"row\" [source]=\"source\"></ng2-st-tbody-custom><ng2-st-tbody-edit-delete [grid]=\"grid\" [deleteConfirm]=\"deleteConfirm\" [editConfirm]=\"editConfirm\" (edit)=\"edit.emit(row)\" (delete)=\"delete.emit(row)\" (editRowSelect)=\"editRowSelect.emit($event)\" [row]=\"row\" [source]=\"source\"></ng2-st-tbody-edit-delete></td><td *ngIf=\"row.isInEditing && showActionColumnLeft\" class=\"ng2-smart-actions\"><ng2-st-tbody-create-cancel [grid]=\"grid\" [row]=\"row\" [editConfirm]=\"editConfirm\"></ng2-st-tbody-create-cancel></td><td *ngFor=\"let cell of row.cells\"><ng2-smart-table-cell [cell]=\"cell\" [grid]=\"grid\" [row]=\"row\" [isNew]=\"false\" [mode]=\"mode\" [editConfirm]=\"editConfirm\" [inputClass]=\"editInputClass\" [isInEditing]=\"row.isInEditing\"></ng2-smart-table-cell></td><td *ngIf=\"row.isInEditing && showActionColumnRight\" class=\"ng2-smart-actions\"><ng2-st-tbody-create-cancel [grid]=\"grid\" [row]=\"row\" [editConfirm]=\"editConfirm\"></ng2-st-tbody-create-cancel></td><td *ngIf=\"!row.isInEditing && showActionColumnRight\" class=\"ng2-smart-actions\"><ng2-st-tbody-custom [grid]=\"grid\" (custom)=\"custom.emit($event)\" [row]=\"row\" [source]=\"source\"></ng2-st-tbody-custom><ng2-st-tbody-edit-delete [grid]=\"grid\" [deleteConfirm]=\"deleteConfirm\" [editConfirm]=\"editConfirm\" [row]=\"row\" [source]=\"source\" (edit)=\"edit.emit(row)\" (delete)=\"delete.emit(row)\" (editRowSelect)=\"editRowSelect.emit($event)\"></ng2-st-tbody-edit-delete></td></tr><tr *ngIf=\"grid.getRows().length == 0\"><td [attr.colspan]=\"grid.getColumns().length + (isActionAdd || isActionEdit || isActionDelete)\">{{ noDataMessage }}</td></tr>",
@@ -37355,10 +37355,10 @@ var TBodyModule = (function () {
     return TBodyModule;
 }());
 TBodyModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_3__cell_cell_module__["a" /* CellModule */],
         ],
         declarations: TBODY_COMPONENTS.slice(),
@@ -37401,15 +37401,15 @@ var ActionsTitleComponent = (function () {
     return ActionsTitleComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], ActionsTitleComponent.prototype, "grid", void 0);
 ActionsTitleComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: '[ng2-st-actions-title]',
         template: "\n    <div class=\"ng2-smart-title\">{{ actionsColumnTitle }}</div>\n  ",
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]])
 ], ActionsTitleComponent);
 
 //# sourceMappingURL=actions-title.component.js.map
@@ -37436,7 +37436,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ActionsComponent = (function () {
     function ActionsComponent() {
-        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     ActionsComponent.prototype.ngOnChanges = function () {
         this.createButtonContent = this.grid.getSetting('add.createButtonContent');
@@ -37445,15 +37445,15 @@ var ActionsComponent = (function () {
     return ActionsComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], ActionsComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], ActionsComponent.prototype, "create", void 0);
 ActionsComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-st-actions',
         template: "\n    <a href=\"#\" class=\"ng2-smart-action ng2-smart-action-add-create\"\n        [innerHTML]=\"createButtonContent\"\n        (click)=\"$event.preventDefault();create.emit($event)\"></a>\n    <a href=\"#\" class=\"ng2-smart-action ng2-smart-action-add-cancel\"\n        [innerHTML]=\"cancelButtonContent\"\n        (click)=\"$event.preventDefault();grid.createFormShown = false;\"></a>\n  ",
     })
@@ -37486,7 +37486,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AddButtonComponent = (function () {
     function AddButtonComponent(ref) {
         this.ref = ref;
-        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     AddButtonComponent.prototype.ngAfterViewInit = function () {
         this.ref.nativeElement.classList.add('ng2-smart-actions-title', 'ng2-smart-actions-title-add');
@@ -37510,23 +37510,23 @@ var AddButtonComponent = (function () {
     return AddButtonComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], AddButtonComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_source_data_source__["a" /* DataSource */])
 ], AddButtonComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], AddButtonComponent.prototype, "create", void 0);
 AddButtonComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: '[ng2-st-add-button]',
         template: "\n    <a *ngIf=\"isActionAdd\" href=\"#\" class=\"ng2-smart-action ng2-smart-action-add-add\"\n        [innerHTML]=\"addNewButtonContent\" (click)=\"onAdd($event)\"></a>\n  ",
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]])
 ], AddButtonComponent);
 
 //# sourceMappingURL=add-button.component.js.map
@@ -37559,19 +37559,19 @@ var CheckboxSelectAllComponent = (function () {
     return CheckboxSelectAllComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], CheckboxSelectAllComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_source_data_source__["a" /* DataSource */])
 ], CheckboxSelectAllComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Boolean)
 ], CheckboxSelectAllComponent.prototype, "isAllSelected", void 0);
 CheckboxSelectAllComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: '[ng2-st-checkbox-select-all]',
         template: "\n    <input type=\"checkbox\" [ngModel]=\"isAllSelected\">\n  ",
     })
@@ -37603,24 +37603,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ColumnTitleComponent = (function () {
     function ColumnTitleComponent() {
-        this.sort = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.sort = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     return ColumnTitleComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_set_column__["a" /* Column */])
 ], ColumnTitleComponent.prototype, "column", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_source_data_source__["a" /* DataSource */])
 ], ColumnTitleComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], ColumnTitleComponent.prototype, "sort", void 0);
 ColumnTitleComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-st-column-title',
         template: "\n    <div class=\"ng2-smart-title\">\n      <ng2-smart-table-title [source]=\"source\" [column]=\"column\" (sort)=\"sort.emit($event)\"></ng2-smart-table-title>\n    </div>\n  ",
     })
@@ -37653,7 +37653,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var TitleComponent = (function () {
     function TitleComponent() {
         this.currentDirection = '';
-        this.sort = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.sort = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     TitleComponent.prototype.ngOnChanges = function (changes) {
         var _this = this;
@@ -37699,19 +37699,19 @@ var TitleComponent = (function () {
     return TitleComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_set_column__["a" /* Column */])
 ], TitleComponent.prototype, "column", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_data_source_data_source__["a" /* DataSource */])
 ], TitleComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TitleComponent.prototype, "sort", void 0);
 TitleComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-smart-table-title',
         styles: ["a.sort.asc,a.sort.desc{font-weight:700}a.sort.asc::after,a.sort.desc::after{content:'';display:inline-block;width:0;height:0;border-bottom:4px solid rgba(0,0,0,.3);border-top:4px solid transparent;border-left:4px solid transparent;border-right:4px solid transparent;margin-bottom:2px}a.sort.desc::after{-webkit-transform:rotate(-180deg);transform:rotate(-180deg);margin-bottom:-2px} /*# sourceMappingURL=title.component.css.map */ "],
         template: "\n    <a href=\"#\" *ngIf=\"column.isSortable\"\n                (click)=\"_sort($event, column)\"\n                class=\"ng2-smart-sort-link sort\"\n                [ngClass]=\"currentDirection\">\n      {{ column.title }}\n    </a>\n    <span class=\"ng2-smart-sort\" *ngIf=\"!column.isSortable\">{{ column.title }}</span>\n  ",
@@ -37744,8 +37744,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var TheadFitlersRowComponent = (function () {
     function TheadFitlersRowComponent() {
-        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.filter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.filter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     TheadFitlersRowComponent.prototype.ngOnChanges = function () {
         this.isMultiSelectVisible = this.grid.isMultiSelectVisible();
@@ -37756,23 +37756,23 @@ var TheadFitlersRowComponent = (function () {
     return TheadFitlersRowComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], TheadFitlersRowComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_source_data_source__["a" /* DataSource */])
 ], TheadFitlersRowComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TheadFitlersRowComponent.prototype, "create", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TheadFitlersRowComponent.prototype, "filter", void 0);
 TheadFitlersRowComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: '[ng2-st-thead-filters-row]',
         template: "\n    <th *ngIf=\"isMultiSelectVisible\"></th>\n    <th ng2-st-add-button *ngIf=\"showActionColumnLeft\"\n                          [grid]=\"grid\"\n                          (create)=\"create.emit($event)\">\n    </th>\n    <th *ngFor=\"let column of grid.getColumns()\" class=\"ng2-smart-th {{ column.id }}\">\n      <ng2-smart-table-filter [source]=\"source\"\n                              [column]=\"column\"\n                              [inputClass]=\"filterInputClass\"\n                              (filter)=\"filter.emit($event)\">\n      </ng2-smart-table-filter>\n    </th>\n    <th ng2-st-add-button *ngIf=\"showActionColumnRight\"\n                          [grid]=\"grid\"\n                          [source]=\"source\"\n                          (create)=\"create.emit($event)\">\n    </th>\n  ",
     })
@@ -37804,7 +37804,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var TheadFormRowComponent = (function () {
     function TheadFormRowComponent() {
-        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     TheadFormRowComponent.prototype.onCreate = function (event) {
         event.stopPropagation();
@@ -37819,23 +37819,23 @@ var TheadFormRowComponent = (function () {
     return TheadFormRowComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], TheadFormRowComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_set_row__["a" /* Row */])
 ], TheadFormRowComponent.prototype, "row", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], TheadFormRowComponent.prototype, "createConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TheadFormRowComponent.prototype, "create", void 0);
 TheadFormRowComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: '[ng2-st-thead-form-row]',
         template: "\n      <td *ngIf=\"\"></td>\n      <td  *ngIf=\"showActionColumnLeft\"  class=\"ng2-smart-actions\">\n        <ng2-st-actions [grid]=\"grid\" (create)=\"onCreate($event)\"></ng2-st-actions>\n      </td>\n      <td *ngFor=\"let cell of grid.getNewRow().getCells()\">\n        <ng2-smart-table-cell [cell]=\"cell\"\n                              [grid]=\"grid\"\n                              [isNew]=\"true\"\n                              [createConfirm]=\"createConfirm\"\n                              [inputClass]=\"addInputClass\"\n                              [isInEditing]=\"grid.getNewRow().isInEditing\"\n                              (edited)=\"onCreate($event)\">\n        </ng2-smart-table-cell>\n      </td>\n      <td  *ngIf=\"showActionColumnRight\"  class=\"ng2-smart-actions\">\n        <ng2-st-actions [grid]=\"grid\" (create)=\"onCreate($event)\"></ng2-st-actions>\n      </td>\n  ",
     })
@@ -37867,8 +37867,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var TheadTitlesRowComponent = (function () {
     function TheadTitlesRowComponent() {
-        this.sort = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.selectAllRows = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.sort = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.selectAllRows = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     TheadTitlesRowComponent.prototype.ngOnChanges = function () {
         this.isMultiSelectVisible = this.grid.isMultiSelectVisible();
@@ -37878,27 +37878,27 @@ var TheadTitlesRowComponent = (function () {
     return TheadTitlesRowComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], TheadTitlesRowComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Boolean)
 ], TheadTitlesRowComponent.prototype, "isAllSelected", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_source_data_source__["a" /* DataSource */])
 ], TheadTitlesRowComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TheadTitlesRowComponent.prototype, "sort", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], TheadTitlesRowComponent.prototype, "selectAllRows", void 0);
 TheadTitlesRowComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: '[ng2-st-thead-titles-row]',
         template: "\n    <th ng2-st-checkbox-select-all *ngIf=\"isMultiSelectVisible\"\n                                   [grid]=\"grid\"\n                                   [source]=\"source\"\n                                   [isAllSelected]=\"isAllSelected\"\n                                   (click)=\"selectAllRows.emit($event)\">\n    </th>\n    <th ng2-st-actions-title *ngIf=\"showActionColumnLeft\" [grid]=\"grid\"></th>\n    <th *ngFor=\"let column of grid.getColumns()\" class=\"ng2-smart-th {{ column.id }}\" [ngClass]=\"column.class\"\n      [style.width]=\"column.width\" >\n      <ng2-st-column-title [source]=\"source\" [column]=\"column\" (sort)=\"sort.emit($event)\"></ng2-st-column-title>\n    </th>\n    <th ng2-st-actions-title *ngIf=\"showActionColumnRight\" [grid]=\"grid\"></th>\n  ",
     })
@@ -37930,10 +37930,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var Ng2SmartTableTheadComponent = (function () {
     function Ng2SmartTableTheadComponent() {
-        this.sort = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.selectAllRows = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.filter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.sort = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.selectAllRows = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.filter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     Ng2SmartTableTheadComponent.prototype.ngOnChanges = function () {
         this.isHideHeader = this.grid.getSetting('hideHeader');
@@ -37942,39 +37942,39 @@ var Ng2SmartTableTheadComponent = (function () {
     return Ng2SmartTableTheadComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__lib_grid__["a" /* Grid */])
 ], Ng2SmartTableTheadComponent.prototype, "grid", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__lib_data_source_data_source__["a" /* DataSource */])
 ], Ng2SmartTableTheadComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Boolean)
 ], Ng2SmartTableTheadComponent.prototype, "isAllSelected", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], Ng2SmartTableTheadComponent.prototype, "createConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTheadComponent.prototype, "sort", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTheadComponent.prototype, "selectAllRows", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTheadComponent.prototype, "create", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableTheadComponent.prototype, "filter", void 0);
 Ng2SmartTableTheadComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: '[ng2-st-thead]',
         template: "<tr ng2-st-thead-titles-row *ngIf=\"!isHideHeader\" class=\"ng2-smart-titles\" [grid]=\"grid\" [isAllSelected]=\"isAllSelected\" [source]=\"source\" (sort)=\"sort.emit($event)\" (selectAllRows)=\"selectAllRows.emit($event)\"></tr><tr ng2-st-thead-filters-row *ngIf=\"!isHideSubHeader\" class=\"ng2-smart-filters\" [grid]=\"grid\" [source]=\"source\" (create)=\"create.emit($event)\" (filter)=\"filter.emit($event)\"></tr><tr ng2-st-thead-form-row *ngIf=\"grid.createFormShown\" [grid]=\"grid\" [createConfirm]=\"createConfirm\"></tr>",
     })
@@ -38043,10 +38043,10 @@ var THeadModule = (function () {
     return THeadModule;
 }());
 THeadModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_3__filter_filter_module__["a" /* FilterModule */],
             __WEBPACK_IMPORTED_MODULE_4__cell_cell_module__["a" /* CellModule */],
         ],
@@ -39390,16 +39390,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Ng2SmartTableComponent = (function () {
     function Ng2SmartTableComponent() {
         this.settings = {};
-        this.rowSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.userRowSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.delete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.edit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.custom = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.deleteConfirm = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.editConfirm = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.createConfirm = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-        this.rowHover = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.rowSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.userRowSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.delete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.edit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.create = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.custom = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.deleteConfirm = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.editConfirm = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.createConfirm = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.rowHover = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.defaultSettings = {
             mode: 'inline',
             selectMode: 'single',
@@ -39555,55 +39555,55 @@ var Ng2SmartTableComponent = (function () {
     return Ng2SmartTableComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "source", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "settings", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "rowSelect", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "userRowSelect", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "delete", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "edit", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "create", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "custom", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "deleteConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "editConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], Ng2SmartTableComponent.prototype, "createConfirm", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
 ], Ng2SmartTableComponent.prototype, "rowHover", void 0);
 Ng2SmartTableComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'ng2-smart-table',
         styles: [":host{font-size:1rem}:host /deep/ *{box-sizing:border-box}:host /deep/ button,:host /deep/ input,:host /deep/ optgroup,:host /deep/ select,:host /deep/ textarea{color:inherit;font:inherit;margin:0}:host /deep/ table{line-height:1.5em;border-collapse:collapse;border-spacing:0;display:table;width:100%;max-width:100%;overflow:auto;word-break:normal;word-break:keep-all}:host /deep/ table tr th{font-weight:700}:host /deep/ table tr section{font-size:.75em;font-weight:700}:host /deep/ table tr td,:host /deep/ table tr th{font-size:.875em;margin:0;padding:.5em 1em}:host /deep/ a{color:#1e6bb8;text-decoration:none}:host /deep/ a:hover{text-decoration:underline} /*# sourceMappingURL=ng2-smart-table.component.css.map */ "],
         template: "<table [id]=\"tableId\" [ngClass]=\"tableClass\"><thead ng2-st-thead *ngIf=\"!isHideHeader || !isHideSubHeader\" [grid]=\"grid\" [isAllSelected]=\"isAllSelected\" [source]=\"source\" [createConfirm]=\"createConfirm\" (create)=\"create.emit($event)\" (selectAllRows)=\"onSelectAllRows($event)\" (sort)=\"sort($event)\" (filter)=\"filter($event)\"></thead><tbody ng2-st-tbody [grid]=\"grid\" [source]=\"source\" [deleteConfirm]=\"deleteConfirm\" [editConfirm]=\"editConfirm\" [rowClassFunction]=\"rowClassFunction\" (edit)=\"edit.emit($event)\" (delete)=\"delete.emit($event)\" (custom)=\"custom.emit($event)\" (userSelectRow)=\"onUserSelectRow($event)\" (editRowSelect)=\"editRowSelect($event)\" (multipleSelectRow)=\"multipleSelectRow($event)\" (rowHover)=\"onRowHover($event)\"></tbody></table><ng2-smart-table-pager *ngIf=\"isPagerDisplay\" [source]=\"source\" [perPageSelect]=\"perPageSelect\" (changePage)=\"changePage($event)\"></ng2-smart-table-pager>",
@@ -39649,11 +39649,11 @@ var Ng2SmartTableModule = (function () {
     return Ng2SmartTableModule;
 }());
 Ng2SmartTableModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* ReactiveFormsModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
             __WEBPACK_IMPORTED_MODULE_3__components_cell_cell_module__["a" /* CellModule */],
             __WEBPACK_IMPORTED_MODULE_4__components_filter_filter_module__["a" /* FilterModule */],
             __WEBPACK_IMPORTED_MODULE_5__components_pager_pager_module__["a" /* PagerModule */],
@@ -39670,6 +39670,845 @@ Ng2SmartTableModule = __decorate([
 ], Ng2SmartTableModule);
 
 //# sourceMappingURL=ng2-smart-table.module.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ngx-toastr/esm5/ngx-toastr.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export ComponentPortal */
+/* unused harmony export BasePortalHost */
+/* unused harmony export Overlay */
+/* unused harmony export OVERLAY_PROVIDERS */
+/* unused harmony export OverlayContainer */
+/* unused harmony export OverlayRef */
+/* unused harmony export ToastContainerDirective */
+/* unused harmony export ToastContainerModule */
+/* unused harmony export Toast */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ToastrService; });
+/* unused harmony export ToastPackage */
+/* unused harmony export DefaultGlobalConfig */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ToastrModule; });
+/* unused harmony export ToastRef */
+/* unused harmony export ToastInjector */
+/* unused harmony export TOAST_CONFIG */
+/* unused harmony export ToastNoAnimation */
+/* unused harmony export ToastNoAnimationModule */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__("./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_animations__ = __webpack_require__("./node_modules/@angular/animations/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+
+
+
+
+
+
+
+var ComponentPortal = /** @class */ (function () {
+    function ComponentPortal(component, injector) {
+        this.component = component;
+        this.injector = injector;
+    }
+    ComponentPortal.prototype.attach = function (host, newestOnTop) {
+        this._attachedHost = host;
+        return host.attach(this, newestOnTop);
+    };
+    ComponentPortal.prototype.detach = function () {
+        var host = this._attachedHost;
+        if (host) {
+            this._attachedHost = undefined;
+            return host.detach();
+        }
+    };
+    Object.defineProperty(ComponentPortal.prototype, "isAttached", {
+        get: function () {
+            return this._attachedHost != null;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ComponentPortal.prototype.setAttachedHost = function (host) {
+        this._attachedHost = host;
+    };
+    return ComponentPortal;
+}());
+var BasePortalHost = /** @class */ (function () {
+    function BasePortalHost() {
+    }
+    BasePortalHost.prototype.attach = function (portal, newestOnTop) {
+        this._attachedPortal = portal;
+        return this.attachComponentPortal(portal, newestOnTop);
+    };
+    BasePortalHost.prototype.detach = function () {
+        if (this._attachedPortal) {
+            this._attachedPortal.setAttachedHost();
+        }
+        this._attachedPortal = undefined;
+        if (this._disposeFn) {
+            this._disposeFn();
+            this._disposeFn = undefined;
+        }
+    };
+    BasePortalHost.prototype.setDisposeFn = function (fn) {
+        this._disposeFn = fn;
+    };
+    return BasePortalHost;
+}());
+var DomPortalHost = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __extends */])(DomPortalHost, _super);
+    function DomPortalHost(_hostDomElement, _componentFactoryResolver, _appRef) {
+        var _this = _super.call(this) || this;
+        _this._hostDomElement = _hostDomElement;
+        _this._componentFactoryResolver = _componentFactoryResolver;
+        _this._appRef = _appRef;
+        return _this;
+    }
+    DomPortalHost.prototype.attachComponentPortal = function (portal, newestOnTop) {
+        var _this = this;
+        var componentFactory = this._componentFactoryResolver.resolveComponentFactory(portal.component);
+        var componentRef;
+        componentRef = componentFactory.create(portal.injector);
+        this._appRef.attachView(componentRef.hostView);
+        this.setDisposeFn(function () {
+            _this._appRef.detachView(componentRef.hostView);
+            componentRef.destroy();
+        });
+        if (newestOnTop) {
+            this._hostDomElement.insertBefore(this._getComponentRootNode(componentRef), this._hostDomElement.firstChild);
+        }
+        else {
+            this._hostDomElement.appendChild(this._getComponentRootNode(componentRef));
+        }
+        return componentRef;
+    };
+    DomPortalHost.prototype._getComponentRootNode = function (componentRef) {
+        return (((componentRef.hostView)).rootNodes[0]);
+    };
+    return DomPortalHost;
+}(BasePortalHost));
+var OverlayRef = /** @class */ (function () {
+    function OverlayRef(_portalHost) {
+        this._portalHost = _portalHost;
+    }
+    OverlayRef.prototype.attach = function (portal, newestOnTop) {
+        if (newestOnTop === void 0) { newestOnTop = true; }
+        return this._portalHost.attach(portal, newestOnTop);
+    };
+    OverlayRef.prototype.detach = function () {
+        return this._portalHost.detach();
+    };
+    return OverlayRef;
+}());
+var OverlayContainer = /** @class */ (function () {
+    function OverlayContainer() {
+    }
+    OverlayContainer.prototype.getContainerElement = function () {
+        if (!this._containerElement) {
+            this._createContainer();
+        }
+        return this._containerElement;
+    };
+    OverlayContainer.prototype._createContainer = function () {
+        var container = document.createElement('div');
+        container.classList.add('overlay-container');
+        document.body.appendChild(container);
+        this._containerElement = container;
+    };
+    return OverlayContainer;
+}());
+var Overlay = /** @class */ (function () {
+    function Overlay(_overlayContainer, _componentFactoryResolver, _appRef) {
+        this._overlayContainer = _overlayContainer;
+        this._componentFactoryResolver = _componentFactoryResolver;
+        this._appRef = _appRef;
+        this._paneElements = {};
+    }
+    Overlay.prototype.create = function (positionClass, overlayContainer) {
+        return this._createOverlayRef(this.getPaneElement(positionClass, overlayContainer));
+    };
+    Overlay.prototype.getPaneElement = function (positionClass, overlayContainer) {
+        if (positionClass === void 0) { positionClass = ''; }
+        if (!this._paneElements[positionClass]) {
+            this._paneElements[positionClass] = this._createPaneElement(positionClass, overlayContainer);
+        }
+        return this._paneElements[positionClass];
+    };
+    Overlay.prototype._createPaneElement = function (positionClass, overlayContainer) {
+        var pane = document.createElement('div');
+        pane.id = 'toast-container';
+        pane.classList.add(positionClass);
+        pane.classList.add('toast-container');
+        if (!overlayContainer) {
+            this._overlayContainer.getContainerElement().appendChild(pane);
+        }
+        else {
+            overlayContainer.getContainerElement().appendChild(pane);
+        }
+        return pane;
+    };
+    Overlay.prototype._createPortalHost = function (pane) {
+        return new DomPortalHost(pane, this._componentFactoryResolver, this._appRef);
+    };
+    Overlay.prototype._createOverlayRef = function (pane) {
+        return new OverlayRef(this._createPortalHost(pane));
+    };
+    return Overlay;
+}());
+Overlay.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"] },
+];
+Overlay.ctorParameters = function () { return [
+    { type: OverlayContainer, },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ComponentFactoryResolver"], },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ApplicationRef"], },
+]; };
+var OVERLAY_PROVIDERS = [
+    Overlay,
+    OverlayContainer,
+];
+var ToastContainerDirective = /** @class */ (function () {
+    function ToastContainerDirective(el) {
+        this.el = el;
+    }
+    ToastContainerDirective.prototype.getContainerElement = function () {
+        return this.el.nativeElement;
+    };
+    return ToastContainerDirective;
+}());
+ToastContainerDirective.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Directive"], args: [{
+                selector: '[toastContainer]',
+                exportAs: 'toastContainer',
+            },] },
+];
+ToastContainerDirective.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ElementRef"], },
+]; };
+var ToastContainerModule = /** @class */ (function () {
+    function ToastContainerModule() {
+    }
+    return ToastContainerModule;
+}());
+ToastContainerModule.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"], args: [{
+                declarations: [ToastContainerDirective],
+                exports: [ToastContainerDirective],
+            },] },
+];
+ToastContainerModule.ctorParameters = function () { return []; };
+var ToastPackage = /** @class */ (function () {
+    function ToastPackage(toastId, config, message, title, toastType, toastRef) {
+        var _this = this;
+        this.toastId = toastId;
+        this.config = config;
+        this.message = message;
+        this.title = title;
+        this.toastType = toastType;
+        this.toastRef = toastRef;
+        this._onTap = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this._onAction = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this.toastRef.afterClosed().subscribe(function () {
+            _this._onAction.complete();
+            _this._onTap.complete();
+        });
+    }
+    ToastPackage.prototype.triggerTap = function () {
+        this._onTap.next();
+        this._onTap.complete();
+    };
+    ToastPackage.prototype.onTap = function () {
+        return this._onTap.asObservable();
+    };
+    ToastPackage.prototype.triggerAction = function (action) {
+        this._onAction.next(action);
+    };
+    ToastPackage.prototype.onAction = function () {
+        return this._onAction.asObservable();
+    };
+    return ToastPackage;
+}());
+var ToastRef = /** @class */ (function () {
+    function ToastRef(_overlayRef) {
+        this._overlayRef = _overlayRef;
+        this._afterClosed = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this._activate = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this._manualClose = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+    }
+    ToastRef.prototype.manualClose = function () {
+        this._manualClose.next();
+        this._manualClose.complete();
+    };
+    ToastRef.prototype.manualClosed = function () {
+        return this._manualClose.asObservable();
+    };
+    ToastRef.prototype.close = function () {
+        this._overlayRef.detach();
+        this._afterClosed.next();
+        this._afterClosed.complete();
+        this._manualClose.complete();
+        this._activate.complete();
+    };
+    ToastRef.prototype.afterClosed = function () {
+        return this._afterClosed.asObservable();
+    };
+    ToastRef.prototype.isInactive = function () {
+        return this._activate.isStopped;
+    };
+    ToastRef.prototype.activate = function () {
+        this._activate.next();
+        this._activate.complete();
+    };
+    ToastRef.prototype.afterActivate = function () {
+        return this._activate.asObservable();
+    };
+    return ToastRef;
+}());
+var ToastInjector = /** @class */ (function () {
+    function ToastInjector(_toastPackage, _parentInjector) {
+        this._toastPackage = _toastPackage;
+        this._parentInjector = _parentInjector;
+    }
+    ToastInjector.prototype.get = function (token, notFoundValue) {
+        if (token === ToastPackage && this._toastPackage) {
+            return this._toastPackage;
+        }
+        return this._parentInjector.get(token, notFoundValue);
+    };
+    return ToastInjector;
+}());
+var TOAST_CONFIG = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["InjectionToken"]('ToastConfig');
+var ToastrService = /** @class */ (function () {
+    function ToastrService(token, overlay, _injector, sanitizer, ngZone) {
+        this.overlay = overlay;
+        this._injector = _injector;
+        this.sanitizer = sanitizer;
+        this.ngZone = ngZone;
+        this.currentlyActive = 0;
+        this.toasts = [];
+        this.index = 0;
+        var defaultConfig = new token.defaults;
+        this.toastrConfig = Object.assign({}, defaultConfig, token.config);
+        this.toastrConfig.iconClasses = Object.assign({}, defaultConfig.iconClasses, token.config.iconClasses);
+    }
+    ToastrService.prototype.show = function (message, title, override, type) {
+        if (override === void 0) { override = {}; }
+        if (type === void 0) { type = ''; }
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    };
+    ToastrService.prototype.success = function (message, title, override) {
+        if (override === void 0) { override = {}; }
+        var type = this.toastrConfig.iconClasses.success || '';
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    };
+    ToastrService.prototype.error = function (message, title, override) {
+        if (override === void 0) { override = {}; }
+        var type = this.toastrConfig.iconClasses.error || '';
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    };
+    ToastrService.prototype.info = function (message, title, override) {
+        if (override === void 0) { override = {}; }
+        var type = this.toastrConfig.iconClasses.info || '';
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    };
+    ToastrService.prototype.warning = function (message, title, override) {
+        if (override === void 0) { override = {}; }
+        var type = this.toastrConfig.iconClasses.warning || '';
+        return this._preBuildNotification(type, message, title, this.applyConfig(override));
+    };
+    ToastrService.prototype.clear = function (toastId) {
+        try {
+            for (var _a = Object(__WEBPACK_IMPORTED_MODULE_0_tslib__["c" /* __values */])(this.toasts), _b = _a.next(); !_b.done; _b = _a.next()) {
+                var toast = _b.value;
+                if (toastId !== undefined) {
+                    if (toast.toastId === toastId) {
+                        toast.toastRef.manualClose();
+                        return;
+                    }
+                }
+                else {
+                    toast.toastRef.manualClose();
+                }
+            }
+        }
+        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+        finally {
+            try {
+                if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+            }
+            finally { if (e_1) throw e_1.error; }
+        }
+        var e_1, _c;
+    };
+    ToastrService.prototype.remove = function (toastId) {
+        var found = this._findToast(toastId);
+        if (!found) {
+            return false;
+        }
+        found.activeToast.toastRef.close();
+        this.toasts.splice(found.index, 1);
+        this.currentlyActive = this.currentlyActive - 1;
+        if (!this.toastrConfig.maxOpened || !this.toasts.length) {
+            return false;
+        }
+        if (this.currentlyActive <= +this.toastrConfig.maxOpened && this.toasts[this.currentlyActive]) {
+            var p = this.toasts[this.currentlyActive].toastRef;
+            if (!p.isInactive()) {
+                this.currentlyActive = this.currentlyActive + 1;
+                p.activate();
+            }
+        }
+        return true;
+    };
+    ToastrService.prototype.isDuplicate = function (message) {
+        for (var i = 0; i < this.toasts.length; i++) {
+            if (this.toasts[i].message === message) {
+                return true;
+            }
+        }
+        return false;
+    };
+    ToastrService.prototype.applyConfig = function (override) {
+        if (override === void 0) { override = {}; }
+        return Object.assign({}, this.toastrConfig, override);
+    };
+    ToastrService.prototype._findToast = function (toastId) {
+        for (var i = 0; i < this.toasts.length; i++) {
+            if (this.toasts[i].toastId === toastId) {
+                return { index: i, activeToast: this.toasts[i] };
+            }
+        }
+        return null;
+    };
+    ToastrService.prototype._preBuildNotification = function (toastType, message, title, config) {
+        var _this = this;
+        if (config.onActivateTick) {
+            return this.ngZone.run(function () { return _this._buildNotification(toastType, message, title, config); });
+        }
+        return this._buildNotification(toastType, message, title, config);
+    };
+    ToastrService.prototype._buildNotification = function (toastType, message, title, config) {
+        var _this = this;
+        if (!config.toastComponent) {
+            throw new Error('toastComponent required');
+        }
+        if (message && this.toastrConfig.preventDuplicates && this.isDuplicate(message)) {
+            return null;
+        }
+        this.previousToastMessage = message;
+        var keepInactive = false;
+        if (this.toastrConfig.maxOpened && this.currentlyActive >= this.toastrConfig.maxOpened) {
+            keepInactive = true;
+            if (this.toastrConfig.autoDismiss) {
+                this.clear(this.toasts[this.toasts.length - 1].toastId);
+            }
+        }
+        var overlayRef = this.overlay.create(config.positionClass, this.overlayContainer);
+        this.index = this.index + 1;
+        var sanitizedMessage = message;
+        if (message && config.enableHtml) {
+            sanitizedMessage = this.sanitizer.sanitize(__WEBPACK_IMPORTED_MODULE_1__angular_core__["SecurityContext"].HTML, message);
+        }
+        var toastRef = new ToastRef(overlayRef);
+        var toastPackage = new ToastPackage(this.index, config, sanitizedMessage, title, toastType, toastRef);
+        var toastInjector = new ToastInjector(toastPackage, this._injector);
+        var component = new ComponentPortal(config.toastComponent, toastInjector);
+        var ins = {
+            toastId: this.index,
+            message: message || '',
+            toastRef: toastRef,
+            onShown: toastRef.afterActivate(),
+            onHidden: toastRef.afterClosed(),
+            onTap: toastPackage.onTap(),
+            onAction: toastPackage.onAction(),
+            portal: overlayRef.attach(component, this.toastrConfig.newestOnTop),
+        };
+        if (!keepInactive) {
+            setTimeout(function () {
+                ins.toastRef.activate();
+                _this.currentlyActive = _this.currentlyActive + 1;
+            });
+        }
+        this.toasts.push(ins);
+        return ins;
+    };
+    return ToastrService;
+}());
+ToastrService.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"] },
+];
+ToastrService.ctorParameters = function () { return [
+    { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Inject"], args: [TOAST_CONFIG,] },] },
+    { type: Overlay, },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Injector"], },
+    { type: __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["c" /* DomSanitizer */], },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgZone"], },
+]; };
+var Toast = /** @class */ (function () {
+    function Toast(toastrService, toastPackage, ngZone) {
+        var _this = this;
+        this.toastrService = toastrService;
+        this.toastPackage = toastPackage;
+        this.ngZone = ngZone;
+        this.width = -1;
+        this.toastClasses = '';
+        this.state = {
+            value: 'inactive',
+            params: {
+                easeTime: this.toastPackage.config.easeTime,
+                easing: 'ease-in',
+            },
+        };
+        this.message = toastPackage.message;
+        this.title = toastPackage.title;
+        this.options = toastPackage.config;
+        this.toastClasses = toastPackage.toastType + " " + toastPackage.config.toastClass;
+        this.sub = toastPackage.toastRef.afterActivate().subscribe(function () {
+            _this.activateToast();
+        });
+        this.sub1 = toastPackage.toastRef.manualClosed().subscribe(function () {
+            _this.remove();
+        });
+    }
+    Toast.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
+        this.sub1.unsubscribe();
+        clearInterval(this.intervalId);
+        clearTimeout(this.timeout);
+    };
+    Toast.prototype.activateToast = function () {
+        var _this = this;
+        this.state = Object.assign({}, this.state, { value: 'active' });
+        if (!this.options.disableTimeOut && this.options.timeOut) {
+            this.outsideTimeout(function () { return _this.remove(); }, this.options.timeOut);
+            this.hideTime = new Date().getTime() + this.options.timeOut;
+            if (this.options.progressBar) {
+                this.outsideInterval(function () { return _this.updateProgress(); }, 10);
+            }
+        }
+    };
+    Toast.prototype.updateProgress = function () {
+        if (this.width === 0 || this.width === 100 || !this.options.timeOut) {
+            return;
+        }
+        var now = new Date().getTime();
+        var remaining = this.hideTime - now;
+        this.width = (remaining / this.options.timeOut) * 100;
+        if (this.options.progressAnimation === 'increasing') {
+            this.width = 100 - this.width;
+        }
+        if (this.width <= 0) {
+            this.width = 0;
+        }
+        if (this.width >= 100) {
+            this.width = 100;
+        }
+    };
+    Toast.prototype.remove = function () {
+        var _this = this;
+        if (this.state.value === 'removed') {
+            return;
+        }
+        clearTimeout(this.timeout);
+        this.state = Object.assign({}, this.state, { value: 'removed' });
+        this.outsideTimeout(function () { return _this.toastrService.remove(_this.toastPackage.toastId); }, +this.toastPackage.config.easeTime);
+    };
+    Toast.prototype.tapToast = function () {
+        if (this.state.value === 'removed') {
+            return;
+        }
+        this.toastPackage.triggerTap();
+        if (this.options.tapToDismiss) {
+            this.remove();
+        }
+    };
+    Toast.prototype.stickAround = function () {
+        if (this.state.value === 'removed') {
+            return;
+        }
+        clearTimeout(this.timeout);
+        this.options.timeOut = 0;
+        this.hideTime = 0;
+        clearInterval(this.intervalId);
+        this.width = 0;
+    };
+    Toast.prototype.delayedHideToast = function () {
+        var _this = this;
+        if (this.options.disableTimeOut
+            || this.options.extendedTimeOut === 0
+            || this.state.value === 'removed') {
+            return;
+        }
+        this.outsideTimeout(function () { return _this.remove(); }, this.options.extendedTimeOut);
+        this.options.timeOut = this.options.extendedTimeOut;
+        this.hideTime = new Date().getTime() + (this.options.timeOut || 0);
+        this.width = -1;
+        if (this.options.progressBar) {
+            this.outsideInterval(function () { return _this.updateProgress(); }, 10);
+        }
+    };
+    Toast.prototype.outsideTimeout = function (func, timeout) {
+        var _this = this;
+        if (this.ngZone) {
+            this.ngZone.runOutsideAngular(function () { return _this.timeout = setTimeout(function () { return _this.runInsideAngular(func); }, timeout); });
+        }
+        else {
+            this.timeout = setTimeout(function () { return func(); }, timeout);
+        }
+    };
+    Toast.prototype.outsideInterval = function (func, timeout) {
+        var _this = this;
+        if (this.ngZone) {
+            this.ngZone.runOutsideAngular(function () { return _this.intervalId = setInterval(function () { return _this.runInsideAngular(func); }, timeout); });
+        }
+        else {
+            this.intervalId = setInterval(function () { return func(); }, timeout);
+        }
+    };
+    Toast.prototype.runInsideAngular = function (func) {
+        if (this.ngZone) {
+            this.ngZone.run(function () { return func(); });
+        }
+        else {
+            func();
+        }
+    };
+    return Toast;
+}());
+Toast.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"], args: [{
+                selector: '[toast-component]',
+                template: "\n  <button *ngIf=\"options.closeButton\" (click)=\"remove()\" class=\"toast-close-button\" aria-label=\"Close\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n  <div *ngIf=\"title\" [class]=\"options.titleClass\" [attr.aria-label]=\"title\">\n    {{ title }}\n  </div>\n  <div *ngIf=\"message && options.enableHtml\" role=\"alertdialog\" aria-live=\"polite\"\n    [class]=\"options.messageClass\" [innerHTML]=\"message\">\n  </div>\n  <div *ngIf=\"message && !options.enableHtml\" role=\"alertdialog\" aria-live=\"polite\"\n    [class]=\"options.messageClass\" [attr.aria-label]=\"message\">\n    {{ message }}\n  </div>\n  <div *ngIf=\"options.progressBar\">\n    <div class=\"toast-progress\" [style.width]=\"width + '%'\"></div>\n  </div>\n  ",
+                animations: [
+                    Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["j" /* trigger */])('flyInOut', [
+                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["g" /* state */])('inactive', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["h" /* style */])({
+                            display: 'none',
+                            opacity: 0,
+                        })),
+                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["g" /* state */])('active', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["h" /* style */])({})),
+                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["g" /* state */])('removed', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["h" /* style */])({ opacity: 0 })),
+                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["i" /* transition */])('inactive => active', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["e" /* animate */])('{{ easeTime }}ms {{ easing }}')),
+                        Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["i" /* transition */])('active => removed', Object(__WEBPACK_IMPORTED_MODULE_4__angular_animations__["e" /* animate */])('{{ easeTime }}ms {{ easing }}')),
+                    ]),
+                ],
+                preserveWhitespaces: false,
+            },] },
+];
+Toast.ctorParameters = function () { return [
+    { type: ToastrService, },
+    { type: ToastPackage, },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgZone"], },
+]; };
+Toast.propDecorators = {
+    "toastClasses": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["HostBinding"], args: ['class',] },],
+    "state": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["HostBinding"], args: ['@flyInOut',] },],
+    "tapToast": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["HostListener"], args: ['click',] },],
+    "stickAround": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["HostListener"], args: ['mouseenter',] },],
+    "delayedHideToast": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["HostListener"], args: ['mouseleave',] },],
+};
+var DefaultGlobalConfig = /** @class */ (function () {
+    function DefaultGlobalConfig() {
+        this.maxOpened = 0;
+        this.autoDismiss = false;
+        this.newestOnTop = true;
+        this.preventDuplicates = false;
+        this.iconClasses = {
+            error: 'toast-error',
+            info: 'toast-info',
+            success: 'toast-success',
+            warning: 'toast-warning',
+        };
+        this.toastComponent = Toast;
+        this.closeButton = false;
+        this.timeOut = 5000;
+        this.extendedTimeOut = 1000;
+        this.enableHtml = false;
+        this.progressBar = false;
+        this.toastClass = 'toast';
+        this.positionClass = 'toast-top-right';
+        this.titleClass = 'toast-title';
+        this.messageClass = 'toast-message';
+        this.easing = 'ease-in';
+        this.easeTime = 300;
+        this.tapToDismiss = true;
+        this.onActivateTick = false;
+        this.progressAnimation = 'decreasing';
+    }
+    return DefaultGlobalConfig;
+}());
+var ToastrModule = /** @class */ (function () {
+    function ToastrModule(parentModule) {
+        if (parentModule) {
+            throw new Error('ToastrModule is already loaded. It should only be imported in your application\'s main module.');
+        }
+    }
+    ToastrModule.forRoot = function (config) {
+        if (config === void 0) { config = {}; }
+        return {
+            ngModule: ToastrModule,
+            providers: [
+                { provide: TOAST_CONFIG, useValue: { config: config, defaults: DefaultGlobalConfig } },
+                OverlayContainer,
+                Overlay,
+                ToastrService,
+            ],
+        };
+    };
+    return ToastrModule;
+}());
+ToastrModule.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"], args: [{
+                imports: [__WEBPACK_IMPORTED_MODULE_5__angular_common__["CommonModule"]],
+                exports: [Toast],
+                declarations: [Toast],
+                entryComponents: [Toast],
+            },] },
+];
+ToastrModule.ctorParameters = function () { return [
+    { type: ToastrModule, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Optional"] }, { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["SkipSelf"] },] },
+]; };
+var ToastNoAnimation = /** @class */ (function () {
+    function ToastNoAnimation(toastrService, toastPackage, appRef) {
+        var _this = this;
+        this.toastrService = toastrService;
+        this.toastPackage = toastPackage;
+        this.appRef = appRef;
+        this.width = -1;
+        this.toastClasses = '';
+        this.state = 'inactive';
+        this.message = toastPackage.message;
+        this.title = toastPackage.title;
+        this.options = toastPackage.config;
+        this.toastClasses = toastPackage.toastType + " " + toastPackage.config.toastClass;
+        this.sub = toastPackage.toastRef.afterActivate().subscribe(function () {
+            _this.activateToast();
+        });
+        this.sub1 = toastPackage.toastRef.manualClosed().subscribe(function () {
+            _this.remove();
+        });
+    }
+    ToastNoAnimation.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
+        this.sub1.unsubscribe();
+        clearInterval(this.intervalId);
+        clearTimeout(this.timeout);
+    };
+    ToastNoAnimation.prototype.activateToast = function () {
+        var _this = this;
+        this.state = 'active';
+        if (!this.options.disableTimeOut && this.options.timeOut) {
+            this.timeout = setTimeout(function () {
+                _this.remove();
+            }, this.options.timeOut);
+            this.hideTime = new Date().getTime() + this.options.timeOut;
+            if (this.options.progressBar) {
+                this.intervalId = setInterval(function () { return _this.updateProgress(); }, 10);
+            }
+        }
+        if (this.options.onActivateTick) {
+            this.appRef.tick();
+        }
+    };
+    ToastNoAnimation.prototype.updateProgress = function () {
+        if (this.width === 0 || this.width === 100 || !this.options.timeOut) {
+            return;
+        }
+        var now = new Date().getTime();
+        var remaining = this.hideTime - now;
+        this.width = remaining / this.options.timeOut * 100;
+        if (this.options.progressAnimation === 'increasing') {
+            this.width = 100 - this.width;
+        }
+        if (this.width <= 0) {
+            this.width = 0;
+        }
+        if (this.width >= 100) {
+            this.width = 100;
+        }
+    };
+    ToastNoAnimation.prototype.remove = function () {
+        var _this = this;
+        if (this.state === 'removed') {
+            return;
+        }
+        clearTimeout(this.timeout);
+        this.state = 'removed';
+        this.timeout = setTimeout(function () { return _this.toastrService.remove(_this.toastPackage.toastId); });
+    };
+    ToastNoAnimation.prototype.tapToast = function () {
+        if (this.state === 'removed') {
+            return;
+        }
+        this.toastPackage.triggerTap();
+        if (this.options.tapToDismiss) {
+            this.remove();
+        }
+    };
+    ToastNoAnimation.prototype.stickAround = function () {
+        if (this.state === 'removed') {
+            return;
+        }
+        clearTimeout(this.timeout);
+        this.options.timeOut = 0;
+        this.hideTime = 0;
+        clearInterval(this.intervalId);
+        this.width = 0;
+    };
+    ToastNoAnimation.prototype.delayedHideToast = function () {
+        var _this = this;
+        if (this.options.disableTimeOut
+            || this.options.extendedTimeOut === 0
+            || this.state === 'removed') {
+            return;
+        }
+        this.timeout = setTimeout(function () { return _this.remove(); }, this.options.extendedTimeOut);
+        this.options.timeOut = this.options.extendedTimeOut;
+        this.hideTime = new Date().getTime() + (this.options.timeOut || 0);
+        this.width = -1;
+        if (this.options.progressBar) {
+            this.intervalId = setInterval(function () { return _this.updateProgress(); }, 10);
+        }
+    };
+    return ToastNoAnimation;
+}());
+ToastNoAnimation.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"], args: [{
+                selector: '[toast-component]',
+                template: "\n  <button *ngIf=\"options.closeButton\" (click)=\"remove()\" class=\"toast-close-button\" aria-label=\"Close\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n  <div *ngIf=\"title\" [class]=\"options.titleClass\" [attr.aria-label]=\"title\">\n    {{ title }}\n  </div>\n  <div *ngIf=\"message && options.enableHtml\" role=\"alert\" aria-live=\"polite\"\n    [class]=\"options.messageClass\" [innerHTML]=\"message\">\n  </div>\n  <div *ngIf=\"message && !options.enableHtml\" role=\"alert\" aria-live=\"polite\"\n    [class]=\"options.messageClass\" [attr.aria-label]=\"message\">\n    {{ message }}\n  </div>\n  <div *ngIf=\"options.progressBar\">\n    <div class=\"toast-progress\" [style.width]=\"width + '%'\"></div>\n  </div>\n  ",
+            },] },
+];
+ToastNoAnimation.ctorParameters = function () { return [
+    { type: ToastrService, },
+    { type: ToastPackage, },
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ApplicationRef"], },
+]; };
+ToastNoAnimation.propDecorators = {
+    "toastClasses": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["HostBinding"], args: ['class',] },],
+    "tapToast": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["HostListener"], args: ['click',] },],
+    "stickAround": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["HostListener"], args: ['mouseenter',] },],
+    "delayedHideToast": [{ type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["HostListener"], args: ['mouseleave',] },],
+};
+var ToastNoAnimationModule = /** @class */ (function () {
+    function ToastNoAnimationModule() {
+    }
+    return ToastNoAnimationModule;
+}());
+ToastNoAnimationModule.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"], args: [{
+                imports: [__WEBPACK_IMPORTED_MODULE_5__angular_common__["CommonModule"]],
+                declarations: [ToastNoAnimation],
+                exports: [ToastNoAnimation],
+                entryComponents: [ToastNoAnimation],
+            },] },
+];
+ToastNoAnimationModule.ctorParameters = function () { return []; };
+
+
+//# sourceMappingURL=ngx-toastr.js.map
+
 
 /***/ }),
 

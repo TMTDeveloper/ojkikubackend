@@ -9,6 +9,11 @@ var map = {
 		"common",
 		"iku.module"
 	],
+	"./master/master.module": [
+		"./src/app/pages/master/master.module.ts",
+		"common",
+		"master.module"
+	],
 	"./realisasi/realisasi.module": [
 		"./src/app/pages/realisasi/realisasi.module.ts",
 		"common",
@@ -18,6 +23,11 @@ var map = {
 		"./src/app/pages/report/report.module.ts",
 		"common",
 		"report.module"
+	],
+	"./transaction/transaction.module": [
+		"./src/app/pages/transaction/transaction.module.ts",
+		"common",
+		"transaction.module"
 	],
 	"app/pages/pages.module": [
 		"./src/app/pages/pages.module.ts",
@@ -102,7 +112,7 @@ var NB_CORE_PROVIDERS = __WEBPACK_IMPORTED_MODULE_6__data_data_module__["a" /* D
                 login: {
                     alwaysFail: false,
                     rememberMe: true,
-                    endpoint: "http://10.201.6.95:3000/api/LOGIN_IKUs/login",
+                    endpoint: "http://localhost:3000/api/LOGIN_IKUs/login",
                     method: "post",
                     redirect: {
                         success: "/pages",
@@ -161,13 +171,13 @@ var CoreModule = /** @class */ (function () {
         };
     };
     CoreModule = CoreModule_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */]],
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"]],
             exports: [__WEBPACK_IMPORTED_MODULE_2__nebular_auth__["d" /* NbAuthModule */]],
             declarations: []
         }),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Optional */])()),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* SkipSelf */])()),
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Optional"])()),
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["SkipSelf"])()),
         __metadata("design:paramtypes", [CoreModule])
     ], CoreModule);
     return CoreModule;
@@ -202,7 +212,7 @@ var BackendService = /** @class */ (function () {
     function BackendService(http) {
         this.http = http;
         // baseurlxpay:string='http://202.158.20.141:5001/xpay-service/api/'
-        this.baseurl = "http://10.201.6.95:3000/api/";
+        this.baseurl = "http://localhost:3000/api/";
     }
     BackendService.prototype.getreq = function (url) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
@@ -233,7 +243,7 @@ var BackendService = /** @class */ (function () {
             .map(function (res) { return res.json(); });
     };
     BackendService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
     ], BackendService);
     return BackendService;
@@ -276,8 +286,8 @@ var DataModule = /** @class */ (function () {
         };
     };
     DataModule = DataModule_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */]],
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"]],
             providers: SERVICES.slice()
         })
     ], DataModule);
@@ -363,7 +373,7 @@ var StateService = /** @class */ (function () {
         return this.sidebarState$.asObservable();
     };
     StateService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])()
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
     ], StateService);
     return StateService;
 }());
@@ -416,7 +426,7 @@ var UserService = /** @class */ (function () {
         return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].of(this.userArray[counter]);
     };
     UserService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [])
     ], UserService);
     return UserService;
@@ -484,8 +494,8 @@ var AnalyticsService = /** @class */ (function () {
         }
     };
     AnalyticsService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], AnalyticsService);
     return AnalyticsService;
 }());
@@ -571,11 +581,11 @@ var NgxLoginComponent = /** @class */ (function () {
         return Object(__WEBPACK_IMPORTED_MODULE_3__nebular_auth_helpers__["b" /* getDeepFromObject */])(this.config, key, null);
     };
     NgxLoginComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-login",
             template: "\n    <nb-auth-block>\n      <h2 class=\"title\">Sign In</h2>\n      <small class=\"form-text sub-title\">Hello! Sign in with your user ID</small>\n      <form (ngSubmit)=\"login()\" #form=\"ngForm\" autocomplete=\"nope\">\n        <div *ngIf=\"showMessages.error && errors && errors.length > 0 && !submitted\"\n             class=\"alert alert-danger\" role=\"alert\">\n          <div><strong>Oh snap!</strong></div>\n          <div *ngFor=\"let error of errors\">{{ error }}</div>\n        </div>\n        <div *ngIf=\"showMessages.success && messages && messages.length > 0 && !submitted\"\n             class=\"alert alert-success\" role=\"alert\">\n          <div *ngFor=\"let message of messages\">{{ message }}</div>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"input-user ID\" class=\"sr-only\">User ID</label>\n          <input name=\"email\" [(ngModel)]=\"user.email\" id=\"input-email\" \n                 class=\"form-control\" placeholder=\"User ID\" #email=\"ngModel\" autofocus>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"input-password\" class=\"sr-only\">Password</label>\n          <input name=\"password\" [(ngModel)]=\"user.password\" type=\"password\" id=\"input-password\"\n                 class=\"form-control\" placeholder=\"Password\" #password=\"ngModel\"\n                 [class.form-control-danger]=\"password.invalid && password.touched\"\n                 [required]=\"getConfigValue('forms.validation.password.required')\"\n                 [minlength]=\"getConfigValue('forms.validation.password.minLength')\"\n                 [maxlength]=\"getConfigValue('forms.validation.password.maxLength')\">\n          <small class=\"form-text error\" *ngIf=\"password.invalid && password.touched && password.errors?.required\">\n            Password is required!\n          </small>\n          <small\n            class=\"form-text error\"\n            *ngIf=\"password.invalid && password.touched && (password.errors?.minlength || password.errors?.maxlength)\">\n            Password should contains\n            from {{ getConfigValue('forms.validation.password.minLength') }}\n            to {{ getConfigValue('forms.validation.password.maxLength') }}\n            characters\n          </small>\n        </div>\n        <div class=\"form-group accept-group col-sm-12\">\n          <nb-checkbox name=\"rememberMe\" [(ngModel)]=\"user.rememberMe\">Remember me</nb-checkbox>\n          <a class=\"forgot-password\" routerLink=\"../request-password\">Forgot Password?</a>\n        </div>\n        <button [disabled]=\"submitted || !form.valid\" class=\"btn btn-block btn-hero-success\"\n                [class.btn-pulse]=\"submitted\">\n          Sign In\n        </button>\n      </form>\n      <div class=\"links\">\n        <ng-container *ngIf=\"socialLinks && socialLinks.length > 0\">\n          <small class=\"form-text\">Or connect with:</small>\n          <div class=\"socials\">\n            <ng-container *ngFor=\"let socialLink of socialLinks\">\n              <a *ngIf=\"socialLink.link\"\n                 [routerLink]=\"socialLink.link\"\n                 [attr.target]=\"socialLink.target\"\n                 [attr.class]=\"socialLink.icon\"\n                 [class.with-icon]=\"socialLink.icon\">{{ socialLink.title }}</a>\n              <a *ngIf=\"socialLink.url\"\n                 [attr.href]=\"socialLink.url\"\n                 [attr.target]=\"socialLink.target\"\n                 [attr.class]=\"socialLink.icon\"\n                 [class.with-icon]=\"socialLink.icon\">{{ socialLink.title }}</a>\n            </ng-container>\n          </div>\n        </ng-container>\n      </div>\n    </nb-auth-block>\n  "
         }),
-        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__nebular_auth_auth_options__["b" /* NB_AUTH_OPTIONS */])),
+        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_2__nebular_auth_auth_options__["b" /* NB_AUTH_OPTIONS */])),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__nebular_auth_services_auth_service__["a" /* NbAuthService */], Object, __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], NgxLoginComponent);
     return NgxLoginComponent;
@@ -609,7 +619,7 @@ var FooterComponent = /** @class */ (function () {
     function FooterComponent() {
     }
     FooterComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-footer",
             styles: [__webpack_require__("./src/app/@theme/components/footer/footer.component.scss")],
             template: "\n\n  "
@@ -636,7 +646,7 @@ var FooterComponent = /** @class */ (function () {
 /***/ "./src/app/@theme/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header-container\" [class.left]=\"position === 'normal'\" [class.right]=\"position === 'inverse'\">\r\n  <div class=\"logo-containter\">\r\n    <a (click)=\"toggleSidebar()\" href=\"#\" class=\"navigation\">\r\n      <i class=\"nb-menu\"></i>\r\n    </a>\r\n    <div class=\"logo\" (click)=\"goToHome()\">IKU-\r\n      <span>admin</span>\r\n    </div>\r\n  </div>\r\n  <!-- <ngx-theme-switcher></ngx-theme-switcher> -->\r\n</div>\r\n\r\n<nb-actions size=\"medium\" class=\"header-container\" [class.right]=\"position === 'normal'\" [class.left]=\"position === 'inverse'\">\r\n  <nb-action *nbIsGranted=\"['view', 'user']\">\r\n    <nb-user [nbContextMenu]=\"userMenu\" [name]=\"user.NAMA\" (menuClick)=\"onMenuClick($event)\" (click)=\"onMenuClick($event)\"></nb-user>\r\n  </nb-action>\r\n</nb-actions>\r\n"
+module.exports = "<div class=\"header-container\" [class.left]=\"position === 'normal'\" [class.right]=\"position === 'inverse'\">\r\n  <div class=\"logo-containter\">\r\n    <a (click)=\"toggleSidebar()\" href=\"#\" class=\"navigation\">\r\n      <i class=\"nb-menu\"></i>\r\n    </a>\r\n    <div class=\"logo\" (click)=\"goToHome()\">IKU-\r\n      <span>admin</span>\r\n    </div>\r\n  </div>\r\n  <!-- <ngx-theme-switcher></ngx-theme-switcher> -->\r\n</div>\r\n\r\n<nb-actions size=\"medium\" class=\"header-container\" [class.right]=\"position === 'normal'\" [class.left]=\"position === 'inverse'\">\r\n  <nb-action *nbIsGranted=\"['view', 'user']\">\r\n    <nb-user [nbContextMenu]=\"userMenu\" [name]=\"user.USER_NAME\" (menuClick)=\"onMenuClick($event)\" (click)=\"onMenuClick($event)\"></nb-user>\r\n  </nb-action>\r\n</nb-actions>\r\n"
 
 /***/ }),
 
@@ -712,11 +722,11 @@ var HeaderComponent = /** @class */ (function () {
         this.analyticsService.trackEvent("startSearch");
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Object)
     ], HeaderComponent.prototype, "position", void 0);
     HeaderComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-header",
             styles: [__webpack_require__("./src/app/@theme/components/header/header.component.scss")],
             template: __webpack_require__("./src/app/@theme/components/header/header.component.html")
@@ -785,7 +795,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var SearchInputComponent = /** @class */ (function () {
     function SearchInputComponent() {
-        this.search = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.search = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.isInputShown = false;
     }
     SearchInputComponent.prototype.showInput = function () {
@@ -799,15 +809,15 @@ var SearchInputComponent = /** @class */ (function () {
         this.search.emit(val);
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ViewChild */])("input"),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("input"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
     ], SearchInputComponent.prototype, "input", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
     ], SearchInputComponent.prototype, "search", void 0);
     SearchInputComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-search-input",
             styles: [__webpack_require__("./src/app/@theme/components/search-input/search-input.component.scss")],
             template: "\n    <i class=\"control-icon ion ion-ios-search\"\n       (click)=\"showInput()\"></i>\n    <input placeholder=\"Type your search request here...\"\n           #input\n           [class.hidden]=\"!isInputShown\"\n           (blur)=\"hideInput()\"\n           (input)=\"onInput($event)\">\n  "
@@ -877,7 +887,7 @@ var ThemeSettingsComponent = /** @class */ (function () {
         return false;
     };
     ThemeSettingsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-theme-settings",
             styles: [__webpack_require__("./src/app/@theme/components/theme-settings/theme-settings.component.scss")],
             template: "\n    <h6>LAYOUTS</h6>\n    <div class=\"settings-row\">\n      <a *ngFor=\"let layout of layouts\"\n         href=\"#\"\n         [class.selected]=\"layout.selected\"\n         [attr.title]=\"layout.name\"\n         (click)=\"layoutSelect(layout)\">\n        <i [attr.class]=\"layout.icon\"></i>\n      </a>\n    </div>\n    <h6>SIDEBAR</h6>\n    <div class=\"settings-row\">\n      <a *ngFor=\"let sidebar of sidebars\"\n         href=\"#\"\n         [class.selected]=\"sidebar.selected\"\n         [attr.title]=\"sidebar.name\"\n         (click)=\"sidebarSelect(sidebar)\">\n        <i [attr.class]=\"sidebar.icon\"></i>\n      </a>\n    </div>\n  "
@@ -944,7 +954,7 @@ var ThemeSwitcherComponent = /** @class */ (function () {
         return theme ? "cosmic" : "default";
     };
     ThemeSwitcherComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-theme-switcher",
             styles: [__webpack_require__("./src/app/@theme/components/theme-switcher/theme-switcher.component.scss")],
             template: "\n    <label class=\"theme-switch\">\n      <span class=\"light\">Light</span>\n      <div class=\"switch\">\n        <input type=\"checkbox\" [checked]=\"currentBoolTheme()\" (change)=\"toggleTheme(theme.checked)\" #theme>\n        <span class=\"slider\"></span>\n      </div>\n      <span class=\"cosmic\">Cosmic</span>\n    </label>\n  "
@@ -1004,7 +1014,7 @@ var OneColumnLayoutComponent = /** @class */ (function () {
     function OneColumnLayoutComponent() {
     }
     OneColumnLayoutComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-one-column-layout",
             styles: [__webpack_require__("./src/app/@theme/layouts/one-column/one-column.layout.scss")],
             template: "\n    <nb-layout>\n      <nb-layout-header fixed>\n        <ngx-header></ngx-header>\n      </nb-layout-header>\n\n      <nb-sidebar class=\"menu-sidebar\" tag=\"menu-sidebar\" responsive>\n        <nb-sidebar-header>\n          <a href=\"#\" class=\"btn btn-hero-success main-btn\">\n            <i class=\"ion ion-social-github\"></i> <span>Support Us</span>\n          </a>\n        </nb-sidebar-header>\n        <ng-content select=\"nb-menu\"></ng-content>\n      </nb-sidebar>\n\n      <nb-layout-column>\n        <ng-content select=\"router-outlet\"></ng-content>\n      </nb-layout-column>\n\n      <nb-layout-footer fixed>\n        <ngx-footer></ngx-footer>\n      </nb-layout-footer>\n    </nb-layout>\n  "
@@ -1126,7 +1136,7 @@ var SampleLayoutComponent = /** @class */ (function () {
         this.menuClick$.unsubscribe();
     };
     SampleLayoutComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-sample-layout",
             styles: [__webpack_require__("./src/app/@theme/layouts/sample/sample.layout.scss")],
             template: "\n    <nb-layout [center]=\"layout.id === 'center-column'\" windowMode>\n      <nb-layout-header fixed>\n        <ngx-header [position]=\"sidebar.id === 'left' ? 'normal': 'inverse'\"></ngx-header>\n      </nb-layout-header>\n\n      <nb-sidebar class=\"menu-sidebar\"\n                   tag=\"menu-sidebar\"\n                   responsive\n                   [right]=\"sidebar.id === 'right'\">\n        <ng-content select=\"nb-menu\"></ng-content>\n      </nb-sidebar>\n\n      <nb-layout-column class=\"main-content\">\n        <ng-content select=\"router-outlet\"></ng-content>\n      </nb-layout-column>\n\n      <nb-layout-column left class=\"small\" *ngIf=\"layout.id === 'two-column' || layout.id === 'three-column'\">\n        <nb-menu [items]=\"subMenu\"></nb-menu>\n      </nb-layout-column>\n\n      <nb-layout-column right class=\"small\" *ngIf=\"layout.id === 'three-column'\">\n        <nb-menu [items]=\"subMenu\"></nb-menu>\n      </nb-layout-column>\n\n      <nb-layout-footer fixed>\n        <ngx-footer></ngx-footer>\n      </nb-layout-footer>\n\n      <nb-sidebar class=\"settings-sidebar\"\n                   tag=\"settings-sidebar\"\n                   state=\"collapsed\"\n                   fixed\n                   [right]=\"sidebar.id !== 'right'\">\n        <ngx-theme-settings></ngx-theme-settings>\n      </nb-sidebar>\n    </nb-layout>\n  "
@@ -1169,7 +1179,7 @@ var ThreeColumnsLayoutComponent = /** @class */ (function () {
     function ThreeColumnsLayoutComponent() {
     }
     ThreeColumnsLayoutComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-three-columns-layout",
             styles: [__webpack_require__("./src/app/@theme/layouts/three-columns/three-columns.layout.scss")],
             template: "\n    <nb-layout>\n      <nb-layout-header fixed>\n        <ngx-header></ngx-header>\n      </nb-layout-header>\n\n      <nb-sidebar class=\"menu-sidebar\" tag=\"menu-sidebar\" responsive >\n        <nb-sidebar-header>\n          <a href=\"#\" class=\"btn btn-hero-success main-btn\">\n            <i class=\"ion ion-social-github\"></i> <span>Support Us</span>\n          </a>\n        </nb-sidebar-header>\n        <ng-content select=\"nb-menu\"></ng-content>\n      </nb-sidebar>\n\n      <nb-layout-column class=\"small\">\n      </nb-layout-column>\n\n      <nb-layout-column right>\n        <ng-content select=\"router-outlet\"></ng-content>\n      </nb-layout-column>\n\n      <nb-layout-column class=\"small\">\n      </nb-layout-column>\n\n      <nb-layout-footer fixed>\n        <ngx-footer></ngx-footer>\n      </nb-layout-footer>\n    </nb-layout>\n  "
@@ -1207,7 +1217,7 @@ var TwoColumnsLayoutComponent = /** @class */ (function () {
     function TwoColumnsLayoutComponent() {
     }
     TwoColumnsLayoutComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-two-columns-layout",
             styles: [__webpack_require__("./src/app/@theme/layouts/two-columns/two-columns.layout.scss")],
             template: "\n    <nb-layout>\n      <nb-layout-header fixed>\n        <ngx-header></ngx-header>\n      </nb-layout-header>\n\n      <nb-sidebar class=\"menu-sidebar\" tag=\"menu-sidebar\" responsive >\n        <nb-sidebar-header>\n          <a href=\"#\" class=\"btn btn-hero-success main-btn\">\n            <i class=\"ion ion-social-github\"></i> <span>Support Us</span>\n          </a>\n        </nb-sidebar-header>\n        <ng-content select=\"nb-menu\"></ng-content>\n      </nb-sidebar>\n\n      <nb-layout-column class=\"small\">\n      </nb-layout-column>\n\n      <nb-layout-column right>\n        <ng-content select=\"router-outlet\"></ng-content>\n      </nb-layout-column>\n\n      <nb-layout-footer fixed>\n        <ngx-footer></ngx-footer>\n      </nb-layout-footer>\n\n    </nb-layout>\n  "
@@ -1242,7 +1252,7 @@ var CapitalizePipe = /** @class */ (function () {
             : input;
     };
     CapitalizePipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Pipe */])({ name: "ngxCapitalize" })
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: "ngxCapitalize" })
     ], CapitalizePipe);
     return CapitalizePipe;
 }());
@@ -1295,7 +1305,7 @@ var PluralPipe = /** @class */ (function () {
             : pluralLabel ? input + " " + pluralLabel : input + " " + label + "s";
     };
     PluralPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Pipe */])({ name: "ngxPlural" })
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: "ngxPlural" })
     ], PluralPipe);
     return PluralPipe;
 }());
@@ -1324,7 +1334,7 @@ var RoundPipe = /** @class */ (function () {
         return Math.round(input);
     };
     RoundPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Pipe */])({ name: "ngxRound" })
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: "ngxRound" })
     ], RoundPipe);
     return RoundPipe;
 }());
@@ -1361,7 +1371,7 @@ var TimingPipe = /** @class */ (function () {
         return time < 10 ? "0" : "";
     };
     TimingPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Pipe */])({ name: "timing" })
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: "timing" })
     ], TimingPipe);
     return TimingPipe;
 }());
@@ -1562,7 +1572,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var BASE_MODULES = [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* ReactiveFormsModule */]];
+var BASE_MODULES = [__WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"]];
 var NB_MODULES = [
     __WEBPACK_IMPORTED_MODULE_4__nebular_theme__["b" /* NbCardModule */],
     __WEBPACK_IMPORTED_MODULE_4__nebular_theme__["e" /* NbLayoutModule */],
@@ -1605,7 +1615,7 @@ var ThemeModule = /** @class */ (function () {
         };
     };
     ThemeModule = ThemeModule_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: BASE_MODULES.concat(NB_MODULES),
             exports: BASE_MODULES.concat(NB_MODULES, COMPONENTS, PIPES),
             declarations: COMPONENTS.concat(PIPES)
@@ -1680,7 +1690,7 @@ var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
     AppRoutingModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_0__angular_router__["d" /* RouterModule */].forRoot(routes, config)],
             exports: [__WEBPACK_IMPORTED_MODULE_0__angular_router__["d" /* RouterModule */]]
         })
@@ -1723,7 +1733,7 @@ var AppComponent = /** @class */ (function () {
         this.analytics.trackPageViews();
     };
     AppComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-app",
             template: "<router-outlet></router-outlet>"
         }),
@@ -1780,7 +1790,7 @@ var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
             declarations: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_7__theme_components_auth_login_login_component__["a" /* NgxLoginComponent */]],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
@@ -1794,7 +1804,7 @@ var AppModule = /** @class */ (function () {
             bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]],
             providers: [
                 {
-                    provide: __WEBPACK_IMPORTED_MODULE_0__angular_common__["a" /* APP_BASE_HREF */],
+                    provide: __WEBPACK_IMPORTED_MODULE_0__angular_common__["APP_BASE_HREF"],
                     useValue: "/"
                 },
                 { provide: __WEBPACK_IMPORTED_MODULE_11__nebular_auth__["a" /* NB_AUTH_TOKEN_CLASS */], useValue: __WEBPACK_IMPORTED_MODULE_11__nebular_auth__["c" /* NbAuthJWTToken */] }
@@ -1848,7 +1858,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])()
     .bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])

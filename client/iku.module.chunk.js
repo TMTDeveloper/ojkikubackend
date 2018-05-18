@@ -138,7 +138,7 @@ var IkuComponent = /** @class */ (function () {
         }
     };
     IkuComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-iku",
             template: __webpack_require__("./src/app/pages/iku/iku.component.html")
         }),
@@ -467,7 +467,7 @@ var RbbComponent = /** @class */ (function () {
         }
     };
     RbbComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-modal",
             template: __webpack_require__("./src/app/pages/iku/iku.header/rbb.component.html")
         }),
@@ -682,11 +682,11 @@ var IkuHeaderComponent = /** @class */ (function () {
         });
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ViewChild */])("myForm"),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* NgForm */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["NgForm"])
     ], IkuHeaderComponent.prototype, "myForm", void 0);
     IkuHeaderComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-iku-header",
             template: __webpack_require__("./src/app/pages/iku/iku.header/iku.header.component.html"),
             styles: [
@@ -739,7 +739,7 @@ var IkuModule = /** @class */ (function () {
     function IkuModule() {
     }
     IkuModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* Ng2SmartTableModule */], __WEBPACK_IMPORTED_MODULE_2__iku_router_module__["a" /* IkuRouterModule */]],
             declarations: __WEBPACK_IMPORTED_MODULE_2__iku_router_module__["b" /* routedComponents */].concat([__WEBPACK_IMPORTED_MODULE_4__iku_header_iku_header_component__["b" /* RbbComponent */]]),
             entryComponents: [__WEBPACK_IMPORTED_MODULE_4__iku_header_iku_header_component__["b" /* RbbComponent */]],
@@ -789,7 +789,7 @@ var IkuRouterModule = /** @class */ (function () {
     function IkuRouterModule() {
     }
     IkuRouterModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(routes)],
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]]
         })
