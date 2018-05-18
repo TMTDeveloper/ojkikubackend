@@ -22,12 +22,12 @@
         "id": 3
       },
       "KODE_INDIKATOR": {
-        "type": "string",
-        "required": true
+        "type": "string"
+   
       },
       "PENCAPAIAN": {
-        "type": "string",
-        "required": true
+        "type": "string"
+  
       },
       "USER_CREATED": {
         "type": "string",

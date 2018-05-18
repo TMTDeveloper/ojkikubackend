@@ -22,36 +22,36 @@
       "id": 3
     },
     "KODE_INDIKATOR": {
-      "type": "string",
-      "required": true
+      "type": "string"
+
     },
     "THRESHOLD": {
-      "type": "number",
-      "required": true
+      "type": "number"
+
     },
     "INDIKATOR_1_DESC": {
-      "type": "string",
-      "required": true
+      "type": "string"
+
     },
     "INDIKATOR_2_DESC": {
-      "type": "string",
-      "required": true
+      "type": "string"
+
     },
     "INDIKATOR_3_DESC": {
-      "type": "string",
-      "required": true
+      "type": "string"
+
     },
     "REALISASI_1_DESC": {
-      "type": "string",
-      "required": true
+      "type": "string"
+
     },
     "REALISASI_2_DESC": {
-      "type": "string",
-      "required": true
+      "type": "string"
+
     },
     "REALISASI_3_DESC": {
-      "type": "string",
-      "required": true
+      "type": "string"
+
     },
     "USER_CREATED": {
       "type": "string",

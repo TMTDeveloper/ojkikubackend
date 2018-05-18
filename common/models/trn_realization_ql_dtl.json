@@ -47,6 +47,10 @@
       "type": "string",
       "required": true
     },
+    "PENCAPAIAN": {
+      "type": "number",
+      "required": true
+    },
     "USER_CREATED": {
       "type": "string",
       "required": true

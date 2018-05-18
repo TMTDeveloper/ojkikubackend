@@ -1,63 +1,66 @@
 {
-    "name": "trn_realization_qn_dtl",
-    "base": "PersistedModel",
-    "idInjection": false,
-    "options": {
-      "validateUpsert": true
+  "name": "trn_realization_qn_dtl",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "KODE_IKU": {
+      "type": "string",
+      "required": true,
+      "id": 1
     },
-    "properties": {
-      "KODE_IKU": {
-        "type": "string",
-        "required": true,
-        "id": 1
-      },
-      "TAHUN_REALISASI": {
-        "type": "number",
-        "required": true,
-        "id": 2
-      },
-      "PERIODE": {
-        "type": "string",
-        "required": true,
-        "id": 3
-      },
-      "KODE_BANK": {
-        "type": "string",
-        "required": true,
-        "id": 4
-      },
-      "NILAI_REALISASI_1": {
-        "type": "number",
-        "required": true
-      },
-      "NILAI_REALISASI_2": {
-        "type": "number",
-        "required": true
-      },
-      "NILAI_REALISASI_3": {
-        "type": "number",
-        "required": true
-      },
-      "USER_CREATED": {
-        "type": "string",
-        "required": true
-      },
-      "DATETIME_CREATED": {
-        "type": "date",
-        "required": true
-      },
-      "USER_UPDATED": {
-        "type": "string",
-        "required": true
-      },
-      "DATETIME_UPDATED": {
-        "type": "date",
-        "required": true
-      }
+    "TAHUN_REALISASI": {
+      "type": "number",
+      "required": true,
+      "id": 2
     },
-    "validations": [],
-    "relations": {},
-    "acls": [],
-    "methods": {}
-  }
-  
+    "PERIODE": {
+      "type": "string",
+      "required": true,
+      "id": 3
+    },
+    "KODE_BANK": {
+      "type": "string",
+      "required": true,
+      "id": 4
+    },
+    "NILAI_REALISASI_1": {
+      "type": "number"
+
+    },
+    "NILAI_REALISASI_2": {
+      "type": "number"
+
+    },
+    "NILAI_REALISASI_3": {
+      "type": "number"
+
+    },
+    "PENCAPAIAN": {
+      "type": "number"
+
+    },
+    "USER_CREATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATETIME_CREATED": {
+      "type": "date",
+      "required": true
+    },
+    "USER_UPDATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATETIME_UPDATED": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
