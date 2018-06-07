@@ -3,7 +3,7 @@ webpackJsonp(["master.module"],{
 /***/ "./src/app/pages/master/iku/iku.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>IKU</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -177,7 +177,7 @@ var IkuComponent = /** @class */ (function () {
 /***/ "./src/app/pages/master/master-bank/master.bank.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Bank</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\n  <nb-card-header>Bank</nb-card-header>\n  <nb-card-body>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -357,7 +357,7 @@ var MasterBankComponent = /** @class */ (function () {
 /***/ "./src/app/pages/master/master-user/master.user.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>User</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\n  <nb-card-header>User</nb-card-header>\n  <nb-card-body>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -542,7 +542,7 @@ var MasterUserComponent = /** @class */ (function () {
 /***/ "./src/app/pages/master/master.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\r\n"
+module.exports = "<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -702,7 +702,7 @@ var routedComponents = [
 /***/ "./src/app/pages/master/user-bank/master.user.bank.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>User Bank</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-1 col-form-label\">Bank</label>\r\n      <div class=\"col-sm-2\">\r\n        <select class=\"form-control\" name=\"yearPeriode\" (change)=\"reload()\" [(ngModel)]=\"formData.bank\">\r\n          <option *ngFor=\"let data of bankData\" value=\"{{data.ID_BANK}}\">{{data.INISIAL}}</option>\r\n        </select>\r\n      </div>\r\n\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-6\">\r\n        <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\r\n        </ng2-smart-table>\r\n      </div>\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\n  <nb-card-header>User Bank</nb-card-header>\n  <nb-card-body>\n    <div class=\"form-group row\">\n      <label class=\"col-sm-1 col-form-label\">Bank</label>\n      <div class=\"col-sm-2\">\n        <select class=\"form-control\" name=\"yearPeriode\" (change)=\"reload()\" [(ngModel)]=\"formData.bank\">\n          <option *ngFor=\"let data of bankData\" value=\"{{data.ID_BANK}}\">{{data.INISIAL}}</option>\n        </select>\n      </div>\n\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-6\">\n        <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n        </ng2-smart-table>\n      </div>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 

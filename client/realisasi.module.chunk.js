@@ -3,7 +3,7 @@ webpackJsonp(["realisasi.module"],{
 /***/ "./src/app/pages/realisasi/realisasi-qualitative/realisasi.qualitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Input Realisasi Qualitative</nb-card-header>\r\n  <nb-card-body>\r\n    <form #myForm=\"ngForm\" (ngSubmit)=\"register(myForm)\">\r\n  \r\n      <div ngModelGroup=\"iku\">\r\n        <div *ngFor=\"let ikuId of ikuIds; let i=index;\">\r\n          <div ngModelGroup=\"{{ikuId}}\">\r\n            <div class=\"row\">\r\n             \r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n    </form>\r\n  </nb-card-body>\r\n\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\n  <nb-card-header>Input Realisasi Qualitative</nb-card-header>\n  <nb-card-body>\n    <form #myForm=\"ngForm\" (ngSubmit)=\"register(myForm)\">\n  \n      <div ngModelGroup=\"iku\">\n        <div *ngFor=\"let ikuId of ikuIds; let i=index;\">\n          <div ngModelGroup=\"{{ikuId}}\">\n            <div class=\"row\">\n             \n\n            </div>\n          </div>\n        </div>\n      </div>\n\n\n    </form>\n  </nb-card-body>\n\n</nb-card>\n"
 
 /***/ }),
 
@@ -126,7 +126,7 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
 /***/ "./src/app/pages/realisasi/realisasi-quantitative/realisasi.quantitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header *ngIf=\"user.BANK==''\">Access Denied!</nb-card-header>\r\n  <nb-card-header *ngIf=\"user.BANK\">Input Realisasi {{user.BANK_DESCRIPTION}} Tahun {{yearPeriode}}</nb-card-header>\r\n</nb-card>\r\n\r\n<div *ngIf=\"user.BANK!=''\">\r\n  <nb-card *ngFor=\"let item of data; let i=index;\">\r\n    <nb-card-header>{{item.IKU_NAME}}</nb-card-header>\r\n    <nb-card-body>\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <label>Triwulan 1</label>\r\n          <input type=\"number\" [(ngModel)]=\"data[i].TW1\" class=\"form-control\">\r\n        </div>\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <label>Triwulan 2</label>\r\n          <input type=\"number\" [(ngModel)]=\"data[i].TW2\" class=\"form-control\">\r\n        </div>\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <label>Triwulan 3</label>\r\n          <input type=\"number\" [(ngModel)]=\"data[i].TW3\" class=\"form-control\">\r\n        </div>\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <label>Triwulan 4</label>\r\n          <input type=\"number\" [(ngModel)]=\"data[i].TW4\" class=\"form-control\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 mt-2\">\r\n          <button type=\"button\" class=\"btn btn-success\" (click)=\"submit(data[i])\"> SUBMIT </button>\r\n        </div>\r\n      </div>\r\n    </nb-card-body>\r\n  </nb-card>\r\n</div>\r\n"
+module.exports = "<nb-card>\n  <nb-card-header *ngIf=\"user.BANK==''\">Access Denied!</nb-card-header>\n  <nb-card-header *ngIf=\"user.BANK\">Input Realisasi {{user.BANK_DESCRIPTION}} Tahun {{yearPeriode}}</nb-card-header>\n</nb-card>\n\n<div *ngIf=\"user.BANK!=''\">\n  <nb-card *ngFor=\"let item of data; let i=index;\">\n    <nb-card-header>{{item.IKU_NAME}}</nb-card-header>\n    <nb-card-body>\n      <div class=\"row\">\n        <div class=\"col-sm-5 mt-2\">\n          <label>Triwulan 1</label>\n          <input type=\"number\" [(ngModel)]=\"data[i].TW1\" class=\"form-control\">\n        </div>\n        <div class=\"col-sm-5 mt-2\">\n          <label>Triwulan 2</label>\n          <input type=\"number\" [(ngModel)]=\"data[i].TW2\" class=\"form-control\">\n        </div>\n        <div class=\"col-sm-5 mt-2\">\n          <label>Triwulan 3</label>\n          <input type=\"number\" [(ngModel)]=\"data[i].TW3\" class=\"form-control\">\n        </div>\n        <div class=\"col-sm-5 mt-2\">\n          <label>Triwulan 4</label>\n          <input type=\"number\" [(ngModel)]=\"data[i].TW4\" class=\"form-control\">\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-sm-5 mt-2\">\n          <button type=\"button\" class=\"btn btn-success\" (click)=\"submit(data[i])\"> SUBMIT </button>\n        </div>\n      </div>\n    </nb-card-body>\n  </nb-card>\n</div>\n"
 
 /***/ }),
 
@@ -231,7 +231,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
 /***/ "./src/app/pages/realisasi/realisasi.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\r\n"
+module.exports = "<router-outlet></router-outlet>\n"
 
 /***/ }),
 

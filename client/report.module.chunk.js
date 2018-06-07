@@ -3,7 +3,7 @@ webpackJsonp(["report.module"],{
 /***/ "./src/app/pages/report/report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <nb-card>\r\n  <nb-card-header>\r\n    View Report\r\n  </nb-card-header>\r\n\r\n  <nb-card-body>\r\n    <div class=\"holdertable\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\">\r\n      </ng2-smart-table>\r\n    </div>\r\n\r\n\r\n\r\n  </nb-card-body>\r\n</nb-card> -->\r\n\r\n<nb-card>\r\n  <nb-card-body>\r\n    On Progress\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<!-- <nb-card>\n  <nb-card-header>\n    View Report\n  </nb-card-header>\n\n  <nb-card-body>\n    <div class=\"holdertable\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\">\n      </ng2-smart-table>\n    </div>\n\n\n\n  </nb-card-body>\n</nb-card> -->\n\n<nb-card>\n  <nb-card-body>\n    On Progress\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 

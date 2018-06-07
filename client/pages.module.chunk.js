@@ -3,7 +3,7 @@ webpackJsonp(["pages.module"],{
 /***/ "./src/app/pages/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <nb-card>\r\n    <nb-card-header>IKU Project</nb-card-header>\r\n  </nb-card>\r\n</div>\r\n "
+module.exports = "<div class=\"row\">\n  <nb-card>\n    <nb-card-header>IKU Project</nb-card-header>\n  </nb-card>\n</div>\n "
 
 /***/ }),
 
@@ -114,7 +114,7 @@ var MENU_ITEMS = [
     },
     {
         title: "Transaction",
-        icon: "nb-locked",
+        icon: "nb-compose",
         children: [
             {
                 title: "Indicator Quantitative",
