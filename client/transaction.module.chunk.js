@@ -2039,7 +2039,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                     width: "30%"
                 },
                 NILAI_INDICATOR_1: {
-                    title: "indi 1",
+                    title: "Indikator 1",
                     type: "number",
                     filter: false,
                     editable: false,
@@ -2074,88 +2074,6 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                 },
                 RESULT1: {
                     title: "Result 1",
-                    type: "number",
-                    filter: false,
-                    editable: false,
-                    width: "30%"
-                },
-                NILAI_INDICATOR_2: {
-                    title: "indi 2",
-                    type: "number",
-                    filter: false,
-                    editable: false,
-                    width: "30%",
-                    valuePrepareFunction: function (value) {
-                        if (isNaN(value)) {
-                            return 0;
-                        }
-                        else {
-                            return Number(value)
-                                .toString()
-                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                        }
-                    }
-                },
-                NILAI_REALISASI_2: {
-                    title: "Realisasi 2",
-                    type: "number",
-                    filter: false,
-                    editable: true,
-                    width: "30%",
-                    valuePrepareFunction: function (value) {
-                        if (isNaN(value)) {
-                            return 0;
-                        }
-                        else {
-                            return Number(value)
-                                .toString()
-                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                        }
-                    }
-                },
-                RESULT2: {
-                    title: "Result 2",
-                    type: "number",
-                    filter: false,
-                    editable: false,
-                    width: "30%"
-                },
-                NILAI_INDICATOR_3: {
-                    title: "indi 3",
-                    type: "number",
-                    filter: false,
-                    editable: false,
-                    width: "30%",
-                    valuePrepareFunction: function (value) {
-                        if (isNaN(value)) {
-                            return 0;
-                        }
-                        else {
-                            return Number(value)
-                                .toString()
-                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                        }
-                    }
-                },
-                NILAI_REALISASI_3: {
-                    title: "Realisasi 3",
-                    type: "number",
-                    filter: false,
-                    editable: true,
-                    width: "30%",
-                    valuePrepareFunction: function (value) {
-                        if (isNaN(value)) {
-                            return 0;
-                        }
-                        else {
-                            return Number(value)
-                                .toString()
-                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                        }
-                    }
-                },
-                RESULT3: {
-                    title: "Result 3",
                     type: "number",
                     filter: false,
                     editable: false,
@@ -2199,6 +2117,16 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
         };
         this.loadData();
     }
+    RealisasiQuantitativeComponent.prototype.clone = function (obj) {
+        if (null == obj || "object" != typeof obj)
+            return obj;
+        var copy = obj.constructor();
+        for (var attr in obj) {
+            if (obj.hasOwnProperty(attr))
+                copy[attr] = obj[attr];
+        }
+        return copy;
+    };
     RealisasiQuantitativeComponent.prototype.loadData = function () {
         var _this = this;
         this.service.getreq("mst_ikus").subscribe(function (response) {
@@ -2239,6 +2167,23 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                         item.PERIODE == _this.formData.periodeSelected);
                 });
                 if (arr[0] != null) {
+                    var defaultValueSettings = {
+                        indikator1: "Indikator 1",
+                        indikator2: "Indikator 2",
+                        indikator3: "Indikator 3",
+                        realisasi1: "Realisasi 1",
+                        realisasi2: "Realisasi 2",
+                        realisasi3: "Realisasi 3",
+                    };
+                    if (arr[0].INDIKATOR_1_DESC != "") {
+                        defaultValueSettings.indikator1 = arr[0].INDIKATOR_1_DESC;
+                    }
+                    if (arr[0].INDIKATOR_2_DESC != "") {
+                        defaultValueSettings.indikator2 = arr[0].INDIKATOR_2_DESC;
+                    }
+                    if (arr[0].INDIKATOR_3_DESC != "") {
+                        defaultValueSettings.indikator3 = arr[0].INDIKATOR_3_DESC;
+                    }
                     _this.settings = {
                         add: {
                             addButtonContent: '<i class="nb-plus"></i>',
@@ -2280,7 +2225,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                 width: "30%"
                             },
                             NILAI_INDICATOR_1: {
-                                title: arr[0].INDIKATOR_1_DESC,
+                                title: defaultValueSettings.indikator1,
                                 type: "number",
                                 filter: false,
                                 editable: false,
@@ -2297,7 +2242,188 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                 }
                             },
                             NILAI_REALISASI_1: {
-                                title: arr[0].REALISASI_1_DESC,
+                                title: defaultValueSettings.realisasi1,
+                                type: "number",
+                                filter: false,
+                                editable: true,
+                                width: "30%",
+                                valuePrepareFunction: function (value) {
+                                    if (isNaN(value)) {
+                                        return 0;
+                                    }
+                                    else {
+                                        return Number(value)
+                                            .toString()
+                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                    }
+                                }
+                            },
+                            RESULT1: {
+                                title: "Result 1",
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            },
+                            PENCAPAIAN: {
+                                title: "Pencapaian",
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            }
+                        }
+                    };
+                    _this.settings.columns.NILAI_INDICATOR_1.title = "test";
+                    var satuColumn = {
+                        add: {
+                            addButtonContent: '<i class="nb-plus"></i>',
+                            createButtonContent: '<i class="nb-checkmark"></i>',
+                            cancelButtonContent: '<i class="nb-close"></i>',
+                            confirmCreate: false
+                        },
+                        edit: {
+                            editButtonContent: '<i class="nb-edit"></i>',
+                            saveButtonContent: '<i class="nb-checkmark"></i>',
+                            cancelButtonContent: '<i class="nb-close"></i>',
+                            confirmSave: true
+                        },
+                        delete: {
+                            deleteButtonContent: '<i class="nb-trash"></i>',
+                            confirmDelete: false
+                        },
+                        mode: "inline",
+                        sort: true,
+                        hideSubHeader: true,
+                        actions: {
+                            add: false,
+                            edit: true,
+                            delete: false,
+                            position: "right",
+                            columnTitle: "Modify",
+                            width: "10%"
+                        },
+                        pager: {
+                            display: true,
+                            perPage: 30
+                        },
+                        columns: {
+                            DESC_BANK: {
+                                title: "Bank",
+                                type: "string",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            },
+                            NILAI_INDICATOR_1: {
+                                title: defaultValueSettings.indikator1,
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%",
+                                valuePrepareFunction: function (value) {
+                                    if (isNaN(value)) {
+                                        return 0;
+                                    }
+                                    else {
+                                        return Number(value)
+                                            .toString()
+                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                    }
+                                }
+                            },
+                            NILAI_REALISASI_1: {
+                                title: defaultValueSettings.realisasi1,
+                                type: "number",
+                                filter: false,
+                                editable: true,
+                                width: "30%",
+                                valuePrepareFunction: function (value) {
+                                    if (isNaN(value)) {
+                                        return 0;
+                                    }
+                                    else {
+                                        return Number(value)
+                                            .toString()
+                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                    }
+                                }
+                            },
+                            RESULT1: {
+                                title: "Result 1",
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            },
+                            PENCAPAIAN: {
+                                title: "Pencapaian",
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            }
+                        }
+                    };
+                    var duaColumn = {
+                        add: {
+                            addButtonContent: '<i class="nb-plus"></i>',
+                            createButtonContent: '<i class="nb-checkmark"></i>',
+                            cancelButtonContent: '<i class="nb-close"></i>',
+                            confirmCreate: false
+                        },
+                        edit: {
+                            editButtonContent: '<i class="nb-edit"></i>',
+                            saveButtonContent: '<i class="nb-checkmark"></i>',
+                            cancelButtonContent: '<i class="nb-close"></i>',
+                            confirmSave: true
+                        },
+                        delete: {
+                            deleteButtonContent: '<i class="nb-trash"></i>',
+                            confirmDelete: false
+                        },
+                        mode: "inline",
+                        sort: true,
+                        hideSubHeader: true,
+                        actions: {
+                            add: false,
+                            edit: true,
+                            delete: false,
+                            position: "right",
+                            columnTitle: "Modify",
+                            width: "10%"
+                        },
+                        pager: {
+                            display: true,
+                            perPage: 30
+                        },
+                        columns: {
+                            DESC_BANK: {
+                                title: "Bank",
+                                type: "string",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            },
+                            NILAI_INDICATOR_1: {
+                                title: defaultValueSettings.indikator1,
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%",
+                                valuePrepareFunction: function (value) {
+                                    if (isNaN(value)) {
+                                        return 0;
+                                    }
+                                    else {
+                                        return Number(value)
+                                            .toString()
+                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                    }
+                                }
+                            },
+                            NILAI_REALISASI_1: {
+                                title: defaultValueSettings.realisasi1,
                                 type: "number",
                                 filter: false,
                                 editable: true,
@@ -2321,7 +2447,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                 width: "30%"
                             },
                             NILAI_INDICATOR_2: {
-                                title: arr[0].INDIKATOR_2_DESC,
+                                title: defaultValueSettings.indikator2,
                                 type: "number",
                                 filter: false,
                                 editable: false,
@@ -2338,7 +2464,138 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                 }
                             },
                             NILAI_REALISASI_2: {
-                                title: arr[0].REALISASI_2_DESC,
+                                title: defaultValueSettings.realisasi2,
+                                type: "number",
+                                filter: false,
+                                editable: true,
+                                width: "30%",
+                                valuePrepareFunction: function (value) {
+                                    if (isNaN(value)) {
+                                        return 0;
+                                    }
+                                    else {
+                                        return Number(value)
+                                            .toString()
+                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                    }
+                                }
+                            },
+                            RESULT2: {
+                                title: "Result 2",
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            },
+                            PENCAPAIAN: {
+                                title: "Pencapaian",
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            }
+                        }
+                    };
+                    var tigaColumn = {
+                        add: {
+                            addButtonContent: '<i class="nb-plus"></i>',
+                            createButtonContent: '<i class="nb-checkmark"></i>',
+                            cancelButtonContent: '<i class="nb-close"></i>',
+                            confirmCreate: false
+                        },
+                        edit: {
+                            editButtonContent: '<i class="nb-edit"></i>',
+                            saveButtonContent: '<i class="nb-checkmark"></i>',
+                            cancelButtonContent: '<i class="nb-close"></i>',
+                            confirmSave: true
+                        },
+                        delete: {
+                            deleteButtonContent: '<i class="nb-trash"></i>',
+                            confirmDelete: false
+                        },
+                        mode: "inline",
+                        sort: true,
+                        hideSubHeader: true,
+                        actions: {
+                            add: false,
+                            edit: true,
+                            delete: false,
+                            position: "right",
+                            columnTitle: "Modify",
+                            width: "10%"
+                        },
+                        pager: {
+                            display: true,
+                            perPage: 30
+                        },
+                        columns: {
+                            DESC_BANK: {
+                                title: "Bank",
+                                type: "string",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            },
+                            NILAI_INDICATOR_1: {
+                                title: defaultValueSettings.indikator1,
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%",
+                                valuePrepareFunction: function (value) {
+                                    if (isNaN(value)) {
+                                        return 0;
+                                    }
+                                    else {
+                                        return Number(value)
+                                            .toString()
+                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                    }
+                                }
+                            },
+                            NILAI_REALISASI_1: {
+                                title: defaultValueSettings.realisasi1,
+                                type: "number",
+                                filter: false,
+                                editable: true,
+                                width: "30%",
+                                valuePrepareFunction: function (value) {
+                                    if (isNaN(value)) {
+                                        return 0;
+                                    }
+                                    else {
+                                        return Number(value)
+                                            .toString()
+                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                    }
+                                }
+                            },
+                            RESULT1: {
+                                title: "Result 1",
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%"
+                            },
+                            NILAI_INDICATOR_2: {
+                                title: defaultValueSettings.indikator2,
+                                type: "number",
+                                filter: false,
+                                editable: false,
+                                width: "30%",
+                                valuePrepareFunction: function (value) {
+                                    if (isNaN(value)) {
+                                        return 0;
+                                    }
+                                    else {
+                                        return Number(value)
+                                            .toString()
+                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                    }
+                                }
+                            },
+                            NILAI_REALISASI_2: {
+                                title: defaultValueSettings.realisasi2,
                                 type: "number",
                                 filter: false,
                                 editable: true,
@@ -2362,7 +2619,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                 width: "30%"
                             },
                             NILAI_INDICATOR_3: {
-                                title: arr[0].INDIKATOR_3_DESC,
+                                title: defaultValueSettings.indikator3,
                                 type: "number",
                                 filter: false,
                                 editable: false,
@@ -2379,7 +2636,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                 }
                             },
                             NILAI_REALISASI_3: {
-                                title: arr[0].REALISASI_3_DESC,
+                                title: defaultValueSettings.realisasi3,
                                 type: "number",
                                 filter: false,
                                 editable: true,
@@ -2411,6 +2668,12 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                             }
                         }
                     };
+                    if (arr[0].INDIKATOR_2_DESC != "") {
+                        _this.settings = Object.assign(_this.settings, duaColumn);
+                    }
+                    if (arr[0].INDIKATOR_3_DESC != "") {
+                        _this.settings = Object.assign(_this.settings, tigaColumn);
+                    }
                     _this.formData.indicatorId = arr[0].KODE_INDIKATOR;
                     _this.formData.threshold = arr[0].THRESHOLD;
                     _this.service.getreq("trn_indicator_qn_dtls").subscribe(function (response) {
