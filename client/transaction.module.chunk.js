@@ -846,16 +846,18 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
             backdrop: "static"
         });
         this.activeModal.componentInstance.formData.ikuData = this.formData.ikuData;
-        this.activeModal.componentInstance.formData.periodeSelectedParent = this.formData.periodeSelected;
-        this.activeModal.componentInstance.formData.ikuSelectedParent = this.formData.ikuSelected;
-        this.activeModal.componentInstance.formData.yearPeriodeParent = this.formData.yearPeriode;
+        this.activeModal.componentInstance.formData.ikuSelected = this.formData.ikuSelected;
+        this.activeModal.componentInstance.formData.yearPeriode = this.formData.yearPeriode;
+        this.activeModal.componentInstance.formData.periodeSelected = this.formData.periodeSelected;
         this.activeModal.result.then(function (response) { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                console.log(response);
+                //console.log(response);
                 if (response != null) {
-                    this.tabledata = response.indicatorDetail;
-                    //this.formData.indicatorDetail = response.indicatorDetail;
-                    //this.formData.indicatorId = response.indicatorId;
+                    this.formData.ikuSelected = response.ikuSelected;
+                    this.formData.periodeSelected = response.periodeSelected;
+                    this.formData.yearPeriode = response.yearPeriode;
+                    this.tabledata = response.indicatorQualitativeData;
+                    this.formData.indicatorQualitativeData = response.indicatorQualitativeData;
                     this.source.load(this.tabledata);
                 }
                 return [2 /*return*/];
@@ -897,7 +899,11 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
                         item.PERIODE == _this.formData.periodeSelected);
                 });
                 if (arr[0] != null) {
-                    _this.formData.indicatorQualitativeData = arr;
+                    arr.forEach(function (element, ind) {
+                        element.NO_DETAIL = ind + 1;
+                        _this.formData.indicatorQualitativeData.push(element);
+                    });
+                    _this.toastr.success("Load Data Success!");
                     _this.source.load(_this.formData.indicatorQualitativeData);
                 }
                 else {
@@ -910,9 +916,7 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
     };
     IndicatorQualitativeComponent.prototype.updateData = function () {
         var _this = this;
-        console.log(this.formData.indicatorQualitativeData);
         this.formData.indicatorQualitativeData.forEach(function (element) {
-            console.log(element);
             _this.service.postreq("trn_indicator_qls/crud", element).subscribe(function (response) {
                 console.log(response);
             }, function (error) {
@@ -1025,17 +1029,12 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
             noDetail: 1,
             yearPeriode: __WEBPACK_IMPORTED_MODULE_2_moment__().format("YYYY"),
             descriptionIndicator: "",
-            indicatorQualitativeData: [],
-            indicatorDetail: [],
-            periodeSelectedParent: "",
-            ikuSelectedParent: "",
-            yearPeriodeParent: ""
+            indicatorQualitativeData: []
         };
         this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
     }
     IndicatorQualitativeModalComponent.prototype.generateDetail = function () {
         var _this = this;
-        console.log("no detail sebelum", this.formData.noDetail);
         this.service.getreq("trn_indicator_qls").subscribe(function (response) {
             if (response != null) {
                 var arr = response.filter(function (item) {
@@ -1043,13 +1042,8 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
                         item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
                         item.PERIODE == _this.formData.periodeSelected);
                 });
-                console.log("total output api", arr.length);
                 if (Array.isArray(arr) && arr.length) {
                     _this.formData.noDetail = arr.length + 1;
-                    console.log("no detail sesudah", _this.formData.noDetail);
-                }
-                else {
-                    console.log('arr respon = 0');
                 }
                 var header = {
                     KODE_IKU: _this.formData.ikuSelected,
@@ -1063,9 +1057,9 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
                     USER_UPDATED: "Admin",
                     DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_2_moment__().format()
                 };
-                console.log(header);
                 _this.service.postreq("trn_indicator_qls/crud", header).subscribe(function (response) {
                     if (response != null) {
+                        //console.log(response)
                     }
                 });
                 _this.formData.noDetail = 1;
@@ -1082,12 +1076,23 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
                         item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
                         item.PERIODE == _this.formData.periodeSelected);
                 });
-                var data = arr;
                 if (arr[0] != null) {
+                    var data = {
+                        ikuSelected: _this.formData.ikuSelected,
+                        yearPeriode: _this.formData.yearPeriode,
+                        periodeSelected: _this.formData.periodeSelected,
+                        indicatorQualitativeData: arr
+                    };
+                    _this.formData.indicatorQualitativeData = arr;
                     _this.toastr.success("New Data Added!");
                     _this.activeModal.close(data);
                 }
                 else {
+                    var data = {
+                        ikuSelected: _this.formData.ikuSelected,
+                        yearPeriode: _this.formData.yearPeriode,
+                        periodeSelected: _this.formData.periodeSelected
+                    };
                     _this.toastr.error("Data Not Found!");
                     _this.activeModal.close(data);
                 }
@@ -1119,7 +1124,7 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/indicator-quantitative/indicator.quantitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-5\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-6\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Threshold\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-3\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.threshold\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Indicator ID\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-sm-7\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Indicator 1 Description\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\"  [(ngModel)]=\"formData.indicator1\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Indicator 2 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Indicator 3 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 1 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [class.green]=\"isDisabled\" [disabled]=\"!formData.indicator1\" [(ngModel)]=\"formData.realisasi1\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 2 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [disabled]=\"!formData.indicator2\" [(ngModel)]=\"formData.realisasi2\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 3 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [disabled]=\"!formData.indicator3\" [(ngModel)]=\"formData.realisasi3\">\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"showModal()\" >Fetch</button>\n      </div>\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"generateDetail()\">Input Detail</button>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold||!formData.indicator1||!formData.realisasi1\"\n          (click)=\"save()\">Submit</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-5\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-6\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Threshold\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-3\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.threshold\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Indicator ID\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-sm-7\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Indicator 1 Description\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator1\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-2 col-form-label\">Realisasi 1 Description\n  \n            </label>\n            <div class=\"col-sm-8\">\n              <input class=\"form-control\" [class.green]=\"isDisabled\" [disabled]=\"!formData.indicator1\" [(ngModel)]=\"formData.realisasi1\">\n            </div>\n          </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\" >Indicator 2 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\" [disabled]=\"!formData.realisasi1\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-2 col-form-label\">Realisasi 2 Description\n  \n            </label>\n            <div class=\"col-sm-8\">\n              <input class=\"form-control\" [disabled]=\"!formData.indicator2\" [(ngModel)]=\"formData.realisasi2\">\n            </div>\n          </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Indicator 3 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\" [disabled]=\"!formData.realisasi2\">\n          </div>\n        </div>\n       \n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 3 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [disabled]=\"!formData.indicator3\" [(ngModel)]=\"formData.realisasi3\">\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"showModal()\">Fetch</button>\n      </div>\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"generateDetail()\">Input Detail</button>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold||!formData.indicator1||!formData.realisasi1\"\n          (click)=\"save()\">Submit</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -1440,7 +1445,7 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/indicator-quantitative/modal/indicator.quantitative.modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>Input Accident</nb-card-header>\n  <nb-card-body>\n\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-6\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-6\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-6\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-sm-auto\">\n      <div class=\"form-group\">\n        <button type=\"submit\" class=\"btn btn-danger\" (click)=\"loadData()\">Select</button>\n\n      </div>\n    </div>\n  </nb-card-body>\n</nb-card>\n\n<!-- { COUNTER_NO: 1, YEAR_ACTIVE: \"2018\", DESCRIPTION: \"hehehe\", CONDITION: \"IMP\", INDICATOR_name: \"IMP001\", SCORE: 123 }, -->\n"
+module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Input Accident</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n      <span aria-hidden=\"true\">&times;</span>\n  </button>\n</div>\n\n<div class=\"modal-body\">\n  <div class=\"row\">\n    <div class=\"col-sm-4\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">IKU\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n            <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Tahun\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Periode\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n            <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"col-sm-auto\">\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-success\" (click)=\"loadData()\">Select</button>\n      <button type=\"submit\" class=\"btn btn-danger\" (click)=closeModal()>Cancel</button>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1579,7 +1584,7 @@ var IndicatorQuantitativeModalComponent = /** @class */ (function () {
     };
     IndicatorQuantitativeModalComponent.prototype.submit = function () { };
     IndicatorQuantitativeModalComponent.prototype.closeModal = function () {
-        this.activeModal.close(false);
+        this.activeModal.close();
     };
     IndicatorQuantitativeModalComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
@@ -2120,6 +2125,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                     };
                     if (arr[0].INDIKATOR_1_DESC != "") {
                         defaultValueSettings.indikator1 = arr[0].INDIKATOR_1_DESC;
+                        defaultValueSettings.realisasi1 = arr[0].REALISASI_1_DESC;
                         _this.nilaiIndicatorCheck.indicatorbool1 = true;
                     }
                     else {
@@ -2127,6 +2133,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                     }
                     if (arr[0].INDIKATOR_2_DESC != "") {
                         defaultValueSettings.indikator2 = arr[0].INDIKATOR_2_DESC;
+                        defaultValueSettings.realisasi2 = arr[0].REALISASI_2_DESC;
                         _this.nilaiIndicatorCheck.indicatorbool2 = true;
                     }
                     else {
@@ -2134,6 +2141,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                     }
                     if (arr[0].INDIKATOR_3_DESC != "") {
                         defaultValueSettings.indikator3 = arr[0].INDIKATOR_3_DESC;
+                        defaultValueSettings.realisasi3 = arr[0].REALISASI_3_DESC;
                         _this.nilaiIndicatorCheck.indicatorbool3 = true;
                     }
                     else {
@@ -2639,7 +2647,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                             });
                             if (arrDtl[0] != null) {
                                 var realisasiDetail_1 = [];
-                                arrDtl.forEach(function (element, ind) {
+                                arrDtl.forEach(function (element) {
                                     var detail = {
                                         KODE_IKU: _this.formData.ikuSelected,
                                         TAHUN_REALISASI: _this.formData.yearPeriode,
