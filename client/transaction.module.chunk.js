@@ -856,9 +856,8 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
                     this.formData.ikuSelected = response.ikuSelected;
                     this.formData.periodeSelected = response.periodeSelected;
                     this.formData.yearPeriode = response.yearPeriode;
-                    this.tabledata = response.indicatorQualitativeData;
-                    this.formData.indicatorQualitativeData = response.indicatorQualitativeData;
-                    this.source.load(this.tabledata);
+                    this.generateDetail();
+                    this.source.refresh();
                 }
                 return [2 /*return*/];
             });
@@ -899,18 +898,22 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
                         item.PERIODE == _this.formData.periodeSelected);
                 });
                 if (arr[0] != null) {
+                    var indicatorQualitativeDetail_1 = [];
                     arr.forEach(function (element, ind) {
                         element.NO_DETAIL = ind + 1;
-                        _this.formData.indicatorQualitativeData.push(element);
+                        indicatorQualitativeDetail_1.push(element);
                     });
+                    _this.tabledata = indicatorQualitativeDetail_1;
+                    _this.formData.indicatorQualitativeData = indicatorQualitativeDetail_1;
                     _this.toastr.success("Load Data Success!");
-                    _this.source.load(_this.formData.indicatorQualitativeData);
+                    _this.source.load(_this.tabledata);
                     console.log(_this.tabledata);
                 }
                 else {
                     _this.toastr.error("Data Not Found!");
                     _this.tabledata = [];
                     _this.source.load(_this.tabledata);
+                    _this.source.refresh();
                 }
             }
         });
@@ -954,7 +957,7 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/indicator-qualitative/modal/indicator.qualitative.modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Input New Data</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n    \n  </button>\n</div>\n<div class=\"modal-body\">\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">IKU\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n            <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">Tahun\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-1\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">Periode\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-2\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n            <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">Tipe Data\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-2\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.tipeDataSelected\">\n            <option *ngFor=\"let data of formData.tipeData\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">Deskripsi\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.descriptionIndicator\">\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"col-sm-auto\">\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-success\" (click)=\"generateDetail()\">Add New Data</button>\n      <button type=\"submit\" class=\"btn btn-danger\" (click)=\"closeModal()\">Cancel</button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Input New Data</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n    \n  </button>\n</div>\n<div class=\"modal-body\">\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">IKU\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n            <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">Tahun\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-1\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">Periode\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-2\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n            <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">Tipe Data\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-2\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.tipeDataSelected\">\n            <option *ngFor=\"let data of formData.tipeData\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-1 col-form-label\">Deskripsi\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.descriptionIndicator\">\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"col-sm-auto\">\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-success\" (click)=\"saveData()\">Add New Data</button>\n      <button type=\"submit\" class=\"btn btn-danger\" (click)=\"closeModal()\">Cancel</button>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1034,7 +1037,7 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
         };
         this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
     }
-    IndicatorQualitativeModalComponent.prototype.generateDetail = function () {
+    IndicatorQualitativeModalComponent.prototype.saveData = function () {
         var _this = this;
         this.service.getreq("trn_indicator_qls").subscribe(function (response) {
             if (response != null) {
@@ -1043,8 +1046,11 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
                         item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
                         item.PERIODE == _this.formData.periodeSelected);
                 });
-                if (Array.isArray(arr) && arr.length) {
+                if (arr[0] != null) {
                     _this.formData.noDetail = arr.length + 1;
+                }
+                else {
+                    _this.formData.noDetail = 1;
                 }
                 var header = {
                     KODE_IKU: _this.formData.ikuSelected,
@@ -1060,11 +1066,16 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
                 };
                 _this.service.postreq("trn_indicator_qls/crud", header).subscribe(function (response) {
                     if (response != null) {
-                        //console.log(response)
+                        console.log(response);
                     }
                 });
-                _this.formData.noDetail = 1;
-                _this.generateTable();
+                _this.toastr.success("New Data Added!");
+                var data = {
+                    ikuSelected: _this.formData.ikuSelected,
+                    yearPeriode: _this.formData.yearPeriode,
+                    periodeSelected: _this.formData.periodeSelected
+                };
+                _this.activeModal.close(data);
             }
         });
     };
@@ -1078,13 +1089,18 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
                         item.PERIODE == _this.formData.periodeSelected);
                 });
                 if (arr[0] != null) {
+                    var indicatorQualitativeModalData_1 = [];
+                    arr.forEach(function (element, ind) {
+                        element.NO_DETAIL = ind + 1;
+                        indicatorQualitativeModalData_1.push(element);
+                    });
                     var data = {
                         ikuSelected: _this.formData.ikuSelected,
                         yearPeriode: _this.formData.yearPeriode,
                         periodeSelected: _this.formData.periodeSelected,
-                        indicatorQualitativeData: arr
+                        indicatorQualitativeData: indicatorQualitativeModalData_1
                     };
-                    _this.formData.indicatorQualitativeData = arr;
+                    _this.formData.indicatorQualitativeData = indicatorQualitativeModalData_1;
                     _this.toastr.success("New Data Added!");
                     _this.activeModal.close(data);
                 }
@@ -1092,7 +1108,8 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
                     var data = {
                         ikuSelected: _this.formData.ikuSelected,
                         yearPeriode: _this.formData.yearPeriode,
-                        periodeSelected: _this.formData.periodeSelected
+                        periodeSelected: _this.formData.periodeSelected,
+                        indicatorQualitativeData: []
                     };
                     _this.toastr.error("Data Not Found!");
                     _this.activeModal.close(data);
@@ -1765,10 +1782,1330 @@ var IndicatorQuantitativeModalComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pages/transaction/mona-realisasi/modal/mona.realisasi.modal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Input Accident</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n      <span aria-hidden=\"true\">&times;</span>\n  </button>\n</div>\n\n<div class=\"modal-body\">\n  <div class=\"row\">\n    <div class=\"col-sm-5\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">IKU\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-9\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n            <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Tahun\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Periode\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n            <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Threshold\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-3\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.threshold\">\n        </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-7\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Indicator 1 Description\n            <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator1\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 1 Description\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasi1\">\n          </div>\n        </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\" >Indicator 2 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\" [disabled]=\"!formData.realisasi1\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 2 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [disabled]=\"!formData.realisasi1\" [(ngModel)]=\"formData.realisasi2\">\n          </div>\n        </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Indicator 3 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\" [disabled]=\"!formData.realisasi2\">\n        </div>\n      </div>\n     \n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Realisasi 3 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [disabled]=\"!formData.realisasi2\" [(ngModel)]=\"formData.realisasi3\">\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-auto\">\n      <div class=\"form-group\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addNewData()\" \n        [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold||!formData.indicator1||!formData.realisasi1\">Add New Data</button>\n        <button type=\"submit\" class=\"btn btn-danger\" (click)=closeModal()>Cancel</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/mona-realisasi/modal/mona.realisasi.modal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MonaRealisasiModalComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var MonaRealisasiModalComponent = /** @class */ (function () {
+    function MonaRealisasiModalComponent(activeModal, toastr, service) {
+        this.activeModal = activeModal;
+        this.toastr = toastr;
+        this.service = service;
+        this.formData = {
+            periode: [
+                {
+                    id: "TW1",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "TW2",
+                    desc: "Triwulan 2"
+                },
+                {
+                    id: "TW3",
+                    desc: "Triwulan 3"
+                },
+                {
+                    id: "TW4",
+                    desc: "Triwulan 4"
+                }
+            ],
+            periodeSelected: "",
+            ikuData: [],
+            ikuSelected: "",
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_3_moment__().format("YYYY"),
+            bankData: [],
+            indicatorDetail: [],
+            threshold: 0,
+            indicator1: "",
+            indicator2: "",
+            indicator3: "",
+            realisasi1: "",
+            realisasi2: "",
+            realisasi3: ""
+        };
+        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
+    }
+    MonaRealisasiModalComponent.prototype.addNewData = function () {
+        var _this = this;
+        var header = {
+            KODE_IKU: this.formData.ikuSelected,
+            TAHUN_INDICATOR: this.formData.yearPeriode,
+            PERIODE: this.formData.periodeSelected,
+            KODE_INDIKATOR: "FET" +
+                this.formData.ikuSelected +
+                this.formData.yearPeriode +
+                this.formData.periodeSelected,
+            THRESHOLD: this.formData.threshold,
+            INDIKATOR_1_DESC: this.formData.indicator1,
+            INDIKATOR_2_DESC: this.formData.indicator2,
+            INDIKATOR_3_DESC: this.formData.indicator3,
+            REALISASI_1_DESC: this.formData.realisasi1,
+            REALISASI_2_DESC: this.formData.realisasi2,
+            REALISASI_3_DESC: this.formData.realisasi3,
+            USER_CREATED: "admin",
+            DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+            USER_UPDATED: "admin",
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format()
+        };
+        this.service.postreq("trn_indicator_qns", header).subscribe(function (response) {
+            if (response != null) {
+                _this.toastr.success("Data Added!");
+                var data = {
+                    ikuSelected: _this.formData.ikuSelected,
+                    periodeSelected: _this.formData.periodeSelected,
+                    yearPeriode: _this.formData.yearPeriode
+                };
+                _this.activeModal.close(data);
+            }
+            else {
+                _this.toastr.error("Add Data Failed!");
+            }
+        });
+    };
+    MonaRealisasiModalComponent.prototype.loadData = function () {
+        var _this = this;
+        this.service.getreq("mst_banks").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.bankData = response;
+                _this.service.getreq("trn_realization_qn_dtls").subscribe(function (response) {
+                    if (response != null) {
+                        _this.formData.bankData.forEach(function (element, ind) {
+                            var arr = response.filter(function (item) {
+                                return (item.KODE_IKU == _this.formData.ikuSelected &&
+                                    item.TAHUN_REALISASI == _this.formData.yearPeriode &&
+                                    item.PERIODE == _this.formData.periodeSelected &&
+                                    item.KODE_BANK == element.ID_BANK);
+                            });
+                            console.log(arr);
+                            if (arr[0] == null) {
+                                var detail = {
+                                    KODE_IKU: _this.formData.ikuSelected,
+                                    TAHUN_INDICATOR: _this.formData.yearPeriode,
+                                    PERIODE: _this.formData.periodeSelected,
+                                    KODE_BANK: element.ID_BANK,
+                                    NILAI_INDICATOR_1: 0,
+                                    NILAI_INDICATOR_2: 0,
+                                    NILAI_INDICATOR_3: 0,
+                                    USER_CREATED: "Admin",
+                                    DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+                                    USER_UPDATED: "Admin",
+                                    DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+                                    DESC_BANK: element.DESCRIPTION
+                                };
+                                _this.formData.indicatorDetail.push(detail);
+                            }
+                            else {
+                                console.log(arr);
+                                var detail = {
+                                    KODE_IKU: _this.formData.ikuSelected,
+                                    TAHUN_INDICATOR: _this.formData.yearPeriode,
+                                    PERIODE: _this.formData.periodeSelected,
+                                    KODE_BANK: element.ID_BANK,
+                                    NILAI_INDICATOR_1: arr[0].NILAI_REALISASI_1,
+                                    NILAI_INDICATOR_2: arr[0].NILAI_REALISASI_2,
+                                    NILAI_INDICATOR_3: arr[0].NILAI_REALISASI_3,
+                                    USER_CREATED: "Admin",
+                                    DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+                                    USER_UPDATED: "Admin",
+                                    DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+                                    DESC_BANK: element.DESCRIPTION
+                                };
+                                _this.formData.indicatorDetail.push(detail);
+                            }
+                        });
+                        var data = {
+                            indicatorDetail: _this.formData.indicatorDetail,
+                            indicatorId: "FET" +
+                                _this.formData.ikuSelected +
+                                _this.formData.yearPeriode +
+                                _this.formData.periodeSelected
+                        };
+                        _this.activeModal.close(data);
+                    }
+                    // error => {
+                    //   console.log(error);
+                    // };
+                });
+            }
+            // error => {
+            //   console.log(error);
+            // };
+        });
+    };
+    MonaRealisasiModalComponent.prototype.refreshSelected = function (event) {
+        // this.selectedData = event.data;
+    };
+    MonaRealisasiModalComponent.prototype.submit = function () { };
+    MonaRealisasiModalComponent.prototype.closeModal = function () {
+        this.activeModal.close();
+    };
+    MonaRealisasiModalComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: "ngx-mona-realisasi-modal",
+            template: __webpack_require__("./src/app/pages/transaction/mona-realisasi/modal/mona.realisasi.modal.component.html"),
+            styles: ["\n  input:disabled {\n    background-color: rgba(211,211,211, 0.6);\n }"]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
+            __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__["a" /* BackendService */]])
+    ], MonaRealisasiModalComponent);
+    return MonaRealisasiModalComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/mona-realisasi/mona.realisasi.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\n  <nb-card-header>MONA</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Dokumen\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.KODE_IKU}}\">{{ data.id }}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Bank\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Start Date\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            \n              <div class=\"input-group\">\n                <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"d1\" [(ngModel)]=\"formData.startDate\" ngbDatepicker #d1=\"ngbDatepicker\">\n                <div class=\"input-group-append\">\n                  <button class=\"btn btn-outline-secondary\" (click)=\"d1.toggle()\" type=\"button\">\n                    <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\" />\n                  </button>\n                </div>\n              </div>\n            \n\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Target Date\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <div class=\"input-group\">\n              <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"d2\" [(ngModel)]=\"formData.targetDate\" ngbDatepicker #d2=\"ngbDatepicker\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary\" (click)=\"d2.toggle()\" type=\"button\">\n                  <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\" />\n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Realisasi Date\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <div class=\"input-group\">\n              <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"d3\" [(ngModel)]=\"formData.realizationDate\" ngbDatepicker #d3=\"ngbDatepicker\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary\" (click)=\"d3.toggle()\" type=\"button\">\n                  <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\" />\n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold\"\n          (click)=\"save()\">Save Data</button>\n      </div>\n      <br><br><br><br><br><br><br><br><br><br><br><br><br>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/mona-realisasi/mona.realisasi.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MonaRealisasiComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_mona_realisasi_modal_component__ = __webpack_require__("./src/app/pages/transaction/mona-realisasi/modal/mona.realisasi.modal.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+
+var MonaRealisasiComponent = /** @class */ (function () {
+    function MonaRealisasiComponent(modalService, toastr, service) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.tabledata = [];
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: false
+            },
+            edit: {
+                editButtonContent: '<i class="nb-edit"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: false
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: false
+            },
+            mode: "inline",
+            sort: true,
+            hideSubHeader: true,
+            actions: {
+                add: false,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Modify",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                DESC_BANK: {
+                    title: "Bank",
+                    type: "string",
+                    filter: false,
+                    editable: false,
+                    width: "25%"
+                },
+                NILAI_INDICATOR_1: {
+                    title: "Nilai 1",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "25%",
+                    valuePrepareFunction: function (value) {
+                        if (isNaN(value)) {
+                            return 0;
+                        }
+                        else {
+                            return Number(value)
+                                .toString()
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                        }
+                    }
+                },
+                NILAI_INDICATOR_2: {
+                    title: "Nilai 2",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "25%",
+                    valuePrepareFunction: function (value) {
+                        if (isNaN(value)) {
+                            return 0;
+                        }
+                        else {
+                            return Number(value)
+                                .toString()
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                        }
+                    }
+                },
+                NILAI_INDICATOR_3: {
+                    title: "Nilai 3",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "25%",
+                    valuePrepareFunction: function (value) {
+                        if (isNaN(value)) {
+                            return 0;
+                        }
+                        else {
+                            return Number(value)
+                                .toString()
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                        }
+                    }
+                }
+            }
+        };
+        this.formData = {
+            documentData: [
+                {
+                    id: "RBP",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "Lain-lain",
+                    desc: "Triwulan 2"
+                }
+            ],
+            periodeSelected: "",
+            documentSelected: "",
+            bankSelected: "",
+            startDate: "",
+            targetDate: "",
+            realizationDate: "",
+            ikuData: [],
+            ikuSelected: "",
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
+            threshold: 0,
+            indicatorId: "",
+            indicator1: "",
+            indicator2: "",
+            indicator3: "",
+            realisasi1: "",
+            realisasi2: "",
+            realisasi3: "",
+            bankData: [],
+            indicatorDetail: []
+        };
+        this.loadData();
+    }
+    MonaRealisasiComponent.prototype.loadData = function () {
+        var _this = this;
+        this.service.getreq("mst_ikus").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.ikuData = response;
+            }
+        });
+        this.service.getreq("mst_banks").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.bankData = response;
+            }
+        });
+    };
+    MonaRealisasiComponent.prototype.showModal = function () {
+        var _this = this;
+        this.activeModal = this.modalService.open(__WEBPACK_IMPORTED_MODULE_7__modal_mona_realisasi_modal_component__["a" /* MonaRealisasiModalComponent */], {
+            windowClass: "xlModal",
+            container: "nb-layout",
+            backdrop: "static"
+        });
+        this.activeModal.componentInstance.formData.ikuData = this.formData.ikuData;
+        this.activeModal.componentInstance.formData.periodeSelected = this.formData.periodeSelected;
+        this.activeModal.componentInstance.formData.ikuSelected = this.formData.ikuSelected;
+        this.activeModal.componentInstance.formData.yearPeriode = this.formData.yearPeriode;
+        this.activeModal.result.then(function (response) { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                console.log(response);
+                if (response != null) {
+                    this.formData.ikuSelected = response.ikuSelected;
+                    this.formData.periodeSelected = response.periodeSelected;
+                    this.formData.yearPeriode = response.yearPeriode;
+                    this.getData();
+                }
+                return [2 /*return*/];
+            });
+        }); }, function (error) { });
+    };
+    MonaRealisasiComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KODE_IKU == event.newData.KODE_IKU) {
+                element.KODE_IKU = event.newData.KODE_IKU;
+                element.DESKRIPSI = event.newData.DESKRIPSI;
+                element.TIPE_IKU = event.newData.TIPE_IKU;
+                _this.service
+                    .patchreq("mst_ikus", _this.tabledata[ind])
+                    .subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    MonaRealisasiComponent.prototype.getData = function () {
+        var _this = this;
+        this.service.getreq("trn_indicator_qns").subscribe(function (response) {
+            if (response != null) {
+                var res = response.filter(function (item) {
+                    return (item.KODE_IKU == _this.formData.ikuSelected &&
+                        item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
+                        item.PERIODE == _this.formData.periodeSelected);
+                });
+                if (res[0] != null) {
+                    _this.formData.indicator1 = res[0].INDIKATOR_1_DESC;
+                    _this.formData.indicator2 = res[0].INDIKATOR_2_DESC;
+                    _this.formData.indicator3 = res[0].INDIKATOR_3_DESC;
+                    _this.formData.realisasi1 = res[0].REALISASI_1_DESC;
+                    _this.formData.realisasi2 = res[0].REALISASI_2_DESC;
+                    _this.formData.realisasi3 = res[0].REALISASI_3_DESC;
+                    _this.formData.threshold = res[0].THRESHOLD;
+                    _this.formData.indicatorId = res[0].KODE_INDIKATOR;
+                    _this.service.getreq("mst_banks").subscribe(function (response) {
+                        if (response != null) {
+                            _this.formData.bankData = response;
+                            var indicatorDetail_1 = [];
+                            _this.service.getreq("trn_indicator_qn_dtls").subscribe(function (responseDtl) {
+                                if (responseDtl != null) {
+                                    _this.formData.bankData.forEach(function (element, ind) {
+                                        var arr = responseDtl.filter(function (item) {
+                                            return (item.KODE_IKU == _this.formData.ikuSelected &&
+                                                item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
+                                                item.PERIODE == _this.formData.periodeSelected &&
+                                                item.KODE_BANK == element.ID_BANK);
+                                        });
+                                        if (arr[0] == null) {
+                                            console.log(arr);
+                                            var detail = {
+                                                KODE_IKU: _this.formData.ikuSelected,
+                                                TAHUN_INDICATOR: _this.formData.yearPeriode,
+                                                PERIODE: _this.formData.periodeSelected,
+                                                KODE_BANK: element.ID_BANK,
+                                                NILAI_INDICATOR_1: 0,
+                                                NILAI_INDICATOR_2: 0,
+                                                NILAI_INDICATOR_3: 0,
+                                                USER_CREATED: "Admin",
+                                                DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                                USER_UPDATED: "Admin",
+                                                DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                                DESC_BANK: element.DESCRIPTION
+                                            };
+                                            indicatorDetail_1.push(detail);
+                                        }
+                                        else {
+                                            console.log(arr);
+                                            var detail = {
+                                                KODE_IKU: _this.formData.ikuSelected,
+                                                TAHUN_INDICATOR: _this.formData.yearPeriode,
+                                                PERIODE: _this.formData.periodeSelected,
+                                                KODE_BANK: element.ID_BANK,
+                                                NILAI_INDICATOR_1: arr[0].NILAI_INDICATOR_1,
+                                                NILAI_INDICATOR_2: arr[0].NILAI_INDICATOR_2,
+                                                NILAI_INDICATOR_3: arr[0].NILAI_INDICATOR_3,
+                                                USER_CREATED: "Admin",
+                                                DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                                USER_UPDATED: "Admin",
+                                                DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                                DESC_BANK: element.DESCRIPTION
+                                            };
+                                            indicatorDetail_1.push(detail);
+                                        }
+                                    });
+                                    _this.tabledata = indicatorDetail_1;
+                                    _this.formData.indicatorDetail = indicatorDetail_1;
+                                    _this.formData.indicatorId =
+                                        "RBB" +
+                                            _this.formData.ikuSelected +
+                                            _this.formData.yearPeriode +
+                                            _this.formData.periodeSelected;
+                                    _this.source.load(_this.tabledata);
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    _this.toastr.error("Data Not Found!");
+                }
+            }
+        });
+    };
+    MonaRealisasiComponent.prototype.generateDetail = function () {
+        var _this = this;
+        this.service.getreq("mst_banks").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.bankData = response;
+                var indicatorDetail_2 = [];
+                _this.formData.bankData.forEach(function (element, ind) {
+                    var detail = {
+                        KODE_IKU: _this.formData.ikuSelected,
+                        TAHUN_INDICATOR: _this.formData.yearPeriode,
+                        PERIODE: _this.formData.periodeSelected,
+                        KODE_BANK: element.ID_BANK,
+                        NILAI_INDICATOR_1: 0,
+                        NILAI_INDICATOR_2: 0,
+                        NILAI_INDICATOR_3: 0,
+                        USER_CREATED: "Admin",
+                        DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                        USER_UPDATED: "Admin",
+                        DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                        DESC_BANK: element.DESCRIPTION
+                    };
+                    indicatorDetail_2.push(detail);
+                });
+                _this.tabledata = indicatorDetail_2;
+                _this.formData.indicatorDetail = indicatorDetail_2;
+                _this.formData.indicatorId =
+                    "RBB" +
+                        _this.formData.ikuSelected +
+                        _this.formData.yearPeriode +
+                        _this.formData.periodeSelected;
+                _this.source.load(_this.tabledata);
+            }
+            // error => {
+            //   console.log(error);
+            // };
+        });
+    };
+    MonaRealisasiComponent.prototype.save = function () {
+        var _this = this;
+        var header = {
+            KODE_IKU: this.formData.ikuSelected,
+            TAHUN_INDICATOR: this.formData.yearPeriode,
+            PERIODE: this.formData.periodeSelected,
+            KODE_INDIKATOR: this.formData.indicatorId,
+            THRESHOLD: this.formData.threshold,
+            INDIKATOR_1_DESC: this.formData.indicator1,
+            INDIKATOR_2_DESC: this.formData.indicator2,
+            INDIKATOR_3_DESC: this.formData.indicator3,
+            REALISASI_1_DESC: this.formData.realisasi1,
+            REALISASI_2_DESC: this.formData.realisasi2,
+            REALISASI_3_DESC: this.formData.realisasi3,
+            USER_CREATED: "Admin",
+            DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+            USER_UPDATED: "Admin",
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        this.service.postreq("trn_indicator_qns/crud", header).subscribe(function (response) {
+            console.log(response);
+            _this.formData.indicatorDetail.forEach(function (element, ind) {
+                _this.service.postreq("trn_indicator_qn_dtls/crud", element).subscribe(function (response) {
+                    console.log(response);
+                }, function (error) {
+                    console.log("indicator detail");
+                    console.log(error);
+                });
+            });
+            _this.toastr.success("Data Saved!");
+        }, function (error) {
+            console.log("indicator header");
+            console.log(error);
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], MonaRealisasiComponent.prototype, "myForm", void 0);
+    MonaRealisasiComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-mona-realisasi",
+            template: __webpack_require__("./src/app/pages/transaction/mona-realisasi/mona.realisasi.component.html"),
+            styles: ["\n  input:disabled {\n    background-color: rgba(211,211,211, 0.6);\n }"]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+    ], MonaRealisasiComponent);
+    return MonaRealisasiComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/mona-target/modal/mona.target.modal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Input Accident</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n      <span aria-hidden=\"true\">&times;</span>\n  </button>\n</div>\n\n<div class=\"modal-body\">\n  <div class=\"row\">\n    <div class=\"col-sm-5\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">IKU\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-9\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n            <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Tahun\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Periode\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n            <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Threshold\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-3\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.threshold\">\n        </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-7\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Indicator 1 Description\n            <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator1\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 1 Description\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasi1\">\n          </div>\n        </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\" >Indicator 2 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\" [disabled]=\"!formData.realisasi1\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 2 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [disabled]=\"!formData.realisasi1\" [(ngModel)]=\"formData.realisasi2\">\n          </div>\n        </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Indicator 3 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\" [disabled]=\"!formData.realisasi2\">\n        </div>\n      </div>\n     \n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Realisasi 3 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [disabled]=\"!formData.realisasi2\" [(ngModel)]=\"formData.realisasi3\">\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-auto\">\n      <div class=\"form-group\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addNewData()\" \n        [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold||!formData.indicator1||!formData.realisasi1\">Add New Data</button>\n        <button type=\"submit\" class=\"btn btn-danger\" (click)=closeModal()>Cancel</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/mona-target/modal/mona.target.modal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MonaTargetModalComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var MonaTargetModalComponent = /** @class */ (function () {
+    function MonaTargetModalComponent(activeModal, toastr, service) {
+        this.activeModal = activeModal;
+        this.toastr = toastr;
+        this.service = service;
+        this.formData = {
+            periode: [
+                {
+                    id: "TW1",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "TW2",
+                    desc: "Triwulan 2"
+                },
+                {
+                    id: "TW3",
+                    desc: "Triwulan 3"
+                },
+                {
+                    id: "TW4",
+                    desc: "Triwulan 4"
+                }
+            ],
+            periodeSelected: "",
+            ikuData: [],
+            ikuSelected: "",
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_3_moment__().format("YYYY"),
+            bankData: [],
+            indicatorDetail: [],
+            threshold: 0,
+            indicator1: "",
+            indicator2: "",
+            indicator3: "",
+            realisasi1: "",
+            realisasi2: "",
+            realisasi3: ""
+        };
+        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
+    }
+    MonaTargetModalComponent.prototype.addNewData = function () {
+        var _this = this;
+        var header = {
+            KODE_IKU: this.formData.ikuSelected,
+            TAHUN_INDICATOR: this.formData.yearPeriode,
+            PERIODE: this.formData.periodeSelected,
+            KODE_INDIKATOR: "FET" +
+                this.formData.ikuSelected +
+                this.formData.yearPeriode +
+                this.formData.periodeSelected,
+            THRESHOLD: this.formData.threshold,
+            INDIKATOR_1_DESC: this.formData.indicator1,
+            INDIKATOR_2_DESC: this.formData.indicator2,
+            INDIKATOR_3_DESC: this.formData.indicator3,
+            REALISASI_1_DESC: this.formData.realisasi1,
+            REALISASI_2_DESC: this.formData.realisasi2,
+            REALISASI_3_DESC: this.formData.realisasi3,
+            USER_CREATED: "admin",
+            DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+            USER_UPDATED: "admin",
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format()
+        };
+        this.service.postreq("trn_indicator_qns", header).subscribe(function (response) {
+            if (response != null) {
+                _this.toastr.success("Data Added!");
+                var data = {
+                    ikuSelected: _this.formData.ikuSelected,
+                    periodeSelected: _this.formData.periodeSelected,
+                    yearPeriode: _this.formData.yearPeriode
+                };
+                _this.activeModal.close(data);
+            }
+            else {
+                _this.toastr.error("Add Data Failed!");
+            }
+        });
+    };
+    MonaTargetModalComponent.prototype.loadData = function () {
+        var _this = this;
+        this.service.getreq("mst_banks").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.bankData = response;
+                _this.service.getreq("trn_realization_qn_dtls").subscribe(function (response) {
+                    if (response != null) {
+                        _this.formData.bankData.forEach(function (element, ind) {
+                            var arr = response.filter(function (item) {
+                                return (item.KODE_IKU == _this.formData.ikuSelected &&
+                                    item.TAHUN_REALISASI == _this.formData.yearPeriode &&
+                                    item.PERIODE == _this.formData.periodeSelected &&
+                                    item.KODE_BANK == element.ID_BANK);
+                            });
+                            console.log(arr);
+                            if (arr[0] == null) {
+                                var detail = {
+                                    KODE_IKU: _this.formData.ikuSelected,
+                                    TAHUN_INDICATOR: _this.formData.yearPeriode,
+                                    PERIODE: _this.formData.periodeSelected,
+                                    KODE_BANK: element.ID_BANK,
+                                    NILAI_INDICATOR_1: 0,
+                                    NILAI_INDICATOR_2: 0,
+                                    NILAI_INDICATOR_3: 0,
+                                    USER_CREATED: "Admin",
+                                    DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+                                    USER_UPDATED: "Admin",
+                                    DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+                                    DESC_BANK: element.DESCRIPTION
+                                };
+                                _this.formData.indicatorDetail.push(detail);
+                            }
+                            else {
+                                console.log(arr);
+                                var detail = {
+                                    KODE_IKU: _this.formData.ikuSelected,
+                                    TAHUN_INDICATOR: _this.formData.yearPeriode,
+                                    PERIODE: _this.formData.periodeSelected,
+                                    KODE_BANK: element.ID_BANK,
+                                    NILAI_INDICATOR_1: arr[0].NILAI_REALISASI_1,
+                                    NILAI_INDICATOR_2: arr[0].NILAI_REALISASI_2,
+                                    NILAI_INDICATOR_3: arr[0].NILAI_REALISASI_3,
+                                    USER_CREATED: "Admin",
+                                    DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+                                    USER_UPDATED: "Admin",
+                                    DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+                                    DESC_BANK: element.DESCRIPTION
+                                };
+                                _this.formData.indicatorDetail.push(detail);
+                            }
+                        });
+                        var data = {
+                            indicatorDetail: _this.formData.indicatorDetail,
+                            indicatorId: "FET" +
+                                _this.formData.ikuSelected +
+                                _this.formData.yearPeriode +
+                                _this.formData.periodeSelected
+                        };
+                        _this.activeModal.close(data);
+                    }
+                    // error => {
+                    //   console.log(error);
+                    // };
+                });
+            }
+            // error => {
+            //   console.log(error);
+            // };
+        });
+    };
+    MonaTargetModalComponent.prototype.refreshSelected = function (event) {
+        // this.selectedData = event.data;
+    };
+    MonaTargetModalComponent.prototype.submit = function () { };
+    MonaTargetModalComponent.prototype.closeModal = function () {
+        this.activeModal.close();
+    };
+    MonaTargetModalComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: "ngx-mona-target-modal",
+            template: __webpack_require__("./src/app/pages/transaction/mona-target/modal/mona.target.modal.component.html"),
+            styles: ["\n  input:disabled {\n    background-color: rgba(211,211,211, 0.6);\n }"]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
+            __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__["a" /* BackendService */]])
+    ], MonaTargetModalComponent);
+    return MonaTargetModalComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/mona-target/mona.target.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\n  <nb-card-header>MONA</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n        \n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Dokumen\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.KODE_IKU}}\">{{ data.id }}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Bank\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n              <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\n                  <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\n                </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Start Date\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            \n            \n              <div class=\"input-group\">\n                <input class=\"form-control\" placeholder=\"yyyy-mm-dd\"\n                       name=\"d1\" [(ngModel)]=\"formData.startDate\" ngbDatepicker #d1=\"ngbDatepicker\">\n                <div class=\"input-group-append\">\n                  <button class=\"btn btn-outline-secondary\" (click)=\"d1.toggle()\" type=\"button\">\n                    <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\"/>\n                  </button>\n                </div>\n              </div>\n            \n\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Target Date\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <div class=\"input-group\">\n              <input class=\"form-control\" placeholder=\"yyyy-mm-dd\"\n                     name=\"d2\" [(ngModel)]=\"formData.targetDate\" ngbDatepicker #d2=\"ngbDatepicker\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary\" (click)=\"d2.toggle()\" type=\"button\">\n                  <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\"/>\n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n    </div>\n    \n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold\"\n          (click)=\"save()\">Save Data</button>\n      </div>\n\n    </div>\n    <br><br><br><br><br><br><br><br><br><br><br><br><br>\n  </nb-card-body>\n</nb-card>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/mona-target/mona.target.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MonaTargetComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_mona_target_modal_component__ = __webpack_require__("./src/app/pages/transaction/mona-target/modal/mona.target.modal.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+
+var MonaTargetComponent = /** @class */ (function () {
+    function MonaTargetComponent(modalService, toastr, service) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.tabledata = [];
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: false
+            },
+            edit: {
+                editButtonContent: '<i class="nb-edit"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: false
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: false
+            },
+            mode: "inline",
+            sort: true,
+            hideSubHeader: true,
+            actions: {
+                add: false,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Modify",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                DESC_BANK: {
+                    title: "Bank",
+                    type: "string",
+                    filter: false,
+                    editable: false,
+                    width: "25%"
+                },
+                NILAI_INDICATOR_1: {
+                    title: "Nilai 1",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "25%",
+                    valuePrepareFunction: function (value) {
+                        if (isNaN(value)) {
+                            return 0;
+                        }
+                        else {
+                            return Number(value)
+                                .toString()
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                        }
+                    }
+                },
+                NILAI_INDICATOR_2: {
+                    title: "Nilai 2",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "25%",
+                    valuePrepareFunction: function (value) {
+                        if (isNaN(value)) {
+                            return 0;
+                        }
+                        else {
+                            return Number(value)
+                                .toString()
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                        }
+                    }
+                },
+                NILAI_INDICATOR_3: {
+                    title: "Nilai 3",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "25%",
+                    valuePrepareFunction: function (value) {
+                        if (isNaN(value)) {
+                            return 0;
+                        }
+                        else {
+                            return Number(value)
+                                .toString()
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                        }
+                    }
+                }
+            }
+        };
+        this.formData = {
+            documentData: [
+                {
+                    id: "RBP",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "Lain-lain",
+                    desc: "Triwulan 2"
+                }
+            ],
+            periodeSelected: "",
+            documentSelected: "",
+            bankSelected: "",
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
+            startDate: "",
+            targetDate: "",
+            ikuData: [],
+            threshold: 0,
+            indicatorId: "",
+            indicator1: "",
+            indicator2: "",
+            indicator3: "",
+            realisasi1: "",
+            realisasi2: "",
+            realisasi3: "",
+            bankData: [],
+            indicatorDetail: []
+        };
+        this.loadData();
+    }
+    MonaTargetComponent.prototype.loadData = function () {
+        var _this = this;
+        this.service.getreq("mst_ikus").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.ikuData = response;
+            }
+        });
+        this.service.getreq("mst_banks").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.bankData = response;
+            }
+        });
+    };
+    MonaTargetComponent.prototype.showModal = function () {
+        var _this = this;
+        this.activeModal = this.modalService.open(__WEBPACK_IMPORTED_MODULE_7__modal_mona_target_modal_component__["a" /* MonaTargetModalComponent */], {
+            windowClass: "xlModal",
+            container: "nb-layout",
+            backdrop: "static"
+        });
+        this.activeModal.componentInstance.formData.ikuData = this.formData.ikuData;
+        this.activeModal.componentInstance.formData.periodeSelected = this.formData.periodeSelected;
+        this.activeModal.componentInstance.formData.yearPeriode = this.formData.yearPeriode;
+        this.activeModal.result.then(function (response) { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                console.log(response);
+                if (response != null) {
+                    this.formData.periodeSelected = response.periodeSelected;
+                    this.formData.yearPeriode = response.yearPeriode;
+                    this.getData();
+                }
+                return [2 /*return*/];
+            });
+        }); }, function (error) { });
+    };
+    MonaTargetComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KODE_IKU == event.newData.KODE_IKU) {
+                element.KODE_IKU = event.newData.KODE_IKU;
+                element.DESKRIPSI = event.newData.DESKRIPSI;
+                element.TIPE_IKU = event.newData.TIPE_IKU;
+                _this.service
+                    .patchreq("mst_ikus", _this.tabledata[ind])
+                    .subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    MonaTargetComponent.prototype.getData = function () {
+        var _this = this;
+        this.service.getreq("trn_indicator_qns").subscribe(function (response) {
+            if (response != null) {
+                var res = response.filter(function (item) {
+                    return (item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
+                        item.PERIODE == _this.formData.periodeSelected);
+                });
+                if (res[0] != null) {
+                    _this.formData.indicator1 = res[0].INDIKATOR_1_DESC;
+                    _this.formData.indicator2 = res[0].INDIKATOR_2_DESC;
+                    _this.formData.indicator3 = res[0].INDIKATOR_3_DESC;
+                    _this.formData.realisasi1 = res[0].REALISASI_1_DESC;
+                    _this.formData.realisasi2 = res[0].REALISASI_2_DESC;
+                    _this.formData.realisasi3 = res[0].REALISASI_3_DESC;
+                    _this.formData.threshold = res[0].THRESHOLD;
+                    _this.formData.indicatorId = res[0].KODE_INDIKATOR;
+                    _this.service.getreq("mst_banks").subscribe(function (response) {
+                        if (response != null) {
+                            _this.formData.bankData = response;
+                            var indicatorDetail_1 = [];
+                            _this.service.getreq("trn_indicator_qn_dtls").subscribe(function (responseDtl) {
+                                if (responseDtl != null) {
+                                    _this.formData.bankData.forEach(function (element, ind) {
+                                        var arr = responseDtl.filter(function (item) {
+                                            return (item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
+                                                item.PERIODE == _this.formData.periodeSelected &&
+                                                item.KODE_BANK == element.ID_BANK);
+                                        });
+                                        if (arr[0] == null) {
+                                            console.log(arr);
+                                            var detail = {
+                                                TAHUN_INDICATOR: _this.formData.yearPeriode,
+                                                PERIODE: _this.formData.periodeSelected,
+                                                KODE_BANK: element.ID_BANK,
+                                                NILAI_INDICATOR_1: 0,
+                                                NILAI_INDICATOR_2: 0,
+                                                NILAI_INDICATOR_3: 0,
+                                                USER_CREATED: "Admin",
+                                                DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                                USER_UPDATED: "Admin",
+                                                DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                                DESC_BANK: element.DESCRIPTION
+                                            };
+                                            indicatorDetail_1.push(detail);
+                                        }
+                                        else {
+                                            console.log(arr);
+                                            var detail = {
+                                                TAHUN_INDICATOR: _this.formData.yearPeriode,
+                                                PERIODE: _this.formData.periodeSelected,
+                                                KODE_BANK: element.ID_BANK,
+                                                NILAI_INDICATOR_1: arr[0].NILAI_INDICATOR_1,
+                                                NILAI_INDICATOR_2: arr[0].NILAI_INDICATOR_2,
+                                                NILAI_INDICATOR_3: arr[0].NILAI_INDICATOR_3,
+                                                USER_CREATED: "Admin",
+                                                DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                                USER_UPDATED: "Admin",
+                                                DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                                DESC_BANK: element.DESCRIPTION
+                                            };
+                                            indicatorDetail_1.push(detail);
+                                        }
+                                    });
+                                    _this.tabledata = indicatorDetail_1;
+                                    _this.formData.indicatorDetail = indicatorDetail_1;
+                                    _this.formData.indicatorId =
+                                        "RBB" +
+                                            _this.formData.yearPeriode +
+                                            _this.formData.periodeSelected;
+                                    _this.source.load(_this.tabledata);
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    _this.toastr.error("Data Not Found!");
+                }
+            }
+        });
+    };
+    MonaTargetComponent.prototype.generateDetail = function () {
+        var _this = this;
+        this.service.getreq("mst_banks").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.bankData = response;
+                var indicatorDetail_2 = [];
+                _this.formData.bankData.forEach(function (element, ind) {
+                    var detail = {
+                        TAHUN_INDICATOR: _this.formData.yearPeriode,
+                        PERIODE: _this.formData.periodeSelected,
+                        KODE_BANK: element.ID_BANK,
+                        NILAI_INDICATOR_1: 0,
+                        NILAI_INDICATOR_2: 0,
+                        NILAI_INDICATOR_3: 0,
+                        USER_CREATED: "Admin",
+                        DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                        USER_UPDATED: "Admin",
+                        DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                        DESC_BANK: element.DESCRIPTION
+                    };
+                    indicatorDetail_2.push(detail);
+                });
+                _this.tabledata = indicatorDetail_2;
+                _this.formData.indicatorDetail = indicatorDetail_2;
+                _this.formData.indicatorId =
+                    "RBB" +
+                        _this.formData.yearPeriode +
+                        _this.formData.periodeSelected;
+                _this.source.load(_this.tabledata);
+            }
+            // error => {
+            //   console.log(error);
+            // };
+        });
+    };
+    MonaTargetComponent.prototype.save = function () {
+        var _this = this;
+        var header = {
+            TAHUN_INDICATOR: this.formData.yearPeriode,
+            PERIODE: this.formData.periodeSelected,
+            KODE_INDIKATOR: this.formData.indicatorId,
+            THRESHOLD: this.formData.threshold,
+            INDIKATOR_1_DESC: this.formData.indicator1,
+            INDIKATOR_2_DESC: this.formData.indicator2,
+            INDIKATOR_3_DESC: this.formData.indicator3,
+            REALISASI_1_DESC: this.formData.realisasi1,
+            REALISASI_2_DESC: this.formData.realisasi2,
+            REALISASI_3_DESC: this.formData.realisasi3,
+            USER_CREATED: "Admin",
+            DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+            USER_UPDATED: "Admin",
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        this.service.postreq("trn_indicator_qns/crud", header).subscribe(function (response) {
+            console.log(response);
+            _this.formData.indicatorDetail.forEach(function (element, ind) {
+                _this.service.postreq("trn_indicator_qn_dtls/crud", element).subscribe(function (response) {
+                    console.log(response);
+                }, function (error) {
+                    console.log("indicator detail");
+                    console.log(error);
+                });
+            });
+            _this.toastr.success("Data Saved!");
+        }, function (error) {
+            console.log("indicator header");
+            console.log(error);
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], MonaTargetComponent.prototype, "myForm", void 0);
+    MonaTargetComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-mona-target",
+            template: __webpack_require__("./src/app/pages/transaction/mona-target/mona.target.component.html"),
+            styles: ["\n  input:disabled {\n    background-color: rgba(211,211,211, 0.6);\n }"]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+    ], MonaTargetComponent);
+    return MonaTargetComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/realisasi-qualitative/button.realisasi.quantitative.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ButtonRenderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ButtonRenderComponent = /** @class */ (function () {
+    function ButtonRenderComponent() {
+    }
+    ButtonRenderComponent.prototype.ngOnInit = function () {
+        this.renderValue = this.value;
+    };
+    ButtonRenderComponent.prototype.example = function () {
+        alert(this.renderValue);
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], ButtonRenderComponent.prototype, "value", void 0);
+    ButtonRenderComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            template: "\n    <button type=\"button\" class=\"btn btn-success\" (click)=\"example()\">Detail</button>\n  ",
+        }),
+        __metadata("design:paramtypes", [])
+    ], ButtonRenderComponent);
+    return ButtonRenderComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/transaction/realisasi-qualitative/realisasi.qualitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>IKU</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">IKU\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\r\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Periode\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-3\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\r\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Bank\r\n\r\n          </label>\r\n          <div class=\"col-sm-3\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.threshold\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Input Detail</button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\" >\r\n      </ng2-smart-table>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"save()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>IKU</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-10\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">IKU\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-5\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\r\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">Periode\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\r\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">Bank\r\n\r\n          </label>\r\n          <div class=\"col-sm-5\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\r\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Input Detail</button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\" >\r\n      </ng2-smart-table>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"save()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n\r\n"
 
 /***/ }),
 
@@ -1785,6 +3122,7 @@ module.exports = "<nb-card>\r\n  <nb-card-header>IKU</nb-card-header>\r\n  <nb-c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__button_realisasi_quantitative_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/button.realisasi.quantitative.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1794,6 +3132,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1843,44 +3182,38 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
             columns: {
                 NO: {
                     title: "No",
-                    type: "string",
+                    type: "number",
                     filter: false,
                     editable: false,
                     width: "10%"
                 },
                 DETAIL: {
                     title: "Detail",
-                    type: "number",
-                    filter: false,
+                    type: "custom",
                     editable: false,
+                    filter: false,
                     width: "10%",
-                    valuePrepareFunction: function (value) {
-                        if (isNaN(value)) {
-                            return 0;
+                    renderComponent: __WEBPACK_IMPORTED_MODULE_7__button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */]
+                },
+                STATUS: {
+                    title: "Status",
+                    type: "html",
+                    editor: {
+                        type: "list",
+                        config: {
+                            list: [{ title: 'Selesai', value: 'selesai' }, { title: 'Belum Selesai', value: 'belum selesai' }, { title: 'Pantau', value: 'pantau' }]
                         }
-                        else {
-                            return Number(value)
-                                .toString()
-                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                        }
-                    }
+                    },
+                    filter: false,
+                    editable: true,
+                    width: "10%"
                 },
                 KETERANGAN: {
                     title: "Keterangan",
-                    type: "number",
+                    type: "string",
                     filter: false,
                     editable: true,
-                    width: "70%",
-                    valuePrepareFunction: function (value) {
-                        if (isNaN(value)) {
-                            return 0;
-                        }
-                        else {
-                            return Number(value)
-                                .toString()
-                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                        }
-                    }
+                    width: "70%"
                 }
             }
         };
@@ -1904,13 +3237,14 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
                 }
             ],
             periodeSelected: "",
-            ikuData: [],
             ikuSelected: "",
+            bankSelected: "",
+            ikuData: [],
+            bankData: [],
+            realisasiDetail: [],
             yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
             threshold: 0,
-            indicatorId: "",
-            bankData: [],
-            realisasiDetail: []
+            indicatorId: ""
         };
         this.loadData();
     }
@@ -1970,12 +3304,9 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
                                         TAHUN_REALISASI: _this.formData.yearPeriode,
                                         PERIODE: _this.formData.periodeSelected,
                                         KODE_BANK: element.KODE_BANK,
-                                        NILAI_INDICATOR_1: element.NILAI_INDICATOR_1,
-                                        NILAI_INDICATOR_2: element.NILAI_INDICATOR_2,
-                                        NILAI_INDICATOR_3: element.NILAI_INDICATOR_3,
-                                        NILAI_REALISASI_1: 0,
-                                        NILAI_REALISASI_2: 0,
-                                        NILAI_REALISASI_3: 0,
+                                        NO: "1",
+                                        DETAIL: "1",
+                                        STATUS: "SELESAI",
                                         RESULT1: "0%",
                                         RESULT2: "0%",
                                         RESULT3: "0%",
@@ -3072,12 +4403,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_currency_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_ng2_currency_mask__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__indicator_quantitative_modal_indicator_quantitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-quantitative/modal/indicator.quantitative.modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-qualitative/modal/indicator.qualitative.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/button.realisasi.quantitative.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mona_target_modal_mona_target_modal_component__ = __webpack_require__("./src/app/pages/transaction/mona-target/modal/mona.target.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__mona_realisasi_modal_mona_realisasi_modal_component__ = __webpack_require__("./src/app/pages/transaction/mona-realisasi/modal/mona.realisasi.modal.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -3099,8 +4436,8 @@ var TransactionModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6_ng2_currency_mask__["CurrencyMaskModule"],
                 __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["a" /* ToastrModule */].forRoot()
             ],
-            declarations: __WEBPACK_IMPORTED_MODULE_2__transaction_router_module__["b" /* routedComponents */].slice(),
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_7__indicator_quantitative_modal_indicator_quantitative_modal_component__["a" /* IndicatorQuantitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__["a" /* IndicatorQualitativeModalComponent */]],
+            declarations: __WEBPACK_IMPORTED_MODULE_2__transaction_router_module__["b" /* routedComponents */].concat([__WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */]]),
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_10__mona_target_modal_mona_target_modal_component__["a" /* MonaTargetModalComponent */], __WEBPACK_IMPORTED_MODULE_11__mona_realisasi_modal_mona_realisasi_modal_component__["a" /* MonaRealisasiModalComponent */], __WEBPACK_IMPORTED_MODULE_7__indicator_quantitative_modal_indicator_quantitative_modal_component__["a" /* IndicatorQuantitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__["a" /* IndicatorQualitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */]],
             providers: [__WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__["a" /* BackendService */]]
         })
     ], TransactionModule);
@@ -3126,12 +4463,20 @@ var TransactionModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__realisasi_qualitative_realisasi_qualitative_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/realisasi.qualitative.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__indicator_qualitative_indicator_qualitative_component__ = __webpack_require__("./src/app/pages/transaction/indicator-qualitative/indicator.qualitative.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-qualitative/modal/indicator.qualitative.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__mona_target_mona_target_component__ = __webpack_require__("./src/app/pages/transaction/mona-target/mona.target.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mona_target_modal_mona_target_modal_component__ = __webpack_require__("./src/app/pages/transaction/mona-target/modal/mona.target.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__mona_realisasi_mona_realisasi_component__ = __webpack_require__("./src/app/pages/transaction/mona-realisasi/mona.realisasi.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__mona_realisasi_modal_mona_realisasi_modal_component__ = __webpack_require__("./src/app/pages/transaction/mona-realisasi/modal/mona.realisasi.modal.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -3161,6 +4506,14 @@ var routes = [
             {
                 path: "indicator-qualitative",
                 component: __WEBPACK_IMPORTED_MODULE_7__indicator_qualitative_indicator_qualitative_component__["a" /* IndicatorQualitativeComponent */]
+            },
+            {
+                path: "mona-target",
+                component: __WEBPACK_IMPORTED_MODULE_9__mona_target_mona_target_component__["a" /* MonaTargetComponent */]
+            },
+            {
+                path: "mona-realisasi",
+                component: __WEBPACK_IMPORTED_MODULE_11__mona_realisasi_mona_realisasi_component__["a" /* MonaRealisasiComponent */]
             }
         ]
     }
@@ -3184,7 +4537,11 @@ var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_3__indicator_quantitative_indicator_quantitative_component__["a" /* IndicatorQuantitativeComponent */],
     __WEBPACK_IMPORTED_MODULE_4__indicator_quantitative_modal_indicator_quantitative_modal_component__["a" /* IndicatorQuantitativeModalComponent */],
     __WEBPACK_IMPORTED_MODULE_5__realisasi_quantitative_realisasi_quantitative_component__["a" /* RealisasiQuantitativeComponent */],
-    __WEBPACK_IMPORTED_MODULE_2__transaction_component__["a" /* TransactionComponent */]
+    __WEBPACK_IMPORTED_MODULE_2__transaction_component__["a" /* TransactionComponent */],
+    __WEBPACK_IMPORTED_MODULE_9__mona_target_mona_target_component__["a" /* MonaTargetComponent */],
+    __WEBPACK_IMPORTED_MODULE_10__mona_target_modal_mona_target_modal_component__["a" /* MonaTargetModalComponent */],
+    __WEBPACK_IMPORTED_MODULE_11__mona_realisasi_mona_realisasi_component__["a" /* MonaRealisasiComponent */],
+    __WEBPACK_IMPORTED_MODULE_12__mona_realisasi_modal_mona_realisasi_modal_component__["a" /* MonaRealisasiModalComponent */],
 ];
 
 
