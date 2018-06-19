@@ -118,6 +118,14 @@
   "trn_realization_ql_dtl": {
     "dataSource": "ikudb",
     "public": true
+  },
+  "trn_mona": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "ikureport": {
+    "dataSource": "ikudb",
+    "public": true
   }
 
 

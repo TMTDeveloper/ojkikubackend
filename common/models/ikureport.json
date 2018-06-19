@@ -1,0 +1,49 @@
+{
+  "name": "ikureport",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "KODE_IKU": {
+      "type": "string",
+      "required": true,
+      "id": 1
+    },
+    "TAHUN_REALISASI": {
+      "type": "number",
+      "required": true,
+      "id": 2
+    },
+    "PERIODE": {
+      "type": "string",
+      "required": true,
+      "id": 3
+    },
+    "NILAI_REALISASI": {
+      "type": "number"
+    },
+    "INDICATOR": {
+      "type": "number"
+
+    },
+    "REALISASI": {
+      "type": "number"
+
+    },
+    "TARGET": {
+      "type": "number"
+
+    },
+    "PENCAPAIAN": {
+      "type": "number"
+
+    }
+   
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,61 @@
+{
+  "name": "trn_mona",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "YEAR": {
+      "type": "number",
+      "required": true,
+      "id": 1
+    },
+    "ID_BANK": {
+      "type": "string",
+      "required": true,
+      "id": 2
+    },
+    "TIPE_DOKUMEN": {
+      "type": "string",
+      "required": true,
+      "id": 3
+    },
+    "KETERANGAN": {
+      "type": "string"
+
+    },
+    "START_DATE": {
+      "type": "date"
+
+    },
+    "TARGET_DATE": {
+      "type": "date"
+
+    },
+    "REALIZATION_DATE": {
+      "type": "date"
+
+    },
+    "USER_CREATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATE_CREATED": {
+      "type": "date",
+      "required": true
+    },
+    "USER_UPDATED": {
+      "type": "string",
+      "required": true
+    },
+    "DATE_UPDATED": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
