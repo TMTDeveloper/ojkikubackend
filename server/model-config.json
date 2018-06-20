@@ -126,8 +126,9 @@
   "ikureport": {
     "dataSource": "ikudb",
     "public": true
+  },
+  "trn_mona_realization": {
+    "dataSource": "ikudb",
+    "public": true
   }
-
-
-
 }
