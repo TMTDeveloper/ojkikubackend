@@ -2462,6 +2462,8 @@ var MonaTargetComponent = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ButtonRenderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modal_realisasi_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/modal/realisasi.qualitative.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2472,8 +2474,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var ButtonRenderComponent = /** @class */ (function () {
-    function ButtonRenderComponent() {
+    function ButtonRenderComponent(modalService) {
+        this.modalService = modalService;
+        this.formData = {
+            documentData: [
+                {
+                    id: "rbp",
+                    desc: "RBP"
+                },
+                {
+                    id: "lainlain",
+                    desc: "Lain-lain"
+                }
+            ],
+            bankData: [],
+            monaDataDetail: []
+        };
     }
     ButtonRenderComponent.prototype.ngOnInit = function () {
         this.renderValue = this.value;
@@ -2481,17 +2500,219 @@ var ButtonRenderComponent = /** @class */ (function () {
     ButtonRenderComponent.prototype.example = function () {
         alert(this.renderValue);
     };
+    ButtonRenderComponent.prototype.showModal = function () {
+        this.activeModal = this.modalService.open(__WEBPACK_IMPORTED_MODULE_1__modal_realisasi_qualitative_modal_component__["a" /* RealisasiQualitativeModalComponent */], {
+            windowClass: "xlModal",
+            container: "nb-layout",
+            backdrop: "static"
+        });
+        this.activeModal.componentInstance.formData.bankData = this.formData.bankData;
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Object)
     ], ButtonRenderComponent.prototype, "value", void 0);
     ButtonRenderComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            template: "\n    <button type=\"button\" class=\"btn btn-success\" (click)=\"example()\">Detail</button>\n  ",
+            template: "\n    <button type=\"button\" class=\"btn btn-success\" (click)=\"showModal()\">Detail</button>\n  ",
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */]])
     ], ButtonRenderComponent);
     return ButtonRenderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/realisasi-qualitative/modal/realisasi.qualitative.modal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Realisasi Qualitative Detail</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n</div>\n<div class=\"modal-body\">\n  <div class=\"form-group\">\n    <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\">\n    </ng2-smart-table>\n  </div>\n  <div class=\"form-group row\">\n    <div class=\"col-sm-auto\">\n      <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.realisasiDetail\" (click)=\"save()\">Submit</button>\n      <button type=\"button\" class=\"btn btn-danger \" (click)=\"closeModal()\">CANCEL</button>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/realisasi-qualitative/modal/realisasi.qualitative.modal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RealisasiQualitativeModalComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var RealisasiQualitativeModalComponent = /** @class */ (function () {
+    function RealisasiQualitativeModalComponent(activeModal, toastr, service) {
+        this.activeModal = activeModal;
+        this.toastr = toastr;
+        this.service = service;
+        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: false
+            },
+            edit: {
+                editButtonContent: '<i class="nb-edit"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: true
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: false
+            },
+            mode: "inline",
+            sort: true,
+            hideSubHeader: true,
+            actions: {
+                add: false,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Modify",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                NO: {
+                    title: "No",
+                    type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "5%"
+                },
+                TIPE_DATA: {
+                    title: "Tipe Data",
+                    type: "string",
+                    editable: false,
+                    filter: false,
+                    width: "10%",
+                },
+                JUDUL: {
+                    title: "Judul",
+                    type: "html",
+                    editor: {
+                        type: "list",
+                        config: {
+                            list: [{ title: 'Selesai', value: 'selesai' }, { title: 'Belum Selesai', value: 'belum selesai' }, { title: 'Pantau', value: 'pantau' }]
+                        }
+                    },
+                    filter: false,
+                    editable: true,
+                    width: "15%"
+                },
+                DESKRIPSI: {
+                    title: "Deskripsi",
+                    type: "string",
+                    filter: false,
+                    editable: true,
+                    width: "70%"
+                }
+            }
+        };
+        this.tabledata = [
+            { NO: 1, TIPE_DATA: "String", JUDUL: "Dummy 1", DESKRIPSI: "Dummy 1" },
+            { NO: 2, TIPE_DATA: "Date", JUDUL: "Dummy 2", DESKRIPSI: "Dummy 2" },
+            { NO: 3, TIPE_DATA: "Number", JUDUL: "Dummy 3", DESKRIPSI: "Dummy 3" },
+            { NO: 4, TIPE_DATA: "String", JUDUL: "Dummy 4", DESKRIPSI: "Dummy 4" },
+            { NO: 5, TIPE_DATA: "Date", JUDUL: "Dummy 5", DESKRIPSI: "Dummy 5" },
+        ];
+        this.formData = {
+            documentData: [
+                {
+                    id: "rbp",
+                    desc: "RBP"
+                },
+                {
+                    id: "lainlain",
+                    desc: "Lain-lain"
+                }
+            ],
+            documentSelected: "",
+            bankSelected: "",
+            startDate: "",
+            targetDate: "",
+            keterangan: "",
+            year: __WEBPACK_IMPORTED_MODULE_3_moment__().format("YYYY"),
+            bankData: [],
+        };
+    }
+    RealisasiQualitativeModalComponent.prototype.ngOnInit = function () {
+        this.source.load(this.tabledata);
+    };
+    RealisasiQualitativeModalComponent.prototype.dateReformat = function (value) {
+        return value.year + "-" + value.month + "-" + value.day;
+    };
+    RealisasiQualitativeModalComponent.prototype.addNewData = function () {
+        var _this = this;
+        var header = {
+            YEAR: this.formData.year,
+            ID_BANK: this.formData.bankSelected,
+            TIPE_DOKUMEN: this.formData.documentSelected,
+            KETERANGAN: this.formData.keterangan,
+            START_DATE: __WEBPACK_IMPORTED_MODULE_3_moment__(this.dateReformat(this.formData.startDate)).format(),
+            TARGET_DATE: __WEBPACK_IMPORTED_MODULE_3_moment__(this.dateReformat(this.formData.targetDate)).format(),
+            USER_CREATED: "admin",
+            DATE_CREATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+            USER_UPDATED: "admin",
+            DATE_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+        };
+        console.log(header);
+        this.service.postreq("trn_monas", header).subscribe(function (response) {
+            if (response != null) {
+                _this.toastr.success("Data Added!");
+                var data = {
+                    yearPeriode: _this.formData.startDate
+                };
+                _this.activeModal.close(data);
+            }
+            else {
+                _this.toastr.error("Add Data Failed!");
+            }
+        });
+    };
+    RealisasiQualitativeModalComponent.prototype.refreshSelected = function (event) {
+        // this.selectedData = event.data;
+    };
+    RealisasiQualitativeModalComponent.prototype.submit = function () { };
+    RealisasiQualitativeModalComponent.prototype.closeModal = function () {
+        this.activeModal.close();
+    };
+    RealisasiQualitativeModalComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: "ngx-realisasi-qualitative-modal",
+            template: __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/modal/realisasi.qualitative.modal.component.html"),
+            styles: ["\n  input:disabled {\n    background-color: rgba(211,211,211, 0.6);\n }"]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
+            __WEBPACK_IMPORTED_MODULE_2_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__["a" /* BackendService */]])
+    ], RealisasiQualitativeModalComponent);
+    return RealisasiQualitativeModalComponent;
 }());
 
 
@@ -2501,7 +2722,7 @@ var ButtonRenderComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/realisasi-qualitative/realisasi.qualitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>IKU</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-10\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">IKU\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-5\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\r\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">Periode\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\r\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">Bank\r\n\r\n          </label>\r\n          <div class=\"col-sm-5\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\r\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Input Detail</button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\" >\r\n      </ng2-smart-table>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"save()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>IKU</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-10\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">IKU\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-5\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\r\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">Periode\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\r\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-1 col-form-label\">Bank\r\n\r\n          </label>\r\n          <div class=\"col-sm-5\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\r\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.bankSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n          <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.bankSelected\"\r\n          (click)=\"addData()\">Add Data</button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\" >\r\n      </ng2-smart-table>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.realisasiDetail\"\r\n          (click)=\"save()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n\r\n"
 
 /***/ }),
 
@@ -2581,7 +2802,7 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
                     type: "number",
                     filter: false,
                     editable: false,
-                    width: "10%"
+                    width: "5%"
                 },
                 DETAIL: {
                     title: "Detail",
@@ -2602,7 +2823,7 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
                     },
                     filter: false,
                     editable: true,
-                    width: "10%"
+                    width: "15%"
                 },
                 KETERANGAN: {
                     title: "Keterangan",
@@ -2632,15 +2853,13 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
                     desc: "Triwulan 4"
                 }
             ],
-            periodeSelected: "",
             ikuSelected: "",
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
+            periodeSelected: "",
             bankSelected: "",
             ikuData: [],
             bankData: [],
             realisasiDetail: [],
-            yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
-            threshold: 0,
-            indicatorId: ""
         };
         this.loadData();
     }
@@ -2656,6 +2875,18 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
                 });
             }
         });
+    };
+    RealisasiQualitativeComponent.prototype.updateData = function () {
+        var _this = this;
+        this.tabledata.forEach(function (element) {
+            _this.service.postreq("trn_realization_qls/crud", element).subscribe(function (response) {
+                console.log(response);
+            }, function (error) {
+                //console.log("indicator detail");
+                console.log(error);
+            });
+        });
+        this.toastr.success("Data Updated!");
     };
     RealisasiQualitativeComponent.prototype.submit = function (event) {
         var _this = this;
@@ -2674,61 +2905,67 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
             }
         });
     };
+    RealisasiQualitativeComponent.prototype.addData = function () {
+        var header = {
+            KODE_IKU: this.formData.ikuSelected,
+            TAHUN_REALISASI: this.formData.yearPeriode,
+            PERIODE: this.formData.periodeSelected,
+            KODE_BANK: this.formData.bankSelected,
+            NO_URUT: 5,
+            STATUS: "test",
+            KETERANGAN: "test",
+            USER_CREATED: "admin",
+            DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+            USER_UPDATED: "admin",
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        console.log(header);
+        this.service.postreq("trn_realization_qls", header).subscribe(function (response) {
+            console.log(header);
+            if (response != null) {
+                console.log(header);
+                console.log(response);
+            }
+        });
+    };
     RealisasiQualitativeComponent.prototype.generateDetail = function () {
         var _this = this;
-        this.service.getreq("trn_indicator_qns").subscribe(function (response) {
+        this.service.getreq("trn_realization_qls").subscribe(function (response) {
             if (response != null) {
                 var arr = response.filter(function (item) {
                     return (item.KODE_IKU == _this.formData.ikuSelected &&
-                        item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
-                        item.PERIODE == _this.formData.periodeSelected);
+                        item.TAHUN_REALISASI == _this.formData.yearPeriode &&
+                        item.PERIODE == _this.formData.periodeSelected &&
+                        item.KODE_BANK == _this.formData.bankSelected);
                 });
-                if (arr[0] != null) {
-                    _this.formData.indicatorId = arr[0].KODE_INDIKATOR;
-                    _this.service.getreq("trn_indicator_qn_dtls").subscribe(function (response) {
-                        if (response != null) {
-                            var arrDtl = response.filter(function (item) {
-                                return (item.KODE_IKU == _this.formData.ikuSelected &&
-                                    item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
-                                    item.PERIODE == _this.formData.periodeSelected);
-                            });
-                            if (arrDtl[0] != null) {
-                                var realisasiDetail_1 = [];
-                                arrDtl.forEach(function (element, ind) {
-                                    var detail = {
-                                        KODE_IKU: _this.formData.ikuSelected,
-                                        TAHUN_REALISASI: _this.formData.yearPeriode,
-                                        PERIODE: _this.formData.periodeSelected,
-                                        KODE_BANK: element.KODE_BANK,
-                                        NO: "1",
-                                        DETAIL: "1",
-                                        STATUS: "SELESAI",
-                                        RESULT1: "0%",
-                                        RESULT2: "0%",
-                                        RESULT3: "0%",
-                                        PENCAPAIAN: 0,
-                                        USER_CREATED: "Admin",
-                                        DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                                        USER_UPDATED: "Admin",
-                                        DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                                        DESC_BANK: _this.formData.bankData.filter(function (item) {
-                                            return item.ID_BANK == element.KODE_BANK;
-                                        })[0].DESCRIPTION
-                                    };
-                                    realisasiDetail_1.push(detail);
-                                });
-                                _this.tabledata = realisasiDetail_1;
-                                _this.formData.realisasiDetail = realisasiDetail_1;
-                                _this.source.load(_this.tabledata);
-                            }
-                        }
-                    });
-                }
-                else {
-                    _this.toastr.error("Data Not Found!");
-                    _this.tabledata = [];
-                    _this.source.load(_this.tabledata);
-                }
+                var realisasiDetail_1 = [];
+                arr.forEach(function (element, ind) {
+                    var detail = {
+                        KODE_IKU: _this.formData.ikuSelected,
+                        TAHUN_REALISASI: _this.formData.yearPeriode,
+                        PERIODE: _this.formData.periodeSelected,
+                        KODE_BANK: element.KODE_BANK,
+                        NO: ind + 1,
+                        STATUS: element.STATUS,
+                        KETERANGAN: element.KETERANGAN,
+                        USER_CREATED: "Admin",
+                        DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                        USER_UPDATED: "Admin",
+                        DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                        DESC_BANK: _this.formData.bankData.filter(function (item) {
+                            return item.ID_BANK == element.KODE_BANK;
+                        })[0].DESCRIPTION
+                    };
+                    realisasiDetail_1.push(detail);
+                });
+                _this.tabledata = realisasiDetail_1;
+                _this.formData.realisasiDetail = realisasiDetail_1;
+                _this.source.load(_this.tabledata);
+            }
+            else {
+                _this.toastr.error("Data Not Found!");
+                _this.tabledata = [];
+                _this.source.load(_this.tabledata);
             }
         });
     };
@@ -2738,25 +2975,17 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
             KODE_IKU: this.formData.ikuSelected,
             TAHUN_REALISASI: this.formData.yearPeriode,
             PERIODE: this.formData.periodeSelected,
-            KODE_INDIKATOR: this.formData.indicatorId,
-            PENCAIPAIAN: 0,
+            KODE_BANK: this.formData.bankSelected,
+            NO: 0,
+            STATUS: "belum tuntas",
+            KETERANGAN: "belum di isi",
             USER_CREATED: "Admin",
             DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
             USER_UPDATED: "Admin",
-            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
         };
-        this.service.postreq("trn_realization_qns/crud", header).subscribe(function (response) {
+        this.service.postreq("trn_realization_qls", header).subscribe(function (response) {
             console.log(response);
-            _this.formData.realisasiDetail.forEach(function (element, ind) {
-                _this.service
-                    .postreq("trn_realization_qn_dtls/crud", element)
-                    .subscribe(function (response) {
-                    console.log(response);
-                }, function (error) {
-                    console.log("indicator detail");
-                    console.log(error);
-                });
-            });
             _this.toastr.success("Data Saved!");
         }, function (error) {
             console.log("indicator header");
@@ -3802,12 +4031,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/button.realisasi.quantitative.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mona_realisasi_button_mona_realisasi_component__ = __webpack_require__("./src/app/pages/transaction/mona-realisasi/button.mona.realisasi.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__mona_target_modal_mona_target_modal_component__ = __webpack_require__("./src/app/pages/transaction/mona-target/modal/mona.target.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/modal/realisasi.qualitative.modal.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -3833,7 +4064,7 @@ var TransactionModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["a" /* ToastrModule */].forRoot()
             ],
             declarations: __WEBPACK_IMPORTED_MODULE_2__transaction_router_module__["b" /* routedComponents */].concat([__WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */], __WEBPACK_IMPORTED_MODULE_10__mona_realisasi_button_mona_realisasi_component__["a" /* MonaRealisasiDatePicker */]]),
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_11__mona_target_modal_mona_target_modal_component__["a" /* MonaTargetModalComponent */], __WEBPACK_IMPORTED_MODULE_7__indicator_quantitative_modal_indicator_quantitative_modal_component__["a" /* IndicatorQuantitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__["a" /* IndicatorQualitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */], __WEBPACK_IMPORTED_MODULE_10__mona_realisasi_button_mona_realisasi_component__["a" /* MonaRealisasiDatePicker */]],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_11__mona_target_modal_mona_target_modal_component__["a" /* MonaTargetModalComponent */], __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__["a" /* RealisasiQualitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_7__indicator_quantitative_modal_indicator_quantitative_modal_component__["a" /* IndicatorQuantitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__["a" /* IndicatorQualitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */], __WEBPACK_IMPORTED_MODULE_10__mona_realisasi_button_mona_realisasi_component__["a" /* MonaRealisasiDatePicker */]],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__["a" /* BackendService */],
             ]
@@ -3864,12 +4095,14 @@ var TransactionModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__mona_target_mona_target_component__ = __webpack_require__("./src/app/pages/transaction/mona-target/mona.target.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mona_target_modal_mona_target_modal_component__ = __webpack_require__("./src/app/pages/transaction/mona-target/modal/mona.target.modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__mona_realisasi_mona_realisasi_component__ = __webpack_require__("./src/app/pages/transaction/mona-realisasi/mona.realisasi.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/modal/realisasi.qualitative.modal.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -3937,6 +4170,7 @@ var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_9__mona_target_mona_target_component__["a" /* MonaTargetComponent */],
     __WEBPACK_IMPORTED_MODULE_10__mona_target_modal_mona_target_modal_component__["a" /* MonaTargetModalComponent */],
     __WEBPACK_IMPORTED_MODULE_11__mona_realisasi_mona_realisasi_component__["a" /* MonaRealisasiComponent */],
+    __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__["a" /* RealisasiQualitativeModalComponent */],
 ];
 
 
