@@ -33,7 +33,8 @@
     },
     "NO_DETAIL": {
       "type": "number",
-      "required": true
+      "required": true,
+      "id": 6
     },
     "TIPE_DATA": {
       "type": "string",

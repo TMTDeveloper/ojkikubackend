@@ -22,6 +22,9 @@ module.exports = function (trn_realization_ql_dtl) {
           },
           {
             NO_URUT: req.NO_URUT
+          },
+          {
+            NO_DETAIL: req.NO_DETAIL
           }
         ]
       }
@@ -44,6 +47,9 @@ module.exports = function (trn_realization_ql_dtl) {
               },
               {
                 NO_URUT: req.NO_URUT
+              },
+              {
+                NO_DETAIL: req.NO_DETAIL
               }
             ]
           }, 
@@ -53,7 +59,7 @@ module.exports = function (trn_realization_ql_dtl) {
             "PERIODE": req.PERIODE,
             "KODE_BANK": req.KODE_BANK,
             "NO_URUT": req.NO_URUT,
-            "NO_DETAIL": 0,
+            "NO_DETAIL": req.NO_DETAIL,
             "TIPE_DATA": req.TIPE_DATA,
             "JUDUL": req.JUDUL,
             "DESKRIPSI": req.DESKRIPSI,
@@ -90,7 +96,7 @@ module.exports = function (trn_realization_ql_dtl) {
             "PERIODE": req.PERIODE,
             "KODE_BANK": req.KODE_BANK,
             "NO_URUT": req.NO_URUT,
-            "NO_DETAIL": 0,
+            "NO_DETAIL": req.NO_DETAIL,
             "TIPE_DATA": req.TIPE_DATA,
             "JUDUL": req.JUDUL,
             "DESKRIPSI": req.DESKRIPSI,
