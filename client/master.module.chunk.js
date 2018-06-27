@@ -422,10 +422,11 @@ var MasterUserLogComponent = /** @class */ (function () {
                 },
                 DATETIME_LOGIN: {
                     title: "Datetime Login",
-                    type: "number",
+                    type: "string",
                     filter: false,
                     editable: true,
-                    width: "50%"
+                    width: "50%",
+                    sortDirection: "desc"
                 }
             }
         };
@@ -435,6 +436,9 @@ var MasterUserLogComponent = /** @class */ (function () {
         var _this = this;
         this.service.getreq("LOGIN_LOGs").subscribe(function (response) {
             if (response != null) {
+                response.forEach(function (element) {
+                    element.DATETIME_LOGIN = __WEBPACK_IMPORTED_MODULE_4_moment__(element.DATETIME_LOGIN).format("DD/MM/YYYY HH:mm:ss");
+                });
                 _this.tabledata = response;
                 console.log(JSON.stringify(response));
                 _this.source.load(_this.tabledata);
