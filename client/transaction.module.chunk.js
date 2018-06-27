@@ -3996,7 +3996,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/transaction.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n"
+module.exports = "<router-outlet></router-outlet>"
 
 /***/ }),
 
