@@ -39,6 +39,10 @@
     "dataSource": "LOGIN_IKU",
     "public": true
   },
+  "LOGIN_LOG": {                
+    "dataSource": "LOGIN_LOG",
+    "public": true
+  },
   "trn_iku_hd": {
     "dataSource": "TRN_IKU_HD",
     "public": true
