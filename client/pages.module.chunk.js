@@ -112,6 +112,10 @@ var MENU_ITEMS = [
                 link: "/pages/master/master-user"
             },
             {
+                title: "User Log",
+                link: "/pages/master/master-log-user"
+            },
+            {
                 title: "User Bank",
                 link: "/pages/master/user-bank"
             },

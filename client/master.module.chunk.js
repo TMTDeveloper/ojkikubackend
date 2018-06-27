@@ -354,6 +354,113 @@ var MasterBankComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pages/master/master-log-user/master.user.log.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\n  <nb-card-header>User Log</nb-card-header>\n  <nb-card-body>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/master/master-log-user/master.user.log.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MasterUserLogComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var MasterUserLogComponent = /** @class */ (function () {
+    function MasterUserLogComponent(modalService, toastr, service) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.tabledata = [];
+        this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
+        this.settings = {
+            mode: "inline",
+            sort: true,
+            hideSubHeader: true,
+            actions: {
+                add: false,
+                edit: false,
+                delete: false,
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                USERNAME: {
+                    title: "Username",
+                    type: "string",
+                    filter: false,
+                    editable: false,
+                    width: "50%"
+                },
+                DATETIME_LOGIN: {
+                    title: "Datetime Login",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "50%"
+                }
+            }
+        };
+        this.loadData();
+    }
+    MasterUserLogComponent.prototype.loadData = function () {
+        var _this = this;
+        this.service.getreq("LOGIN_LOGs").subscribe(function (response) {
+            if (response != null) {
+                _this.tabledata = response;
+                console.log(JSON.stringify(response));
+                _this.source.load(_this.tabledata);
+            }
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], MasterUserLogComponent.prototype, "myForm", void 0);
+    MasterUserLogComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-master-user-log",
+            template: __webpack_require__("./src/app/pages/master/master-log-user/master.user.log.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+    ], MasterUserLogComponent);
+    return MasterUserLogComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/master/master-user/master.user.component.html":
 /***/ (function(module, exports) {
 
@@ -637,14 +744,16 @@ var MasterModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__master_component__ = __webpack_require__("./src/app/pages/master/master.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__master_bank_master_bank_component__ = __webpack_require__("./src/app/pages/master/master-bank/master.bank.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__master_user_master_user_component__ = __webpack_require__("./src/app/pages/master/master-user/master.user.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__user_bank_master_user_bank_component__ = __webpack_require__("./src/app/pages/master/user-bank/master.user.bank.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__iku_iku_component__ = __webpack_require__("./src/app/pages/master/iku/iku.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__ = __webpack_require__("./src/app/pages/master/master-log-user/master.user.log.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__user_bank_master_user_bank_component__ = __webpack_require__("./src/app/pages/master/user-bank/master.user.bank.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__ = __webpack_require__("./src/app/pages/master/iku/iku.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -666,12 +775,16 @@ var routes = [
                 component: __WEBPACK_IMPORTED_MODULE_4__master_user_master_user_component__["a" /* MasterUserComponent */]
             },
             {
+                path: "master-log-user",
+                component: __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__["a" /* MasterUserLogComponent */]
+            },
+            {
                 path: "user-bank",
-                component: __WEBPACK_IMPORTED_MODULE_5__user_bank_master_user_bank_component__["a" /* MasterUserBankComponent */]
+                component: __WEBPACK_IMPORTED_MODULE_6__user_bank_master_user_bank_component__["a" /* MasterUserBankComponent */]
             },
             {
                 path: "iku",
-                component: __WEBPACK_IMPORTED_MODULE_6__iku_iku_component__["a" /* IkuComponent */]
+                component: __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__["a" /* IkuComponent */]
             }
         ]
     }
@@ -692,8 +805,9 @@ var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_2__master_component__["a" /* MasterComponent */],
     __WEBPACK_IMPORTED_MODULE_3__master_bank_master_bank_component__["a" /* MasterBankComponent */],
     __WEBPACK_IMPORTED_MODULE_4__master_user_master_user_component__["a" /* MasterUserComponent */],
-    __WEBPACK_IMPORTED_MODULE_5__user_bank_master_user_bank_component__["a" /* MasterUserBankComponent */],
-    __WEBPACK_IMPORTED_MODULE_6__iku_iku_component__["a" /* IkuComponent */]
+    __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__["a" /* MasterUserLogComponent */],
+    __WEBPACK_IMPORTED_MODULE_6__user_bank_master_user_bank_component__["a" /* MasterUserBankComponent */],
+    __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__["a" /* IkuComponent */]
 ];
 
 
