@@ -1,20 +1,20 @@
 {
   "name": "LOGIN_LOG",
   "base": "PersistedModel",
-  "idInjection": false,
+  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
     "USERNAME": {
       "type": "string",
-      "required": true,
-      "id": 1
+      "required": true
+
     },
     "DATETIME_LOGIN": {
-      "type": "string",
-      "required": true,
-      "id": 2
+      "type": "date",
+      "required": true
+
     }
   },
   "validations": [],

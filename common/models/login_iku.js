@@ -1,6 +1,6 @@
 var util = require("util");
 var jwt = require("jsonwebtoken");
-
+var moment = require("moment");
 ("use strict");
 
 module.exports = function (Loginiku) {
@@ -19,15 +19,16 @@ module.exports = function (Loginiku) {
     console.log(JSON.stringify(req));
     var app = require("../../server/server");
     var MSTUSER = app.models.mst_user;
+    var LOGIN_LOG = app.models.LOGIN_LOG;
     MSTUSER.find({
-        where: {
-          and: [{
-            ID_USER: req.email
-          }, {
-            PASSWORD: req.password
-          }]
-        }
-      },
+      where: {
+        and: [{
+          ID_USER: req.email
+        }, {
+          PASSWORD: req.password
+        }]
+      }
+    },
       (err, res) => {
         console.log(err);
         if (util.isNullOrUndefined(res[0])) {
@@ -46,6 +47,16 @@ module.exports = function (Loginiku) {
           var data = {
             token: token
           };
+          LOGIN_LOG.create({
+
+            "USERNAME": req.email,
+            "DATETIME_LOGIN": moment().local().format()
+
+          },
+            (err, res) => {
+console.log(err)
+            }
+          );
           console.log(data);
           cb(null, data);
         }
