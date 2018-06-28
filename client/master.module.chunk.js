@@ -413,20 +413,34 @@ var MasterUserLogComponent = /** @class */ (function () {
                 perPage: 30
             },
             columns: {
+                NO: {
+                    title: "NO",
+                    type: "Number",
+                    filter: false,
+                    editable: false,
+                    width: "10%",
+                    sortDirection: "asc"
+                },
                 USERNAME: {
                     title: "Username",
                     type: "string",
                     filter: false,
                     editable: false,
-                    width: "50%"
+                    width: "30%"
+                },
+                NAMA: {
+                    title: "Nama",
+                    type: "string",
+                    filter: false,
+                    editable: false,
+                    width: "30%"
                 },
                 DATETIME_LOGIN: {
                     title: "Datetime Login",
                     type: "string",
                     filter: false,
                     editable: true,
-                    width: "50%",
-                    sortDirection: "desc"
+                    width: "30%",
                 }
             }
         };
@@ -436,12 +450,33 @@ var MasterUserLogComponent = /** @class */ (function () {
         var _this = this;
         this.service.getreq("LOGIN_LOGs").subscribe(function (response) {
             if (response != null) {
-                response.forEach(function (element) {
-                    element.DATETIME_LOGIN = __WEBPACK_IMPORTED_MODULE_4_moment__(element.DATETIME_LOGIN).format("DD/MM/YYYY HH:mm:ss");
+                var logDetail_1 = [];
+                var lengthLog = parseInt(response.length);
+                console.log(lengthLog);
+                response.forEach(function (element, index) {
+                    var detail = {
+                        NO: lengthLog - index,
+                        DATETIME_LOGIN: "",
+                        USERNAME: "",
+                        NAMA: ""
+                    };
+                    detail.USERNAME = element.USERNAME;
+                    detail.DATETIME_LOGIN = __WEBPACK_IMPORTED_MODULE_4_moment__(element.DATETIME_LOGIN).format("DD/MM/YYYY HH:mm:ss");
+                    _this.service.getreq("mst_users").subscribe(function (res) {
+                        if (res != null) {
+                            var arr = res.filter(function (item) {
+                                return (item.ID_USER == detail.USERNAME);
+                            });
+                            if (arr[0] != null) {
+                                detail.NAMA = arr[0].USER_NAME;
+                            }
+                            logDetail_1.push(detail);
+                            _this.tabledata = logDetail_1;
+                            _this.source.load(_this.tabledata);
+                        }
+                    });
                 });
-                _this.tabledata = response;
-                console.log(JSON.stringify(response));
-                _this.source.load(_this.tabledata);
+                console.log(logDetail_1);
             }
         });
     };
@@ -575,7 +610,7 @@ var MasterUserComponent = /** @class */ (function () {
                     type: "number",
                     filter: false,
                     editable: true,
-                    width: "30%"
+                    width: "30%",
                 }
             }
         };
