@@ -1142,7 +1142,7 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/indicator-quantitative/indicator.quantitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Threshold\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator ID\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-sm-8\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator 1 Description\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator1\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Realisasi 1 Description\n  \n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasi1\" disabled>\n            </div>\n          </div>\n      \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\" >Indicator 2 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Realisasi 2 Description\n  \n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\"  [(ngModel)]=\"formData.realisasi2\" disabled>\n            </div>\n          </div>\n      \n      \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator 3 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\" disabled>\n          </div>\n        </div>\n       \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Realisasi 3 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.realisasi3\" disabled>\n          </div>\n        </div>\n      </div>\n\n      \n       \n      \n    </div>\n    \n    \n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"getData()\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\">Get Data</button>\n      </div>\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold\"\n          (click)=\"save()\">Update Data</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Threshold\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator ID\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <div class=\"col-sm-auto\">\n            <button type=\" button \" class=\"btn btn-success \" (click)=\"getData()\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\">Get Data</button>\n          </div>\n          <div class=\"col-sm-auto\">\n            <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-sm-8\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator 1 Description\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator1\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Realisasi 1 Description\n  \n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasi1\" disabled>\n            </div>\n          </div>\n      \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\" >Indicator 2 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Realisasi 2 Description\n  \n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\"  [(ngModel)]=\"formData.realisasi2\" disabled>\n            </div>\n          </div>\n      \n      \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator 3 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\" disabled>\n          </div>\n        </div>\n       \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Realisasi 3 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.realisasi3\" disabled>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Remark\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.remark\" disabled>\n          </div>\n        </div>\n      </div>\n\n      \n       \n      \n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold\"\n          (click)=\"save()\">Update Data</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -1343,6 +1343,7 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
             realisasi1: "",
             realisasi2: "",
             realisasi3: "",
+            remark: "",
             bankData: [],
             indicatorDetail: []
         };
@@ -1367,6 +1368,16 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
         this.activeModal.componentInstance.formData.periodeSelected = this.formData.periodeSelected;
         this.activeModal.componentInstance.formData.ikuSelected = this.formData.ikuSelected;
         this.activeModal.componentInstance.formData.yearPeriode = this.formData.yearPeriode;
+        //
+        this.activeModal.componentInstance.formData.threshold = this.formData.threshold;
+        this.activeModal.componentInstance.formData.indicator1 = this.formData.indicator1;
+        this.activeModal.componentInstance.formData.indicator2 = this.formData.indicator2;
+        this.activeModal.componentInstance.formData.indicator3 = this.formData.indicator3;
+        this.activeModal.componentInstance.formData.realisasi1 = this.formData.realisasi1;
+        this.activeModal.componentInstance.formData.realisasi2 = this.formData.realisasi2;
+        this.activeModal.componentInstance.formData.realisasi3 = this.formData.realisasi3;
+        this.activeModal.componentInstance.formData.remark = this.formData.remark;
+        //
         this.activeModal.result.then(function (response) { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 console.log(response);
@@ -1415,6 +1426,7 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                     _this.formData.realisasi3 = res[0].REALISASI_3_DESC;
                     _this.formData.threshold = res[0].THRESHOLD;
                     _this.formData.indicatorId = res[0].KODE_INDIKATOR;
+                    _this.formData.remark = res[0].REMARK;
                     _this.service.getreq("mst_banks").subscribe(function (response) {
                         if (response != null) {
                             _this.formData.bankData = response;
@@ -1580,7 +1592,7 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/indicator-quantitative/modal/indicator.quantitative.modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Input Indikator</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n      <span aria-hidden=\"true\">&times;</span>\n  </button>\n</div>\n\n<div class=\"modal-body\">\n  <div class=\"row\">\n    <div class=\"col-sm-5\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">IKU\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-9\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n            <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Tahun\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Periode\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n            <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Threshold\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-3\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.threshold\">\n        </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-7\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Indicator 1 Description\n            <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator1\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 1 Description\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasi1\">\n          </div>\n        </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\" >Indicator 2 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\" [disabled]=\"!formData.realisasi1\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 2 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [disabled]=\"!formData.realisasi1\" [(ngModel)]=\"formData.realisasi2\">\n          </div>\n        </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Indicator 3 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\" [disabled]=\"!formData.realisasi2\">\n        </div>\n      </div>\n     \n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Realisasi 3 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [disabled]=\"!formData.realisasi2\" [(ngModel)]=\"formData.realisasi3\">\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-auto\">\n      <div class=\"form-group\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addNewData()\" \n        [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold||!formData.indicator1||!formData.realisasi1\">Add New Data</button>\n        <button type=\"submit\" class=\"btn btn-danger\" (click)=closeModal()>Cancel</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Input Indikator</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n      <span aria-hidden=\"true\">&times;</span>\n  </button>\n</div>\n\n<div class=\"modal-body\">\n  <div class=\"row\">\n    <div class=\"col-sm-5\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">IKU\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-9\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n            <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Tahun\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Periode\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-6\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n            <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Threshold\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-3\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.threshold\">\n        </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-7\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Indicator 1 Description\n            <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator1\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 1 Description\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasi1\">\n          </div>\n        </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\" >Indicator 2 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\" [disabled]=\"!formData.realisasi1\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Realisasi 2 Description\n\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [disabled]=\"!formData.realisasi1\" [(ngModel)]=\"formData.realisasi2\">\n          </div>\n        </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Indicator 3 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\" [disabled]=\"!formData.realisasi2\">\n        </div>\n      </div>\n     \n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Realisasi 3 Description\n\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [disabled]=\"!formData.realisasi2\" [(ngModel)]=\"formData.realisasi3\">\n        </div>\n      </div>\n\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Remark\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.remark\">\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-auto\">\n      <div class=\"form-group\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addNewData()\" \n        [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold||!formData.indicator1||!formData.realisasi1||!formData.remark\">Add New Data</button>\n        <button type=\"submit\" class=\"btn btn-danger\" (click)=closeModal()>Cancel</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1647,7 +1659,8 @@ var IndicatorQuantitativeModalComponent = /** @class */ (function () {
             indicator3: "",
             realisasi1: "",
             realisasi2: "",
-            realisasi3: ""
+            realisasi3: "",
+            remark: ""
         };
         this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
     }
@@ -1671,7 +1684,8 @@ var IndicatorQuantitativeModalComponent = /** @class */ (function () {
             USER_CREATED: "admin",
             DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
             USER_UPDATED: "admin",
-            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format()
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
+            REMARK: this.formData.remark
         };
         this.service.postreq("trn_indicator_qns/crud", header).subscribe(function (response) {
             if (response != null) {
@@ -3053,7 +3067,7 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/realisasi-quantitative/realisasi.quantitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <span>\n              <font color=\"red\">*</font>\n            </span>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Tahun\n              <span><font color=\"red\">*</font></span>\n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n            </div>\n          </div>\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Periode\n                <span><font color=\"red\">*</font></span>\n              </label>\n              <div class=\"col-sm-9\">\n                <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n                  <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n                </select>\n              </div>\n            </div>\n      </div>\n      <div class=\"col-sm-6\">\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Threshold\n              </label>\n              <div class=\"col-sm-6\">\n                <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" readonly=\"true\" disabled>\n              </div>\n            </div>\n            <div class=\"form-group row\">\n                <label class=\"col-sm-3 col-form-label\">Indicator ID\n                </label>\n                <div class=\"col-sm-6\">\n                  <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n                </div>\n              </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"generateDetaildua()\">Input Detail</button>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\">\n      </ng2-smart-table>\n    </div>\n\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"save()\">Submit</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <span>\n              <font color=\"red\">*</font>\n            </span>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Tahun\n              <span><font color=\"red\">*</font></span>\n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n            </div>\n          </div>\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Periode\n                <span><font color=\"red\">*</font></span>\n              </label>\n              <div class=\"col-sm-9\">\n                <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n                  <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n                </select>\n              </div>\n            </div>\n      </div>\n      <div class=\"col-sm-6\">\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Threshold\n              </label>\n              <div class=\"col-sm-6\">\n                <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" readonly=\"true\" disabled>\n              </div>\n            </div>\n            <div class=\"form-group row\">\n                <label class=\"col-sm-3 col-form-label\">Indicator ID\n                </label>\n                <div class=\"col-sm-6\">\n                  <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n                </div>\n              </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"getData()\">Input Detail</button>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\">\n      </ng2-smart-table>\n    </div>\n\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"save()\">Submit</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -3078,6 +3092,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
 };
 
 
@@ -3174,6 +3223,20 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                     editable: false,
                     width: "30%"
                 },
+                REMARK: {
+                    title: "Remark",
+                    type: "string",
+                    filter: false,
+                    editable: false,
+                    width: "30%"
+                },
+                TARGET: {
+                    title: "Target",
+                    type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "30%"
+                },
                 PENCAPAIAN: {
                     title: "Pencapaian",
                     type: "number",
@@ -3223,11 +3286,11 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
         this.service.getreq("mst_ikus").subscribe(function (response) {
             if (response != null) {
                 _this.formData.ikuData = response;
-                _this.service.getreq("mst_banks").subscribe(function (response) {
-                    if (response != null) {
-                        _this.formData.bankData = response;
-                    }
-                });
+            }
+        });
+        this.service.getreq("mst_banks").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.bankData = response;
             }
         });
     };
@@ -3248,630 +3311,599 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
             }
         });
     };
-    RealisasiQuantitativeComponent.prototype.generateDetaildua = function () {
+    RealisasiQuantitativeComponent.prototype.getData = function () {
         "use strict";
-        var _this = this;
-        this.service.getreq("trn_indicator_qns").subscribe(function (response) {
-            if (response != null) {
-                var arr = response.filter(function (item) {
-                    return (item.KODE_IKU == _this.formData.ikuSelected &&
-                        item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
-                        item.PERIODE == _this.formData.periodeSelected);
-                });
-                if (arr[0] != null) {
-                    var defaultValueSettings = {
-                        indikator1: "Indikator 1",
-                        indikator2: "Indikator 2",
-                        indikator3: "Indikator 3",
-                        realisasi1: "Realisasi 1",
-                        realisasi2: "Realisasi 2",
-                        realisasi3: "Realisasi 3"
-                    };
-                    if (arr[0].INDIKATOR_1_DESC != "") {
-                        defaultValueSettings.indikator1 = arr[0].INDIKATOR_1_DESC;
-                        defaultValueSettings.realisasi1 = arr[0].REALISASI_1_DESC;
-                        _this.nilaiIndicatorCheck.indicatorbool1 = true;
-                    }
-                    else {
-                        _this.nilaiIndicatorCheck.indicatorbool1 = false;
-                    }
-                    if (arr[0].INDIKATOR_2_DESC != "") {
-                        defaultValueSettings.indikator2 = arr[0].INDIKATOR_2_DESC;
-                        defaultValueSettings.realisasi2 = arr[0].REALISASI_2_DESC;
-                        _this.nilaiIndicatorCheck.indicatorbool2 = true;
-                    }
-                    else {
-                        _this.nilaiIndicatorCheck.indicatorbool2 = false;
-                    }
-                    if (arr[0].INDIKATOR_3_DESC != "") {
-                        defaultValueSettings.indikator3 = arr[0].INDIKATOR_3_DESC;
-                        defaultValueSettings.realisasi3 = arr[0].REALISASI_3_DESC;
-                        _this.nilaiIndicatorCheck.indicatorbool3 = true;
-                    }
-                    else {
-                        _this.nilaiIndicatorCheck.indicatorbool3 = false;
-                    }
-                    _this.settings = {
-                        add: {
-                            addButtonContent: '<i class="nb-plus"></i>',
-                            createButtonContent: '<i class="nb-checkmark"></i>',
-                            cancelButtonContent: '<i class="nb-close"></i>',
-                            confirmCreate: false
-                        },
-                        edit: {
-                            editButtonContent: '<i class="nb-edit"></i>',
-                            saveButtonContent: '<i class="nb-checkmark"></i>',
-                            cancelButtonContent: '<i class="nb-close"></i>',
-                            confirmSave: true
-                        },
-                        delete: {
-                            deleteButtonContent: '<i class="nb-trash"></i>',
-                            confirmDelete: false
-                        },
-                        mode: "inline",
-                        sort: true,
-                        hideSubHeader: true,
-                        actions: {
-                            add: false,
-                            edit: true,
-                            delete: false,
-                            position: "right",
-                            columnTitle: "Modify",
-                            width: "10%"
-                        },
-                        pager: {
-                            display: true,
-                            perPage: 30
-                        },
-                        columns: {
-                            DESC_BANK: {
-                                title: "Bank",
-                                type: "string",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            NILAI_INDICATOR_1: {
-                                title: defaultValueSettings.indikator1,
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var realisasiDetail, indicatorQnData, indicatorQnDtlData, realizationQnDtlData, arr, defaultValueSettings, duaColumn, tigaColumn;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        realisasiDetail = [];
+                        return [4 /*yield*/, this.service.getreq("trn_indicator_qns").toPromise().then(function (response) {
+                                if (response != null) {
+                                    indicatorQnData = response;
                                 }
-                            },
-                            NILAI_REALISASI_1: {
-                                title: defaultValueSettings.realisasi1,
-                                type: "number",
-                                filter: false,
-                                editable: true,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.service.getreq("trn_indicator_qn_dtls").toPromise().then(function (response) {
+                                if (response != null) {
+                                    indicatorQnDtlData = response;
                                 }
-                            },
-                            RESULT1: {
-                                title: "Result 1",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            PENCAPAIAN: {
-                                title: "Pencapaian",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
+                            })];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, this.service.getreq("trn_realization_qn_dtls").toPromise().then(function (response) {
+                                if (response != null) {
+                                    realizationQnDtlData = response;
+                                }
+                            })];
+                    case 3:
+                        _a.sent();
+                        return [4 /*yield*/, indicatorQnData.filter(function (item) {
+                                return (item.KODE_IKU == _this.formData.ikuSelected &&
+                                    item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
+                                    item.PERIODE == _this.formData.periodeSelected);
+                            })];
+                    case 4:
+                        arr = _a.sent();
+                        if (arr[0] != null) {
+                            defaultValueSettings = {
+                                indikator1: "Indikator 1",
+                                indikator2: "Indikator 2",
+                                indikator3: "Indikator 3",
+                                realisasi1: "Realisasi 1",
+                                realisasi2: "Realisasi 2",
+                                realisasi3: "Realisasi 3"
+                            };
+                            if (arr[0].INDIKATOR_1_DESC != "") {
+                                defaultValueSettings.indikator1 = arr[0].INDIKATOR_1_DESC;
+                                defaultValueSettings.realisasi1 = arr[0].REALISASI_1_DESC;
+                                this.nilaiIndicatorCheck.indicatorbool1 = true;
                             }
-                        }
-                    };
-                    var satuColumn = {
-                        add: {
-                            addButtonContent: '<i class="nb-plus"></i>',
-                            createButtonContent: '<i class="nb-checkmark"></i>',
-                            cancelButtonContent: '<i class="nb-close"></i>',
-                            confirmCreate: false
-                        },
-                        edit: {
-                            editButtonContent: '<i class="nb-edit"></i>',
-                            saveButtonContent: '<i class="nb-checkmark"></i>',
-                            cancelButtonContent: '<i class="nb-close"></i>',
-                            confirmSave: true
-                        },
-                        delete: {
-                            deleteButtonContent: '<i class="nb-trash"></i>',
-                            confirmDelete: false
-                        },
-                        mode: "inline",
-                        sort: true,
-                        hideSubHeader: true,
-                        actions: {
-                            add: false,
-                            edit: true,
-                            delete: false,
-                            position: "right",
-                            columnTitle: "Modify",
-                            width: "10%"
-                        },
-                        pager: {
-                            display: true,
-                            perPage: 30
-                        },
-                        columns: {
-                            DESC_BANK: {
-                                title: "Bank",
-                                type: "string",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            NILAI_INDICATOR_1: {
-                                title: defaultValueSettings.indikator1,
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            NILAI_REALISASI_1: {
-                                title: defaultValueSettings.realisasi1,
-                                type: "number",
-                                filter: false,
-                                editable: true,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            RESULT1: {
-                                title: "Result 1",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            PENCAPAIAN: {
-                                title: "Pencapaian",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
+                            else {
+                                this.nilaiIndicatorCheck.indicatorbool1 = false;
                             }
-                        }
-                    };
-                    var duaColumn = {
-                        add: {
-                            addButtonContent: '<i class="nb-plus"></i>',
-                            createButtonContent: '<i class="nb-checkmark"></i>',
-                            cancelButtonContent: '<i class="nb-close"></i>',
-                            confirmCreate: false
-                        },
-                        edit: {
-                            editButtonContent: '<i class="nb-edit"></i>',
-                            saveButtonContent: '<i class="nb-checkmark"></i>',
-                            cancelButtonContent: '<i class="nb-close"></i>',
-                            confirmSave: true
-                        },
-                        delete: {
-                            deleteButtonContent: '<i class="nb-trash"></i>',
-                            confirmDelete: false
-                        },
-                        mode: "inline",
-                        sort: true,
-                        hideSubHeader: true,
-                        actions: {
-                            add: false,
-                            edit: true,
-                            delete: false,
-                            position: "right",
-                            columnTitle: "Modify",
-                            width: "10%"
-                        },
-                        pager: {
-                            display: true,
-                            perPage: 30
-                        },
-                        columns: {
-                            DESC_BANK: {
-                                title: "Bank",
-                                type: "string",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            NILAI_INDICATOR_1: {
-                                title: defaultValueSettings.indikator1,
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            NILAI_REALISASI_1: {
-                                title: defaultValueSettings.realisasi1,
-                                type: "number",
-                                filter: false,
-                                editable: true,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            RESULT1: {
-                                title: "Result 1",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            NILAI_INDICATOR_2: {
-                                title: defaultValueSettings.indikator2,
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            NILAI_REALISASI_2: {
-                                title: defaultValueSettings.realisasi2,
-                                type: "number",
-                                filter: false,
-                                editable: true,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            RESULT2: {
-                                title: "Result 2",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            PENCAPAIAN: {
-                                title: "Pencapaian",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
+                            if (arr[0].INDIKATOR_2_DESC != "") {
+                                defaultValueSettings.indikator2 = arr[0].INDIKATOR_2_DESC;
+                                defaultValueSettings.realisasi2 = arr[0].REALISASI_2_DESC;
+                                this.nilaiIndicatorCheck.indicatorbool2 = true;
                             }
-                        }
-                    };
-                    var tigaColumn = {
-                        add: {
-                            addButtonContent: '<i class="nb-plus"></i>',
-                            createButtonContent: '<i class="nb-checkmark"></i>',
-                            cancelButtonContent: '<i class="nb-close"></i>',
-                            confirmCreate: false
-                        },
-                        edit: {
-                            editButtonContent: '<i class="nb-edit"></i>',
-                            saveButtonContent: '<i class="nb-checkmark"></i>',
-                            cancelButtonContent: '<i class="nb-close"></i>',
-                            confirmSave: true
-                        },
-                        delete: {
-                            deleteButtonContent: '<i class="nb-trash"></i>',
-                            confirmDelete: false
-                        },
-                        mode: "inline",
-                        sort: true,
-                        hideSubHeader: true,
-                        actions: {
-                            add: false,
-                            edit: true,
-                            delete: false,
-                            position: "right",
-                            columnTitle: "Modify",
-                            width: "10%"
-                        },
-                        pager: {
-                            display: true,
-                            perPage: 30
-                        },
-                        columns: {
-                            DESC_BANK: {
-                                title: "Bank",
-                                type: "string",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            NILAI_INDICATOR_1: {
-                                title: defaultValueSettings.indikator1,
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            NILAI_REALISASI_1: {
-                                title: defaultValueSettings.realisasi1,
-                                type: "number",
-                                filter: false,
-                                editable: true,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            RESULT1: {
-                                title: "Result 1",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            NILAI_INDICATOR_2: {
-                                title: defaultValueSettings.indikator2,
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            NILAI_REALISASI_2: {
-                                title: defaultValueSettings.realisasi2,
-                                type: "number",
-                                filter: false,
-                                editable: true,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            RESULT2: {
-                                title: "Result 2",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            NILAI_INDICATOR_3: {
-                                title: defaultValueSettings.indikator3,
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            NILAI_REALISASI_3: {
-                                title: defaultValueSettings.realisasi3,
-                                type: "number",
-                                filter: false,
-                                editable: true,
-                                width: "30%",
-                                valuePrepareFunction: function (value) {
-                                    if (isNaN(value)) {
-                                        return 0;
-                                    }
-                                    else {
-                                        return Number(value)
-                                            .toString()
-                                            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-                                    }
-                                }
-                            },
-                            RESULT3: {
-                                title: "Result 3",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
-                            },
-                            PENCAPAIAN: {
-                                title: "Pencapaian",
-                                type: "number",
-                                filter: false,
-                                editable: false,
-                                width: "30%"
+                            else {
+                                this.nilaiIndicatorCheck.indicatorbool2 = false;
                             }
+                            if (arr[0].INDIKATOR_3_DESC != "") {
+                                defaultValueSettings.indikator3 = arr[0].INDIKATOR_3_DESC;
+                                defaultValueSettings.realisasi3 = arr[0].REALISASI_3_DESC;
+                                this.nilaiIndicatorCheck.indicatorbool3 = true;
+                            }
+                            else {
+                                this.nilaiIndicatorCheck.indicatorbool3 = false;
+                            }
+                            this.settings = {
+                                add: {
+                                    addButtonContent: '<i class="nb-plus"></i>',
+                                    createButtonContent: '<i class="nb-checkmark"></i>',
+                                    cancelButtonContent: '<i class="nb-close"></i>',
+                                    confirmCreate: false
+                                },
+                                edit: {
+                                    editButtonContent: '<i class="nb-edit"></i>',
+                                    saveButtonContent: '<i class="nb-checkmark"></i>',
+                                    cancelButtonContent: '<i class="nb-close"></i>',
+                                    confirmSave: true
+                                },
+                                delete: {
+                                    deleteButtonContent: '<i class="nb-trash"></i>',
+                                    confirmDelete: false
+                                },
+                                mode: "inline",
+                                sort: true,
+                                hideSubHeader: true,
+                                actions: {
+                                    add: false,
+                                    edit: true,
+                                    delete: false,
+                                    position: "right",
+                                    columnTitle: "Modify",
+                                    width: "10%"
+                                },
+                                pager: {
+                                    display: true,
+                                    perPage: 30
+                                },
+                                columns: {
+                                    DESC_BANK: {
+                                        title: "Bank",
+                                        type: "string",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    NILAI_INDICATOR_1: {
+                                        title: defaultValueSettings.indikator1,
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    NILAI_REALISASI_1: {
+                                        title: defaultValueSettings.realisasi1,
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    RESULT1: {
+                                        title: "Result 1",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    REMARK: {
+                                        title: "Remark",
+                                        type: "string",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%"
+                                    },
+                                    TARGET: {
+                                        title: "Target",
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%"
+                                    },
+                                    PENCAPAIAN: {
+                                        title: "Pencapaian",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    }
+                                }
+                            };
+                            duaColumn = {
+                                add: {
+                                    addButtonContent: '<i class="nb-plus"></i>',
+                                    createButtonContent: '<i class="nb-checkmark"></i>',
+                                    cancelButtonContent: '<i class="nb-close"></i>',
+                                    confirmCreate: false
+                                },
+                                edit: {
+                                    editButtonContent: '<i class="nb-edit"></i>',
+                                    saveButtonContent: '<i class="nb-checkmark"></i>',
+                                    cancelButtonContent: '<i class="nb-close"></i>',
+                                    confirmSave: true
+                                },
+                                delete: {
+                                    deleteButtonContent: '<i class="nb-trash"></i>',
+                                    confirmDelete: false
+                                },
+                                mode: "inline",
+                                sort: true,
+                                hideSubHeader: true,
+                                actions: {
+                                    add: false,
+                                    edit: true,
+                                    delete: false,
+                                    position: "right",
+                                    columnTitle: "Modify",
+                                    width: "10%"
+                                },
+                                pager: {
+                                    display: true,
+                                    perPage: 30
+                                },
+                                columns: {
+                                    DESC_BANK: {
+                                        title: "Bank",
+                                        type: "string",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    NILAI_INDICATOR_1: {
+                                        title: defaultValueSettings.indikator1,
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    NILAI_REALISASI_1: {
+                                        title: defaultValueSettings.realisasi1,
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    RESULT1: {
+                                        title: "Result 1",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    NILAI_INDICATOR_2: {
+                                        title: defaultValueSettings.indikator2,
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    NILAI_REALISASI_2: {
+                                        title: defaultValueSettings.realisasi2,
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    RESULT2: {
+                                        title: "Result 2",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    REMARK: {
+                                        title: "Remark",
+                                        type: "string",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%"
+                                    },
+                                    TARGET: {
+                                        title: "Target",
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%"
+                                    },
+                                    PENCAPAIAN: {
+                                        title: "Pencapaian",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    }
+                                }
+                            };
+                            tigaColumn = {
+                                add: {
+                                    addButtonContent: '<i class="nb-plus"></i>',
+                                    createButtonContent: '<i class="nb-checkmark"></i>',
+                                    cancelButtonContent: '<i class="nb-close"></i>',
+                                    confirmCreate: false
+                                },
+                                edit: {
+                                    editButtonContent: '<i class="nb-edit"></i>',
+                                    saveButtonContent: '<i class="nb-checkmark"></i>',
+                                    cancelButtonContent: '<i class="nb-close"></i>',
+                                    confirmSave: true
+                                },
+                                delete: {
+                                    deleteButtonContent: '<i class="nb-trash"></i>',
+                                    confirmDelete: false
+                                },
+                                mode: "inline",
+                                sort: true,
+                                hideSubHeader: true,
+                                actions: {
+                                    add: false,
+                                    edit: true,
+                                    delete: false,
+                                    position: "right",
+                                    columnTitle: "Modify",
+                                    width: "10%"
+                                },
+                                pager: {
+                                    display: true,
+                                    perPage: 30
+                                },
+                                columns: {
+                                    DESC_BANK: {
+                                        title: "Bank",
+                                        type: "string",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    NILAI_INDICATOR_1: {
+                                        title: defaultValueSettings.indikator1,
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    NILAI_REALISASI_1: {
+                                        title: defaultValueSettings.realisasi1,
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    RESULT1: {
+                                        title: "Result 1",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    NILAI_INDICATOR_2: {
+                                        title: defaultValueSettings.indikator2,
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    NILAI_REALISASI_2: {
+                                        title: defaultValueSettings.realisasi2,
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    RESULT2: {
+                                        title: "Result 2",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    NILAI_INDICATOR_3: {
+                                        title: defaultValueSettings.indikator3,
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    NILAI_REALISASI_3: {
+                                        title: defaultValueSettings.realisasi3,
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    RESULT3: {
+                                        title: "Result 3",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    REMARK: {
+                                        title: "Remark",
+                                        type: "string",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%"
+                                    },
+                                    TARGET: {
+                                        title: "Target",
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%"
+                                    },
+                                    PENCAPAIAN: {
+                                        title: "Pencapaian",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    }
+                                }
+                            };
+                            if (arr[0].INDIKATOR_2_DESC != "") {
+                                this.settings = Object.assign(this.settings, duaColumn);
+                            }
+                            if (arr[0].INDIKATOR_3_DESC != "") {
+                                this.settings = Object.assign(this.settings, tigaColumn);
+                            }
+                            this.formData.indicatorId = arr[0].KODE_INDIKATOR;
+                            this.formData.threshold = arr[0].THRESHOLD;
                         }
-                    };
-                    if (arr[0].INDIKATOR_2_DESC != "") {
-                        _this.settings = Object.assign(_this.settings, duaColumn);
-                    }
-                    if (arr[0].INDIKATOR_3_DESC != "") {
-                        _this.settings = Object.assign(_this.settings, tigaColumn);
-                    }
-                    _this.formData.indicatorId = arr[0].KODE_INDIKATOR;
-                    _this.formData.threshold = arr[0].THRESHOLD;
-                    _this.service.getreq("mst_banks").subscribe(function (responseBank) {
-                        if (responseBank != null) {
-                            _this.formData.bankData = responseBank;
-                        }
-                    });
-                    var realisasiDetail_1 = [];
-                    _this.formData.bankData.forEach(function (element) {
-                        var detail = {
-                            KODE_IKU: _this.formData.ikuSelected,
-                            TAHUN_REALISASI: _this.formData.yearPeriode,
-                            PERIODE: _this.formData.periodeSelected,
-                            KODE_BANK: element.ID_BANK,
-                            NILAI_INDICATOR_1: 0,
-                            NILAI_INDICATOR_2: 0,
-                            NILAI_INDICATOR_3: 0,
-                            NILAI_REALISASI_1: 0,
-                            NILAI_REALISASI_2: 0,
-                            NILAI_REALISASI_3: 0,
-                            RESULT1: "0%",
-                            RESULT2: "0%",
-                            RESULT3: "0%",
-                            PENCAPAIAN: "0",
-                            USER_CREATED: "Admin",
-                            DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                            USER_UPDATED: "Admin",
-                            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                            DESC_BANK: element.DESCRIPTION
-                        };
-                        _this.service.getreq("trn_indicator_qn_dtls").subscribe(function (res) {
-                            if (res != null) {
-                                var arr_1 = res.filter(function (item) {
+                        return [4 /*yield*/, this.formData.bankData.forEach(function (element) {
+                                var detail = {
+                                    KODE_IKU: _this.formData.ikuSelected,
+                                    TAHUN_REALISASI: _this.formData.yearPeriode,
+                                    PERIODE: _this.formData.periodeSelected,
+                                    KODE_BANK: element.ID_BANK,
+                                    NILAI_INDICATOR_1: 0,
+                                    NILAI_INDICATOR_2: 0,
+                                    NILAI_INDICATOR_3: 0,
+                                    NILAI_REALISASI_1: 0,
+                                    NILAI_REALISASI_2: 0,
+                                    NILAI_REALISASI_3: 0,
+                                    RESULT1: "0%",
+                                    RESULT2: "0%",
+                                    RESULT3: "0%",
+                                    PENCAPAIAN: "0",
+                                    USER_CREATED: "Admin",
+                                    DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                    USER_UPDATED: "Admin",
+                                    DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                    DESC_BANK: element.DESCRIPTION,
+                                    REMARK: "",
+                                    TARGET: 0
+                                };
+                                detail.REMARK = arr[0].REMARK;
+                                var arrIndicatorDtlData = indicatorQnDtlData.filter(function (item) {
                                     return (item.KODE_IKU == _this.formData.ikuSelected &&
                                         item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
                                         item.PERIODE == _this.formData.periodeSelected &&
                                         item.KODE_BANK == element.ID_BANK);
                                 });
-                                if (arr_1[0] != null) {
-                                    detail.NILAI_INDICATOR_1 = arr_1[0].NILAI_INDICATOR_1;
-                                    detail.NILAI_INDICATOR_2 = arr_1[0].NILAI_INDICATOR_2;
-                                    detail.NILAI_INDICATOR_3 = arr_1[0].NILAI_INDICATOR_3;
+                                if (arrIndicatorDtlData[0] != null) {
+                                    detail.NILAI_INDICATOR_1 = arrIndicatorDtlData[0].NILAI_INDICATOR_1;
+                                    detail.NILAI_INDICATOR_2 = arrIndicatorDtlData[0].NILAI_INDICATOR_2;
+                                    detail.NILAI_INDICATOR_3 = arrIndicatorDtlData[0].NILAI_INDICATOR_3;
                                 }
-                                _this.service.getreq("trn_realization_qn_dtls").subscribe(function (resqndtl) {
-                                    if (resqndtl != null) {
-                                        var arrqntl = resqndtl.filter(function (item) {
-                                            return (item.KODE_IKU == _this.formData.ikuSelected &&
-                                                item.TAHUN_REALISASI == parseInt(_this.formData.yearPeriode) &&
-                                                item.PERIODE == _this.formData.periodeSelected &&
-                                                item.KODE_BANK == element.ID_BANK);
-                                        });
-                                        console.log(arrqntl);
-                                        if (arrqntl[0] != null) {
-                                            detail.NILAI_REALISASI_1 = arrqntl[0].NILAI_REALISASI_1;
-                                            detail.NILAI_REALISASI_2 = arrqntl[0].NILAI_REALISASI_2;
-                                            detail.NILAI_REALISASI_3 = arrqntl[0].NILAI_REALISASI_3;
-                                            detail.PENCAPAIAN = arrqntl[0].PENCAPAIAN;
-                                        }
-                                        detail.RESULT1 = ((detail.NILAI_REALISASI_1 / detail.NILAI_INDICATOR_1) * 100).toFixed(2) + "%";
-                                        detail.RESULT2 = ((detail.NILAI_REALISASI_2 / detail.NILAI_INDICATOR_2) * 100).toFixed(2) + "%";
-                                        detail.RESULT3 = ((detail.NILAI_REALISASI_3 / detail.NILAI_INDICATOR_3) * 100).toFixed(2) + "%";
-                                        if (detail.RESULT1 === "NaN%" || detail.RESULT1 === "Infinity%") {
-                                            detail.RESULT1 = "0%";
-                                        }
-                                        ;
-                                        if (detail.RESULT2 === "NaN%" || detail.RESULT2 === "Infinity%") {
-                                            detail.RESULT2 = "0%";
-                                        }
-                                        ;
-                                        if (detail.RESULT3 === "NaN%" || detail.RESULT3 === "Infinity%") {
-                                            detail.RESULT3 = "0%";
-                                        }
-                                        ;
-                                        realisasiDetail_1.push(detail);
-                                        _this.tabledata = realisasiDetail_1;
-                                        _this.formData.realisasiDetail = realisasiDetail_1;
-                                        _this.source.load(_this.formData.realisasiDetail);
-                                        _this.source.refresh();
-                                    }
+                                var arrRealizationDtlData = realizationQnDtlData.filter(function (item) {
+                                    return (item.KODE_IKU == _this.formData.ikuSelected &&
+                                        item.TAHUN_REALISASI == parseInt(_this.formData.yearPeriode) &&
+                                        item.PERIODE == _this.formData.periodeSelected &&
+                                        item.KODE_BANK == element.ID_BANK);
                                 });
-                            }
-                        });
-                    });
-                    console.log(_this.tabledata);
-                    _this.refresh();
+                                if (arrRealizationDtlData[0] != null) {
+                                    detail.NILAI_REALISASI_1 = arrRealizationDtlData[0].NILAI_REALISASI_1;
+                                    detail.NILAI_REALISASI_2 = arrRealizationDtlData[0].NILAI_REALISASI_2;
+                                    detail.NILAI_REALISASI_3 = arrRealizationDtlData[0].NILAI_REALISASI_3;
+                                    detail.PENCAPAIAN = arrRealizationDtlData[0].PENCAPAIAN;
+                                    detail.TARGET = arrRealizationDtlData[0].TARGET;
+                                }
+                                if (arrRealizationDtlData[0].REMARK != null) {
+                                    detail.REMARK = arrRealizationDtlData[0].REMARK;
+                                }
+                                detail.RESULT1 = ((detail.NILAI_REALISASI_1 / detail.NILAI_INDICATOR_1) * 100).toFixed(2) + "%";
+                                detail.RESULT2 = ((detail.NILAI_REALISASI_2 / detail.NILAI_INDICATOR_2) * 100).toFixed(2) + "%";
+                                detail.RESULT3 = ((detail.NILAI_REALISASI_3 / detail.NILAI_INDICATOR_3) * 100).toFixed(2) + "%";
+                                if (detail.RESULT1 === "NaN%" || detail.RESULT1 === "Infinity%") {
+                                    detail.RESULT1 = "0%";
+                                }
+                                ;
+                                if (detail.RESULT2 === "NaN%" || detail.RESULT2 === "Infinity%") {
+                                    detail.RESULT2 = "0%";
+                                }
+                                ;
+                                if (detail.RESULT3 === "NaN%" || detail.RESULT3 === "Infinity%") {
+                                    detail.RESULT3 = "0%";
+                                }
+                                ;
+                                realisasiDetail.push(detail);
+                            })];
+                    case 5:
+                        _a.sent();
+                        this.tabledata = realisasiDetail;
+                        this.formData.realisasiDetail = realisasiDetail;
+                        this.source.load(this.formData.realisasiDetail);
+                        this.source.refresh();
+                        console.log(this.tabledata);
+                        return [2 /*return*/];
                 }
-                else {
-                    _this.toastr.error("Data Not Found!");
-                    _this.tabledata = [];
-                    _this.source.load(_this.tabledata);
-                }
-            }
+            });
         });
     };
     RealisasiQuantitativeComponent.prototype.save = function () {
@@ -3889,36 +3921,36 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
         };
         this.service.postreq("trn_realization_qns/crud", header).subscribe(function (response) {
             console.log(response);
-            _this.formData.realisasiDetail.forEach(function (element, ind) {
-                console.log(element);
-                var headerdtl = {
-                    KODE_IKU: element.KODE_IKU,
-                    TAHUN_REALISASI: element.TAHUN_REALISASI,
-                    PERIODE: element.PERIODE,
-                    KODE_BANK: element.KODE_BANK,
-                    NILAI_REALISASI_1: element.NILAI_REALISASI_1,
-                    NILAI_REALISASI_2: element.NILAI_REALISASI_2,
-                    NILAI_REALISASI_3: element.NILAI_REALISASI_3,
-                    PENCAPAIAN: element.PENCAPAIAN.toString(),
-                    USER_CREATED: "admin",
-                    DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                    USER_UPDATED: "admin",
-                    DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                };
-                _this.service
-                    .postreq("trn_realization_qn_dtls/crud", headerdtl)
-                    .subscribe(function (response) {
-                    console.log(response);
-                }, function (error) {
-                    console.log("indicator detail");
-                    console.log(error);
-                });
-            });
-            _this.toastr.success("Data Saved!");
         }, function (error) {
             console.log("indicator header");
             console.log(error);
         });
+        this.formData.realisasiDetail.forEach(function (element, ind) {
+            console.log(element);
+            var headerdtl = {
+                KODE_IKU: element.KODE_IKU,
+                TAHUN_REALISASI: element.TAHUN_REALISASI,
+                PERIODE: element.PERIODE,
+                KODE_BANK: element.KODE_BANK,
+                NILAI_REALISASI_1: element.NILAI_REALISASI_1,
+                NILAI_REALISASI_2: element.NILAI_REALISASI_2,
+                NILAI_REALISASI_3: element.NILAI_REALISASI_3,
+                PENCAPAIAN: element.PENCAPAIAN.toString(),
+                USER_CREATED: "admin",
+                DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                USER_UPDATED: "admin",
+                DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                REMARK: element.REMARK,
+                TARGET: element.TARGET
+            };
+            _this.service.postreq("trn_realization_qn_dtls/crud", headerdtl).subscribe(function (response) {
+                console.log(response);
+            }, function (error) {
+                console.log("indicator detail");
+                console.log(error);
+            });
+        });
+        this.toastr.success("Data Saved!");
     };
     RealisasiQuantitativeComponent.prototype.editConfirm = function (event) {
         event.newData.RESULT1 =
@@ -3965,8 +3997,8 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                 event.newData.PENCAPAIAN = "0";
             }
         }
-        console.log(this.formData.realisasiDetail);
         event.confirm.resolve(event.newData);
+        console.log(this.formData.realisasiDetail);
     };
     RealisasiQuantitativeComponent.prototype.refresh = function () {
         this.source.refresh();
