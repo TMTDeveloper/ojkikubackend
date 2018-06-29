@@ -68,6 +68,10 @@
     "DATETIME_UPDATED": {
       "type": "date",
       "required": true
+    },
+    "REMARK": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],

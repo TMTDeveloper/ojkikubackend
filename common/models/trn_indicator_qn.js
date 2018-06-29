@@ -49,7 +49,8 @@ module.exports = function (trn_indicator_qn) {
             "USER_CREATED": req.USER_CREATED,
             "DATETIME_CREATED": req.DATETIME_CREATED,
             "USER_UPDATED": req.USER_CREATED,
-            "DATETIME_UPDATED": req.DATETIME_UPDATED
+            "DATETIME_UPDATED": req.DATETIME_UPDATED,
+            "REMARK" : req.REMARK
           },
           (err, res) => {
             if (util.isNullOrUndefined(err)) {
@@ -87,7 +88,8 @@ module.exports = function (trn_indicator_qn) {
             "USER_CREATED": req.USER_CREATED,
             "DATETIME_CREATED": req.DATETIME_CREATED,
             "USER_UPDATED": req.USER_CREATED,
-            "DATETIME_UPDATED": req.DATETIME_UPDATED
+            "DATETIME_UPDATED": req.DATETIME_UPDATED,
+            "REMARK" : req.REMARK
           },
           (err, res) => {
             if (util.isNullOrUndefined(err)) {
