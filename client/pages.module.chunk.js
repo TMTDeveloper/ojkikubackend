@@ -3,7 +3,7 @@ webpackJsonp(["pages.module"],{
 /***/ "./src/app/pages/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <nb-card>\n    <nb-card-header>IKU Project</nb-card-header>\n  </nb-card>\n</div>\n "
+module.exports = "<div class=\"row\">\n  <nb-card>\n    <nb-card-header>OJK Dashboard</nb-card-header>\n  </nb-card>\n</div>\n "
 
 /***/ }),
 
@@ -94,8 +94,8 @@ var MENU_ITEMS = [
                 link: "/pages/report/report-iku"
             },
             {
-                title: "Report MONA",
-                link: "/pages/report/report-mona"
+                title: "Report MOKA",
+                link: "/pages/report/report-moka"
             }
         ]
     },
@@ -148,16 +148,16 @@ var MENU_ITEMS = [
         ]
     },
     {
-        title: "Transaction MONA",
+        title: "Transaction MOKA",
         icon: "nb-compose",
         children: [
             {
-                title: "Target Mona",
-                link: "/pages/transaction/mona-target"
+                title: "Target MOKA",
+                link: "/pages/transaction/moka-target"
             },
             {
-                title: "Realisasi Mona",
-                link: "/pages/transaction/mona-realisasi"
+                title: "Realisasi MOKA",
+                link: "/pages/transaction/moka-realisasi"
             }
         ]
     }
