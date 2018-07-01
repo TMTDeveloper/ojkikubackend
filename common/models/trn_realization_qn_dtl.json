@@ -28,19 +28,15 @@
     },
     "NILAI_REALISASI_1": {
       "type": "number"
-
     },
     "NILAI_REALISASI_2": {
       "type": "number"
-
     },
     "NILAI_REALISASI_3": {
       "type": "number"
-
     },
     "PENCAPAIAN": {
       "type": "number"
-
     },
     "USER_CREATED": {
       "type": "string",
@@ -59,8 +55,7 @@
       "required": true
     },
     "REMARK": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "TARGET": {
       "type": "number",
