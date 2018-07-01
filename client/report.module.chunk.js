@@ -188,7 +188,7 @@ function objectAssign(target) {
 /***/ "./src/app/pages/report/report-iku/report.iku.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>\n    Report IKU\n  </nb-card-header>\n\n  <nb-card-body>\n\n    <div class=\"form-group row\">\n      <label class=\"col-sm-1 col-form-label\">Tahun</label>\n      <div class=\"col-sm-2\">\n        <input class=\"form-control\" [(ngModel)]=\"formData.TahunSelected\">\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <label class=\"col-md-1\">Periode</label>\n      <div class=\"col-sm-2\">\n        <select class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\" required>\n          <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n        </select>\n      </div>\n    </div>\n\n    <div class=\"col-sm-auto\">\n      <div class=\"form-group\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"getReport()\" [disabled]=\"!formData.TahunSelected||!formData.periodeSelected\">Submit</button>\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"generateCSV()\" [disabled]=\"!tabledata\">Download</button>\n      </div>\n    </div>\n  </nb-card-body>\n</nb-card>\n\n<nb-card>\n  <nb-card-body>\n    <div class=\"holdertable\">\n      <table class=\"table table-striped table-hover\">\n        <thead>\n          <tr>\n            <th>Kode IKU</th>\n            <th>Nilai Realisasi</th>\n            <th>Indikator</th>\n            <th>Realisasi</th>\n            <th>Target</th>\n            <th>Pencapaian</th>\n          </tr>\n        </thead>\n        <tbody>\n            <tr *ngFor=\"let item of tabledata\">\n                <td>{{ item.KODE_IKU}}</td>\n                <td>{{ item.NILAI_REALISASI | number }}</td>\n                <td>{{ item.INDICATOR | number }}</td>\n                <td>{{ item.REALISASI | number }}</td>\n                <td>{{ item.TARGET }}</td>\n                <td>{{ item.PENCAPAIAN | number }}</td>\n              </tr>\n        </tbody>\n      </table>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>\n    Report IKU\n  </nb-card-header>\n\n  <nb-card-body>\n\n    <div class=\"form-group row\">\n      <label class=\"col-sm-1 col-form-label\">Tahun</label>\n      <div class=\"col-sm-2\">\n        <input class=\"form-control\" [(ngModel)]=\"formData.TahunSelected\">\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <label class=\"col-md-1\">Periode</label>\n      <div class=\"col-sm-2\">\n        <select class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\" required>\n          <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n        </select>\n      </div>\n    </div>\n\n    <div class=\"col-sm-auto\">\n      <div class=\"form-group\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"getReport()\" [disabled]=\"!formData.TahunSelected||!formData.periodeSelected\">Get Data</button>\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"generateCSV()\" [disabled]=\"!tabledata\">Download</button>\n      </div>\n    </div>\n  </nb-card-body>\n</nb-card>\n\n<nb-card>\n  <nb-card-body>\n    <div class=\"holdertable\">\n      <table class=\"table table-striped table-hover\">\n        <thead>\n          <tr>\n            <th>Kode IKU</th>\n            <th>Nilai Realisasi</th>\n            <th>Indikator</th>\n            <th>Realisasi</th>\n            <th>Target</th>\n            <th>Pencapaian</th>\n          </tr>\n        </thead>\n        <tbody>\n            <tr *ngFor=\"let item of tabledata\">\n                <td>{{ item.KODE_IKU}}</td>\n                <td>{{ item.NILAI_REALISASI | number }}</td>\n                <td>{{ item.INDICATOR | number }}</td>\n                <td>{{ item.REALISASI | number }}</td>\n                <td>{{ item.TARGET }}</td>\n                <td>{{ item.PENCAPAIAN | number }}</td>\n              </tr>\n        </tbody>\n      </table>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -203,6 +203,7 @@ module.exports = "<nb-card>\n  <nb-card-header>\n    Report IKU\n  </nb-card-hea
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_csv_Angular2_csv__ = __webpack_require__("./node_modules/angular2-csv/Angular2-csv.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_csv_Angular2_csv___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_csv_Angular2_csv__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -216,9 +217,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ReportIkuComponent = /** @class */ (function () {
-    function ReportIkuComponent(service) {
+    function ReportIkuComponent(service, toastr) {
         this.service = service;
+        this.toastr = toastr;
         this.formData = {
             periode: [
                 {
@@ -251,8 +254,13 @@ var ReportIkuComponent = /** @class */ (function () {
                         item.PERIODE == _this.formData.periodeSelected);
                 });
                 console.log(arr);
-                if (arr != null) {
+                if (arr[0] != null) {
                     _this.tabledata = res;
+                    _this.toastr.success("Get Data Success!");
+                }
+                else {
+                    _this.tabledata = [];
+                    _this.toastr.error("Belum Ada Data!");
                 }
             }
         });
@@ -277,7 +285,8 @@ var ReportIkuComponent = /** @class */ (function () {
             selector: "ngx-report-iku",
             template: __webpack_require__("./src/app/pages/report/report-iku/report.iku.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__["a" /* BackendService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]])
     ], ReportIkuComponent);
     return ReportIkuComponent;
 }());
@@ -286,18 +295,18 @@ var ReportIkuComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/report/report-mona/report.mona.component.html":
+/***/ "./src/app/pages/report/report-moka/report.moka.component.html":
 /***/ (function(module, exports) {
 
 module.exports = "<!-- <nb-card>\n  <nb-card-header>\n    View Report\n  </nb-card-header>\n\n  <nb-card-body>\n    <div class=\"holdertable\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\">\n      </ng2-smart-table>\n    </div>\n\n\n\n  </nb-card-body>\n</nb-card> -->\n\n<nb-card>\n  <nb-card-body>\n    On Progress\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/report/report-mona/report.mona.component.ts":
+/***/ "./src/app/pages/report/report-moka/report.moka.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportMonaComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportMokaComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
@@ -313,8 +322,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ReportMonaComponent = /** @class */ (function () {
-    function ReportMonaComponent(service) {
+var ReportMokaComponent = /** @class */ (function () {
+    function ReportMokaComponent(service) {
         this.service = service;
         this.settings = {
             sort: true,
@@ -369,7 +378,7 @@ var ReportMonaComponent = /** @class */ (function () {
         this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
         this.loadData();
     }
-    ReportMonaComponent.prototype.loadData = function () {
+    ReportMokaComponent.prototype.loadData = function () {
         var _this = this;
         console.log("why tho");
         this.service.getreq("reports").subscribe(function (response) {
@@ -380,7 +389,7 @@ var ReportMonaComponent = /** @class */ (function () {
             console.log(error);
         });
     };
-    ReportMonaComponent.prototype.searchRange = function (beginDate, endDate) {
+    ReportMokaComponent.prototype.searchRange = function (beginDate, endDate) {
         if (!(!beginDate && !endDate)) {
             this.source
                 .setFilter([
@@ -406,14 +415,14 @@ var ReportMonaComponent = /** @class */ (function () {
             return this.source;
         }
     };
-    ReportMonaComponent = __decorate([
+    ReportMokaComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: "ngx-report-mona",
-            template: __webpack_require__("./src/app/pages/report/report-mona/report.mona.component.html")
+            selector: "ngx-report-moka",
+            template: __webpack_require__("./src/app/pages/report/report-moka/report.moka.component.html")
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__["a" /* BackendService */]])
-    ], ReportMonaComponent);
-    return ReportMonaComponent;
+    ], ReportMokaComponent);
+    return ReportMokaComponent;
 }());
 
 
@@ -565,6 +574,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__report_router_module__ = __webpack_require__("./src/app/pages/report/report.router.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__theme_theme_module__ = __webpack_require__("./src/app/@theme/theme.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -576,16 +586,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var ReportModule = /** @class */ (function () {
     function ReportModule() {
     }
     ReportModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            imports: [__WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* Ng2SmartTableModule */], __WEBPACK_IMPORTED_MODULE_2__report_router_module__["a" /* ReportRouterModule */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* Ng2SmartTableModule */], __WEBPACK_IMPORTED_MODULE_2__report_router_module__["a" /* ReportRouterModule */], __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["a" /* ToastrModule */].forRoot()],
             declarations: __WEBPACK_IMPORTED_MODULE_2__report_router_module__["b" /* routedComponents */].slice(),
             entryComponents: [],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_4__core_data_backend_service__["a" /* BackendService */]
+                __WEBPACK_IMPORTED_MODULE_4__core_data_backend_service__["a" /* BackendService */],
             ]
         })
     ], ReportModule);
@@ -606,7 +617,7 @@ var ReportModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__report_component__ = __webpack_require__("./src/app/pages/report/report.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__report_iku_report_iku_component__ = __webpack_require__("./src/app/pages/report/report-iku/report.iku.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__report_mona_report_mona_component__ = __webpack_require__("./src/app/pages/report/report-mona/report.mona.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__report_moka_report_moka_component__ = __webpack_require__("./src/app/pages/report/report-moka/report.moka.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -628,8 +639,8 @@ var routes = [
                 component: __WEBPACK_IMPORTED_MODULE_3__report_iku_report_iku_component__["a" /* ReportIkuComponent */]
             },
             {
-                path: "report-mona",
-                component: __WEBPACK_IMPORTED_MODULE_4__report_mona_report_mona_component__["a" /* ReportMonaComponent */]
+                path: "report-moka",
+                component: __WEBPACK_IMPORTED_MODULE_4__report_moka_report_moka_component__["a" /* ReportMokaComponent */]
             }
         ]
     }
@@ -649,7 +660,7 @@ var ReportRouterModule = /** @class */ (function () {
 var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_2__report_component__["a" /* ReportComponent */],
     __WEBPACK_IMPORTED_MODULE_3__report_iku_report_iku_component__["a" /* ReportIkuComponent */],
-    __WEBPACK_IMPORTED_MODULE_4__report_mona_report_mona_component__["a" /* ReportMonaComponent */]
+    __WEBPACK_IMPORTED_MODULE_4__report_moka_report_moka_component__["a" /* ReportMokaComponent */]
 ];
 
 

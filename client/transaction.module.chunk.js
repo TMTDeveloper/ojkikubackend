@@ -672,7 +672,7 @@ exports.InputService = InputService;
 /***/ "./src/app/pages/transaction/indicator-qualitative/indicator.qualitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-8\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-6\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-2\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-3\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"generateDetail()\">Get Data</button>\n      </div>\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\n    </div>\n    \n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\" >\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"updateData()\">Update Data</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>"
+module.exports = "<nb-card>\n  <nb-card-header>IKU Indicator Qualitative</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-8\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-6\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-2\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-3\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"generateDetail()\">Get Data</button>\n      </div>\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\n    </div>\n    \n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\" >\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"updateData()\">Update Data</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>"
 
 /***/ }),
 
@@ -1162,7 +1162,7 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/indicator-quantitative/indicator.quantitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Threshold\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator ID\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <div class=\"col-sm-auto\">\n            <button type=\" button \" class=\"btn btn-success \" (click)=\"getData()\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\">Get Data</button>\n          </div>\n          <div class=\"col-sm-auto\">\n            <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-sm-8\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator 1 Description\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator1\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Realisasi 1 Description\n  \n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasi1\" disabled>\n            </div>\n          </div>\n      \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\" >Indicator 2 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Realisasi 2 Description\n  \n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\"  [(ngModel)]=\"formData.realisasi2\" disabled>\n            </div>\n          </div>\n      \n      \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator 3 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\" disabled>\n          </div>\n        </div>\n       \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Realisasi 3 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.realisasi3\" disabled>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Remark\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.remark\" disabled>\n          </div>\n        </div>\n      </div>\n\n      \n       \n      \n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold\"\n          (click)=\"save()\">Update Data</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>IKU Indicator Quantitative</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Threshold\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator ID\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <div class=\"col-sm-auto\">\n            <button type=\" button \" class=\"btn btn-success \" (click)=\"getData()\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\">Get Data</button>\n          </div>\n          <div class=\"col-sm-auto\">\n            <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-sm-8\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator 1 Description\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator1\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Realisasi 1 Description\n  \n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasi1\" disabled>\n            </div>\n          </div>\n      \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\" >Indicator 2 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator2\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Realisasi 2 Description\n  \n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\"  [(ngModel)]=\"formData.realisasi2\" disabled>\n            </div>\n          </div>\n      \n      \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator 3 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicator3\" disabled>\n          </div>\n        </div>\n       \n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Realisasi 3 Description\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.realisasi3\" disabled>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Remark\n  \n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.remark\" disabled>\n          </div>\n        </div>\n      </div>\n\n      \n       \n      \n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold\"\n          (click)=\"save()\">Update Data</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -2014,6 +2014,339 @@ var IndicatorQuantitativeModalComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pages/transaction/indicator-strategic/indicator.strategic.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\n  <nb-card-header>IKU Indicator Strategic</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Periode\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n              <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <div class=\"col-sm-auto\">\n            <button type=\" button \" class=\"btn btn-success \" (click)=\"getData()\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\">Get Data</button>\n          </div>\n          <div class=\"col-sm-auto\">\n            <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-sm-8\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator Description\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicatorDescription\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Realisasi Description\n\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasiDescription\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Threshold\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" disabled>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">Indicator ID\n          </label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n          </div>\n        </div>\n      </div>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/indicator-strategic/indicator.strategic.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IndicatorStrategicComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modal_indicator_strategic_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-strategic/modal/indicator.strategic.modal.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+var IndicatorStrategicComponent = /** @class */ (function () {
+    function IndicatorStrategicComponent(modalService, toastr, service) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.formData = {
+            periode: [
+                {
+                    id: "TW1",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "TW2",
+                    desc: "Triwulan 2"
+                },
+                {
+                    id: "TW3",
+                    desc: "Triwulan 3"
+                },
+                {
+                    id: "TW4",
+                    desc: "Triwulan 4"
+                }
+            ],
+            ikuData: [],
+            ikuSelected: "",
+            periodeSelected: "",
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_3_moment__().format("YYYY"),
+            indicatorDescription: "",
+            realisasiDescription: "",
+            threshold: 0,
+            indicatorId: "",
+        };
+        this.loadData();
+    }
+    IndicatorStrategicComponent.prototype.loadData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var respIku, arr;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.service.getreq("mst_ikus").toPromise().then(function (response) {
+                            if (response != null) {
+                                respIku = response;
+                            }
+                        })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, respIku.filter(function (item) {
+                                return (item.TIPE_IKU == "STRATEGIC");
+                            })];
+                    case 2:
+                        arr = _a.sent();
+                        if (arr[0] != null) {
+                            this.formData.ikuData = arr;
+                        }
+                        else {
+                            this.toastr.error("Tidak Ditemukan IKU Indicator Strategic Data");
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    IndicatorStrategicComponent.prototype.getData = function () {
+        var _this = this;
+        this.service.getreq("trn_indicator_qns").subscribe(function (response) {
+            if (response != null) {
+                var arr = response.filter(function (item) {
+                    return (item.KODE_IKU == _this.formData.ikuSelected &&
+                        item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
+                        item.PERIODE == _this.formData.periodeSelected);
+                });
+                if (arr[0] != null) {
+                    _this.formData.indicatorDescription = arr[0].INDIKATOR_1_DESC;
+                    _this.formData.realisasiDescription = arr[0].REALISASI_1_DESC;
+                    _this.formData.threshold = arr[0].THRESHOLD;
+                    _this.formData.indicatorId = "FET" +
+                        _this.formData.ikuSelected +
+                        _this.formData.yearPeriode +
+                        _this.formData.periodeSelected;
+                    _this.toastr.success("Get Data Success!");
+                }
+                else {
+                    _this.toastr.error("No Data!");
+                }
+            }
+        });
+    };
+    IndicatorStrategicComponent.prototype.showModal = function () {
+        var _this = this;
+        this.activeModal = this.modalService.open(__WEBPACK_IMPORTED_MODULE_6__modal_indicator_strategic_modal_component__["a" /* IndicatorStrategicModalComponent */], {
+            windowClass: "xlModal",
+            container: "nb-layout",
+            backdrop: "static"
+        });
+        this.activeModal.componentInstance.formData.ikuData = this.formData.ikuData;
+        this.activeModal.componentInstance.formData.periodeSelected = this.formData.periodeSelected;
+        this.activeModal.componentInstance.formData.ikuSelected = this.formData.ikuSelected;
+        this.activeModal.componentInstance.formData.yearPeriode = this.formData.yearPeriode;
+        this.activeModal.componentInstance.formData.threshold = this.formData.threshold;
+        this.activeModal.componentInstance.formData.indicatorDescription = this.formData.indicatorDescription;
+        this.activeModal.componentInstance.formData.realisasiDescription = this.formData.realisasiDescription;
+        this.activeModal.result.then(function (response) { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                console.log(response);
+                if (response != null) {
+                    this.formData.ikuSelected = response.ikuSelected;
+                    this.formData.periodeSelected = response.periodeSelected;
+                    this.formData.yearPeriode = response.yearPeriode;
+                    this.getData();
+                }
+                return [2 /*return*/];
+            });
+        }); }, function (error) { });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["NgForm"])
+    ], IndicatorStrategicComponent.prototype, "myForm", void 0);
+    IndicatorStrategicComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-indicator-strategic",
+            template: __webpack_require__("./src/app/pages/transaction/indicator-strategic/indicator.strategic.component.html"),
+            styles: [
+                "\n      input:disabled {\n        background-color: rgba(211, 211, 211, 0.6);\n      }\n    "
+            ]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__["a" /* BackendService */]])
+    ], IndicatorStrategicComponent);
+    return IndicatorStrategicComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/indicator-strategic/modal/indicator.strategic.modal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">IKU Indikator Strategic</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n</div>\n\n<div class=\"modal-body\">\n  <div class=\"row\">\n    <div class=\"col-sm-5\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">IKU\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-9\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n            <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Tahun\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-9\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-3 col-form-label\">Periode\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-9\">\n          <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n            <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n          </select>\n        </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-7\">\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Indicator Description\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.indicatorDescription\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Realisasi Description\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [class.green]=\"isDisabled\" [(ngModel)]=\"formData.realisasiDescription\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label class=\"col-sm-2 col-form-label\">Threshold\n          <font color=\"red\">*</font>\n        </label>\n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" [(ngModel)]=\"formData.threshold\">\n        </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-auto\">\n      <div class=\"form-group\">\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"addNewData()\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected||!formData.threshold||!formData.indicatorDescription||!formData.realisasiDescription\">Add New Data</button>\n        <button type=\"submit\" class=\"btn btn-danger\" (click)=closeModal()>Cancel</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/indicator-strategic/modal/indicator.strategic.modal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IndicatorStrategicModalComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var IndicatorStrategicModalComponent = /** @class */ (function () {
+    function IndicatorStrategicModalComponent(activeModal, toastr, service) {
+        this.activeModal = activeModal;
+        this.toastr = toastr;
+        this.service = service;
+        this.formData = {
+            periode: [
+                {
+                    id: "TW1",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "TW2",
+                    desc: "Triwulan 2"
+                },
+                {
+                    id: "TW3",
+                    desc: "Triwulan 3"
+                },
+                {
+                    id: "TW4",
+                    desc: "Triwulan 4"
+                }
+            ],
+            ikuData: [],
+            periodeSelected: "",
+            ikuSelected: "",
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_2_moment__().format("YYYY"),
+            threshold: 0,
+            indicatorDescription: "",
+            realisasiDescription: "",
+        };
+    }
+    IndicatorStrategicModalComponent.prototype.addNewData = function () {
+        var _this = this;
+        var header = {
+            KODE_IKU: this.formData.ikuSelected,
+            TAHUN_INDICATOR: this.formData.yearPeriode,
+            PERIODE: this.formData.periodeSelected,
+            KODE_INDIKATOR: "FET" +
+                this.formData.ikuSelected +
+                this.formData.yearPeriode +
+                this.formData.periodeSelected,
+            THRESHOLD: this.formData.threshold,
+            INDIKATOR_1_DESC: this.formData.indicatorDescription,
+            REALISASI_1_DESC: this.formData.realisasiDescription,
+            INDIKATOR_2_DESC: null,
+            REALISASI_2_DESC: null,
+            INDIKATOR_3_DESC: null,
+            REALISASI_3_DESC: null,
+            USER_CREATED: "admin",
+            DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_2_moment__().format(),
+            USER_UPDATED: "admin",
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_2_moment__().format(),
+            REMARK: ""
+        };
+        console.log(header);
+        this.service.postreq("trn_indicator_qns/crud", header).subscribe(function (response) {
+            if (response != null) {
+                _this.toastr.success("Data Added!");
+                var data = {
+                    ikuSelected: _this.formData.ikuSelected,
+                    periodeSelected: _this.formData.periodeSelected,
+                    yearPeriode: _this.formData.yearPeriode
+                };
+                _this.activeModal.close(data);
+            }
+            else {
+                _this.toastr.error("Add Data Failed!");
+            }
+        });
+    };
+    IndicatorStrategicModalComponent.prototype.closeModal = function () {
+        this.activeModal.close();
+    };
+    IndicatorStrategicModalComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-indicator-strategic-modal",
+            template: __webpack_require__("./src/app/pages/transaction/indicator-strategic/modal/indicator.strategic.modal.component.html"),
+            styles: ["\n  input:disabled {\n    background-color: rgba(211,211,211, 0.6);\n }"]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
+            __WEBPACK_IMPORTED_MODULE_1_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_4__core_data_backend_service__["a" /* BackendService */]])
+    ], IndicatorStrategicModalComponent);
+    return IndicatorStrategicModalComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/transaction/moka-realisasi/button.moka.realisasi.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2059,7 +2392,7 @@ var MokaRealisasiDatePicker = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/moka-realisasi/moka.realisasi.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>MOKA REALISASI</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Dokumen\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.id}}\">{{ data.desc }}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Bank\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.documentSelected||!formData.bankSelected\" \n        (click)=\"getData()\">Get Data</button>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" \n          (click)=\"updateData()\">Update Data</button>\n      </div>\n    </div>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>MOKA Realisasi</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Dokumen\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.id}}\">{{ data.desc }}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Bank\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.documentSelected||!formData.bankSelected\" \n        (click)=\"getData()\">Get Data</button>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" \n          (click)=\"updateData()\">Update Data</button>\n      </div>\n    </div>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -2495,7 +2828,7 @@ var MokaTargetModalComponent = /** @class */ (function () {
             DATE_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
         };
         console.log(header);
-        this.service.postreq("trn_monas", header).subscribe(function (response) {
+        this.service.postreq("trn_monas/crud", header).subscribe(function (response) {
             if (response != null) {
                 _this.toastr.success("Data Added!");
                 var data = {
@@ -2535,7 +2868,7 @@ var MokaTargetModalComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/moka-target/moka.target.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>MOKA TARGET</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"getData()\">Get Data</button>\n      </div>\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"showModal()\">Add Data</button>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>MOKA Target</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"getData()\">Get Data</button>\n      </div>\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"showModal()\">Add Data</button>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -3409,7 +3742,7 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/realisasi-quantitative/realisasi.quantitative.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>IKU</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <span>\n              <font color=\"red\">*</font>\n            </span>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Tahun\n              <span><font color=\"red\">*</font></span>\n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n            </div>\n          </div>\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Periode\n                <span><font color=\"red\">*</font></span>\n              </label>\n              <div class=\"col-sm-9\">\n                <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n                  <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n                </select>\n              </div>\n            </div>\n      </div>\n      <div class=\"col-sm-6\">\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Threshold\n              </label>\n              <div class=\"col-sm-6\">\n                <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" readonly=\"true\" disabled>\n              </div>\n            </div>\n            <div class=\"form-group row\">\n                <label class=\"col-sm-3 col-form-label\">Indicator ID\n                </label>\n                <div class=\"col-sm-6\">\n                  <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n                </div>\n              </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"getData()\">Input Detail</button>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\">\n      </ng2-smart-table>\n    </div>\n\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"save()\">Submit</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>IKU Realisasi Quantitative</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <span>\n              <font color=\"red\">*</font>\n            </span>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Tahun\n              <span><font color=\"red\">*</font></span>\n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n            </div>\n          </div>\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Periode\n                <span><font color=\"red\">*</font></span>\n              </label>\n              <div class=\"col-sm-9\">\n                <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n                  <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n                </select>\n              </div>\n            </div>\n      </div>\n      <div class=\"col-sm-6\">\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Threshold\n              </label>\n              <div class=\"col-sm-6\">\n                <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" readonly=\"true\" disabled>\n              </div>\n            </div>\n            <div class=\"form-group row\">\n                <label class=\"col-sm-3 col-form-label\">Indicator ID\n                </label>\n                <div class=\"col-sm-6\">\n                  <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n                </div>\n              </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"getData()\">Input Detail</button>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\">\n      </ng2-smart-table>\n    </div>\n\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"save()\">Submit</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -4193,8 +4526,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                             }
                             this.formData.indicatorId = arr[0].KODE_INDIKATOR;
                             this.formData.threshold = arr[0].THRESHOLD;
-                        }
-                        return [4 /*yield*/, this.formData.bankData.forEach(function (element) {
+                            this.formData.bankData.forEach(function (element) {
                                 var detail = {
                                     KODE_IKU: _this.formData.ikuSelected,
                                     TAHUN_REALISASI: _this.formData.yearPeriode,
@@ -4216,9 +4548,11 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                     DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
                                     DESC_BANK: element.DESCRIPTION,
                                     REMARK: "",
-                                    TARGET: 0
+                                    TARGET: _this.formData.threshold
                                 };
-                                detail.REMARK = arr[0].REMARK;
+                                if (arr[0] != null) {
+                                    detail.REMARK = arr[0].REMARK;
+                                }
                                 var arrIndicatorDtlData = indicatorQnDtlData.filter(function (item) {
                                     return (item.KODE_IKU == _this.formData.ikuSelected &&
                                         item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
@@ -4232,7 +4566,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                 }
                                 var arrRealizationDtlData = realizationQnDtlData.filter(function (item) {
                                     return (item.KODE_IKU == _this.formData.ikuSelected &&
-                                        item.TAHUN_REALISASI == parseInt(_this.formData.yearPeriode) &&
+                                        item.TAHUN_REALISASI == _this.formData.yearPeriode &&
                                         item.PERIODE == _this.formData.periodeSelected &&
                                         item.KODE_BANK == element.ID_BANK);
                                 });
@@ -4241,10 +4575,12 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                     detail.NILAI_REALISASI_2 = arrRealizationDtlData[0].NILAI_REALISASI_2;
                                     detail.NILAI_REALISASI_3 = arrRealizationDtlData[0].NILAI_REALISASI_3;
                                     detail.PENCAPAIAN = arrRealizationDtlData[0].PENCAPAIAN;
-                                    detail.TARGET = arrRealizationDtlData[0].TARGET;
-                                }
-                                if (arrRealizationDtlData[0].REMARK != null) {
-                                    detail.REMARK = arrRealizationDtlData[0].REMARK;
+                                    if (arrRealizationDtlData[0].TARGET != null) {
+                                        detail.TARGET = arrRealizationDtlData[0].TARGET;
+                                    }
+                                    if (arrRealizationDtlData[0].REMARK != null) {
+                                        detail.REMARK = arrRealizationDtlData[0].REMARK;
+                                    }
                                 }
                                 detail.RESULT1 = ((detail.NILAI_REALISASI_1 / detail.NILAI_INDICATOR_1) * 100).toFixed(2) + "%";
                                 detail.RESULT2 = ((detail.NILAI_REALISASI_2 / detail.NILAI_INDICATOR_2) * 100).toFixed(2) + "%";
@@ -4262,15 +4598,22 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                 }
                                 ;
                                 realisasiDetail.push(detail);
-                            })];
-                    case 5:
-                        _a.sent();
-                        realisasiDetail = realisasiDetail.sort(function (a, b) { return a.KODE_BANK - b.KODE_BANK; });
-                        this.tabledata = realisasiDetail;
-                        this.formData.realisasiDetail = realisasiDetail;
-                        this.source.load(this.formData.realisasiDetail);
-                        this.source.refresh();
-                        console.log(this.tabledata);
+                            });
+                            realisasiDetail = realisasiDetail.sort(function (a, b) { return a.KODE_BANK - b.KODE_BANK; });
+                            this.tabledata = realisasiDetail;
+                            this.formData.realisasiDetail = realisasiDetail;
+                            this.source.load(this.formData.realisasiDetail);
+                            this.source.refresh();
+                            console.log(this.tabledata);
+                            this.toastr.success("Get Data Sucess!");
+                        }
+                        else {
+                            this.tabledata = [];
+                            this.formData.realisasiDetail = this.tabledata;
+                            this.source.load(this.formData.realisasiDetail);
+                            this.source.refresh();
+                            this.toastr.error("Data Indikator Belum di isi!");
+                        }
                         return [2 /*return*/];
                 }
             });
@@ -4338,43 +4681,71 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
         event.newData.RESULT3 =
             ((event.newData.NILAI_REALISASI_3 / event.newData.NILAI_INDICATOR_3) *
                 100).toFixed(2) + "%";
-        if (parseInt(event.newData.RESULT1) >= this.formData.threshold &&
-            parseInt(event.newData.RESULT2) >= this.formData.threshold &&
-            parseInt(event.newData.RESULT3) >= this.formData.threshold) {
-            event.newData.PENCAPAIAN = "1";
+        if (event.data.TARGET == event.newData.TARGET) {
+            console.log("data sama coy");
+            if (this.nilaiIndicatorCheck.indicatorbool1 === true) {
+                if (parseInt(event.newData.RESULT1) >= event.data.TARGET) {
+                    event.newData.PENCAPAIAN = "1";
+                }
+                else {
+                    event.newData.PENCAPAIAN = "0";
+                }
+            }
+            if (this.nilaiIndicatorCheck.indicatorbool2 === true && event.newData.PENCAPAIAN != "1") {
+                if (parseInt(event.newData.RESULT2) >= event.data.TARGET) {
+                    event.newData.PENCAPAIAN = "1";
+                }
+                else {
+                    event.newData.PENCAPAIAN = "0";
+                }
+            }
+            if (this.nilaiIndicatorCheck.indicatorbool3 === true && event.newData.PENCAPAIAN != "1") {
+                if (parseInt(event.newData.RESULT3) >= event.data.TARGET) {
+                    event.newData.PENCAPAIAN = "1";
+                }
+                else {
+                    event.newData.PENCAPAIAN = "0";
+                }
+            }
+            event.confirm.resolve(event.newData);
         }
         else {
-            event.newData.PENCAPAIAN = "0";
+            console.log("data enggak sama");
+            if (this.nilaiIndicatorCheck.indicatorbool1 === true) {
+                if (parseInt(event.newData.RESULT1) >= event.newData.TARGET) {
+                    event.newData.PENCAPAIAN = "1";
+                }
+                else {
+                    event.newData.PENCAPAIAN = "0";
+                }
+            }
+            if (this.nilaiIndicatorCheck.indicatorbool2 === true && event.newData.PENCAPAIAN != "1") {
+                if (parseInt(event.newData.RESULT2) >= event.newData.TARGET) {
+                    event.newData.PENCAPAIAN = "1";
+                }
+                else {
+                    event.newData.PENCAPAIAN = "0";
+                }
+            }
+            if (this.nilaiIndicatorCheck.indicatorbool3 === true && event.newData.PENCAPAIAN != "1") {
+                if (parseInt(event.newData.RESULT3) >= event.newData.TARGET) {
+                    event.newData.PENCAPAIAN = "1";
+                }
+                else {
+                    event.newData.PENCAPAIAN = "0";
+                }
+            }
+            if (event.newData.RESULT1 == "NaN%") {
+                event.newData.RESULT1 = "0%";
+            }
+            if (event.newData.RESULT2 == "NaN%") {
+                event.newData.RESULT2 = "0%";
+            }
+            if (event.newData.RESULT3 == "NaN%") {
+                event.newData.RESULT3 = "0%";
+            }
+            event.confirm.resolve(event.newData);
         }
-        if (this.nilaiIndicatorCheck.indicatorbool1 === true) {
-            if (parseInt(event.newData.RESULT1) >= this.formData.threshold) {
-                event.newData.PENCAPAIAN = "1";
-            }
-            else {
-                event.newData.PENCAPAIAN = "0";
-            }
-        }
-        if (this.nilaiIndicatorCheck.indicatorbool2 === true) {
-            if (parseInt(event.newData.RESULT1) >= this.formData.threshold &&
-                parseInt(event.newData.RESULT2) >= this.formData.threshold) {
-                event.newData.PENCAPAIAN = "1";
-            }
-            else {
-                event.newData.PENCAPAIAN = "0";
-            }
-        }
-        if (this.nilaiIndicatorCheck.indicatorbool3 === true) {
-            if (parseInt(event.newData.RESULT1) >= this.formData.threshold &&
-                parseInt(event.newData.RESULT2) >= this.formData.threshold &&
-                parseInt(event.newData.RESULT3) >= this.formData.threshold) {
-                event.newData.PENCAPAIAN = "1";
-            }
-            else {
-                event.newData.PENCAPAIAN = "0";
-            }
-        }
-        event.confirm.resolve(event.newData);
-        console.log(this.formData.realisasiDetail);
     };
     RealisasiQuantitativeComponent.prototype.refresh = function () {
         this.source.refresh();
@@ -4396,6 +4767,610 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
     ], RealisasiQuantitativeComponent);
     return RealisasiQuantitativeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/realisasi-strategic/realisasi.strategic.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\n  <nb-card-header>IKU Realisasi Strategic</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n        <div class=\"form-group row\">\n          <label class=\"col-sm-3 col-form-label\">IKU\n            <span>\n              <font color=\"red\">*</font>\n            </span>\n          </label>\n          <div class=\"col-sm-9\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.ikuSelected\">\n              <option *ngFor=\"let data of formData.ikuData\" value=\"{{data.KODE_IKU}}\">{{data.KODE_IKU+\" \"+data.DESKRIPSI}}</option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n            <label class=\"col-sm-3 col-form-label\">Tahun\n              <span><font color=\"red\">*</font></span>\n            </label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\n            </div>\n          </div>\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Periode\n                <span><font color=\"red\">*</font></span>\n              </label>\n              <div class=\"col-sm-9\">\n                <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.periodeSelected\">\n                  <option *ngFor=\"let data of formData.periode\" value=\"{{data.id}}\">{{data.desc}}</option>\n                </select>\n              </div>\n            </div>\n      </div>\n      <div class=\"col-sm-6\">\n          <div class=\"form-group row\">\n              <label class=\"col-sm-3 col-form-label\">Threshold\n              </label>\n              <div class=\"col-sm-6\">\n                <input class=\"form-control\" [(ngModel)]=\"formData.threshold\" readonly=\"true\" disabled>\n              </div>\n            </div>\n            <div class=\"form-group row\">\n                <label class=\"col-sm-3 col-form-label\">Indicator ID\n                </label>\n                <div class=\"col-sm-6\">\n                  <input class=\"form-control\" [(ngModel)]=\"formData.indicatorId\" readonly=\"true\" disabled>\n                </div>\n              </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"getData()\">Input Detail</button>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"editConfirm($event)\">\n      </ng2-smart-table>\n    </div>\n\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\n          (click)=\"save()\">Submit</button>\n      </div>\n\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/realisasi-strategic/realisasi.strategic.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RealisasiStrategicComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+var RealisasiStrategicComponent = /** @class */ (function () {
+    function RealisasiStrategicComponent(modalService, toastr, service) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.tabledata = [];
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: false
+            },
+            edit: {
+                editButtonContent: '<i class="nb-edit"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: true
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: false
+            },
+            mode: "inline",
+            sort: false,
+            hideSubHeader: true,
+            actions: {
+                add: false,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Modify",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                DESC_BANK: {
+                    title: "Bank",
+                    type: "string",
+                    filter: false,
+                    editable: false,
+                    width: "30%"
+                },
+                NILAI_INDICATOR_1: {
+                    title: "Indikator",
+                    type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "30%",
+                    valuePrepareFunction: function (value) {
+                        if (isNaN(value)) {
+                            return 0;
+                        }
+                        else {
+                            return Number(value)
+                                .toString()
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                        }
+                    }
+                },
+                NILAI_REALISASI_1: {
+                    title: "Realisasi",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "30%",
+                    valuePrepareFunction: function (value) {
+                        if (isNaN(value)) {
+                            return 0;
+                        }
+                        else {
+                            return Number(value)
+                                .toString()
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                        }
+                    }
+                },
+                RESULT1: {
+                    title: "Result",
+                    type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "30%"
+                },
+                TARGET: {
+                    title: "Target",
+                    type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "30%"
+                },
+                PENCAPAIAN: {
+                    title: "Pencapaian",
+                    type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "30%"
+                }
+            }
+        };
+        this.formData = {
+            periode: [
+                {
+                    id: "TW1",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "TW2",
+                    desc: "Triwulan 2"
+                },
+                {
+                    id: "TW3",
+                    desc: "Triwulan 3"
+                },
+                {
+                    id: "TW4",
+                    desc: "Triwulan 4"
+                }
+            ],
+            bankData: [
+                {
+                    ID_BANK: "000",
+                    INISIAL: "OJK",
+                    DESCRIPTION: "Otorisasi Jasa Keuangan",
+                }
+            ],
+            periodeSelected: "",
+            ikuData: [],
+            ikuSelected: "",
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
+            threshold: 0,
+            indicatorId: "",
+            realisasiDetail: []
+        };
+        this.loadData();
+    }
+    RealisasiStrategicComponent.prototype.loadData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var respIku, arr;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.service.getreq("mst_ikus").toPromise().then(function (response) {
+                            if (response != null) {
+                                respIku = response;
+                            }
+                        })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, respIku.filter(function (item) {
+                                return (item.TIPE_IKU == "STRATEGIC");
+                            })];
+                    case 2:
+                        arr = _a.sent();
+                        if (arr[0] != null) {
+                            this.formData.ikuData = arr;
+                        }
+                        else {
+                            this.toastr.error("Tidak Ditemukan IKU Qualitative Data");
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RealisasiStrategicComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KODE_IKU == event.newData.KODE_IKU) {
+                element.KODE_IKU = event.newData.KODE_IKU;
+                element.DESKRIPSI = event.newData.DESKRIPSI;
+                element.TIPE_IKU = event.newData.TIPE_IKU;
+                _this.service
+                    .patchreq("mst_ikus", _this.tabledata[ind])
+                    .subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    RealisasiStrategicComponent.prototype.getData = function () {
+        "use strict";
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var realisasiDetail, indicatorQnData, indicatorQnDtlData, realizationQnDtlData, arr, defaultValueSettings;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        realisasiDetail = [];
+                        return [4 /*yield*/, this.service.getreq("trn_indicator_qns").toPromise().then(function (response) {
+                                if (response != null) {
+                                    indicatorQnData = response;
+                                }
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.service.getreq("trn_indicator_qn_dtls").toPromise().then(function (response) {
+                                if (response != null) {
+                                    indicatorQnDtlData = response;
+                                }
+                            })];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, this.service.getreq("trn_realization_qn_dtls").toPromise().then(function (response) {
+                                if (response != null) {
+                                    realizationQnDtlData = response;
+                                }
+                            })];
+                    case 3:
+                        _a.sent();
+                        return [4 /*yield*/, indicatorQnData.filter(function (item) {
+                                return (item.KODE_IKU == _this.formData.ikuSelected &&
+                                    item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
+                                    item.PERIODE == _this.formData.periodeSelected);
+                            })];
+                    case 4:
+                        arr = _a.sent();
+                        if (arr[0] != null) {
+                            defaultValueSettings = {
+                                indikator1: "Indikator 1",
+                                realisasi1: "Realisasi 1",
+                            };
+                            if (arr[0].INDIKATOR_1_DESC != "") {
+                                defaultValueSettings.indikator1 = arr[0].INDIKATOR_1_DESC;
+                                defaultValueSettings.realisasi1 = arr[0].REALISASI_1_DESC;
+                            }
+                            this.settings = {
+                                add: {
+                                    addButtonContent: '<i class="nb-plus"></i>',
+                                    createButtonContent: '<i class="nb-checkmark"></i>',
+                                    cancelButtonContent: '<i class="nb-close"></i>',
+                                    confirmCreate: false
+                                },
+                                edit: {
+                                    editButtonContent: '<i class="nb-edit"></i>',
+                                    saveButtonContent: '<i class="nb-checkmark"></i>',
+                                    cancelButtonContent: '<i class="nb-close"></i>',
+                                    confirmSave: true
+                                },
+                                delete: {
+                                    deleteButtonContent: '<i class="nb-trash"></i>',
+                                    confirmDelete: false
+                                },
+                                mode: "inline",
+                                sort: true,
+                                hideSubHeader: true,
+                                actions: {
+                                    add: false,
+                                    edit: true,
+                                    delete: false,
+                                    position: "right",
+                                    columnTitle: "Modify",
+                                    width: "10%"
+                                },
+                                pager: {
+                                    display: true,
+                                    perPage: 30
+                                },
+                                columns: {
+                                    DESC_BANK: {
+                                        title: "Bank",
+                                        type: "string",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    NILAI_INDICATOR_1: {
+                                        title: defaultValueSettings.indikator1,
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    NILAI_REALISASI_1: {
+                                        title: defaultValueSettings.realisasi1,
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%",
+                                        valuePrepareFunction: function (value) {
+                                            if (isNaN(value)) {
+                                                return 0;
+                                            }
+                                            else {
+                                                return Number(value)
+                                                    .toString()
+                                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                                            }
+                                        }
+                                    },
+                                    RESULT1: {
+                                        title: "Result",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    TARGET: {
+                                        title: "Target",
+                                        type: "number",
+                                        filter: false,
+                                        editable: true,
+                                        width: "30%"
+                                    },
+                                    PENCAPAIAN: {
+                                        title: "Pencapaian",
+                                        type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    }
+                                }
+                            };
+                            this.formData.indicatorId = arr[0].KODE_INDIKATOR;
+                            this.formData.threshold = arr[0].THRESHOLD;
+                            this.formData.bankData.forEach(function (element) {
+                                var detail = {
+                                    KODE_IKU: _this.formData.ikuSelected,
+                                    TAHUN_REALISASI: _this.formData.yearPeriode,
+                                    PERIODE: _this.formData.periodeSelected,
+                                    KODE_BANK: element.ID_BANK,
+                                    NILAI_INDICATOR_1: 100,
+                                    NILAI_INDICATOR_2: null,
+                                    NILAI_INDICATOR_3: null,
+                                    NILAI_REALISASI_1: 0,
+                                    NILAI_REALISASI_2: null,
+                                    NILAI_REALISASI_3: null,
+                                    RESULT1: "0%",
+                                    RESULT2: null,
+                                    RESULT3: null,
+                                    PENCAPAIAN: "0",
+                                    USER_CREATED: "Admin",
+                                    DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                    USER_UPDATED: "Admin",
+                                    DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                                    DESC_BANK: element.DESCRIPTION,
+                                    REMARK: null,
+                                    TARGET: _this.formData.threshold
+                                };
+                                var arrIndicatorDtlData = indicatorQnDtlData.filter(function (item) {
+                                    return (item.KODE_IKU == _this.formData.ikuSelected &&
+                                        item.TAHUN_INDICATOR == _this.formData.yearPeriode &&
+                                        item.PERIODE == _this.formData.periodeSelected &&
+                                        item.KODE_BANK == element.ID_BANK);
+                                });
+                                if (arrIndicatorDtlData[0] != null) {
+                                    detail.NILAI_INDICATOR_1 = arrIndicatorDtlData[0].NILAI_INDICATOR_1;
+                                }
+                                var arrRealizationDtlData = realizationQnDtlData.filter(function (item) {
+                                    return (item.KODE_IKU == _this.formData.ikuSelected &&
+                                        item.TAHUN_REALISASI == _this.formData.yearPeriode &&
+                                        item.PERIODE == _this.formData.periodeSelected &&
+                                        item.KODE_BANK == element.ID_BANK);
+                                });
+                                if (arrRealizationDtlData[0] != null) {
+                                    detail.NILAI_REALISASI_1 = arrRealizationDtlData[0].NILAI_REALISASI_1;
+                                    detail.NILAI_REALISASI_2 = arrRealizationDtlData[0].NILAI_REALISASI_2;
+                                    detail.NILAI_REALISASI_3 = arrRealizationDtlData[0].NILAI_REALISASI_3;
+                                    detail.PENCAPAIAN = arrRealizationDtlData[0].PENCAPAIAN;
+                                    if (arrRealizationDtlData[0].TARGET != null) {
+                                        detail.TARGET = arrRealizationDtlData[0].TARGET;
+                                    }
+                                    if (arrRealizationDtlData[0].REMARK != null) {
+                                        detail.REMARK = arrRealizationDtlData[0].REMARK;
+                                    }
+                                }
+                                detail.RESULT1 = ((detail.NILAI_REALISASI_1 / detail.NILAI_INDICATOR_1) * 100).toFixed(2) + "%";
+                                detail.RESULT2 = ((detail.NILAI_REALISASI_2 / detail.NILAI_INDICATOR_2) * 100).toFixed(2) + "%";
+                                detail.RESULT3 = ((detail.NILAI_REALISASI_3 / detail.NILAI_INDICATOR_3) * 100).toFixed(2) + "%";
+                                if (detail.RESULT1 === "NaN%" || detail.RESULT1 === "Infinity%") {
+                                    detail.RESULT1 = "0%";
+                                }
+                                ;
+                                if (detail.RESULT2 === "NaN%" || detail.RESULT2 === "Infinity%") {
+                                    detail.RESULT2 = "0%";
+                                }
+                                ;
+                                if (detail.RESULT3 === "NaN%" || detail.RESULT3 === "Infinity%") {
+                                    detail.RESULT3 = "0%";
+                                }
+                                ;
+                                realisasiDetail.push(detail);
+                            });
+                            realisasiDetail = realisasiDetail.sort(function (a, b) { return a.KODE_BANK - b.KODE_BANK; });
+                            this.tabledata = realisasiDetail;
+                            this.formData.realisasiDetail = realisasiDetail;
+                            this.source.load(this.formData.realisasiDetail);
+                            this.source.refresh();
+                            console.log(this.tabledata);
+                            this.toastr.success("Get Data Sucess!");
+                        }
+                        else {
+                            this.tabledata = [];
+                            this.formData.realisasiDetail = this.tabledata;
+                            this.source.load(this.formData.realisasiDetail);
+                            this.source.refresh();
+                            this.toastr.error("Data Indikator Belum di isi!");
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RealisasiStrategicComponent.prototype.save = function () {
+        var _this = this;
+        var header = {
+            KODE_IKU: this.formData.ikuSelected,
+            TAHUN_REALISASI: this.formData.yearPeriode,
+            PERIODE: this.formData.periodeSelected,
+            KODE_INDIKATOR: this.formData.indicatorId,
+            //PENCAPAIAN: 1,
+            USER_CREATED: "Admin",
+            DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+            USER_UPDATED: "Admin",
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        this.service.postreq("trn_realization_qns/crud", header).subscribe(function (response) {
+            console.log(response);
+        }, function (error) {
+            console.log("indicator header");
+            console.log(error);
+        });
+        this.formData.realisasiDetail.forEach(function (element, ind) {
+            console.log(element);
+            var headerdtl = {
+                KODE_IKU: element.KODE_IKU,
+                TAHUN_REALISASI: element.TAHUN_REALISASI,
+                PERIODE: element.PERIODE,
+                KODE_BANK: element.KODE_BANK,
+                NILAI_REALISASI_1: element.NILAI_REALISASI_1,
+                NILAI_REALISASI_2: null,
+                NILAI_REALISASI_3: null,
+                PENCAPAIAN: element.PENCAPAIAN.toString(),
+                USER_CREATED: "admin",
+                DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                USER_UPDATED: "admin",
+                DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                REMARK: null,
+                TARGET: element.TARGET
+            };
+            if (element.NILAI_REALISASI_2 == 0) {
+                headerdtl.NILAI_REALISASI_2 = element.NILAI_REALISASI_1;
+            }
+            if (element.NILAI_REALISASI_3 == 0) {
+                headerdtl.NILAI_REALISASI_3 = element.NILAI_REALISASI_1;
+            }
+            _this.service.postreq("trn_realization_qn_dtls/crud", headerdtl).subscribe(function (response) {
+                console.log(response);
+            }, function (error) {
+                console.log("indicator detail");
+                console.log(error);
+            });
+        });
+        this.toastr.success("Data Saved!");
+    };
+    RealisasiStrategicComponent.prototype.editConfirm = function (event) {
+        event.newData.RESULT1 =
+            ((event.newData.NILAI_REALISASI_1 / event.newData.NILAI_INDICATOR_1) *
+                100).toFixed(2) + "%";
+        event.newData.RESULT2 =
+            ((event.newData.NILAI_REALISASI_2 / event.newData.NILAI_INDICATOR_2) *
+                100).toFixed(2) + "%";
+        event.newData.RESULT3 =
+            ((event.newData.NILAI_REALISASI_3 / event.newData.NILAI_INDICATOR_3) *
+                100).toFixed(2) + "%";
+        if (event.data.TARGET == event.newData.TARGET) {
+            console.log("data sama coy");
+            if (parseInt(event.newData.RESULT1) >= event.data.TARGET) {
+                event.newData.PENCAPAIAN = "1";
+            }
+            else {
+                event.newData.PENCAPAIAN = "0";
+            }
+            event.confirm.resolve(event.newData);
+        }
+        else {
+            console.log("data enggak sama");
+            if (parseInt(event.newData.RESULT1) >= event.newData.TARGET) {
+                event.newData.PENCAPAIAN = "1";
+            }
+            else {
+                event.newData.PENCAPAIAN = "0";
+            }
+            if (event.newData.RESULT1 == "NaN%") {
+                event.newData.RESULT1 = "0%";
+            }
+            if (event.newData.RESULT2 == "NaN%") {
+                event.newData.RESULT2 = "0%";
+            }
+            if (event.newData.RESULT3 == "NaN%") {
+                event.newData.RESULT3 = "0%";
+            }
+            event.confirm.resolve(event.newData);
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], RealisasiStrategicComponent.prototype, "myForm", void 0);
+    RealisasiStrategicComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-realisasi-strategic",
+            template: __webpack_require__("./src/app/pages/transaction/realisasi-strategic/realisasi.strategic.component.html"),
+            styles: [
+                "\n      input:disabled {\n        background-color: rgba(211, 211, 211, 0.6);\n      }\n    "
+            ]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+    ], RealisasiStrategicComponent);
+    return RealisasiStrategicComponent;
 }());
 
 
@@ -4462,12 +5437,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_button_moka_realisasi_component__ = __webpack_require__("./src/app/pages/transaction/moka-realisasi/button.moka.realisasi.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__moka_target_modal_moka_target_modal_component__ = __webpack_require__("./src/app/pages/transaction/moka-target/modal/moka.target.modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/modal/realisasi.qualitative.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__indicator_strategic_modal_indicator_strategic_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-strategic/modal/indicator.strategic.modal.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -4494,7 +5471,15 @@ var TransactionModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["a" /* ToastrModule */].forRoot()
             ],
             declarations: __WEBPACK_IMPORTED_MODULE_2__transaction_router_module__["b" /* routedComponents */].concat([__WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */], __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_button_moka_realisasi_component__["a" /* MokaRealisasiDatePicker */]]),
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_11__moka_target_modal_moka_target_modal_component__["a" /* MokaTargetModalComponent */], __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__["a" /* RealisasiQualitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_7__indicator_quantitative_modal_indicator_quantitative_modal_component__["a" /* IndicatorQuantitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__["a" /* IndicatorQualitativeModalComponent */], __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */], __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_button_moka_realisasi_component__["a" /* MokaRealisasiDatePicker */]],
+            entryComponents: [
+                __WEBPACK_IMPORTED_MODULE_11__moka_target_modal_moka_target_modal_component__["a" /* MokaTargetModalComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__["a" /* RealisasiQualitativeModalComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__indicator_quantitative_modal_indicator_quantitative_modal_component__["a" /* IndicatorQuantitativeModalComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__["a" /* IndicatorQualitativeModalComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_button_moka_realisasi_component__["a" /* MokaRealisasiDatePicker */],
+                __WEBPACK_IMPORTED_MODULE_13__indicator_strategic_modal_indicator_strategic_modal_component__["a" /* IndicatorStrategicModalComponent */]
+            ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__["a" /* BackendService */],
             ]
@@ -4526,12 +5511,18 @@ var TransactionModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__moka_target_modal_moka_target_modal_component__ = __webpack_require__("./src/app/pages/transaction/moka-target/modal/moka.target.modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__moka_realisasi_moka_realisasi_component__ = __webpack_require__("./src/app/pages/transaction/moka-realisasi/moka.realisasi.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/modal/realisasi.qualitative.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__indicator_strategic_indicator_strategic_component__ = __webpack_require__("./src/app/pages/transaction/indicator-strategic/indicator.strategic.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__realisasi_strategic_realisasi_strategic_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-strategic/realisasi.strategic.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__indicator_strategic_modal_indicator_strategic_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-strategic/modal/indicator.strategic.modal.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -4565,6 +5556,14 @@ var routes = [
             {
                 path: "indicator-qualitative",
                 component: __WEBPACK_IMPORTED_MODULE_7__indicator_qualitative_indicator_qualitative_component__["a" /* IndicatorQualitativeComponent */]
+            },
+            {
+                path: "indicator-strategic",
+                component: __WEBPACK_IMPORTED_MODULE_13__indicator_strategic_indicator_strategic_component__["a" /* IndicatorStrategicComponent */]
+            },
+            {
+                path: "realisasi-strategic",
+                component: __WEBPACK_IMPORTED_MODULE_14__realisasi_strategic_realisasi_strategic_component__["a" /* RealisasiStrategicComponent */]
             },
             {
                 path: "moka-target",
@@ -4601,6 +5600,9 @@ var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_10__moka_target_modal_moka_target_modal_component__["a" /* MokaTargetModalComponent */],
     __WEBPACK_IMPORTED_MODULE_11__moka_realisasi_moka_realisasi_component__["a" /* MokaRealisasiComponent */],
     __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__["a" /* RealisasiQualitativeModalComponent */],
+    __WEBPACK_IMPORTED_MODULE_13__indicator_strategic_indicator_strategic_component__["a" /* IndicatorStrategicComponent */],
+    __WEBPACK_IMPORTED_MODULE_15__indicator_strategic_modal_indicator_strategic_modal_component__["a" /* IndicatorStrategicModalComponent */],
+    __WEBPACK_IMPORTED_MODULE_14__realisasi_strategic_realisasi_strategic_component__["a" /* RealisasiStrategicComponent */]
 ];
 
 
