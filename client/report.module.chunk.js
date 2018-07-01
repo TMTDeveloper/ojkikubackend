@@ -255,7 +255,7 @@ var ReportIkuComponent = /** @class */ (function () {
                 });
                 console.log(arr);
                 if (arr[0] != null) {
-                    _this.tabledata = res;
+                    _this.tabledata = arr;
                     _this.toastr.success("Get Data Success!");
                 }
                 else {

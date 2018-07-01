@@ -509,11 +509,13 @@ var AnalyticsService = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgxLoginComponent; });
+/* unused harmony export AuthGuard */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth_auth_options__ = __webpack_require__("./node_modules/@nebular/auth/auth.options.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nebular_auth_helpers__ = __webpack_require__("./node_modules/@nebular/auth/helpers.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nebular_auth_services_auth_service__ = __webpack_require__("./node_modules/@nebular/auth/services/auth.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators_tap__ = __webpack_require__("./node_modules/rxjs/_esm5/operators/tap.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -531,6 +533,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
+
 
 
 
@@ -589,6 +592,23 @@ var NgxLoginComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__nebular_auth_services_auth_service__["a" /* NbAuthService */], Object, __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], NgxLoginComponent);
     return NgxLoginComponent;
+}());
+
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(authService, router) {
+        this.authService = authService;
+        this.router = router;
+    }
+    AuthGuard.prototype.canActivate = function () {
+        var _this = this;
+        return this.authService.isAuthenticated()
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators_tap__["a" /* tap */])(function (authenticated) {
+            if (!authenticated) {
+                _this.router.navigate(['auth/login']);
+            }
+        }));
+    };
+    return AuthGuard;
 }());
 
 
@@ -1638,6 +1658,7 @@ var ThemeModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_login_component__ = __webpack_require__("./src/app/@theme/components/auth/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__ = __webpack_require__("./src/app/security/auth-guard.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1648,8 +1669,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
-    { path: "pages", loadChildren: "app/pages/pages.module#PagesModule" },
+    {
+        path: "pages",
+        canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
+        loadChildren: "app/pages/pages.module#PagesModule"
+    },
     {
         path: "auth",
         component: __WEBPACK_IMPORTED_MODULE_2__nebular_auth__["b" /* NbAuthComponent */],
@@ -1763,6 +1789,7 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__("./src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__security_auth_guard_service__ = __webpack_require__("./src/app/security/auth-guard.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1774,6 +1801,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
+
 
 
 
@@ -1807,11 +1835,48 @@ var AppModule = /** @class */ (function () {
                     provide: __WEBPACK_IMPORTED_MODULE_0__angular_common__["APP_BASE_HREF"],
                     useValue: "/"
                 },
-                { provide: __WEBPACK_IMPORTED_MODULE_11__nebular_auth__["a" /* NB_AUTH_TOKEN_CLASS */], useValue: __WEBPACK_IMPORTED_MODULE_11__nebular_auth__["c" /* NbAuthJWTToken */] }
+                { provide: __WEBPACK_IMPORTED_MODULE_11__nebular_auth__["a" /* NB_AUTH_TOKEN_CLASS */], useValue: __WEBPACK_IMPORTED_MODULE_11__nebular_auth__["c" /* NbAuthJWTToken */] },
+                __WEBPACK_IMPORTED_MODULE_12__security_auth_guard_service__["a" /* AuthGuard */]
             ]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/security/auth-guard.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuard; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(authService) {
+        this.authService = authService;
+    }
+    AuthGuard.prototype.canActivate = function () {
+        return this.authService.isAuthenticated(); // canActive can return Observable<boolean>, which is exactly what isAuhenticated returns
+    };
+    AuthGuard = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__nebular_auth__["e" /* NbAuthService */]])
+    ], AuthGuard);
+    return AuthGuard;
 }());
 
 
