@@ -255,7 +255,14 @@ var ReportIkuComponent = /** @class */ (function () {
                 });
                 console.log(arr);
                 if (arr[0] != null) {
-                    _this.tabledata = arr;
+                    var sortArr = arr.sort(function (a, b) {
+                        return a.KODE_IKU > b.KODE_IKU
+                            ? 1
+                            : b.KODE_IKU > a.KODE_IKU
+                                ? -1
+                                : 0;
+                    });
+                    _this.tabledata = sortArr;
                     _this.toastr.success("Get Data Success!");
                 }
                 else {
@@ -266,16 +273,28 @@ var ReportIkuComponent = /** @class */ (function () {
         });
     };
     ReportIkuComponent.prototype.generateCSV = function () {
-        var filename = "Report IKU " + this.formData.TahunSelected + " " + this.formData.periodeSelected;
+        var filename = "Report IKU " +
+            this.formData.TahunSelected +
+            " " +
+            this.formData.periodeSelected;
         var csvSetting = {
-            fieldSeparator: ',',
+            fieldSeparator: ",",
             quoteStrings: '"',
-            decimalseparator: '.',
+            decimalseparator: ".",
             showLabels: true,
             showTitle: true,
             useBom: true,
             noDownload: true,
-            headers: ["Kode IKU", "TAHUN_REALISASI", "PERIODE", "Nilai Realisasi", "Indikator", "Realisasi", "Target", "Pencapaian"]
+            headers: [
+                "Kode IKU",
+                "TAHUN_REALISASI",
+                "PERIODE",
+                "Nilai Realisasi",
+                "Indikator",
+                "Realisasi",
+                "Target",
+                "Pencapaian"
+            ]
         };
         new __WEBPACK_IMPORTED_MODULE_3_angular2_csv_Angular2_csv__["Angular2Csv"](this.tabledata, filename, csvSetting);
         console.log("Generate CSV");
@@ -285,8 +304,7 @@ var ReportIkuComponent = /** @class */ (function () {
             selector: "ngx-report-iku",
             template: __webpack_require__("./src/app/pages/report/report-iku/report.iku.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__["a" /* BackendService */],
-            __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__["a" /* BackendService */], __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]])
     ], ReportIkuComponent);
     return ReportIkuComponent;
 }());
