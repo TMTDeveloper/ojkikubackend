@@ -21,6 +21,9 @@
       "required": true,
       "id": 3
     },
+    "NAMA_IKU": {
+      "type": "string"
+    },
     "NILAI_REALISASI": {
       "type": "number"
     },
