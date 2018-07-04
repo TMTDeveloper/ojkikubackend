@@ -33199,24 +33199,23 @@ var ReportIkuComponent = /** @class */ (function () {
         });
     };
     ReportIkuComponent.prototype.generateXLSX = function () {
-        /* starting from this data */
-        var data = [
-            { name: "Barack Obama", pres: 44 },
-            { name: "Donald Trump", pres: 45 }
-        ];
+        var filename = "Report IKU " +
+            this.formData.TahunSelected +
+            " " +
+            this.formData.periodeSelected + ".xlsx";
         /* generate a worksheet */
         var ws = __WEBPACK_IMPORTED_MODULE_5_xlsx__["utils"].json_to_sheet(this.tabledata);
         /* add to workbook */
         var wb = __WEBPACK_IMPORTED_MODULE_5_xlsx__["utils"].book_new();
-        __WEBPACK_IMPORTED_MODULE_5_xlsx__["utils"].book_append_sheet(wb, ws, "Presidents");
+        __WEBPACK_IMPORTED_MODULE_5_xlsx__["utils"].book_append_sheet(wb, ws, "Reports IKU");
         /* write workbook and force a download */
-        __WEBPACK_IMPORTED_MODULE_5_xlsx__["writeFile"](wb, "sheetjs.xlsx");
+        __WEBPACK_IMPORTED_MODULE_5_xlsx__["writeFile"](wb, filename);
     };
     ReportIkuComponent.prototype.generateCSV = function () {
         var filename = "Report IKU " +
             this.formData.TahunSelected +
             " " +
-            this.formData.periodeSelected;
+            this.formData.periodeSelected + ".xlsx";
         var csvSetting = {
             fieldSeparator: ",",
             quoteStrings: '"',
