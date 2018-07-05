@@ -77,8 +77,9 @@ var DashboardModule = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MENU_ITEMS; });
-var MENU_ITEMS = [
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MENU_ITEM_ADMIN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MENU_ITEM_USER; });
+var MENU_ITEM_ADMIN = [
     {
         title: "Dashboard",
         icon: "nb-home",
@@ -170,6 +171,72 @@ var MENU_ITEMS = [
         ]
     }
 ];
+var MENU_ITEM_USER = [
+    {
+        title: "Dashboard",
+        icon: "nb-home",
+        link: "/pages/dashboard",
+        home: true
+    },
+    {
+        title: "Reporting",
+        icon: "nb-bar-chart",
+        children: [
+            {
+                title: "Report IKU",
+                link: "/pages/report/report-iku"
+            },
+            {
+                title: "Report MOKA",
+                link: "/pages/report/report-moka"
+            }
+        ]
+    },
+    {
+        title: "Transaction IKU",
+        icon: "nb-compose",
+        children: [
+            {
+                title: "Indicator Quantitative",
+                link: "/pages/transaction/indicator-quantitative"
+            },
+            {
+                title: "Realisasi Quantitative",
+                link: "/pages/transaction/realisasi-quantitative"
+            },
+            {
+                title: "Indicator Qualitative",
+                link: "/pages/transaction/indicator-qualitative"
+            },
+            {
+                title: "Realisasi Qualitative",
+                link: "/pages/transaction/realisasi-qualitative"
+            },
+            {
+                title: "Indicator Strategic",
+                link: "/pages/transaction/indicator-strategic"
+            },
+            {
+                title: "Realisasi Strategic",
+                link: "/pages/transaction/realisasi-strategic"
+            }
+        ]
+    },
+    {
+        title: "Transaction MOKA",
+        icon: "nb-compose",
+        children: [
+            {
+                title: "Target MOKA",
+                link: "/pages/transaction/moka-target"
+            },
+            {
+                title: "Realisasi MOKA",
+                link: "/pages/transaction/moka-realisasi"
+            }
+        ]
+    }
+];
 // {
 //   title: 'FEATURES',
 //   group: true,
@@ -209,6 +276,7 @@ var MENU_ITEMS = [
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_component__ = __webpack_require__("./src/app/pages/pages.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dashboard_dashboard_component__ = __webpack_require__("./src/app/pages/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__ = __webpack_require__("./src/app/security/auth-guard.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -219,38 +287,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
     {
         path: "",
+        canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_2__pages_component__["a" /* PagesComponent */],
         children: [
             {
                 path: "report",
+                canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
                 loadChildren: "./report/report.module#ReportModule"
             },
             {
                 path: "dashboard",
+                canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
                 component: __WEBPACK_IMPORTED_MODULE_3__dashboard_dashboard_component__["a" /* DashboardComponent */]
             },
             {
                 path: "iku",
+                canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
                 loadChildren: "./iku/iku.module#IkuModule"
             },
             {
                 path: "",
+                canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
                 redirectTo: "dashboard",
                 pathMatch: "full"
             },
             {
                 path: "realisasi",
+                canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
                 loadChildren: "./realisasi/realisasi.module#RealisasiModule"
             },
             {
                 path: "master",
+                canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
                 loadChildren: "./master/master.module#MasterModule"
             },
             {
                 path: "transaction",
+                canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
                 loadChildren: "./transaction/transaction.module#TransactionModule"
             }
         ]
@@ -279,23 +356,49 @@ var PagesRoutingModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_menu__ = __webpack_require__("./src/app/pages/pages-menu.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 
 
 var PagesComponent = /** @class */ (function () {
-    function PagesComponent() {
-        this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["a" /* MENU_ITEMS */];
+    function PagesComponent(authService) {
+        this.authService = authService;
+        this.getUserInfo();
     }
+    PagesComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+            }
+        });
+    };
+    PagesComponent.prototype.ngOnInit = function () {
+        console.log('ini menu');
+        console.log(this.user);
+        if (this.user.TEAM != "admin") {
+            this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["b" /* MENU_ITEM_USER */];
+        }
+        else {
+            this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["a" /* MENU_ITEM_ADMIN */];
+        }
+    };
     PagesComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-pages",
             template: "\n    <ngx-sample-layout>\n      <nb-menu [items]=\"menu\"></nb-menu>\n      <router-outlet></router-outlet>\n    </ngx-sample-layout>\n  "
-        })
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__nebular_auth__["e" /* NbAuthService */]])
     ], PagesComponent);
     return PagesComponent;
 }());

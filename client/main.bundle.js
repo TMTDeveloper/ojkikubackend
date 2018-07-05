@@ -1659,7 +1659,6 @@ var ThemeModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_login_component__ = __webpack_require__("./src/app/@theme/components/auth/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__ = __webpack_require__("./src/app/security/auth-guard.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1670,11 +1669,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
 var routes = [
     {
         path: "pages",
-        canActivate: [__WEBPACK_IMPORTED_MODULE_4__security_auth_guard_service__["a" /* AuthGuard */]],
         loadChildren: "app/pages/pages.module#PagesModule"
     },
     {

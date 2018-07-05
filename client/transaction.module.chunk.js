@@ -690,6 +690,7 @@ module.exports = "<nb-card>\n  <nb-card-header>IKU Indicator Qualitative</nb-car
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_indicator_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-qualitative/modal/indicator.qualitative.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -742,11 +743,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var IndicatorQualitativeComponent = /** @class */ (function () {
-    function IndicatorQualitativeComponent(modalService, toastr, service) {
+    function IndicatorQualitativeComponent(modalService, toastr, service, authService) {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
+        this.authService = authService;
         this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
@@ -837,7 +840,36 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
             yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY")
         };
         this.loadData();
+        this.getUserInfo();
+        this.getUserBank();
     }
+    IndicatorQualitativeComponent.prototype.getUserBank = function () {
+        var _this = this;
+        if (this.user.ID_USER != "admin") {
+            this.service.getreq("mst_user_banks").toPromise().then(function (response) {
+                if (response != null) {
+                    var arr = response.filter(function (item) {
+                        return (item.ID_USER == _this.user.ID_USER);
+                    });
+                    if (arr[0] != null) {
+                        _this.user.type = arr[0].ID_BANK;
+                        console.log(_this.user);
+                    }
+                }
+            });
+        }
+        else {
+            this.user.type = "admin";
+        }
+    };
+    IndicatorQualitativeComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+            }
+        });
+    };
     IndicatorQualitativeComponent.prototype.showModal = function () {
         var _this = this;
         this.activeModal = this.modalService.open(__WEBPACK_IMPORTED_MODULE_7__modal_indicator_qualitative_modal_component__["a" /* IndicatorQualitativeModalComponent */], {
@@ -965,7 +997,8 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
             __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
-            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_8__nebular_auth__["e" /* NbAuthService */]])
     ], IndicatorQualitativeComponent);
     return IndicatorQualitativeComponent;
 }());
@@ -1180,6 +1213,7 @@ module.exports = "<nb-card>\n  <nb-card-header>IKU Indicator Quantitative</nb-ca
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_indicator_quantitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-quantitative/modal/indicator.quantitative.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1232,11 +1266,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var IndicatorQuantitativeComponent = /** @class */ (function () {
-    function IndicatorQuantitativeComponent(modalService, toastr, service) {
+    function IndicatorQuantitativeComponent(modalService, toastr, service, authService) {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
+        this.authService = authService;
         this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
@@ -1334,7 +1370,36 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
             indicatorDetail: []
         };
         this.loadData();
+        this.getUserInfo();
+        this.getUserBank();
     }
+    IndicatorQuantitativeComponent.prototype.getUserBank = function () {
+        var _this = this;
+        if (this.user.ID_USER != "admin") {
+            this.service.getreq("mst_user_banks").toPromise().then(function (response) {
+                if (response != null) {
+                    var arr = response.filter(function (item) {
+                        return (item.ID_USER == _this.user.ID_USER);
+                    });
+                    if (arr[0] != null) {
+                        _this.user.type = arr[0].ID_BANK;
+                        console.log(_this.user);
+                    }
+                }
+            });
+        }
+        else {
+            this.user.type = "admin";
+        }
+    };
+    IndicatorQuantitativeComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+            }
+        });
+    };
     IndicatorQuantitativeComponent.prototype.loadData = function () {
         return __awaiter(this, void 0, void 0, function () {
             var respIku, arr;
@@ -1732,14 +1797,21 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                                         }
                                     });
                                     indicatorDetail_1 = indicatorDetail_1.sort(function (a, b) { return a.KODE_BANK - b.KODE_BANK; });
-                                    _this.tabledata = indicatorDetail_1;
-                                    _this.formData.indicatorDetail = indicatorDetail_1;
-                                    _this.formData.indicatorId =
-                                        "RBB" +
-                                            _this.formData.ikuSelected +
-                                            _this.formData.yearPeriode +
-                                            _this.formData.periodeSelected;
-                                    _this.source.load(_this.tabledata);
+                                    if (_this.user.type != "admin") {
+                                        var dataBankFilter = indicatorDetail_1.filter(function (item) {
+                                            return (item.KODE_BANK == _this.user.type);
+                                        });
+                                        if (dataBankFilter[0] != null) {
+                                            _this.tabledata = dataBankFilter;
+                                            _this.formData.indicatorDetail = dataBankFilter;
+                                            _this.formData.indicatorId =
+                                                "RBB" +
+                                                    _this.formData.ikuSelected +
+                                                    _this.formData.yearPeriode +
+                                                    _this.formData.periodeSelected;
+                                            _this.source.load(_this.tabledata);
+                                        }
+                                    }
                                 }
                             });
                         }
@@ -1798,7 +1870,8 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
             __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
-            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_8__nebular_auth__["e" /* NbAuthService */]])
     ], IndicatorQuantitativeComponent);
     return IndicatorQuantitativeComponent;
 }());

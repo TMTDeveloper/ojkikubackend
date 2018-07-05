@@ -80,14 +80,14 @@ var IkuComponent = /** @class */ (function () {
                 KODE_IKU: {
                     title: "Kode Iku",
                     type: "string",
-                    filter: false,
+                    filter: true,
                     editable: false,
                     width: "30%"
                 },
                 DESKRIPSI: {
                     title: "Description",
                     type: "number",
-                    filter: false,
+                    filter: true,
                     editable: true,
                     width: "30%"
                 },
@@ -255,21 +255,21 @@ var MasterBankComponent = /** @class */ (function () {
                 ID_BANK: {
                     title: "Id Bank",
                     type: "string",
-                    filter: false,
+                    filter: true,
                     editable: false,
                     width: "30%"
                 },
                 INISIAL: {
                     title: "Inisial ",
                     type: "number",
-                    filter: false,
+                    filter: true,
                     editable: true,
                     width: "30%"
                 },
                 DESCRIPTION: {
                     title: "Description",
                     type: "number",
-                    filter: false,
+                    filter: true,
                     editable: true,
                     width: "30%"
                 },
@@ -437,7 +437,7 @@ var MasterUserLogComponent = /** @class */ (function () {
         this.settings = {
             mode: "inline",
             sort: true,
-            hideSubHeader: true,
+            hideSubHeader: false,
             actions: {
                 add: false,
                 edit: false,
@@ -460,21 +460,21 @@ var MasterUserLogComponent = /** @class */ (function () {
                 USERNAME: {
                     title: "Username",
                     type: "string",
-                    filter: false,
+                    filter: true,
                     editable: false,
                     width: "30%"
                 },
                 NAMA: {
                     title: "Nama",
                     type: "string",
-                    filter: false,
+                    filter: true,
                     editable: false,
                     width: "30%"
                 },
                 DATETIME_LOGIN: {
                     title: "Datetime Login",
                     type: "string",
-                    filter: false,
+                    filter: true,
                     editable: true,
                     width: "30%",
                 }
@@ -632,28 +632,28 @@ var MasterUserComponent = /** @class */ (function () {
                 ID_USER: {
                     title: "Id User",
                     type: "string",
-                    filter: false,
+                    filter: true,
                     editable: false,
                     width: "30%"
                 },
                 USER_NAME: {
                     title: "Name",
                     type: "number",
-                    filter: false,
+                    filter: true,
                     editable: true,
                     width: "30%"
                 },
                 TEAM: {
                     title: "Team",
                     type: "number",
-                    filter: false,
+                    filter: true,
                     editable: true,
                     width: "30%"
                 },
                 JABATAN: {
                     title: "Jabatan",
                     type: "number",
-                    filter: false,
+                    filter: true,
                     editable: true,
                     width: "30%"
                 },
@@ -990,7 +990,7 @@ var MasterUserBankComponent = /** @class */ (function () {
                 ID_USER: {
                     title: "Id User",
                     type: "string",
-                    filter: false,
+                    filter: true,
                     editable: false,
                     editor: {
                         type: "list",
@@ -998,19 +998,12 @@ var MasterUserBankComponent = /** @class */ (function () {
                             list: this.userList
                         }
                     },
-                    width: "30%"
-                },
-                USER_NAME: {
-                    title: "Name",
-                    type: "number",
-                    filter: false,
-                    editable: false,
-                    width: "30%"
+                    width: "70%"
                 },
                 FLAG_ACTIVE: {
                     title: "Flag Active",
                     type: "html",
-                    width: "30%",
+                    width: "20%",
                     editor: {
                         type: "list",
                         config: {
@@ -1064,19 +1057,12 @@ var MasterUserBankComponent = /** @class */ (function () {
                             list: this.userList
                         }
                     },
-                    width: "30%"
-                },
-                USER_NAME: {
-                    title: "Name",
-                    type: "number",
-                    filter: false,
-                    editable: false,
-                    width: "30%"
+                    width: "70%"
                 },
                 FLAG_ACTIVE: {
                     title: "Flag Active",
                     type: "html",
-                    width: "30%",
+                    width: "20%",
                     editor: {
                         type: "list",
                         config: {
