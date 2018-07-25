@@ -1103,6 +1103,7 @@ var MasterUserBankComponent = /** @class */ (function () {
                                 _this.bankData = response;
                                 _this.formData.bank = _this.bankData[0].ID_BANK;
                                 console.log(JSON.stringify(response));
+                                _this.reload();
                             }
                         });
                     }
@@ -1154,11 +1155,14 @@ var MasterUserBankComponent = /** @class */ (function () {
                 console.log(response);
                 event.confirm.resolve(data);
                 _this.toastr.success("Data Saved!");
+                _this.reload();
             });
+            this.reload();
         }
         else {
             event.confirm.reject();
             this.toastr.error("Data Already Exist!");
+            this.reload();
         }
     };
     MasterUserBankComponent.prototype.reload = function () {

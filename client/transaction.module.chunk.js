@@ -811,6 +811,13 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
                     filter: false,
                     editable: true,
                     width: "70%"
+                },
+                USER_CREATED: {
+                    title: "Created By",
+                    type: "string",
+                    filter: false,
+                    editable: false,
+                    width: "25%"
                 }
             }
         };
@@ -881,6 +888,7 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
         this.activeModal.componentInstance.formData.ikuSelected = this.formData.ikuSelected;
         this.activeModal.componentInstance.formData.yearPeriode = this.formData.yearPeriode;
         this.activeModal.componentInstance.formData.periodeSelected = this.formData.periodeSelected;
+        this.activeModal.componentInstance.user = this.user;
         this.activeModal.result.then(function (response) { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 //console.log(response);
@@ -1090,6 +1098,10 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
         };
         this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
     }
+    IndicatorQualitativeModalComponent.prototype.ngOnInit = function () {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+    };
     IndicatorQualitativeModalComponent.prototype.saveData = function () {
         var _this = this;
         this.service.getreq("trn_indicator_qls").subscribe(function (response) {
@@ -1112,9 +1124,9 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
                     NO_DETAIL: _this.formData.noDetail,
                     TIPE_DATA: _this.formData.tipeDataSelected,
                     DESKRIPSI: _this.formData.descriptionIndicator,
-                    USER_CREATED: "Admin",
+                    USER_CREATED: _this.user.USER_NAME,
                     DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_2_moment__().format(),
-                    USER_UPDATED: "Admin",
+                    USER_UPDATED: _this.user.USER_NAME,
                     DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_2_moment__().format()
                 };
                 _this.service.postreq("trn_indicator_qls/crud", header).subscribe(function (response) {
@@ -1332,6 +1344,13 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                         }
                     }
                 },
+                USER_CREATED: {
+                    title: "Created By",
+                    type: "string",
+                    filter: false,
+                    editable: false,
+                    width: "25%"
+                }
             }
         };
         this.formData = {
@@ -1568,6 +1587,13 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                                             .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
                                     }
                                 }
+                            },
+                            USER_CREATED: {
+                                title: "Created By",
+                                type: "string",
+                                filter: false,
+                                editable: false,
+                                width: "25%"
                             }
                         }
                     };
@@ -1645,6 +1671,13 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                                     }
                                 }
                             },
+                            USER_CREATED: {
+                                title: "Created By",
+                                type: "string",
+                                filter: false,
+                                editable: false,
+                                width: "25%"
+                            }
                         }
                     };
                     var tigaColumn = {
@@ -1737,6 +1770,13 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                                             .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
                                     }
                                 }
+                            },
+                            USER_CREATED: {
+                                title: "Created By",
+                                type: "string",
+                                filter: false,
+                                editable: false,
+                                width: "25%"
                             }
                         }
                     };
@@ -1769,9 +1809,9 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                                                 NILAI_INDICATOR_1: 0,
                                                 NILAI_INDICATOR_2: 0,
                                                 NILAI_INDICATOR_3: 0,
-                                                USER_CREATED: "Admin",
+                                                USER_CREATED: _this.user.USER_NAME,
                                                 DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                                                USER_UPDATED: "Admin",
+                                                USER_UPDATED: _this.user.USER_NAME,
                                                 DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
                                                 DESC_BANK: element.DESCRIPTION
                                             };
@@ -1787,9 +1827,9 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                                                 NILAI_INDICATOR_1: arr[0].NILAI_INDICATOR_1,
                                                 NILAI_INDICATOR_2: arr[0].NILAI_INDICATOR_2,
                                                 NILAI_INDICATOR_3: arr[0].NILAI_INDICATOR_3,
-                                                USER_CREATED: "Admin",
+                                                USER_CREATED: arr[0].USER_CREATED,
                                                 DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                                                USER_UPDATED: "Admin",
+                                                USER_UPDATED: _this.user.USER_NAME,
                                                 DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
                                                 DESC_BANK: element.DESCRIPTION
                                             };
@@ -1797,10 +1837,12 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                                         }
                                     });
                                     indicatorDetail_1 = indicatorDetail_1.sort(function (a, b) { return a.KODE_BANK - b.KODE_BANK; });
+                                    console.log(_this.user);
                                     if (_this.user.type != "admin") {
                                         var dataBankFilter = indicatorDetail_1.filter(function (item) {
                                             return (item.KODE_BANK == _this.user.type);
                                         });
+                                        console.log('gue ada disini nih');
                                         if (dataBankFilter[0] != null) {
                                             _this.tabledata = dataBankFilter;
                                             _this.formData.indicatorDetail = dataBankFilter;
@@ -1811,6 +1853,16 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
                                                     _this.formData.periodeSelected;
                                             _this.source.load(_this.tabledata);
                                         }
+                                    }
+                                    else {
+                                        _this.tabledata = indicatorDetail_1;
+                                        _this.formData.indicatorDetail = indicatorDetail_1;
+                                        _this.formData.indicatorId =
+                                            "RBB" +
+                                                _this.formData.ikuSelected +
+                                                _this.formData.yearPeriode +
+                                                _this.formData.periodeSelected;
+                                        _this.source.load(_this.tabledata);
                                     }
                                 }
                             });
@@ -1837,9 +1889,9 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
             REALISASI_1_DESC: this.formData.realisasi1,
             REALISASI_2_DESC: this.formData.realisasi2,
             REALISASI_3_DESC: this.formData.realisasi3,
-            USER_CREATED: "Admin",
+            USER_CREATED: this.user.USER_NAME,
             DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-            USER_UPDATED: "Admin",
+            USER_UPDATED: this.user.USER_NAME,
             DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
         };
         this.service.postreq("trn_indicator_qns/crud", header).subscribe(function (response) {
@@ -3352,7 +3404,7 @@ var RealisasiQualitativeModalComponent = /** @class */ (function () {
                             NO_DETAIL: Number,
                             TIPE_DATA: String,
                             JUDUL: String,
-                            DESKRIPSI: "Belum Di isi",
+                            DESKRIPSI: "",
                             USER_CREATED: "admin",
                             DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
                             USER_UPDATED: "admin",
@@ -3380,7 +3432,7 @@ var RealisasiQualitativeModalComponent = /** @class */ (function () {
                                     _this.source.refresh();
                                 }
                                 else {
-                                    detail.DESKRIPSI = "Belum di isi";
+                                    detail.DESKRIPSI = "";
                                     realisasidetail_1.push(detail);
                                     _this.tabledata = realisasidetail_1;
                                     _this.source.load(_this.tabledata);
@@ -3603,7 +3655,14 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
                     filter: false,
                     editable: true,
                     width: "70%"
-                }
+                },
+                USER_CREATED: {
+                    title: "Created By",
+                    type: "string",
+                    filter: false,
+                    editable: false,
+                    width: "25%"
+                },
             }
         };
         this.formData = {
@@ -3726,9 +3785,9 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
                 NO_URUT: element.NO,
                 STATUS: element.STATUS,
                 KETERANGAN: element.KETERANGAN,
-                USER_CREATED: "admin",
+                USER_CREATED: _this.user.USER_NAME,
                 DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                USER_UPDATED: "admin",
+                USER_UPDATED: _this.user.USER_NAME,
                 DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
             };
             //console.log(header);
@@ -3750,10 +3809,10 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
             KODE_BANK: this.formData.bankSelected,
             NO_URUT: 1,
             STATUS: "blmselesai",
-            KETERANGAN: "Belum Di Isi",
-            USER_CREATED: "admin",
+            KETERANGAN: "",
+            USER_CREATED: this.user.USER_NAME,
             DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-            USER_UPDATED: "admin",
+            USER_UPDATED: this.user.USER_NAME,
             DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
         };
         this.service.getreq("trn_realization_qls").subscribe(function (res) {
@@ -3829,6 +3888,7 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
     RealisasiQualitativeComponent.prototype.editConfirm = function (event) {
         //console.log(event.newData.RESULT1);
         event.confirm.resolve(event.newData);
+        console.log(event.newData);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
@@ -4030,6 +4090,13 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                 PENCAPAIAN: {
                     title: "Pencapaian",
                     type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "30%"
+                },
+                USER_CREATED: {
+                    title: "Created By",
+                    type: "string",
                     filter: false,
                     editable: false,
                     width: "30%"
@@ -4328,6 +4395,13 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                         filter: false,
                                         editable: false,
                                         width: "30%"
+                                    },
+                                    USER_CREATED: {
+                                        title: "Created By",
+                                        type: "string",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
                                     }
                                 }
                             };
@@ -4470,6 +4544,13 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                     PENCAPAIAN: {
                                         title: "Pencapaian",
                                         type: "number",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
+                                    },
+                                    USER_CREATED: {
+                                        title: "Created By",
+                                        type: "string",
                                         filter: false,
                                         editable: false,
                                         width: "30%"
@@ -4659,6 +4740,13 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                         filter: false,
                                         editable: false,
                                         width: "30%"
+                                    },
+                                    USER_CREATED: {
+                                        title: "Created By",
+                                        type: "string",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
                                     }
                                 }
                             };
@@ -4686,9 +4774,9 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                     RESULT2: "0%",
                                     RESULT3: "0%",
                                     PENCAPAIAN: "0",
-                                    USER_CREATED: "Admin",
+                                    USER_CREATED: _this.user.USER_NAME,
                                     DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                                    USER_UPDATED: "Admin",
+                                    USER_UPDATED: _this.user.USER_NAME,
                                     DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
                                     DESC_BANK: element.DESCRIPTION,
                                     REMARK: "",
@@ -4715,10 +4803,13 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                         item.KODE_BANK == element.ID_BANK);
                                 });
                                 if (arrRealizationDtlData[0] != null) {
+                                    console.log('gua dari realisasidetaildata', arrRealizationDtlData[0]);
                                     detail.NILAI_REALISASI_1 = arrRealizationDtlData[0].NILAI_REALISASI_1;
                                     detail.NILAI_REALISASI_2 = arrRealizationDtlData[0].NILAI_REALISASI_2;
                                     detail.NILAI_REALISASI_3 = arrRealizationDtlData[0].NILAI_REALISASI_3;
                                     detail.PENCAPAIAN = arrRealizationDtlData[0].PENCAPAIAN;
+                                    detail.USER_CREATED = arrRealizationDtlData[0].USER_CREATED;
+                                    detail.USER_UPDATED = arrRealizationDtlData[0].USER_UPDATED;
                                     if (arrRealizationDtlData[0].TARGET != null) {
                                         detail.TARGET = arrRealizationDtlData[0].TARGET;
                                     }
@@ -4870,6 +4961,13 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                                         filter: false,
                                         editable: false,
                                         width: "30%"
+                                    },
+                                    USER_CREATED: {
+                                        title: "Created By",
+                                        type: "string",
+                                        filter: false,
+                                        editable: false,
+                                        width: "30%"
                                     }
                                 }
                             };
@@ -4892,9 +4990,9 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
             PERIODE: this.formData.periodeSelected,
             KODE_INDIKATOR: this.formData.indicatorId,
             //PENCAPAIAN: 1,
-            USER_CREATED: "Admin",
+            USER_CREATED: this.user.USER_NAME,
             DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-            USER_UPDATED: "Admin",
+            USER_UPDATED: this.user.USER_NAME,
             DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
         };
         this.service.postreq("trn_realization_qns/crud", header).subscribe(function (response) {
@@ -4914,9 +5012,9 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
                 NILAI_REALISASI_2: element.NILAI_REALISASI_2,
                 NILAI_REALISASI_3: element.NILAI_REALISASI_3,
                 PENCAPAIAN: element.PENCAPAIAN.toString(),
-                USER_CREATED: "admin",
+                USER_CREATED: element.USER_CREATED,
                 DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-                USER_UPDATED: "admin",
+                USER_UPDATED: _this.user.USER_NAME,
                 DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
                 REMARK: element.REMARK,
                 TARGET: element.TARGET
