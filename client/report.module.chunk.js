@@ -33478,13 +33478,13 @@ var ReportMokaComponent = /** @class */ (function () {
                                 var detail = {
                                     NO: 1,
                                     KODE_BANK: 0,
-                                    TIPE_DOKUMEN: "kosong",
-                                    ID_BANK: "kosong",
-                                    START_DATE: "kosong",
-                                    TARGET_DATE: "kosong",
-                                    REALIZATION_DATE: "kosong",
-                                    USER_REALIZATION: "Kosong",
-                                    KETERANGAN: "Belum di isi",
+                                    TIPE_DOKUMEN: "",
+                                    ID_BANK: "",
+                                    START_DATE: "",
+                                    TARGET_DATE: "",
+                                    REALIZATION_DATE: "",
+                                    USER_REALIZATION: "",
+                                    KETERANGAN: "",
                                     YEAR: 0,
                                     WARNA: ""
                                 };
@@ -33555,7 +33555,7 @@ var ReportMokaComponent = /** @class */ (function () {
                 USER_UPDATED: "admin",
                 DATE_UPDATED: __WEBPACK_IMPORTED_MODULE_1_moment__().format()
             };
-            if (element.REALIZATION_DATE == "kosong") {
+            if (element.REALIZATION_DATE == "") {
                 header.REALIZATION_DATE = null;
             }
             else {
