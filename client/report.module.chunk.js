@@ -33407,11 +33407,18 @@ var ReportMokaComponent = /** @class */ (function () {
                     editable: true,
                     width: "20%",
                 },
-                USER_REALIZATION: {
+                UPDATEBY_USER: {
                     title: "Updated By",
                     type: "string",
                     filter: false,
                     editable: true,
+                    width: "10%",
+                },
+                USER_REALIZATION: {
+                    title: "Updated",
+                    type: "string",
+                    filter: false,
+                    editable: false,
                     width: "10%",
                 },
             }
@@ -33486,7 +33493,8 @@ var ReportMokaComponent = /** @class */ (function () {
                                     USER_REALIZATION: "",
                                     KETERANGAN: "",
                                     YEAR: 0,
-                                    WARNA: ""
+                                    WARNA: "",
+                                    UPDATEBY_USER: ""
                                 };
                                 detail.NO = index + 1;
                                 detail.KODE_BANK = element.ID_BANK;
@@ -33508,9 +33516,7 @@ var ReportMokaComponent = /** @class */ (function () {
                                 if (arrs[0] != null) {
                                     if (arrs[0].REALIZATION_DATE != null) {
                                         detail.REALIZATION_DATE = __WEBPACK_IMPORTED_MODULE_1_moment__(arrs[0].REALIZATION_DATE).format("DD/MM/YYYY");
-                                    }
-                                    else {
-                                        detail.REALIZATION_DATE = "kosong";
+                                        detail.UPDATEBY_USER = arrs[0].UPDATEBY_USER;
                                     }
                                     if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YY").isSame(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YY")) == true) {
                                         detail.WARNA = "0";
@@ -33521,7 +33527,6 @@ var ReportMokaComponent = /** @class */ (function () {
                                     else if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YY").isSameOrAfter(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YY").add(5, 'd')) == true) {
                                         detail.WARNA = "5";
                                     }
-                                    console.log(detail.WARNA);
                                     detail.KETERANGAN = arrs[0].KETERANGAN;
                                     detail.USER_REALIZATION = arrs[0].USER_REALIZATION;
                                     console.log(detail);
@@ -33553,7 +33558,8 @@ var ReportMokaComponent = /** @class */ (function () {
                 USER_REALIZATION: "admin",
                 REALIZATION_DATE: element.REALIZATION_DATE,
                 USER_UPDATED: "admin",
-                DATE_UPDATED: __WEBPACK_IMPORTED_MODULE_1_moment__().format()
+                DATE_UPDATED: __WEBPACK_IMPORTED_MODULE_1_moment__().format(),
+                UPDATEBY_USER: element.UPDATEBY_USER
             };
             if (element.REALIZATION_DATE == "") {
                 header.REALIZATION_DATE = null;

@@ -2685,11 +2685,18 @@ var MokaRealisasiComponent = /** @class */ (function () {
                     editable: true,
                     width: "20%",
                 },
-                USER_REALIZATION: {
+                UPDATEBY_USER: {
                     title: "Updated By",
                     type: "string",
                     filter: false,
                     editable: true,
+                    width: "10%",
+                },
+                USER_REALIZATION: {
+                    title: "Updated",
+                    type: "string",
+                    filter: false,
+                    editable: false,
                     width: "10%",
                 },
             }
@@ -2787,14 +2794,15 @@ var MokaRealisasiComponent = /** @class */ (function () {
                                 var detail = {
                                     NO: 1,
                                     KODE_BANK: 0,
-                                    TIPE_DOKUMEN: "kosong",
-                                    ID_BANK: "kosong",
-                                    START_DATE: "kosong",
-                                    TARGET_DATE: "kosong",
-                                    REALIZATION_DATE: "kosong",
-                                    USER_REALIZATION: "Kosong",
+                                    TIPE_DOKUMEN: "",
+                                    ID_BANK: "",
+                                    START_DATE: "",
+                                    TARGET_DATE: "",
+                                    REALIZATION_DATE: "",
+                                    USER_REALIZATION: "",
                                     KETERANGAN: "",
-                                    YEAR: 0
+                                    YEAR: 0,
+                                    UPDATEBY_USER: "",
                                 };
                                 detail.NO = index + 1;
                                 detail.KODE_BANK = element.ID_BANK;
@@ -2816,9 +2824,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
                                 if (arrs[0] != null) {
                                     if (arrs[0].REALIZATION_DATE != null) {
                                         detail.REALIZATION_DATE = __WEBPACK_IMPORTED_MODULE_4_moment__(arrs[0].REALIZATION_DATE).format("DD/MM/YYYY");
-                                    }
-                                    else {
-                                        detail.REALIZATION_DATE = "kosong";
+                                        detail.UPDATEBY_USER = arrs[0].UPDATEBY_USER;
                                     }
                                     detail.KETERANGAN = arrs[0].KETERANGAN;
                                     detail.USER_REALIZATION = arrs[0].USER_REALIZATION;
@@ -2855,7 +2861,8 @@ var MokaRealisasiComponent = /** @class */ (function () {
                 USER_REALIZATION: "admin",
                 REALIZATION_DATE: element.REALIZATION_DATE,
                 USER_UPDATED: "admin",
-                DATE_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+                DATE_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                UPDATEBY_USER: element.UPDATEBY_USER
             };
             if (element.REALIZATION_DATE == "kosong") {
                 header.REALIZATION_DATE = null;
@@ -2877,21 +2884,20 @@ var MokaRealisasiComponent = /** @class */ (function () {
         event.confirm.resolve(event.newData);
     };
     MokaRealisasiComponent.prototype.submit = function (event) {
-        var _this = this;
-        this.tabledata.forEach(function (element, ind) {
-            if (element.KODE_IKU == event.newData.KODE_IKU) {
-                element.KODE_IKU = event.newData.KODE_IKU;
-                element.DESKRIPSI = event.newData.DESKRIPSI;
-                element.TIPE_IKU = event.newData.TIPE_IKU;
-                _this.service
-                    .patchreq("mst_ikus", _this.tabledata[ind])
-                    .subscribe(function (response) {
-                    console.log(JSON.stringify(response));
-                    event.confirm.resolve(event.newData);
-                    _this.toastr.success("Data Updated!");
-                });
-            }
-        });
+        // this.tabledata.forEach((element, ind) => {
+        //   if (element.KODE_IKU == event.newData.KODE_IKU) {
+        //     element.KODE_IKU = event.newData.KODE_IKU;
+        //     element.DESKRIPSI = event.newData.DESKRIPSI;
+        //     element.TIPE_IKU = event.newData.TIPE_IKU;
+        //     this.service
+        //       .patchreq("mst_ikus", this.tabledata[ind])
+        //       .subscribe(response => {
+        //         console.log(JSON.stringify(response));
+        //         event.confirm.resolve(event.newData);
+        //         this.toastr.success("Data Updated!");
+        //       });
+        //   }
+        // });
     };
     MokaRealisasiComponent.prototype.dateReformat = function (value) {
         var str = value.split("/");
