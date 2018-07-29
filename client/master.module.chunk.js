@@ -1,5 +1,164 @@
 webpackJsonp(["master.module"],{
 
+/***/ "./src/app/pages/master/document/document.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\n  <nb-card-header>MOKA DOCUMENT LIST</nb-card-header>\n  <nb-card-body>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/master/document/document.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DocumentComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var DocumentComponent = /** @class */ (function () {
+    function DocumentComponent(modalService, toastr, service) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.tabledata = [];
+        this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: true
+            },
+            edit: {
+                editButtonContent: '<i class="nb-edit"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: true
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: true
+            },
+            mode: "inline",
+            sort: true,
+            hideSubHeader: false,
+            actions: {
+                add: true,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Modify",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                DOC_NAME: {
+                    title: "Nama Dokumen",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "60%"
+                },
+                FLAG: {
+                    title: "FLAG",
+                    type: "number",
+                    filter: true,
+                    editable: true,
+                    width: "30%"
+                }
+            }
+        };
+        this.loadData();
+    }
+    DocumentComponent.prototype.loadData = function () {
+        var _this = this;
+        this.service.getreq("mst_documents").subscribe(function (response) {
+            if (response != null) {
+                _this.tabledata = response;
+                console.log(JSON.stringify(response));
+                _this.source.load(_this.tabledata);
+            }
+        });
+    };
+    DocumentComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KODE_IKU == event.newData.KODE_IKU) {
+                element.KODE_IKU = event.newData.KODE_IKU;
+                element.DESKRIPSI = event.newData.DESKRIPSI;
+                element.TIPE_IKU = event.newData.TIPE_IKU;
+                _this.service
+                    .patchreq("mst_documents", _this.tabledata[ind])
+                    .subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    DocumentComponent.prototype.addData = function (event) {
+        var _this = this;
+        console.log(event.newData);
+        var data = {
+            DOC_NAME: event.newData.DOC_NAME,
+            FLAG: event.newData.FLAG,
+            USER_CREATED: "Admin",
+            DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+            USER_UPDATED: "Admin",
+            DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        this.service.postreq("mst_documents", data).subscribe(function (response) {
+            console.log(response);
+            event.confirm.resolve(event.newData);
+            _this.toastr.success("Data Saved!");
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], DocumentComponent.prototype, "myForm", void 0);
+    DocumentComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-document",
+            template: __webpack_require__("./src/app/pages/master/document/document.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+    ], DocumentComponent);
+    return DocumentComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/master/iku/iku.component.html":
 /***/ (function(module, exports) {
 
@@ -838,6 +997,7 @@ var MasterModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__ = __webpack_require__("./src/app/pages/master/master-log-user/master.user.log.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__user_bank_master_user_bank_component__ = __webpack_require__("./src/app/pages/master/user-bank/master.user.bank.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__ = __webpack_require__("./src/app/pages/master/iku/iku.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__document_document_component__ = __webpack_require__("./src/app/pages/master/document/document.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -852,31 +1012,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
     {
         path: "",
         component: __WEBPACK_IMPORTED_MODULE_2__master_component__["a" /* MasterComponent */],
         children: [
             {
-                path: "master-bank",
-                component: __WEBPACK_IMPORTED_MODULE_3__master_bank_master_bank_component__["a" /* MasterBankComponent */]
-            },
-            {
                 path: "master-user",
                 component: __WEBPACK_IMPORTED_MODULE_4__master_user_master_user_component__["a" /* MasterUserComponent */]
-            },
-            {
-                path: "master-log-user",
-                component: __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__["a" /* MasterUserLogComponent */]
             },
             {
                 path: "user-bank",
                 component: __WEBPACK_IMPORTED_MODULE_6__user_bank_master_user_bank_component__["a" /* MasterUserBankComponent */]
             },
             {
+                path: "master-bank",
+                component: __WEBPACK_IMPORTED_MODULE_3__master_bank_master_bank_component__["a" /* MasterBankComponent */]
+            },
+            {
                 path: "iku",
                 component: __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__["a" /* IkuComponent */]
-            }
+            },
+            {
+                path: "document",
+                component: __WEBPACK_IMPORTED_MODULE_8__document_document_component__["a" /* DocumentComponent */]
+            },
+            {
+                path: "master-log-user",
+                component: __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__["a" /* MasterUserLogComponent */]
+            },
         ]
     }
 ];
@@ -898,7 +1063,8 @@ var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_4__master_user_master_user_component__["a" /* MasterUserComponent */],
     __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__["a" /* MasterUserLogComponent */],
     __WEBPACK_IMPORTED_MODULE_6__user_bank_master_user_bank_component__["a" /* MasterUserBankComponent */],
-    __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__["a" /* IkuComponent */]
+    __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__["a" /* IkuComponent */],
+    __WEBPACK_IMPORTED_MODULE_8__document_document_component__["a" /* DocumentComponent */]
 ];
 
 

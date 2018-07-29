@@ -2478,6 +2478,8 @@ var IndicatorStrategicModalComponent = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MokaRealisasiDatePicker; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2488,14 +2490,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var MokaRealisasiDatePicker = /** @class */ (function () {
     function MokaRealisasiDatePicker() {
     }
     MokaRealisasiDatePicker.prototype.ngOnInit = function () {
-        this.renderValue = this.value;
+        this.date = __WEBPACK_IMPORTED_MODULE_1_moment__(this.value).format("DD/MM/YYYY");
+        console.log(this.value);
+        console.log(this.date);
     };
-    MokaRealisasiDatePicker.prototype.example = function () {
-        alert(this.renderValue);
+    MokaRealisasiDatePicker.prototype.onDateSelect = function () {
+        console.log('woi1');
+    };
+    MokaRealisasiDatePicker.prototype.submit = function () {
+        console.log('woi');
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
@@ -2503,7 +2511,7 @@ var MokaRealisasiDatePicker = /** @class */ (function () {
     ], MokaRealisasiDatePicker.prototype, "value", void 0);
     MokaRealisasiDatePicker = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            template: "\n  <div class=\"input-group\">\n  <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"d1\" [(ngModel)]=\"formData.startDate\" ngbDatepicker #d1=\"ngbDatepicker\">\n  <div class=\"input-group-append\">\n    <button class=\"btn btn-outline-secondary\" (click)=\"d1.toggle()\" type=\"button\">\n      <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\" />\n    </button>\n  </div>\n</div>\n  ",
+            template: "\n    <input class=\"form-control\"  ngbDatepicker (dateSelect)=\"onDateSelect($event)\" (click)=\"d.toggle()\" [(ngModel)]=\"this.date\" #d=\"ngbDatepicker\">\n  ",
         }),
         __metadata("design:paramtypes", [])
     ], MokaRealisasiDatePicker);
@@ -2517,7 +2525,7 @@ var MokaRealisasiDatePicker = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/moka-realisasi/moka.realisasi.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\n  <nb-card-header>MOKA Realisasi</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Dokumen\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.id}}\">{{ data.desc }}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Bank\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.documentSelected||!formData.bankSelected\" \n        (click)=\"getData()\">Get Data</button>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" \n          (click)=\"updateData()\">Update Data</button>\n      </div>\n    </div>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>MOKA Realisasi</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Dokumen\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.DOC_NAME}}\">{{ data.DOC_NAME }}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Bank\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.documentSelected||!formData.bankSelected\" \n        (click)=\"getData()\">Get Data</button>\n      </div>\n    </div>\n    <div class=\"form-group\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\n      </ng2-smart-table>\n    </div>\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" \n          (click)=\"updateData()\">Update Data</button>\n      </div>\n    </div>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -2534,6 +2542,7 @@ module.exports = "<nb-card>\n  <nb-card-header>MOKA Realisasi</nb-card-header>\n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2585,11 +2594,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var MokaRealisasiComponent = /** @class */ (function () {
-    function MokaRealisasiComponent(modalService, toastr, service) {
+    function MokaRealisasiComponent(modalService, toastr, service, authService) {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
+        this.authService = authService;
         this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
@@ -2630,7 +2641,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
                     type: "number",
                     filter: false,
                     editable: false,
-                    width: "2%"
+                    width: "1%"
                 },
                 TIPE_DOKUMEN: {
                     title: "Tipe Dokumen",
@@ -2672,7 +2683,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
                     type: "string",
                     filter: false,
                     editable: true,
-                    width: "25%",
+                    width: "20%",
                 },
                 USER_REALIZATION: {
                     title: "Updated By",
@@ -2684,16 +2695,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
             }
         };
         this.formData = {
-            documentData: [
-                {
-                    id: "RBB",
-                    desc: "RBB"
-                },
-                {
-                    id: "Lain-lain",
-                    desc: "Lain-lain"
-                }
-            ],
+            documentData: [],
             documentSelected: "",
             bankSelected: "",
             years: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
@@ -2702,12 +2704,53 @@ var MokaRealisasiComponent = /** @class */ (function () {
             monaRealisasiData: []
         };
         this.loadData();
+        this.getUserInfo();
+        this.getUserBank();
     }
     MokaRealisasiComponent.prototype.loadData = function () {
         var _this = this;
         this.service.getreq("mst_banks").subscribe(function (response) {
             if (response != null) {
                 _this.formData.bankData = response;
+            }
+        });
+        this.service.getreq("mst_documents").subscribe(function (response) {
+            if (response != null) {
+                var documentFilter = response.filter(function (item) {
+                    return (item.FLAG == 'Y');
+                });
+                if (documentFilter[0] != null) {
+                    _this.formData.documentData = documentFilter;
+                }
+            }
+        });
+    };
+    MokaRealisasiComponent.prototype.getUserBank = function () {
+        var _this = this;
+        if (this.user.ID_USER != "admin") {
+            this.service.getreq("mst_user_banks").toPromise().then(function (response) {
+                if (response != null) {
+                    var arr = response.filter(function (item) {
+                        return (item.ID_USER == _this.user.ID_USER);
+                    });
+                    if (arr[0] != null) {
+                        _this.user.type = arr[0].ID_BANK;
+                    }
+                    _this.formData.bankData = _this.formData.bankData.filter(function (item) {
+                        return (item.ID_BANK == _this.user.type);
+                    });
+                }
+            });
+        }
+        else {
+            this.user.type = "admin";
+        }
+    };
+    MokaRealisasiComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
             }
         });
     };
@@ -2750,7 +2793,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
                                     TARGET_DATE: "kosong",
                                     REALIZATION_DATE: "kosong",
                                     USER_REALIZATION: "Kosong",
-                                    KETERANGAN: "Belum di isi",
+                                    KETERANGAN: "",
                                     YEAR: 0
                                 };
                                 detail.NO = index + 1;
@@ -2866,7 +2909,8 @@ var MokaRealisasiComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
             __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
-            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_7__nebular_auth__["e" /* NbAuthService */]])
     ], MokaRealisasiComponent);
     return MokaRealisasiComponent;
 }());
@@ -2878,7 +2922,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/moka-target/modal/moka.target.modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-header\">\n    <h4 class=\"modal-title\">MOKA TARGET</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n        <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  \n \n  <div class=\"modal-body\">\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Dokumen\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.id}}\">{{ data.desc }}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Bank\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Start Date\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <div class=\"input-group\">\n              <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"d1\" [(ngModel)]=\"formData.startDate\" ngbDatepicker #d1=\"ngbDatepicker\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary\" (click)=\"d1.toggle()\" type=\"button\">\n                  <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\" />\n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Target Date\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <div class=\"input-group\">\n              <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"d2\" [(ngModel)]=\"formData.targetDate\" ngbDatepicker #d2=\"ngbDatepicker\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary\" (click)=\"d2.toggle()\" type=\"button\">\n                  <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\" />\n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Keterangan\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-10\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\n          </div>\n        </div>\n      </div>\n\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.documentSelected||!formData.bankSelected||!formData.startDate||!formData.targetDate||!formData.keterangan\"\n          (click)=\"addNewData()\">Save Data</button>\n          <button type=\"button\" class=\"btn btn-danger \" (click)=\"closeModal()\">CANCEL</button>\n      </div>\n    </div>\n\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n  </div>\n"
+module.exports = "<div class=\"modal-header\">\n    <h4 class=\"modal-title\">MOKA TARGET</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\n        <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  \n \n  <div class=\"modal-body\">\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Dokumen\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.DOC_NAME}}\">{{ data.DOC_NAME }}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Bank\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Start Date\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <div class=\"input-group\">\n              <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"d1\" [(ngModel)]=\"formData.startDate\" ngbDatepicker #d1=\"ngbDatepicker\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary\" (click)=\"d1.toggle()\" type=\"button\">\n                  <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\" />\n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Target Date\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <div class=\"input-group\">\n              <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"d2\" [(ngModel)]=\"formData.targetDate\" ngbDatepicker #d2=\"ngbDatepicker\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary\" (click)=\"d2.toggle()\" type=\"button\">\n                  <img src=\"assets/images/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\" />\n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-2 col-form-label\">Keterangan\n              <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-10\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\n          </div>\n        </div>\n      </div>\n\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success \" [disabled]=\"!formData.documentSelected||!formData.bankSelected||!formData.startDate||!formData.targetDate||!formData.keterangan\"\n          (click)=\"addNewData()\">Save Data</button>\n          <button type=\"button\" class=\"btn btn-danger \" (click)=\"closeModal()\">CANCEL</button>\n      </div>\n    </div>\n\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n  </div>\n"
 
 /***/ }),
 
@@ -2915,16 +2959,7 @@ var MokaTargetModalComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.formData = {
-            documentData: [
-                {
-                    id: "RBB",
-                    desc: "RBB"
-                },
-                {
-                    id: "Lain-lain",
-                    desc: "Lain-lain"
-                }
-            ],
+            documentData: [],
             documentSelected: "",
             bankSelected: "",
             startDate: "",
@@ -2941,7 +2976,7 @@ var MokaTargetModalComponent = /** @class */ (function () {
     MokaTargetModalComponent.prototype.addNewData = function () {
         var _this = this;
         var header = {
-            YEAR: this.formData.year,
+            YEAR: __WEBPACK_IMPORTED_MODULE_3_moment__(this.dateReformat(this.formData.startDate)).format("YYYY"),
             ID_BANK: this.formData.bankSelected,
             TIPE_DOKUMEN: this.formData.documentSelected,
             KETERANGAN: this.formData.keterangan,
@@ -2952,7 +2987,6 @@ var MokaTargetModalComponent = /** @class */ (function () {
             USER_UPDATED: "admin",
             DATE_UPDATED: __WEBPACK_IMPORTED_MODULE_3_moment__().format(),
         };
-        console.log(header);
         this.service.postreq("trn_monas/crud", header).subscribe(function (response) {
             if (response != null) {
                 _this.toastr.success("Data Added!");
@@ -3011,6 +3045,7 @@ module.exports = "<nb-card>\n  <nb-card-header>MOKA Target</nb-card-header>\n  <
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_moka_target_modal_component__ = __webpack_require__("./src/app/pages/transaction/moka-target/modal/moka.target.modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3028,11 +3063,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MokaTargetComponent = /** @class */ (function () {
-    function MokaTargetComponent(modalService, toastr, service) {
+    function MokaTargetComponent(modalService, toastr, service, authService) {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
+        this.authService = authService;
         this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
@@ -3106,27 +3143,59 @@ var MokaTargetComponent = /** @class */ (function () {
             }
         };
         this.formData = {
-            documentData: [
-                {
-                    id: "rbp",
-                    desc: "RBP"
-                },
-                {
-                    id: "lainlain",
-                    desc: "Lain-lain"
-                }
-            ],
             years: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
             bankData: [],
+            documentData: [],
             monaDataDetail: []
         };
         this.loadData();
+        this.getUserInfo();
+        this.getUserBank();
     }
     MokaTargetComponent.prototype.loadData = function () {
         var _this = this;
         this.service.getreq("mst_banks").subscribe(function (response) {
             if (response != null) {
                 _this.formData.bankData = response;
+            }
+        });
+        this.service.getreq("mst_documents").subscribe(function (response) {
+            if (response != null) {
+                var documentFilter = response.filter(function (item) {
+                    return (item.FLAG == 'Y');
+                });
+                if (documentFilter[0] != null) {
+                    _this.formData.documentData = documentFilter;
+                }
+            }
+        });
+    };
+    MokaTargetComponent.prototype.getUserBank = function () {
+        var _this = this;
+        if (this.user.ID_USER != "admin") {
+            this.service.getreq("mst_user_banks").toPromise().then(function (response) {
+                if (response != null) {
+                    var arr = response.filter(function (item) {
+                        return (item.ID_USER == _this.user.ID_USER);
+                    });
+                    if (arr[0] != null) {
+                        _this.user.type = arr[0].ID_BANK;
+                    }
+                    _this.formData.bankData = _this.formData.bankData.filter(function (item) {
+                        return (item.ID_BANK == _this.user.type);
+                    });
+                }
+            });
+        }
+        else {
+            this.user.type = "admin";
+        }
+    };
+    MokaTargetComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
             }
         });
     };
@@ -3138,6 +3207,7 @@ var MokaTargetComponent = /** @class */ (function () {
             backdrop: "static"
         });
         this.activeModal.componentInstance.formData.bankData = this.formData.bankData;
+        this.activeModal.componentInstance.formData.documentData = this.formData.documentData;
         this.activeModal.result.then(function (result) {
             _this.getData();
         }, function (reason) {
@@ -3148,10 +3218,16 @@ var MokaTargetComponent = /** @class */ (function () {
         var _this = this;
         this.service.getreq("trn_monas").subscribe(function (response) {
             if (response != null) {
+                console.log(response);
                 var res = response.filter(function (item) {
                     return (item.YEAR == _this.formData.years &&
-                        item.REALIZATION_DATE == null);
+                        item.ID_BANK == _this.user.type);
                 });
+                if (_this.user.type == 'admin') {
+                    res = response.filter(function (item) {
+                        return (item.YEAR == _this.formData.years);
+                    });
+                }
                 var monaTargetdetail_1 = [];
                 if (res[0] != null) {
                     res.forEach(function (element) {
@@ -3203,7 +3279,8 @@ var MokaTargetComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
             __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
-            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_8__nebular_auth__["e" /* NbAuthService */]])
     ], MokaTargetComponent);
     return MokaTargetComponent;
 }());

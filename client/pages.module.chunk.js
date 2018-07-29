@@ -105,24 +105,28 @@ var MENU_ITEM_ADMIN = [
         icon: "nb-locked",
         children: [
             {
-                title: "Bank",
-                link: "/pages/master/master-bank"
-            },
-            {
                 title: "User",
                 link: "/pages/master/master-user"
-            },
-            {
-                title: "User Log",
-                link: "/pages/master/master-log-user"
             },
             {
                 title: "User Bank",
                 link: "/pages/master/user-bank"
             },
             {
-                title: "Iku",
+                title: "Bank List",
+                link: "/pages/master/master-bank"
+            },
+            {
+                title: "IKU List",
                 link: "/pages/master/iku"
+            },
+            {
+                title: "Document List",
+                link: "/pages/master/document"
+            },
+            {
+                title: "User Log",
+                link: "/pages/master/master-log-user"
             }
         ]
     },

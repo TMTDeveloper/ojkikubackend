@@ -33255,7 +33255,7 @@ var ReportIkuComponent = /** @class */ (function () {
 /***/ "./src/app/pages/report/report-moka/report.moka.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <nb-card>\n  <nb-card-header>\n    View Report\n  </nb-card-header>\n\n  <nb-card-body>\n    <div class=\"holdertable\">\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\">\n      </ng2-smart-table>\n    </div>\n\n\n\n  </nb-card-body>\n</nb-card> -->\n\n<nb-card>\n  <nb-card-body>\n    On Progress\n  </nb-card-body>\n</nb-card>\n"
+module.exports = "<nb-card>\n  <nb-card-header>MOKA Realisasi</nb-card-header>\n  <nb-card-body>\n    <div class=\"row\">\n      <div class=\"col-sm-4\">\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Tahun\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Dokumen\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.DOC_NAME}}\">{{ data.DOC_NAME }}</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"form-group row\">\n          <label class=\"col-sm-4 col-form-label\">Bank\n            <font color=\"red\">*</font>\n          </label>\n          <div class=\"col-sm-8\">\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group row\">\n      <div class=\"col-sm-auto\">\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.documentSelected||!formData.bankSelected\" \n        (click)=\"getData()\">Get Data</button>\n      </div>\n    </div>\n\n  </nb-card-body>\n</nb-card>\n\n<nb-card>\n  <nb-card-body>\n    <div class=\"ikureportable\">\n      <table class=\"table table-hover\">\n        <thead>\n          <tr>\n            <th>Tipe Dokumen</th>\n            <th>Tahun</th>\n            <th>Keterangan</th>\n            <th>Start Date</th>\n            <th>Target Date</th>\n            <th>Realization Date</th>\n          </tr>\n        </thead>\n        <tbody>\n            <tr *ngFor=\"let item of tabledata\" [ngClass]=\"{'table-success': item.WARNA == 0, 'table-warning': item.WARNA == 3, 'table-danger': item.WARNA > 3}\">\n                <td >{{ item.TIPE_DOKUMEN }}</td>\n                <td>{{ item.YEAR }}</td>\n                <td>{{ item.KETERANGAN }}</td>\n                <td >{{ item.START_DATE }}</td>\n                <td>{{ item.TARGET_DATE }}</td>\n                <td >{{ item.REALIZATION_DATE }}</td>\n              </tr>\n        </tbody>\n      </table>\n    </div>\n  </nb-card-body>\n</nb-card>\n"
 
 /***/ }),
 
@@ -33265,8 +33265,11 @@ module.exports = "<!-- <nb-card>\n  <nb-card-header>\n    View Report\n  </nb-ca
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportMokaComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -33276,108 +33279,329 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
 
 
 
 var ReportMokaComponent = /** @class */ (function () {
-    function ReportMokaComponent(service) {
+    function ReportMokaComponent(service, toastr) {
         this.service = service;
+        this.toastr = toastr;
+        this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.tabledata = [];
         this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: false
+            },
+            edit: {
+                editButtonContent: '<i class="nb-edit"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: false
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: false
+            },
+            mode: "inline",
             sort: true,
             hideSubHeader: true,
             actions: {
                 add: false,
-                edit: false,
-                delete: false
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Modify",
+                width: "10%"
             },
             pager: {
-                display: false,
+                display: true,
                 perPage: 30
             },
             columns: {
-                YEAR: {
-                    title: "Year",
-                    type: "string",
-                    filter: false
-                },
-                DESCRIPTION: {
-                    title: "Description",
-                    type: "string",
-                    filter: false
-                },
-                PERCENTAGE: {
-                    title: "Target",
+                NO: {
+                    title: "NO",
                     type: "number",
-                    filter: false
+                    filter: false,
+                    editable: false,
+                    width: "1%"
                 },
-                TW1: {
-                    title: "TW 1",
+                TIPE_DOKUMEN: {
+                    title: "Tipe Dokumen",
                     type: "string",
-                    filter: false
+                    filter: false,
+                    editable: false,
+                    width: "3%"
                 },
-                TW2: {
-                    title: "TW 2",
+                ID_BANK: {
+                    title: "Bank",
                     type: "string",
-                    filter: false
+                    filter: false,
+                    editable: false,
+                    width: "15%"
                 },
-                TW3: {
-                    title: "TW 3",
-                    type: "string",
-                    filter: false
+                START_DATE: {
+                    title: "Start Date",
+                    type: "date",
+                    filter: false,
+                    editable: true,
+                    width: "5%"
                 },
-                TW4: {
-                    title: "TW 4",
+                TARGET_DATE: {
+                    title: "Target Date",
+                    type: "date",
+                    filter: false,
+                    editable: false,
+                    width: "5%",
+                },
+                REALIZATION_DATE: {
+                    title: "Realization Date",
                     type: "string",
-                    filter: false
-                }
+                    filter: false,
+                    editable: true,
+                    width: "15%",
+                },
+                KETERANGAN: {
+                    title: "Keterangan",
+                    type: "string",
+                    filter: false,
+                    editable: true,
+                    width: "20%",
+                },
+                USER_REALIZATION: {
+                    title: "Updated By",
+                    type: "string",
+                    filter: false,
+                    editable: true,
+                    width: "10%",
+                },
             }
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.formData = {
+            documentData: [],
+            documentSelected: "",
+            bankSelected: "",
+            years: __WEBPACK_IMPORTED_MODULE_1_moment__().format("YYYY"),
+            threshold: 0,
+            bankData: [],
+            monaRealisasiData: []
+        };
         this.loadData();
     }
     ReportMokaComponent.prototype.loadData = function () {
         var _this = this;
-        console.log("why tho");
-        this.service.getreq("reports").subscribe(function (response) {
-            var data = response;
-            console.log(JSON.stringify(data));
-            _this.source.load(data);
-        }, function (error) {
-            console.log(error);
+        this.service.getreq("mst_banks").subscribe(function (response) {
+            if (response != null) {
+                _this.formData.bankData = response;
+            }
+        });
+        this.service.getreq("mst_documents").subscribe(function (response) {
+            if (response != null) {
+                var documentFilter = response.filter(function (item) {
+                    return (item.FLAG == 'Y');
+                });
+                if (documentFilter[0] != null) {
+                    _this.formData.documentData = documentFilter;
+                }
+            }
         });
     };
-    ReportMokaComponent.prototype.searchRange = function (beginDate, endDate) {
-        if (!(!beginDate && !endDate)) {
-            this.source
-                .setFilter([
-                {
-                    field: "dateTimeCreate",
-                    search: "endDate",
-                    filter: function (value, endValue) {
-                        return new Date(value) >= new Date(endValue);
-                    }
+    ReportMokaComponent.prototype.getData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var monaTargetData, monaRealisasi, arrMonaTargetData, monaTargetdetail_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.service.getreq("trn_monas").toPromise().then(function (resp) {
+                            if (resp != null) {
+                                monaTargetData = resp;
+                            }
+                        })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.service.getreq("trn_mona_realizations").toPromise().then(function (res) {
+                                if (res != null) {
+                                    monaRealisasi = res;
+                                }
+                            })];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, monaTargetData.filter(function (items) {
+                                return (items.ID_BANK == _this.formData.bankSelected &&
+                                    items.TIPE_DOKUMEN == _this.formData.documentSelected &&
+                                    items.YEAR == _this.formData.years);
+                            })];
+                    case 3:
+                        arrMonaTargetData = _a.sent();
+                        if (!(arrMonaTargetData[0] != null)) return [3 /*break*/, 5];
+                        monaTargetdetail_1 = [];
+                        return [4 /*yield*/, arrMonaTargetData.forEach(function (element, index) {
+                                var detail = {
+                                    NO: 1,
+                                    KODE_BANK: 0,
+                                    TIPE_DOKUMEN: "kosong",
+                                    ID_BANK: "kosong",
+                                    START_DATE: "kosong",
+                                    TARGET_DATE: "kosong",
+                                    REALIZATION_DATE: "kosong",
+                                    USER_REALIZATION: "Kosong",
+                                    KETERANGAN: "Belum di isi",
+                                    YEAR: 0,
+                                    WARNA: ""
+                                };
+                                detail.NO = index + 1;
+                                detail.KODE_BANK = element.ID_BANK;
+                                detail.TIPE_DOKUMEN = element.TIPE_DOKUMEN;
+                                detail.YEAR = element.YEAR;
+                                detail.START_DATE = __WEBPACK_IMPORTED_MODULE_1_moment__(element.START_DATE).format("DD/MM/YYYY");
+                                detail.TARGET_DATE = __WEBPACK_IMPORTED_MODULE_1_moment__(element.TARGET_DATE).format("DD/MM/YYYY");
+                                var arrBank = _this.formData.bankData.filter(function (item) {
+                                    return (item.ID_BANK == element.ID_BANK);
+                                });
+                                if (arrBank[0] != null) {
+                                    detail.ID_BANK = arrBank[0].DESCRIPTION;
+                                }
+                                var arrs = monaRealisasi.filter(function (items) {
+                                    return (items.ID_BANK == detail.KODE_BANK &&
+                                        items.TIPE_DOKUMEN == detail.TIPE_DOKUMEN &&
+                                        items.YEAR == detail.YEAR);
+                                });
+                                if (arrs[0] != null) {
+                                    if (arrs[0].REALIZATION_DATE != null) {
+                                        detail.REALIZATION_DATE = __WEBPACK_IMPORTED_MODULE_1_moment__(arrs[0].REALIZATION_DATE).format("DD/MM/YYYY");
+                                    }
+                                    else {
+                                        detail.REALIZATION_DATE = "kosong";
+                                    }
+                                    if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YY").isSame(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YY")) == true) {
+                                        detail.WARNA = "0";
+                                    }
+                                    else if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YY").isSameOrBefore(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YY").add(3, 'd')) == true) {
+                                        detail.WARNA = "3";
+                                    }
+                                    else if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YY").isSameOrAfter(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YY").add(5, 'd')) == true) {
+                                        detail.WARNA = "5";
+                                    }
+                                    console.log(detail.WARNA);
+                                    detail.KETERANGAN = arrs[0].KETERANGAN;
+                                    detail.USER_REALIZATION = arrs[0].USER_REALIZATION;
+                                    console.log(detail);
+                                }
+                                monaTargetdetail_1.push(detail);
+                            })];
+                    case 4:
+                        _a.sent();
+                        this.formData.monaRealisasiData = monaTargetdetail_1;
+                        this.tabledata = monaTargetdetail_1;
+                        return [3 /*break*/, 6];
+                    case 5:
+                        this.toastr.error("Data Not Found!");
+                        this.tabledata = [];
+                        _a.label = 6;
+                    case 6: return [2 /*return*/];
                 }
-            ], true)
-                .setFilter([
-                {
-                    field: "dateTimeCreate",
-                    search: "beginDate",
-                    filter: function (value, beginValue) {
-                        return new Date(value) >= new Date(beginValue);
-                    }
-                }
-            ]);
-        }
-        else {
-            return this.source;
-        }
+            });
+        });
+    };
+    ReportMokaComponent.prototype.updateData = function () {
+        var _this = this;
+        this.tabledata.forEach(function (element) {
+            var header = {
+                ID_BANK: element.KODE_BANK,
+                YEAR: element.YEAR,
+                TIPE_DOKUMEN: element.TIPE_DOKUMEN,
+                KETERANGAN: element.KETERANGAN,
+                USER_REALIZATION: "admin",
+                REALIZATION_DATE: element.REALIZATION_DATE,
+                USER_UPDATED: "admin",
+                DATE_UPDATED: __WEBPACK_IMPORTED_MODULE_1_moment__().format()
+            };
+            if (element.REALIZATION_DATE == "kosong") {
+                header.REALIZATION_DATE = null;
+            }
+            else {
+                header.REALIZATION_DATE = __WEBPACK_IMPORTED_MODULE_1_moment__(_this.dateReformat(element.REALIZATION_DATE)).format();
+            }
+            _this.service.postreq("trn_mona_realizations/crud", header).subscribe(function (response) {
+                console.log(response);
+                _this.toastr.success("Data Saved!");
+            }, function (error) {
+                _this.toastr.error("Error, Cek kembali data!");
+                console.log(error);
+            });
+        });
+    };
+    ReportMokaComponent.prototype.editConfirm = function (event) {
+        console.log(event.newData);
+        event.confirm.resolve(event.newData);
+    };
+    ReportMokaComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KODE_IKU == event.newData.KODE_IKU) {
+                element.KODE_IKU = event.newData.KODE_IKU;
+                element.DESKRIPSI = event.newData.DESKRIPSI;
+                element.TIPE_IKU = event.newData.TIPE_IKU;
+                _this.service
+                    .patchreq("mst_ikus", _this.tabledata[ind])
+                    .subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    ReportMokaComponent.prototype.dateReformat = function (value) {
+        var str = value.split("/");
+        return str[2] + "-" + str[1] + "-" + str[0];
     };
     ReportMokaComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-report-moka",
             template: __webpack_require__("./src/app/pages/report/report-moka/report.moka.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__["a" /* BackendService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]])
     ], ReportMokaComponent);
     return ReportMokaComponent;
 }());
@@ -33399,119 +33623,21 @@ module.exports = "<router-outlet></router-outlet>"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
 
 var ReportComponent = /** @class */ (function () {
-    function ReportComponent(service) {
-        this.service = service;
-        this.settings = {
-            sort: true,
-            hideSubHeader: true,
-            actions: {
-                add: false,
-                edit: false,
-                delete: false
-            },
-            pager: {
-                display: false,
-                perPage: 30
-            },
-            columns: {
-                YEAR: {
-                    title: "Year",
-                    type: "string",
-                    filter: false
-                },
-                DESCRIPTION: {
-                    title: "Description",
-                    type: "string",
-                    filter: false
-                },
-                PERCENTAGE: {
-                    title: "Target",
-                    type: "number",
-                    filter: false
-                },
-                TW1: {
-                    title: "TW 1",
-                    type: "string",
-                    filter: false
-                },
-                TW2: {
-                    title: "TW 2",
-                    type: "string",
-                    filter: false
-                },
-                TW3: {
-                    title: "TW 3",
-                    type: "string",
-                    filter: false
-                },
-                TW4: {
-                    title: "TW 4",
-                    type: "string",
-                    filter: false
-                }
-            }
-        };
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
-        this.loadData();
+    function ReportComponent() {
     }
-    ReportComponent.prototype.loadData = function () {
-        var _this = this;
-        console.log("why tho");
-        this.service.getreq("reports").subscribe(function (response) {
-            var data = response;
-            console.log(JSON.stringify(data));
-            _this.source.load(data);
-        }, function (error) {
-            console.log(error);
-        });
-    };
-    ReportComponent.prototype.searchRange = function (beginDate, endDate) {
-        if (!(!beginDate && !endDate)) {
-            this.source
-                .setFilter([
-                {
-                    field: "dateTimeCreate",
-                    search: "endDate",
-                    filter: function (value, endValue) {
-                        return new Date(value) >= new Date(endValue);
-                    }
-                }
-            ], true)
-                .setFilter([
-                {
-                    field: "dateTimeCreate",
-                    search: "beginDate",
-                    filter: function (value, beginValue) {
-                        return new Date(value) >= new Date(beginValue);
-                    }
-                }
-            ]);
-        }
-        else {
-            return this.source;
-        }
-    };
     ReportComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-report",
             template: __webpack_require__("./src/app/pages/report/report.component.html")
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_data_backend_service__["a" /* BackendService */]])
+        })
     ], ReportComponent);
     return ReportComponent;
 }());
