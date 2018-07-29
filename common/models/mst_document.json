@@ -1,45 +1,40 @@
 {
-    "name": "m_usersys",
+    "name": "mst_document",
     "base": "PersistedModel",
     "idInjection": false,
     "options": {
       "validateUpsert": true
     },
     "properties": {
-      "NIP": {
-        "type": "string",
-        "required": true,
+      "ID": {
+        "type": "number",
+        "required": false,
         "id": true
       },
-      "NAMA": {
+      "DOC_NAME": {
         "type": "string",
         "required": true
       },
-      "JABATAN": {
+      "FLAG": {
         "type": "string",
         "required": true
       },
-      "TEAM": {
+      "USER_CREATED": {
         "type": "string",
         "required": true
       },
-      "BANK": {
-        "type": "string",
-        "required": true
-      },
-      "PASSWORD": {
-        "type": "string",
-        "required": true
-      },
-      "DATE_CREATED": {
+      "DATETIME_CREATED": {
         "type": "date",
         "required": true
       },
-      "DATE_MODIFIED": {
+      "USER_UPDATED": {
+        "type": "string",
+        "required": true
+      },
+      "DATETIME_UPDATED": {
         "type": "date",
         "required": true
       }
-
     },
     "validations": [],
     "relations": {},

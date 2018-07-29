@@ -43,16 +43,6 @@
     "user": "zenhuw",
     "connector": "mssql"
   },
-  "M_IKU": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "M_IKU",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
   "TRN_IKU_DT": {
     "host": "localhost",
     "port": 1433,
@@ -60,26 +50,6 @@
     "database": "IKU",
     "password": "zenhuw",
     "name": "TRN_IKU_DT",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
-  "M_BANK": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "M_BANK",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
-  "M_USERSYS": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "M_USERSYS",
     "user": "zenhuw",
     "connector": "mssql"
   },
@@ -100,16 +70,6 @@
     "database": "IKU",
     "password": "zenhuw",
     "name": "TRN_IKU_QUAL",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
-  "report": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "report",
     "user": "zenhuw",
     "connector": "mssql"
   },

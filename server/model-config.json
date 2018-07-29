@@ -47,24 +47,12 @@
     "dataSource": "TRN_IKU_HD",
     "public": true
   },
-  "m_iku": {
-    "dataSource": "M_IKU",
-    "public": true
-  },
   "trn_iku_dt": {
     "dataSource": "TRN_IKU_DT",
     "public": true
   },
-  "m_bank": {
-    "dataSource": "M_BANK",
-    "public": true
-  },
   "trn_iku_hd_target": {
     "dataSource": "TRN_IKU_HD_TARGET",
-    "public": true
-  },
-  "m_usersys": {
-    "dataSource": "M_USERSYS",
     "public": true
   },
   "trn_realisasi_iku": {
@@ -75,11 +63,11 @@
     "dataSource": "TRN_IKU_QUAL",
     "public": true
   },
-  "report": {
-    "dataSource": "report",
+  "mst_bank": {
+    "dataSource": "ikudb",
     "public": true
   },
-  "mst_bank": {
+  "mst_document": {
     "dataSource": "ikudb",
     "public": true
   },
