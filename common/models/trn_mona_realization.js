@@ -42,7 +42,8 @@ module.exports = function (Trnmonarealization) {
             "USER_REALIZATION":req.USER_REALIZATION,
             "REALIZATION_DATE": req.REALIZATION_DATE,
             "USER_UPDATED": req.USER_UPDATED,
-            "DATE_UPDATED": req.DATE_UPDATED
+            "DATE_UPDATED": req.DATE_UPDATED,
+            "UPDATEBY_USER": req.UPDATEBY_USER
           },
           (err, res) => {
             if (util.isNullOrUndefined(err)) {
@@ -73,7 +74,8 @@ module.exports = function (Trnmonarealization) {
           "USER_REALIZATION":req.USER_REALIZATION,
           "REALIZATION_DATE": req.REALIZATION_DATE,
           "USER_UPDATED": req.USER_UPDATED,
-          "DATE_UPDATED": req.DATE_UPDATED
+          "DATE_UPDATED": req.DATE_UPDATED,
+          "UPDATEBY_USER": req.UPDATEBY_USER
           },
           (err, res) => {
             if (util.isNullOrUndefined(err)) {

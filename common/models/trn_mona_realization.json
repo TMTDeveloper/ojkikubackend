@@ -41,6 +41,10 @@
     "DATE_UPDATED": {
       "type": "date",
       "required": true
+    },
+    "UPDATEBY_USER": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],
