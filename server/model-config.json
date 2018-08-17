@@ -43,26 +43,6 @@
     "dataSource": "LOGIN_LOG",
     "public": true
   },
-  "trn_iku_hd": {
-    "dataSource": "TRN_IKU_HD",
-    "public": true
-  },
-  "trn_iku_dt": {
-    "dataSource": "TRN_IKU_DT",
-    "public": true
-  },
-  "trn_iku_hd_target": {
-    "dataSource": "TRN_IKU_HD_TARGET",
-    "public": true
-  },
-  "trn_realisasi_iku": {
-    "dataSource": "TRN_REALISASI_IKU",
-    "public": true
-  },
-  "trn_iku_qual": {
-    "dataSource": "TRN_IKU_QUAL",
-    "public": true
-  },
   "mst_bank": {
     "dataSource": "ikudb",
     "public": true
@@ -121,6 +101,10 @@
   },
   "trn_mona_realization": {
     "dataSource": "ikudb",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "myEmailDataSource",
     "public": true
   }
 }

@@ -23,56 +23,6 @@
     "user": "zenhuw",
     "connector": "mssql"
   },
-  "TRN_IKU_HD": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "TRN_IKU_HD",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
-  "TRN_IKU_HD_TARGET": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "TRN_IKU_HD_TARGET",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
-  "TRN_IKU_DT": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "TRN_IKU_DT",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
-  "TRN_REALISASI_IKU": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "TRN_REALISASI_IKU",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
-  "TRN_IKU_QUAL": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "TRN_IKU_QUAL",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
   "ikudb": {
     "host": "localhost",
     "port": 1433,
@@ -82,5 +32,20 @@
     "name": "ikudb",
     "user": "zenhuw",
     "connector": "mssql"
+  },
+
+  "myEmailDataSource": {
+    "name": "myEmailDataSource",
+    "connector": "mail",
+    "transports": [{
+      "type": "SMTP",
+      "host": "smtp.office365.com",
+      "secure": false,
+      "port": 587,
+      "auth": {
+        "user": "corp/dpb1_dahsyat",
+        "pass": "dahsyat5"
+      }
+    }]
   }
 }
