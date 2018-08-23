@@ -3,34 +3,14 @@
     "name": "db",
     "connector": "memory"
   },
-  "LOGIN_IKU": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "LOGIN_IKU",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
-  "LOGIN_LOG": {
-    "host": "localhost",
-    "port": 1433,
-    "url": "",
-    "database": "IKU",
-    "password": "zenhuw",
-    "name": "LOGIN_LOG",
-    "user": "zenhuw",
-    "connector": "mssql"
-  },
   "ikudb": {
     "host": "localhost",
     "port": 1433,
     "url": "",
     "database": "IKU",
-    "password": "zenhuw",
+    "password": "Tmtdev123",
     "name": "ikudb",
-    "user": "zenhuw",
+    "user": "sa",
     "connector": "mssql"
   },
 

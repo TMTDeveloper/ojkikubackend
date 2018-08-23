@@ -36,11 +36,11 @@
     "public": false
   },
   "LOGIN_IKU": {
-    "dataSource": "LOGIN_IKU",
+    "dataSource": "ikudb",
     "public": true
   },
   "LOGIN_LOG": {                
-    "dataSource": "LOGIN_LOG",
+    "dataSource": "ikudb",
     "public": true
   },
   "mst_bank": {
