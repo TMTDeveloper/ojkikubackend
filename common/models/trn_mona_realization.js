@@ -2,6 +2,7 @@
 var util = require("util");
 var moment = require("moment");
 var md5 = require("md5");
+
 module.exports = function (Trnmonarealization) {
   Trnmonarealization.inputdata = function (req, cb) {
     console.log(req)
@@ -9,6 +10,22 @@ module.exports = function (Trnmonarealization) {
     var filterWherePost = {
       where: {
         and: [{
+          YEAR: req.YEAR
+        },
+        {
+          ID_BANK: req.ID_BANK
+        },
+        {
+          TIPE_DOKUMEN: req.TIPE_DOKUMEN
+        }
+        ]
+      }
+    };
+    Trnmonarealization.findOne(filterWherePost, (err, res) => {
+      if (res != null) {
+        console.log("here")
+        Trnmonarealization.updateAll({
+          and: [{
             YEAR: req.YEAR
           },
           {
@@ -17,29 +34,13 @@ module.exports = function (Trnmonarealization) {
           {
             TIPE_DOKUMEN: req.TIPE_DOKUMEN
           }
-        ]
-      }
-    };
-    Trnmonarealization.findOne(filterWherePost, (err, res) => {
-      if (res != null) {
-        console.log("here")
-        Trnmonarealization.updateAll({
-            and: [{
-                YEAR: req.YEAR
-              },
-              {
-                ID_BANK: req.ID_BANK
-              },
-              {
-                TIPE_DOKUMEN: req.TIPE_DOKUMEN
-              }
-            ]
-          }, {
+          ]
+        }, {
             "YEAR": req.YEAR,
             "ID_BANK": req.ID_BANK,
             "TIPE_DOKUMEN": req.TIPE_DOKUMEN,
             "KETERANGAN": req.KETERANGAN,
-            "USER_REALIZATION":req.USER_REALIZATION,
+            "USER_REALIZATION": req.USER_REALIZATION,
             "REALIZATION_DATE": req.REALIZATION_DATE,
             "USER_UPDATED": req.USER_UPDATED,
             "DATE_UPDATED": req.DATE_UPDATED,
@@ -71,12 +72,12 @@ module.exports = function (Trnmonarealization) {
           "ID_BANK": req.ID_BANK,
           "TIPE_DOKUMEN": req.TIPE_DOKUMEN,
           "KETERANGAN": req.KETERANGAN,
-          "USER_REALIZATION":req.USER_REALIZATION,
+          "USER_REALIZATION": req.USER_REALIZATION,
           "REALIZATION_DATE": req.REALIZATION_DATE,
           "USER_UPDATED": req.USER_UPDATED,
           "DATE_UPDATED": req.DATE_UPDATED,
           "UPDATEBY_USER": req.UPDATEBY_USER
-          },
+        },
           (err, res) => {
             if (util.isNullOrUndefined(err)) {
               var Result = {
@@ -100,6 +101,26 @@ module.exports = function (Trnmonarealization) {
     });
   };
 
+  Trnmonarealization.totalDocument = async function () {
+    let allDocument = await Trnmonarealization.find({});
+
+    let totaldoc = {}, labelList = []
+
+    await allDocument.forEach(element => {
+      if(totaldoc[element.TIPE_DOKUMEN]){
+        totaldoc[element.TIPE_DOKUMEN]++
+      } else {
+        totaldoc[element.TIPE_DOKUMEN] = 1
+      }
+
+      if(!labelList.includes(element.TIPE_DOKUMEN))
+      labelList.push(element.TIPE_DOKUMEN)
+    });
+    
+    
+    return {totaldoc,labelList};
+  }
+
   Trnmonarealization.remoteMethod("inputdata", {
     accepts: [{
       arg: "inputdata",
@@ -117,6 +138,20 @@ module.exports = function (Trnmonarealization) {
       type: "object"
     }
   });
+
+  Trnmonarealization.remoteMethod("totalDocument", {
+    accepts: [],
+    http: {
+      path: "/totaldocument",
+      verb: "get"
+    },
+    returns: {
+      arg: "Result",
+      type: "Object",
+    }
+  });
+
+
 
 
 };

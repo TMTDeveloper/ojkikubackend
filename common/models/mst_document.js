@@ -1,38 +1,22 @@
 'use strict';
+var util = require("loopback/lib/utils");
 
 module.exports = function (mst_document) {
+  mst_document.getAllData = () => {
+    let a = mst_document.find({})
+    console.log(a)
+    return a
+  };
 
-    mst_document.getAllData = function (req, cb) {
-        console.log(req)
-        mst_document.find({}, (err,res) => {
-            console.log(res)
-            return res;
-        });
-        
-      };
-    
-      mst_document.remoteMethod("getAllData", {
-        accepts: [{
-          arg: "getAllData",
-          type: "Object",
-          http: {
-            source: "body"
-          }
-        }],
-        http: {
-          path: "/crud",
-          verb: "post"
-        },
-        returns: {
-          arg: "Result",
-          type: "Object",
-        }
-      });
-
-
+  mst_document.remoteMethod("getAllData", {
+    accepts: [],
+    http: {
+      path: "/crud",
+      verb: "get"
+    },
+    returns: {
+      arg: "Result",
+      type: "Object",
+    }
+  });
 };
-
-
-
-
-
