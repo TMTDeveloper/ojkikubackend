@@ -104,7 +104,7 @@ module.exports = function (Trnmonarealization) {
   Trnmonarealization.totalDocument = async function () {
     let allDocument = await Trnmonarealization.find({});
 
-    let totaldoc = {}, labelList = []
+    let totaldoc = {}, labelList = [], dataList = []
 
     await allDocument.forEach(element => {
       if(totaldoc[element.TIPE_DOKUMEN]){
@@ -116,9 +116,13 @@ module.exports = function (Trnmonarealization) {
       if(!labelList.includes(element.TIPE_DOKUMEN))
       labelList.push(element.TIPE_DOKUMEN)
     });
+
+    await Object.keys(totaldoc).forEach(element => {
+      dataList.push(totaldoc[element]);
+    })
     
     
-    return {totaldoc,labelList};
+    return {totaldoc,labelList,dataList};
   }
 
   Trnmonarealization.remoteMethod("inputdata", {
@@ -146,7 +150,7 @@ module.exports = function (Trnmonarealization) {
       verb: "get"
     },
     returns: {
-      arg: "Result",
+      arg: "result",
       type: "Object",
     }
   });
