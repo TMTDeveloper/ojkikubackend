@@ -8,9 +8,9 @@
     "port": 1433,
     "url": "",
     "database": "IKU",
-    "password": "Tmtdev123",
+    "password": "zenhuw",
     "name": "ikudb",
-    "user": "sa",
+    "user": "zenhuw",
     "connector": "mssql"
   },
 

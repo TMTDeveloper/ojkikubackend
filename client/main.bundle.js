@@ -112,7 +112,7 @@ var NB_CORE_PROVIDERS = __WEBPACK_IMPORTED_MODULE_6__data_data_module__["a" /* D
                 login: {
                     alwaysFail: false,
                     rememberMe: true,
-                    endpoint: "http://35.197.155.149/api/LOGIN_IKUs/login",
+                    endpoint: "http://localhost/api/LOGIN_IKUs/login",
                     method: "post",
                     redirect: {
                         success: "/pages",
@@ -212,7 +212,7 @@ var BackendService = /** @class */ (function () {
     function BackendService(http) {
         this.http = http;
         // baseurlxpay:string='http://202.158.20.141:5001/xpay-service/api/'
-        this.baseurl = "http://35.197.155.149/api/";
+        this.baseurl = "http://localhost/api/";
     }
     BackendService.prototype.getreq = function (url) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
@@ -666,7 +666,7 @@ var FooterComponent = /** @class */ (function () {
 /***/ "./src/app/@theme/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header-container\" [class.left]=\"position === 'normal'\" [class.right]=\"position === 'inverse'\">\n  <div class=\"logo-containter\">\n    <a (click)=\"toggleSidebar()\" href=\"#\" class=\"navigation\">\n      <i class=\"nb-menu\"></i>\n    </a>\n    <div class=\"logo\">\n      <a href=\"/#/pages/dashboard\">\n        <img src=\"../../../../assets/logo.png\" alt=\"logo\" height=\"70px\" width=\"auto\">\n      </a>\n    </div>\n  </div>\n  <!-- <ngx-theme-switcher></ngx-theme-switcher> -->\n</div>\n\n<nb-actions size=\"medium\" class=\"header-container\" [class.right]=\"position === 'normal'\" [class.left]=\"position === 'inverse'\">\n  <nb-action *nbIsGranted=\"['view', 'user']\">\n    <nb-user [nbContextMenu]=\"userMenu\" [name]=\"user.USER_NAME\" (menuClick)=\"onMenuClick($event)\" (click)=\"onMenuClick($event)\"></nb-user>\n  </nb-action>\n</nb-actions>\n"
+module.exports = "<div class=\"header-container\" [class.left]=\"position === 'normal'\" [class.right]=\"position === 'inverse'\">\r\n  <div class=\"logo-containter\">\r\n    <a (click)=\"toggleSidebar()\" href=\"#\" class=\"navigation\">\r\n      <i class=\"nb-menu\"></i>\r\n    </a>\r\n    <div class=\"logo\">\r\n      <a href=\"/#/pages/dashboard\">\r\n        <img src=\"../../../../assets/logo.png\" alt=\"logo\" height=\"70px\" width=\"auto\">\r\n      </a>\r\n    </div>\r\n  </div>\r\n  <!-- <ngx-theme-switcher></ngx-theme-switcher> -->\r\n</div>\r\n\r\n<nb-actions size=\"medium\" class=\"header-container\" [class.right]=\"position === 'normal'\" [class.left]=\"position === 'inverse'\">\r\n  <nb-action *nbIsGranted=\"['view', 'user']\">\r\n    <nb-user [nbContextMenu]=\"userMenu\" [name]=\"user.USER_NAME\" (menuClick)=\"onMenuClick($event)\" (click)=\"onMenuClick($event)\"></nb-user>\r\n  </nb-action>\r\n</nb-actions>\r\n"
 
 /***/ }),
 

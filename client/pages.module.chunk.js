@@ -3,7 +3,7 @@ webpackJsonp(["pages.module"],{
 /***/ "./src/app/pages/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <nb-card>\n    <nb-card-header>OJK Dashboard</nb-card-header>\n  </nb-card>\n</div>\n "
+module.exports = "<div class=\"row\">\r\n  <nb-card>\r\n    <nb-card-header>OJK Dashboard</nb-card-header>\r\n  </nb-card>\r\n</div>\r\n "
 
 /***/ }),
 
@@ -171,6 +171,10 @@ var MENU_ITEM_ADMIN = [
             {
                 title: "Realisasi MOKA",
                 link: "/pages/transaction/moka-realisasi"
+            },
+            {
+                title: "Chart MOKA",
+                link: "/pages/transaction/moka-chart"
             }
         ]
     }
@@ -237,6 +241,10 @@ var MENU_ITEM_USER = [
             {
                 title: "Realisasi MOKA",
                 link: "/pages/transaction/moka-realisasi"
+            },
+            {
+                title: "Chart MOKA",
+                link: "/pages/transaction/moka-chart"
             }
         ]
     }
