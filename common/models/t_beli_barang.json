@@ -1,0 +1,59 @@
+{
+  "name": "t_beli_barang",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "KD_BELI": {
+      "type": "string",
+      "required": true,
+      "id": 1
+    },
+    "KD_BARANG": {
+      "type": "string",
+      "required": true
+    },
+    "KD_MERK": {
+      "type": "string",
+      "required": true
+    },
+    "SERIAL_NUMBER": {
+      "type": "string",
+      "required": true
+    },
+    "QTY_BELI": {
+      "type": "number",
+      "required": true
+    },
+    "UOM": {
+      "type": "string"
+    },
+    "STATUS": {
+      "type": "string",
+      "required": true
+    },
+    "TANGGAL_BELI": {
+      "type": "date",
+      "required": true
+    },
+    "HARGA_UNIT": {
+      "type": "number",
+      "required": true
+    },
+    "USER_TRANSACTION": {
+      "type": "string",
+      "required": true
+    },
+    "DATE_TIME_TRANSACTION": {
+      "type": "date",
+      "required": true
+    }
+
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

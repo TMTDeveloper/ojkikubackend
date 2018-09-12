@@ -39,7 +39,7 @@
     "dataSource": "ikudb",
     "public": true
   },
-  "LOGIN_LOG": {                
+  "LOGIN_LOG": {
     "dataSource": "ikudb",
     "public": true
   },
@@ -105,6 +105,34 @@
   },
   "Email": {
     "dataSource": "myEmailDataSource",
+    "public": true
+  },
+  "m_barang": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "m_merk": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "stock_barang": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "t_beli_barang": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "t_assignment": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "t_order_hd": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "t_order_dt": {
+    "dataSource": "ikudb",
     "public": true
   }
 }

@@ -1,0 +1,36 @@
+{
+    "name": "m_barang",
+    "base": "PersistedModel",
+    "idInjection": false,
+    "options": {
+      "validateUpsert": true
+    },
+    "properties": {
+      "KD_BARANG": {
+        "type": "string",
+        "required": true,
+        "id": 1
+      },
+      "NM_BARANG": {
+        "type": "string",
+        "required": true
+      },
+      "FLAG_ACTIVE": {
+        "type": "string",
+        "required": true
+      },
+      "USER_UPDATE": {
+        "type": "string",
+        "required": true
+      },
+      "DATETIME_UPDATE": {
+        "type": "date",
+        "required": true
+      }
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
+  }
+  
