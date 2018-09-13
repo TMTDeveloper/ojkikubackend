@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "ikudb": {
-    "host": "localhost",
+    "host": "DPB1-PC-099",
     "port": 1433,
     "url": "",
     "database": "IKU",
