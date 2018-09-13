@@ -1753,7 +1753,6 @@ var routes = [
         ]
     },
     { path: "moni", redirectTo: "moni" },
-    { path: "", redirectTo: "auth", pathMatch: "full" },
     { path: "**", redirectTo: "auth" }
 ];
 var config = {
