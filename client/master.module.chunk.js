@@ -514,6 +514,172 @@ var MasterBankComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pages/master/master-barang/master.barang.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\r\n  <nb-card-header>Master Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/master/master-barang/master.barang.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MasterBarangComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var MasterBarangComponent = /** @class */ (function () {
+    function MasterBarangComponent(modalService, toastr, service) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.tabledata = [];
+        this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: true
+            },
+            edit: {
+                editButtonContent: '<i class="nb-edit"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: true
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: true
+            },
+            mode: "inline",
+            sort: true,
+            hideSubHeader: false,
+            actions: {
+                add: true,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Modify",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                KD_BARANG: {
+                    title: "Kode Barang",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "40%"
+                },
+                NM_BARANG: {
+                    title: "Nama Jenis",
+                    type: "string",
+                    filter: true,
+                    editable: true,
+                    width: "40%"
+                },
+                FLAG_ACTIVE: {
+                    title: "Flag Active",
+                    type: "html",
+                    width: "20%",
+                    editor: {
+                        type: "list",
+                        config: {
+                            list: [{ value: "Y", title: "Y" }, { value: "N", title: "N" }]
+                        }
+                    }
+                }
+            }
+        };
+        this.loadData();
+    }
+    MasterBarangComponent.prototype.loadData = function () {
+        var _this = this;
+        this.service.getreq("m_barangs").subscribe(function (response) {
+            if (response != null) {
+                _this.tabledata = response;
+                console.log(JSON.stringify(response));
+                _this.source.load(_this.tabledata);
+            }
+        });
+    };
+    MasterBarangComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KD_BARANG == event.newData.KD_BARANG) {
+                element.NM_BARANG = event.newData.NM_BARANG;
+                element.FLAG_ACTIVE = event.newData.FLAG_ACTIVE;
+                _this.service.patchreq("m_barangs", event.newData).subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    MasterBarangComponent.prototype.addData = function (event) {
+        var _this = this;
+        console.log(event.newData);
+        var data = {
+            KD_BARANG: event.newData.KD_BARANG,
+            NM_BARANG: event.newData.NM_BARANG,
+            FLAG_ACTIVE: event.newData.FLAG_ACTIVE,
+            USER_UPDATE: "Admin",
+            DATETIME_UPDATE: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        this.service.postreq("m_barangs", data).subscribe(function (response) {
+            console.log(response);
+            event.confirm.resolve(event.newData);
+            _this.toastr.success("Data Saved!");
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], MasterBarangComponent.prototype, "myForm", void 0);
+    MasterBarangComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-master-barang",
+            template: __webpack_require__("./src/app/pages/master/master-barang/master.barang.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+    ], MasterBarangComponent);
+    return MasterBarangComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/master/master-log-user/master.user.log.component.html":
 /***/ (function(module, exports) {
 
@@ -705,6 +871,172 @@ var MasterUserLogComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
     ], MasterUserLogComponent);
     return MasterUserLogComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/master/master-merk/master.merk.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\r\n  <nb-card-header>Master Merk</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/master/master-merk/master.merk.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MasterMerkComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var MasterMerkComponent = /** @class */ (function () {
+    function MasterMerkComponent(modalService, toastr, service) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.tabledata = [];
+        this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: true
+            },
+            edit: {
+                editButtonContent: '<i class="nb-edit"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: true
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: true
+            },
+            mode: "inline",
+            sort: true,
+            hideSubHeader: false,
+            actions: {
+                add: true,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Modify",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                KD_MERK: {
+                    title: "Kode Merk",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "40%"
+                },
+                NM_MERK: {
+                    title: "Nama Merk",
+                    type: "string",
+                    filter: true,
+                    editable: true,
+                    width: "40%"
+                },
+                FLAG_ACTIVE: {
+                    title: "Flag Active",
+                    type: "html",
+                    width: "20%",
+                    editor: {
+                        type: "list",
+                        config: {
+                            list: [{ value: "Y", title: "Y" }, { value: "N", title: "N" }]
+                        }
+                    }
+                }
+            }
+        };
+        this.loadData();
+    }
+    MasterMerkComponent.prototype.loadData = function () {
+        var _this = this;
+        this.service.getreq("m_merks").subscribe(function (response) {
+            if (response != null) {
+                _this.tabledata = response;
+                console.log(JSON.stringify(response));
+                _this.source.load(_this.tabledata);
+            }
+        });
+    };
+    MasterMerkComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KD_MERK == event.newData.KD_MERK) {
+                element.NM_MERK = event.newData.NM_MERK;
+                element.FLAG_ACTIVE = event.newData.FLAG_ACTIVE;
+                _this.service.patchreq("m_merks", event.newData).subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    MasterMerkComponent.prototype.addData = function (event) {
+        var _this = this;
+        console.log(event.newData);
+        var data = {
+            KD_MERK: event.newData.KD_MERK,
+            NM_MERK: event.newData.NM_MERK,
+            FLAG_ACTIVE: event.newData.FLAG_ACTIVE,
+            USER_UPDATE: "Admin",
+            DATETIME_UPDATE: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        this.service.postreq("m_merks", data).subscribe(function (response) {
+            console.log(response);
+            event.confirm.resolve(event.newData);
+            _this.toastr.success("Data Saved!");
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], MasterMerkComponent.prototype, "myForm", void 0);
+    MasterMerkComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-master-merk",
+            template: __webpack_require__("./src/app/pages/master/master-merk/master.merk.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+    ], MasterMerkComponent);
+    return MasterMerkComponent;
 }());
 
 
@@ -996,14 +1328,18 @@ var MasterModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__master_user_master_user_component__ = __webpack_require__("./src/app/pages/master/master-user/master.user.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__ = __webpack_require__("./src/app/pages/master/master-log-user/master.user.log.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__user_bank_master_user_bank_component__ = __webpack_require__("./src/app/pages/master/user-bank/master.user.bank.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__ = __webpack_require__("./src/app/pages/master/iku/iku.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__document_document_component__ = __webpack_require__("./src/app/pages/master/document/document.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__master_barang_master_barang_component__ = __webpack_require__("./src/app/pages/master/master-barang/master.barang.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__master_merk_master_merk_component__ = __webpack_require__("./src/app/pages/master/master-merk/master.merk.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__iku_iku_component__ = __webpack_require__("./src/app/pages/master/iku/iku.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__document_document_component__ = __webpack_require__("./src/app/pages/master/document/document.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -1032,16 +1368,24 @@ var routes = [
             },
             {
                 path: "iku",
-                component: __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__["a" /* IkuComponent */]
+                component: __WEBPACK_IMPORTED_MODULE_9__iku_iku_component__["a" /* IkuComponent */]
             },
             {
                 path: "document",
-                component: __WEBPACK_IMPORTED_MODULE_8__document_document_component__["a" /* DocumentComponent */]
+                component: __WEBPACK_IMPORTED_MODULE_10__document_document_component__["a" /* DocumentComponent */]
             },
             {
                 path: "master-log-user",
                 component: __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__["a" /* MasterUserLogComponent */]
             },
+            {
+                path: "master-barang",
+                component: __WEBPACK_IMPORTED_MODULE_7__master_barang_master_barang_component__["a" /* MasterBarangComponent */]
+            },
+            {
+                path: "master-merk",
+                component: __WEBPACK_IMPORTED_MODULE_8__master_merk_master_merk_component__["a" /* MasterMerkComponent */]
+            }
         ]
     }
 ];
@@ -1063,8 +1407,10 @@ var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_4__master_user_master_user_component__["a" /* MasterUserComponent */],
     __WEBPACK_IMPORTED_MODULE_5__master_log_user_master_user_log_component__["a" /* MasterUserLogComponent */],
     __WEBPACK_IMPORTED_MODULE_6__user_bank_master_user_bank_component__["a" /* MasterUserBankComponent */],
-    __WEBPACK_IMPORTED_MODULE_7__iku_iku_component__["a" /* IkuComponent */],
-    __WEBPACK_IMPORTED_MODULE_8__document_document_component__["a" /* DocumentComponent */]
+    __WEBPACK_IMPORTED_MODULE_7__master_barang_master_barang_component__["a" /* MasterBarangComponent */],
+    __WEBPACK_IMPORTED_MODULE_8__master_merk_master_merk_component__["a" /* MasterMerkComponent */],
+    __WEBPACK_IMPORTED_MODULE_9__iku_iku_component__["a" /* IkuComponent */],
+    __WEBPACK_IMPORTED_MODULE_10__document_document_component__["a" /* DocumentComponent */]
 ];
 
 

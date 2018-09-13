@@ -79,6 +79,7 @@ var DashboardModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MENU_ITEM_ADMIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MENU_ITEM_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return MENU_MONI; });
 var MENU_ITEM_ADMIN = [
     {
         title: "Dashboard",
@@ -249,6 +250,50 @@ var MENU_ITEM_USER = [
         ]
     }
 ];
+var MENU_MONI = [
+    {
+        title: "Dashboard",
+        icon: "nb-home",
+        link: "/pages/dashboard",
+        home: true
+    },
+    {
+        title: "Master",
+        icon: "nb-locked",
+        children: [
+            {
+                title: "Barang",
+                link: "/pages/master/master-barang"
+            },
+            {
+                title: "Merk",
+                link: "/pages/master/master-merk"
+            }
+        ]
+    },
+    {
+        title: "Transaction MONI",
+        icon: "nb-compose",
+        children: [
+            {
+                title: "Assignment Barang",
+                link: "/pages/transaction/assignment-barang"
+            },
+            {
+                title: "Beli Barang",
+                link: "/pages/transaction/beli-barang"
+            },
+            {
+                title: "Detail Atk",
+                link: "/pages/transaction/detail-atk"
+            },
+            {
+                title: "Report Atk",
+                link: "/pages/transaction/report-atk"
+            }
+        ]
+    }
+];
 // {
 //   title: 'FEATURES',
 //   group: true,
@@ -369,6 +414,9 @@ var PagesRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_menu__ = __webpack_require__("./src/app/pages/pages-menu.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_data_users_service__ = __webpack_require__("./src/app/@core/data/users.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_cookie_service__ = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -382,9 +430,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var PagesComponent = /** @class */ (function () {
-    function PagesComponent(authService) {
+    function PagesComponent(authService, activeRoute, backend, cookie) {
         this.authService = authService;
+        this.activeRoute = activeRoute;
+        this.backend = backend;
+        this.cookie = cookie;
         this.getUserInfo();
     }
     PagesComponent.prototype.getUserInfo = function () {
@@ -396,13 +450,18 @@ var PagesComponent = /** @class */ (function () {
         });
     };
     PagesComponent.prototype.ngOnInit = function () {
-        console.log('ini menu');
+        console.log("ini menu");
         console.log(this.user);
-        if (this.user.TEAM != "admin") {
-            this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["b" /* MENU_ITEM_USER */];
+        if (this.cookie.get("Type") == "moni") {
+            this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["c" /* MENU_MONI */];
         }
         else {
-            this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["a" /* MENU_ITEM_ADMIN */];
+            if (this.user.TEAM != "admin") {
+                this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["b" /* MENU_ITEM_USER */];
+            }
+            else {
+                this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["a" /* MENU_ITEM_ADMIN */];
+            }
         }
     };
     PagesComponent = __decorate([
@@ -410,7 +469,10 @@ var PagesComponent = /** @class */ (function () {
             selector: "ngx-pages",
             template: "\n    <ngx-sample-layout>\n      <nb-menu [items]=\"menu\"></nb-menu>\n      <router-outlet></router-outlet>\n    </ngx-sample-layout>\n  "
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__nebular_auth__["e" /* NbAuthService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__nebular_auth__["e" /* NbAuthService */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_4__core_data_users_service__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_cookie_service__["a" /* CookieService */]])
     ], PagesComponent);
     return PagesComponent;
 }());
