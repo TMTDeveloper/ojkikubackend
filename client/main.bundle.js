@@ -506,6 +506,133 @@ var AnalyticsService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/@theme/components/auth/login-moni/login.moni.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgxLoginMoniComponent; });
+/* unused harmony export AuthGuard */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth_auth_options__ = __webpack_require__("./node_modules/@nebular/auth/auth.options.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nebular_auth_helpers__ = __webpack_require__("./node_modules/@nebular/auth/helpers.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nebular_auth_services_auth_service__ = __webpack_require__("./node_modules/@nebular/auth/services/auth.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators_tap__ = __webpack_require__("./node_modules/rxjs/_esm5/operators/tap.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_users_service__ = __webpack_require__("./src/app/@core/data/users.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_cookie_service__ = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+/**
+ * @license
+ * Copyright Akveo. All Rights Reserved.
+ * Licensed under the MIT License. See License.txt in the project root for license information.
+ */
+
+
+
+
+
+
+
+
+var NgxLoginMoniComponent = /** @class */ (function () {
+    function NgxLoginMoniComponent(service, config, router, backend, cookie) {
+        if (config === void 0) { config = {}; }
+        this.service = service;
+        this.config = config;
+        this.router = router;
+        this.backend = backend;
+        this.cookie = cookie;
+        this.redirectDelay = 0;
+        this.showMessages = {};
+        this.provider = "";
+        this.errors = [];
+        this.messages = [];
+        this.user = {};
+        this.submitted = false;
+        this.socialLinks = [];
+        this.redirectDelay = this.getConfigValue("forms.login.redirectDelay");
+        this.showMessages = this.getConfigValue("forms.login.showMessages");
+        this.provider = this.getConfigValue("forms.login.provider");
+        this.socialLinks = this.getConfigValue("forms.login.socialLinks");
+    }
+    NgxLoginMoniComponent.prototype.login = function () {
+        var _this = this;
+        this.errors = this.messages = [];
+        this.submitted = true;
+        this.service
+            .authenticate(this.provider, this.user)
+            .subscribe(function (result) {
+            _this.submitted = false;
+            if (result.isSuccess()) {
+                _this.messages = result.getMessages();
+            }
+            else {
+                _this.errors = result.getErrors();
+            }
+            var redirect = result.getRedirect();
+            if (redirect) {
+                console.log(_this.router.url);
+                if (_this.router.url == "/moni") {
+                    _this.cookie.deleteAll();
+                    _this.cookie.set("Type", "moni");
+                }
+                else {
+                    _this.cookie.deleteAll();
+                    _this.cookie.set("Type", "mona");
+                }
+                setTimeout(function () {
+                    return _this.router.navigateByUrl(redirect);
+                }, _this.redirectDelay);
+            }
+        });
+    };
+    NgxLoginMoniComponent.prototype.getConfigValue = function (key) {
+        return Object(__WEBPACK_IMPORTED_MODULE_3__nebular_auth_helpers__["b" /* getDeepFromObject */])(this.config, key, null);
+    };
+    NgxLoginMoniComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-login",
+            template: "\n    <nb-auth-block>\n    <img src=\"../../../../../assets/logo.png\" alt=\"\"><br><br><br>\n      <h2 class=\"title\">Sign In</h2>\n      <form (ngSubmit)=\"login()\" #form=\"ngForm\" autocomplete=\"nope\">\n        <div *ngIf=\"showMessages.error && errors && errors.length > 0 && !submitted\"\n             class=\"alert alert-danger\" role=\"alert\">\n          <div><strong>Oh snap!</strong></div>\n          <div *ngFor=\"let error of errors\">{{ error }}</div>\n        </div>\n        <div *ngIf=\"showMessages.success && messages && messages.length > 0 && !submitted\"\n             class=\"alert alert-success\" role=\"alert\">\n          <div *ngFor=\"let message of messages\">{{ message }}</div>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"input-user ID\" class=\"sr-only\">User ID</label>\n          <input name=\"email\" [(ngModel)]=\"user.email\" id=\"input-email\" \n                 class=\"form-control\" placeholder=\"User ID\" #email=\"ngModel\" autofocus>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"input-password\" class=\"sr-only\">Password</label>\n          <input name=\"password\" [(ngModel)]=\"user.password\" type=\"password\" id=\"input-password\"\n                 class=\"form-control\" placeholder=\"Password\" #password=\"ngModel\"\n                 [class.form-control-danger]=\"password.invalid && password.touched\"\n                 [required]=\"getConfigValue('forms.validation.password.required')\"\n                 [minlength]=\"getConfigValue('forms.validation.password.minLength')\"\n                 [maxlength]=\"getConfigValue('forms.validation.password.maxLength')\">\n          <small class=\"form-text error\" *ngIf=\"password.invalid && password.touched && password.errors?.required\">\n            Password is required!\n          </small>\n          <small\n            class=\"form-text error\"\n            *ngIf=\"password.invalid && password.touched && (password.errors?.minlength || password.errors?.maxlength)\">\n            Password should contains\n            from {{ getConfigValue('forms.validation.password.minLength') }}\n            to {{ getConfigValue('forms.validation.password.maxLength') }}\n            characters\n          </small>\n        </div>\n        <div class=\"form-group accept-group col-sm-12\">\n          <nb-checkbox name=\"rememberMe\" [(ngModel)]=\"user.rememberMe\">Remember me</nb-checkbox>\n          <a class=\"forgot-password\" routerLink=\"../request-password\">Forgot Password?</a>\n        </div>\n        <button [disabled]=\"submitted || !form.valid\" class=\"btn btn-block btn-hero-success\"\n                [class.btn-pulse]=\"submitted\">\n          Sign In\n        </button>\n      </form>\n      <div class=\"links\">\n        <ng-container *ngIf=\"socialLinks && socialLinks.length > 0\">\n          <small class=\"form-text\">Or connect with:</small>\n          <div class=\"socials\">\n            <ng-container *ngFor=\"let socialLink of socialLinks\">\n              <a *ngIf=\"socialLink.link\"\n                 [routerLink]=\"socialLink.link\"\n                 [attr.target]=\"socialLink.target\"\n                 [attr.class]=\"socialLink.icon\"\n                 [class.with-icon]=\"socialLink.icon\">{{ socialLink.title }}</a>\n              <a *ngIf=\"socialLink.url\"\n                 [attr.href]=\"socialLink.url\"\n                 [attr.target]=\"socialLink.target\"\n                 [attr.class]=\"socialLink.icon\"\n                 [class.with-icon]=\"socialLink.icon\">{{ socialLink.title }}</a>\n            </ng-container>\n          </div>\n        </ng-container>\n      </div>\n    </nb-auth-block>\n  "
+        }),
+        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_2__nebular_auth_auth_options__["b" /* NB_AUTH_OPTIONS */])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__nebular_auth_services_auth_service__["a" /* NbAuthService */], Object, __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_users_service__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_7_ngx_cookie_service__["a" /* CookieService */]])
+    ], NgxLoginMoniComponent);
+    return NgxLoginMoniComponent;
+}());
+
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(authService, router) {
+        this.authService = authService;
+        this.router = router;
+    }
+    AuthGuard.prototype.canActivate = function () {
+        var _this = this;
+        return this.authService.isAuthenticated().pipe(Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators_tap__["a" /* tap */])(function (authenticated) {
+            if (!authenticated) {
+                _this.router.navigate(["auth/login"]);
+            }
+        }));
+    };
+    return AuthGuard;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/@theme/components/auth/login/login.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1677,12 +1804,14 @@ var ThemeModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_login_component__ = __webpack_require__("./src/app/@theme/components/auth/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__theme_components_auth_login_moni_login_moni_component__ = __webpack_require__("./src/app/@theme/components/auth/login-moni/login.moni.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1724,15 +1853,14 @@ var routes = [
     },
     {
         path: "moni",
-        component: __WEBPACK_IMPORTED_MODULE_2__nebular_auth__["b" /* NbAuthComponent */],
         children: [
             {
                 path: "",
-                component: __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_login_component__["a" /* NgxLoginComponent */]
+                component: __WEBPACK_IMPORTED_MODULE_4__theme_components_auth_login_moni_login_moni_component__["a" /* NgxLoginMoniComponent */]
             },
             {
                 path: "login",
-                component: __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_login_component__["a" /* NgxLoginComponent */]
+                component: __WEBPACK_IMPORTED_MODULE_4__theme_components_auth_login_moni_login_moni_component__["a" /* NgxLoginMoniComponent */]
             },
             {
                 path: "register",
@@ -1830,12 +1958,13 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_core_module__ = __webpack_require__("./src/app/@core/core.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__theme_components_auth_login_login_component__ = __webpack_require__("./src/app/@theme/components/auth/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__theme_theme_module__ = __webpack_require__("./src/app/@theme/theme.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__security_auth_guard_service__ = __webpack_require__("./src/app/security/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ngx_cookie_service__ = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__theme_components_auth_login_moni_login_moni_component__ = __webpack_require__("./src/app/@theme/components/auth/login-moni/login.moni.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__theme_theme_module__ = __webpack_require__("./src/app/@theme/theme.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__security_auth_guard_service__ = __webpack_require__("./src/app/security/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ngx_cookie_service__ = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1861,29 +1990,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_7__theme_components_auth_login_login_component__["a" /* NgxLoginComponent */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_7__theme_components_auth_login_login_component__["a" /* NgxLoginComponent */], __WEBPACK_IMPORTED_MODULE_8__theme_components_auth_login_moni_login_moni_component__["a" /* NgxLoginMoniComponent */]],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_9__app_routing_module__["a" /* AppRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_10__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["c" /* NgbModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_8__theme_theme_module__["a" /* ThemeModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_9__theme_theme_module__["a" /* ThemeModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_6__core_core_module__["a" /* CoreModule */].forRoot()
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]],
-            providers: [__WEBPACK_IMPORTED_MODULE_13_ngx_cookie_service__["a" /* CookieService */],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_14_ngx_cookie_service__["a" /* CookieService */],
                 {
                     provide: __WEBPACK_IMPORTED_MODULE_0__angular_common__["APP_BASE_HREF"],
                     useValue: "/"
                 },
-                { provide: __WEBPACK_IMPORTED_MODULE_11__nebular_auth__["a" /* NB_AUTH_TOKEN_CLASS */], useValue: __WEBPACK_IMPORTED_MODULE_11__nebular_auth__["c" /* NbAuthJWTToken */] },
-                __WEBPACK_IMPORTED_MODULE_12__security_auth_guard_service__["a" /* AuthGuard */]
+                { provide: __WEBPACK_IMPORTED_MODULE_12__nebular_auth__["a" /* NB_AUTH_TOKEN_CLASS */], useValue: __WEBPACK_IMPORTED_MODULE_12__nebular_auth__["c" /* NbAuthJWTToken */] },
+                __WEBPACK_IMPORTED_MODULE_13__security_auth_guard_service__["a" /* AuthGuard */]
             ]
         })
     ], AppModule);
