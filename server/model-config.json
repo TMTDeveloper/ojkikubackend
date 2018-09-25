@@ -134,5 +134,13 @@
   "t_order_dt": {
     "dataSource": "ikudb",
     "public": true
+  },
+  "report_assign_barang": {
+    "dataSource": "ikudb",
+    "public": true
+  },
+  "report_beli_barang": {
+    "dataSource": "ikudb",
+    "public": true
   }
 }

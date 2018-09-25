@@ -1,0 +1,80 @@
+{
+    "name": "report_assign_barang",
+    "base": "PersistedModel",
+    "idInjection": false,
+    "options": {
+      "validateUpsert": true
+    },
+    "properties": {
+      "KD_ASSIGN": {
+        "type": "string",
+        "required": true,
+        "id": 1
+      },
+      "KD_BARANG": {
+        "type": "string",
+        "required": true
+      },
+      "NM_BARANG": {
+        "type": "string",
+        "required": true
+      },
+      "KD_MERK": {
+        "type": "string",
+        "required": true
+      },
+      "NM_MERK": {
+        "type": "string",
+        "required": true
+      },
+      "SERIAL_NUMBER": {
+        "type": "string",
+        "required": true
+      },
+      "QTY": {
+        "type": "number",
+        "required": true
+      },
+      "STATUS": {
+        "type": "string",
+        "required": true
+      },
+      "TEAM_ID": {
+        "type": "string",
+        "required": true
+      },
+      "USER_ID": {
+        "type": "string",
+        "required": true
+      },
+      "USER_NAME": {
+        "type": "string",
+        "required": true
+      },
+      "DEPARTMENT": {
+        "type": "string"
+      },
+      "TANGGAL_ASSIGN": {
+        "type": "date",
+        "required": true
+      },
+      "DATE_ASSIGN": {
+        "type": "date",
+        "required": true
+      },
+      "USER_TRANSACTION": {
+        "type": "string",
+        "required": true
+      },
+      "DATE_TIME_TRANSACTION": {
+        "type": "date",
+        "required": true
+      }
+  
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
+  }
+  
