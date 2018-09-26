@@ -268,6 +268,10 @@ var MENU_MONI = [
             {
                 title: "Merk",
                 link: "/pages/master/master-merk"
+            },
+            {
+                title: "Log Moni",
+                link: "/pages/master/master-log-moni"
             }
         ]
     },
@@ -290,6 +294,14 @@ var MENU_MONI = [
             {
                 title: "Report Atk",
                 link: "/pages/transaction/report-atk"
+            },
+            {
+                title: "Peminjaman Barang",
+                link: "/pages/transaction/assignment-pinjam"
+            },
+            {
+                title: "Pengembalian Barang",
+                link: "/pages/transaction/assignment-kembali"
             }
         ]
     },
@@ -300,6 +312,14 @@ var MENU_MONI = [
             {
                 title: "Report Assignment",
                 link: "/pages/transaction/report-assignment"
+            },
+            {
+                title: "Report Pengembalian",
+                link: "/pages/transaction/report-kembali"
+            },
+            {
+                title: "Report Peminjaman",
+                link: "/pages/transaction/report-pinjam"
             },
             {
                 title: "Report Beli",
@@ -431,6 +451,7 @@ var PagesRoutingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_data_users_service__ = __webpack_require__("./src/app/@core/data/users.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_cookie_service__ = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -447,12 +468,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PagesComponent = /** @class */ (function () {
-    function PagesComponent(authService, activeRoute, backend, cookie) {
+    function PagesComponent(authService, activeRoute, backend, cookie, service) {
         this.authService = authService;
         this.activeRoute = activeRoute;
         this.backend = backend;
         this.cookie = cookie;
+        this.service = service;
         this.getUserInfo();
     }
     PagesComponent.prototype.getUserInfo = function () {
@@ -464,6 +487,14 @@ var PagesComponent = /** @class */ (function () {
         });
     };
     PagesComponent.prototype.ngOnInit = function () {
+        // let data = {
+        //   USERNAME: this.user.USER_NAME,
+        //   DATETIME_LOGIN: moment().format(),
+        //   COMPONENT: this.cookie.get("Type") == "moni" ? "MONI" : "MOKA"
+        // };
+        // this.service.postreq("LOGIN_LOGS", data).subscribe(response => {
+        //   console.log(response);
+        // });
         console.log("ini menu");
         console.log(this.user);
         if (this.cookie.get("Type") == "moni") {
@@ -486,7 +517,8 @@ var PagesComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__nebular_auth__["e" /* NbAuthService */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */],
             __WEBPACK_IMPORTED_MODULE_4__core_data_users_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_5_ngx_cookie_service__["a" /* CookieService */]])
+            __WEBPACK_IMPORTED_MODULE_5_ngx_cookie_service__["a" /* CookieService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
     ], PagesComponent);
     return PagesComponent;
 }());
@@ -506,6 +538,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard_module__ = __webpack_require__("./src/app/pages/dashboard/dashboard.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_routing_module__ = __webpack_require__("./src/app/pages/pages-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__theme_theme_module__ = __webpack_require__("./src/app/@theme/theme.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_data_data_module__ = __webpack_require__("./src/app/@core/data/data.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -517,14 +552,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var PAGES_COMPONENTS = [__WEBPACK_IMPORTED_MODULE_1__pages_component__["a" /* PagesComponent */]];
 var PagesModule = /** @class */ (function () {
     function PagesModule() {
     }
     PagesModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            imports: [__WEBPACK_IMPORTED_MODULE_3__pages_routing_module__["a" /* PagesRoutingModule */], __WEBPACK_IMPORTED_MODULE_4__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard_module__["a" /* DashboardModule */]],
-            declarations: PAGES_COMPONENTS.slice()
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_3__pages_routing_module__["a" /* PagesRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_4__theme_theme_module__["a" /* ThemeModule */],
+                __WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard_module__["a" /* DashboardModule */],
+                __WEBPACK_IMPORTED_MODULE_5__core_data_data_module__["a" /* DataModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_http__["c" /* HttpModule */]
+            ],
+            declarations: PAGES_COMPONENTS.slice(),
+            providers: [__WEBPACK_IMPORTED_MODULE_7__core_data_backend_service__["a" /* BackendService */]]
         })
     ], PagesModule);
     return PagesModule;

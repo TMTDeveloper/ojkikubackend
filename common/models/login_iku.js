@@ -47,16 +47,16 @@ module.exports = function (Loginiku) {
           var data = {
             token: token
           };
-          LOGIN_LOG.create({
+//           LOGIN_LOG.create({
 
-            "USERNAME": req.email,
-            "DATETIME_LOGIN": moment().local().format()
+//             "USERNAME": req.email,
+//             "DATETIME_LOGIN": moment().local().format()
 
-          },
-            (err, res) => {
-console.log(err)
-            }
-          );
+//           },
+//             (err, res) => {
+// console.log(err)
+//             }
+//           );
           console.log(data);
           cb(null, data);
         }

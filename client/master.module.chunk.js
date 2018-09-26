@@ -680,6 +680,209 @@ var MasterBarangComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pages/master/master-log-moni/master.log.moni.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\r\n  <nb-card-header>User Log</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/master/master-log-moni/master.log.moni.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MasterLogMoniComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+var MasterLogMoniComponent = /** @class */ (function () {
+    function MasterLogMoniComponent(modalService, toastr, service) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.tabledata = [];
+        this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
+        this.settings = {
+            mode: "inline",
+            sort: true,
+            hideSubHeader: false,
+            actions: {
+                add: false,
+                edit: false,
+                delete: false,
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                NO: {
+                    title: "NO",
+                    type: "Number",
+                    filter: false,
+                    editable: false,
+                    width: "10%",
+                    sortDirection: "asc"
+                },
+                USER_ID: {
+                    title: "User ID",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%"
+                },
+                USERNAME: {
+                    title: "Username",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%"
+                },
+                DATETIME_LOGIN: {
+                    title: "Datetime Login",
+                    type: "string",
+                    filter: true,
+                    editable: true,
+                    width: "30%"
+                }
+            }
+        };
+        this.loadData();
+    }
+    MasterLogMoniComponent.prototype.loadData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var LogData, userData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        LogData = [];
+                        userData = [];
+                        return [4 /*yield*/, this.service
+                                .getreq("LOGIN_LOGs")
+                                .toPromise()
+                                .then(function (response) {
+                                if (response != null) {
+                                    var arr = response.filter(function (item) {
+                                        return item.COMPONENT == "MONI";
+                                    });
+                                    console.log(response);
+                                    if (arr != null) {
+                                        LogData = arr;
+                                    }
+                                }
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.service
+                                .getreq("mst_users")
+                                .toPromise()
+                                .then(function (res) {
+                                if (res != null) {
+                                    userData = res;
+                                }
+                            })];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, LogData.forEach(function (element, index) {
+                                var lengthLog = parseInt(LogData.length);
+                                var detail = {
+                                    NO: lengthLog - index,
+                                    DATETIME_LOGIN: "",
+                                    USERNAME: "",
+                                    USER_ID: ""
+                                };
+                                detail.USERNAME = element.USERNAME;
+                                detail.USER_ID = element.USER_ID;
+                                detail.DATETIME_LOGIN = __WEBPACK_IMPORTED_MODULE_4_moment__(element.DATETIME_LOGIN).format("DD/MM/YYYY HH:mm:ss");
+                                _this.tabledata.push(detail);
+                            })];
+                    case 3:
+                        _a.sent();
+                        this.source.load(this.tabledata);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], MasterLogMoniComponent.prototype, "myForm", void 0);
+    MasterLogMoniComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-master-user-log",
+            template: __webpack_require__("./src/app/pages/master/master-log-moni/master.log.moni.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]])
+    ], MasterLogMoniComponent);
+    return MasterLogMoniComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/master/master-log-user/master.user.log.component.html":
 /***/ (function(module, exports) {
 
@@ -782,15 +985,15 @@ var MasterUserLogComponent = /** @class */ (function () {
                     width: "10%",
                     sortDirection: "asc"
                 },
-                USERNAME: {
-                    title: "Username",
+                USER_ID: {
+                    title: "User ID",
                     type: "string",
                     filter: true,
                     editable: false,
                     width: "30%"
                 },
-                NAMA: {
-                    title: "Nama",
+                USERNAME: {
+                    title: "Username",
                     type: "string",
                     filter: true,
                     editable: false,
@@ -801,7 +1004,7 @@ var MasterUserLogComponent = /** @class */ (function () {
                     type: "string",
                     filter: true,
                     editable: true,
-                    width: "30%",
+                    width: "30%"
                 }
             }
         };
@@ -816,14 +1019,26 @@ var MasterUserLogComponent = /** @class */ (function () {
                     case 0:
                         LogData = [];
                         userData = [];
-                        return [4 /*yield*/, this.service.getreq("LOGIN_LOGs").toPromise().then(function (response) {
+                        return [4 /*yield*/, this.service
+                                .getreq("LOGIN_LOGs")
+                                .toPromise()
+                                .then(function (response) {
                                 if (response != null) {
-                                    LogData = response;
+                                    var arr = response.filter(function (item) {
+                                        return item.COMPONENT == "MOKA";
+                                    });
+                                    console.log(response);
+                                    if (arr != null) {
+                                        LogData = arr;
+                                    }
                                 }
                             })];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.service.getreq("mst_users").toPromise().then(function (res) {
+                        return [4 /*yield*/, this.service
+                                .getreq("mst_users")
+                                .toPromise()
+                                .then(function (res) {
                                 if (res != null) {
                                     userData = res;
                                 }
@@ -836,17 +1051,11 @@ var MasterUserLogComponent = /** @class */ (function () {
                                     NO: lengthLog - index,
                                     DATETIME_LOGIN: "",
                                     USERNAME: "",
-                                    NAMA: ""
+                                    USER_ID: ""
                                 };
                                 detail.USERNAME = element.USERNAME;
+                                detail.USER_ID = element.USER_ID;
                                 detail.DATETIME_LOGIN = __WEBPACK_IMPORTED_MODULE_4_moment__(element.DATETIME_LOGIN).format("DD/MM/YYYY HH:mm:ss");
-                                var arr = userData.filter(function (item) {
-                                    return (item.ID_USER == detail.USERNAME);
-                                });
-                                if (arr[0] != null) {
-                                    detail.NAMA = arr[0].USER_NAME;
-                                }
-                                ;
                                 _this.tabledata.push(detail);
                             })];
                     case 3:
@@ -1332,12 +1541,14 @@ var MasterModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__master_merk_master_merk_component__ = __webpack_require__("./src/app/pages/master/master-merk/master.merk.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__iku_iku_component__ = __webpack_require__("./src/app/pages/master/iku/iku.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__document_document_component__ = __webpack_require__("./src/app/pages/master/document/document.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__master_log_moni_master_log_moni_component__ = __webpack_require__("./src/app/pages/master/master-log-moni/master.log.moni.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1385,6 +1596,10 @@ var routes = [
             {
                 path: "master-merk",
                 component: __WEBPACK_IMPORTED_MODULE_8__master_merk_master_merk_component__["a" /* MasterMerkComponent */]
+            },
+            {
+                path: "master-log-moni",
+                component: __WEBPACK_IMPORTED_MODULE_11__master_log_moni_master_log_moni_component__["a" /* MasterLogMoniComponent */]
             }
         ]
     }
@@ -1410,7 +1625,8 @@ var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_7__master_barang_master_barang_component__["a" /* MasterBarangComponent */],
     __WEBPACK_IMPORTED_MODULE_8__master_merk_master_merk_component__["a" /* MasterMerkComponent */],
     __WEBPACK_IMPORTED_MODULE_9__iku_iku_component__["a" /* IkuComponent */],
-    __WEBPACK_IMPORTED_MODULE_10__document_document_component__["a" /* DocumentComponent */]
+    __WEBPACK_IMPORTED_MODULE_10__document_document_component__["a" /* DocumentComponent */],
+    __WEBPACK_IMPORTED_MODULE_11__master_log_moni_master_log_moni_component__["a" /* MasterLogMoniComponent */]
 ];
 
 

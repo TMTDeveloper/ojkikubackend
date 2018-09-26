@@ -1,5 +1,272 @@
 webpackJsonp(["main"],{
 
+/***/ "./node_modules/moment/locale recursive ^\\.\\/.*$":
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": "./node_modules/moment/locale/af.js",
+	"./af.js": "./node_modules/moment/locale/af.js",
+	"./ar": "./node_modules/moment/locale/ar.js",
+	"./ar-dz": "./node_modules/moment/locale/ar-dz.js",
+	"./ar-dz.js": "./node_modules/moment/locale/ar-dz.js",
+	"./ar-kw": "./node_modules/moment/locale/ar-kw.js",
+	"./ar-kw.js": "./node_modules/moment/locale/ar-kw.js",
+	"./ar-ly": "./node_modules/moment/locale/ar-ly.js",
+	"./ar-ly.js": "./node_modules/moment/locale/ar-ly.js",
+	"./ar-ma": "./node_modules/moment/locale/ar-ma.js",
+	"./ar-ma.js": "./node_modules/moment/locale/ar-ma.js",
+	"./ar-sa": "./node_modules/moment/locale/ar-sa.js",
+	"./ar-sa.js": "./node_modules/moment/locale/ar-sa.js",
+	"./ar-tn": "./node_modules/moment/locale/ar-tn.js",
+	"./ar-tn.js": "./node_modules/moment/locale/ar-tn.js",
+	"./ar.js": "./node_modules/moment/locale/ar.js",
+	"./az": "./node_modules/moment/locale/az.js",
+	"./az.js": "./node_modules/moment/locale/az.js",
+	"./be": "./node_modules/moment/locale/be.js",
+	"./be.js": "./node_modules/moment/locale/be.js",
+	"./bg": "./node_modules/moment/locale/bg.js",
+	"./bg.js": "./node_modules/moment/locale/bg.js",
+	"./bm": "./node_modules/moment/locale/bm.js",
+	"./bm.js": "./node_modules/moment/locale/bm.js",
+	"./bn": "./node_modules/moment/locale/bn.js",
+	"./bn.js": "./node_modules/moment/locale/bn.js",
+	"./bo": "./node_modules/moment/locale/bo.js",
+	"./bo.js": "./node_modules/moment/locale/bo.js",
+	"./br": "./node_modules/moment/locale/br.js",
+	"./br.js": "./node_modules/moment/locale/br.js",
+	"./bs": "./node_modules/moment/locale/bs.js",
+	"./bs.js": "./node_modules/moment/locale/bs.js",
+	"./ca": "./node_modules/moment/locale/ca.js",
+	"./ca.js": "./node_modules/moment/locale/ca.js",
+	"./cs": "./node_modules/moment/locale/cs.js",
+	"./cs.js": "./node_modules/moment/locale/cs.js",
+	"./cv": "./node_modules/moment/locale/cv.js",
+	"./cv.js": "./node_modules/moment/locale/cv.js",
+	"./cy": "./node_modules/moment/locale/cy.js",
+	"./cy.js": "./node_modules/moment/locale/cy.js",
+	"./da": "./node_modules/moment/locale/da.js",
+	"./da.js": "./node_modules/moment/locale/da.js",
+	"./de": "./node_modules/moment/locale/de.js",
+	"./de-at": "./node_modules/moment/locale/de-at.js",
+	"./de-at.js": "./node_modules/moment/locale/de-at.js",
+	"./de-ch": "./node_modules/moment/locale/de-ch.js",
+	"./de-ch.js": "./node_modules/moment/locale/de-ch.js",
+	"./de.js": "./node_modules/moment/locale/de.js",
+	"./dv": "./node_modules/moment/locale/dv.js",
+	"./dv.js": "./node_modules/moment/locale/dv.js",
+	"./el": "./node_modules/moment/locale/el.js",
+	"./el.js": "./node_modules/moment/locale/el.js",
+	"./en-au": "./node_modules/moment/locale/en-au.js",
+	"./en-au.js": "./node_modules/moment/locale/en-au.js",
+	"./en-ca": "./node_modules/moment/locale/en-ca.js",
+	"./en-ca.js": "./node_modules/moment/locale/en-ca.js",
+	"./en-gb": "./node_modules/moment/locale/en-gb.js",
+	"./en-gb.js": "./node_modules/moment/locale/en-gb.js",
+	"./en-ie": "./node_modules/moment/locale/en-ie.js",
+	"./en-ie.js": "./node_modules/moment/locale/en-ie.js",
+	"./en-il": "./node_modules/moment/locale/en-il.js",
+	"./en-il.js": "./node_modules/moment/locale/en-il.js",
+	"./en-nz": "./node_modules/moment/locale/en-nz.js",
+	"./en-nz.js": "./node_modules/moment/locale/en-nz.js",
+	"./eo": "./node_modules/moment/locale/eo.js",
+	"./eo.js": "./node_modules/moment/locale/eo.js",
+	"./es": "./node_modules/moment/locale/es.js",
+	"./es-do": "./node_modules/moment/locale/es-do.js",
+	"./es-do.js": "./node_modules/moment/locale/es-do.js",
+	"./es-us": "./node_modules/moment/locale/es-us.js",
+	"./es-us.js": "./node_modules/moment/locale/es-us.js",
+	"./es.js": "./node_modules/moment/locale/es.js",
+	"./et": "./node_modules/moment/locale/et.js",
+	"./et.js": "./node_modules/moment/locale/et.js",
+	"./eu": "./node_modules/moment/locale/eu.js",
+	"./eu.js": "./node_modules/moment/locale/eu.js",
+	"./fa": "./node_modules/moment/locale/fa.js",
+	"./fa.js": "./node_modules/moment/locale/fa.js",
+	"./fi": "./node_modules/moment/locale/fi.js",
+	"./fi.js": "./node_modules/moment/locale/fi.js",
+	"./fo": "./node_modules/moment/locale/fo.js",
+	"./fo.js": "./node_modules/moment/locale/fo.js",
+	"./fr": "./node_modules/moment/locale/fr.js",
+	"./fr-ca": "./node_modules/moment/locale/fr-ca.js",
+	"./fr-ca.js": "./node_modules/moment/locale/fr-ca.js",
+	"./fr-ch": "./node_modules/moment/locale/fr-ch.js",
+	"./fr-ch.js": "./node_modules/moment/locale/fr-ch.js",
+	"./fr.js": "./node_modules/moment/locale/fr.js",
+	"./fy": "./node_modules/moment/locale/fy.js",
+	"./fy.js": "./node_modules/moment/locale/fy.js",
+	"./gd": "./node_modules/moment/locale/gd.js",
+	"./gd.js": "./node_modules/moment/locale/gd.js",
+	"./gl": "./node_modules/moment/locale/gl.js",
+	"./gl.js": "./node_modules/moment/locale/gl.js",
+	"./gom-latn": "./node_modules/moment/locale/gom-latn.js",
+	"./gom-latn.js": "./node_modules/moment/locale/gom-latn.js",
+	"./gu": "./node_modules/moment/locale/gu.js",
+	"./gu.js": "./node_modules/moment/locale/gu.js",
+	"./he": "./node_modules/moment/locale/he.js",
+	"./he.js": "./node_modules/moment/locale/he.js",
+	"./hi": "./node_modules/moment/locale/hi.js",
+	"./hi.js": "./node_modules/moment/locale/hi.js",
+	"./hr": "./node_modules/moment/locale/hr.js",
+	"./hr.js": "./node_modules/moment/locale/hr.js",
+	"./hu": "./node_modules/moment/locale/hu.js",
+	"./hu.js": "./node_modules/moment/locale/hu.js",
+	"./hy-am": "./node_modules/moment/locale/hy-am.js",
+	"./hy-am.js": "./node_modules/moment/locale/hy-am.js",
+	"./id": "./node_modules/moment/locale/id.js",
+	"./id.js": "./node_modules/moment/locale/id.js",
+	"./is": "./node_modules/moment/locale/is.js",
+	"./is.js": "./node_modules/moment/locale/is.js",
+	"./it": "./node_modules/moment/locale/it.js",
+	"./it.js": "./node_modules/moment/locale/it.js",
+	"./ja": "./node_modules/moment/locale/ja.js",
+	"./ja.js": "./node_modules/moment/locale/ja.js",
+	"./jv": "./node_modules/moment/locale/jv.js",
+	"./jv.js": "./node_modules/moment/locale/jv.js",
+	"./ka": "./node_modules/moment/locale/ka.js",
+	"./ka.js": "./node_modules/moment/locale/ka.js",
+	"./kk": "./node_modules/moment/locale/kk.js",
+	"./kk.js": "./node_modules/moment/locale/kk.js",
+	"./km": "./node_modules/moment/locale/km.js",
+	"./km.js": "./node_modules/moment/locale/km.js",
+	"./kn": "./node_modules/moment/locale/kn.js",
+	"./kn.js": "./node_modules/moment/locale/kn.js",
+	"./ko": "./node_modules/moment/locale/ko.js",
+	"./ko.js": "./node_modules/moment/locale/ko.js",
+	"./ky": "./node_modules/moment/locale/ky.js",
+	"./ky.js": "./node_modules/moment/locale/ky.js",
+	"./lb": "./node_modules/moment/locale/lb.js",
+	"./lb.js": "./node_modules/moment/locale/lb.js",
+	"./lo": "./node_modules/moment/locale/lo.js",
+	"./lo.js": "./node_modules/moment/locale/lo.js",
+	"./lt": "./node_modules/moment/locale/lt.js",
+	"./lt.js": "./node_modules/moment/locale/lt.js",
+	"./lv": "./node_modules/moment/locale/lv.js",
+	"./lv.js": "./node_modules/moment/locale/lv.js",
+	"./me": "./node_modules/moment/locale/me.js",
+	"./me.js": "./node_modules/moment/locale/me.js",
+	"./mi": "./node_modules/moment/locale/mi.js",
+	"./mi.js": "./node_modules/moment/locale/mi.js",
+	"./mk": "./node_modules/moment/locale/mk.js",
+	"./mk.js": "./node_modules/moment/locale/mk.js",
+	"./ml": "./node_modules/moment/locale/ml.js",
+	"./ml.js": "./node_modules/moment/locale/ml.js",
+	"./mr": "./node_modules/moment/locale/mr.js",
+	"./mr.js": "./node_modules/moment/locale/mr.js",
+	"./ms": "./node_modules/moment/locale/ms.js",
+	"./ms-my": "./node_modules/moment/locale/ms-my.js",
+	"./ms-my.js": "./node_modules/moment/locale/ms-my.js",
+	"./ms.js": "./node_modules/moment/locale/ms.js",
+	"./mt": "./node_modules/moment/locale/mt.js",
+	"./mt.js": "./node_modules/moment/locale/mt.js",
+	"./my": "./node_modules/moment/locale/my.js",
+	"./my.js": "./node_modules/moment/locale/my.js",
+	"./nb": "./node_modules/moment/locale/nb.js",
+	"./nb.js": "./node_modules/moment/locale/nb.js",
+	"./ne": "./node_modules/moment/locale/ne.js",
+	"./ne.js": "./node_modules/moment/locale/ne.js",
+	"./nl": "./node_modules/moment/locale/nl.js",
+	"./nl-be": "./node_modules/moment/locale/nl-be.js",
+	"./nl-be.js": "./node_modules/moment/locale/nl-be.js",
+	"./nl.js": "./node_modules/moment/locale/nl.js",
+	"./nn": "./node_modules/moment/locale/nn.js",
+	"./nn.js": "./node_modules/moment/locale/nn.js",
+	"./pa-in": "./node_modules/moment/locale/pa-in.js",
+	"./pa-in.js": "./node_modules/moment/locale/pa-in.js",
+	"./pl": "./node_modules/moment/locale/pl.js",
+	"./pl.js": "./node_modules/moment/locale/pl.js",
+	"./pt": "./node_modules/moment/locale/pt.js",
+	"./pt-br": "./node_modules/moment/locale/pt-br.js",
+	"./pt-br.js": "./node_modules/moment/locale/pt-br.js",
+	"./pt.js": "./node_modules/moment/locale/pt.js",
+	"./ro": "./node_modules/moment/locale/ro.js",
+	"./ro.js": "./node_modules/moment/locale/ro.js",
+	"./ru": "./node_modules/moment/locale/ru.js",
+	"./ru.js": "./node_modules/moment/locale/ru.js",
+	"./sd": "./node_modules/moment/locale/sd.js",
+	"./sd.js": "./node_modules/moment/locale/sd.js",
+	"./se": "./node_modules/moment/locale/se.js",
+	"./se.js": "./node_modules/moment/locale/se.js",
+	"./si": "./node_modules/moment/locale/si.js",
+	"./si.js": "./node_modules/moment/locale/si.js",
+	"./sk": "./node_modules/moment/locale/sk.js",
+	"./sk.js": "./node_modules/moment/locale/sk.js",
+	"./sl": "./node_modules/moment/locale/sl.js",
+	"./sl.js": "./node_modules/moment/locale/sl.js",
+	"./sq": "./node_modules/moment/locale/sq.js",
+	"./sq.js": "./node_modules/moment/locale/sq.js",
+	"./sr": "./node_modules/moment/locale/sr.js",
+	"./sr-cyrl": "./node_modules/moment/locale/sr-cyrl.js",
+	"./sr-cyrl.js": "./node_modules/moment/locale/sr-cyrl.js",
+	"./sr.js": "./node_modules/moment/locale/sr.js",
+	"./ss": "./node_modules/moment/locale/ss.js",
+	"./ss.js": "./node_modules/moment/locale/ss.js",
+	"./sv": "./node_modules/moment/locale/sv.js",
+	"./sv.js": "./node_modules/moment/locale/sv.js",
+	"./sw": "./node_modules/moment/locale/sw.js",
+	"./sw.js": "./node_modules/moment/locale/sw.js",
+	"./ta": "./node_modules/moment/locale/ta.js",
+	"./ta.js": "./node_modules/moment/locale/ta.js",
+	"./te": "./node_modules/moment/locale/te.js",
+	"./te.js": "./node_modules/moment/locale/te.js",
+	"./tet": "./node_modules/moment/locale/tet.js",
+	"./tet.js": "./node_modules/moment/locale/tet.js",
+	"./tg": "./node_modules/moment/locale/tg.js",
+	"./tg.js": "./node_modules/moment/locale/tg.js",
+	"./th": "./node_modules/moment/locale/th.js",
+	"./th.js": "./node_modules/moment/locale/th.js",
+	"./tl-ph": "./node_modules/moment/locale/tl-ph.js",
+	"./tl-ph.js": "./node_modules/moment/locale/tl-ph.js",
+	"./tlh": "./node_modules/moment/locale/tlh.js",
+	"./tlh.js": "./node_modules/moment/locale/tlh.js",
+	"./tr": "./node_modules/moment/locale/tr.js",
+	"./tr.js": "./node_modules/moment/locale/tr.js",
+	"./tzl": "./node_modules/moment/locale/tzl.js",
+	"./tzl.js": "./node_modules/moment/locale/tzl.js",
+	"./tzm": "./node_modules/moment/locale/tzm.js",
+	"./tzm-latn": "./node_modules/moment/locale/tzm-latn.js",
+	"./tzm-latn.js": "./node_modules/moment/locale/tzm-latn.js",
+	"./tzm.js": "./node_modules/moment/locale/tzm.js",
+	"./ug-cn": "./node_modules/moment/locale/ug-cn.js",
+	"./ug-cn.js": "./node_modules/moment/locale/ug-cn.js",
+	"./uk": "./node_modules/moment/locale/uk.js",
+	"./uk.js": "./node_modules/moment/locale/uk.js",
+	"./ur": "./node_modules/moment/locale/ur.js",
+	"./ur.js": "./node_modules/moment/locale/ur.js",
+	"./uz": "./node_modules/moment/locale/uz.js",
+	"./uz-latn": "./node_modules/moment/locale/uz-latn.js",
+	"./uz-latn.js": "./node_modules/moment/locale/uz-latn.js",
+	"./uz.js": "./node_modules/moment/locale/uz.js",
+	"./vi": "./node_modules/moment/locale/vi.js",
+	"./vi.js": "./node_modules/moment/locale/vi.js",
+	"./x-pseudo": "./node_modules/moment/locale/x-pseudo.js",
+	"./x-pseudo.js": "./node_modules/moment/locale/x-pseudo.js",
+	"./yo": "./node_modules/moment/locale/yo.js",
+	"./yo.js": "./node_modules/moment/locale/yo.js",
+	"./zh-cn": "./node_modules/moment/locale/zh-cn.js",
+	"./zh-cn.js": "./node_modules/moment/locale/zh-cn.js",
+	"./zh-hk": "./node_modules/moment/locale/zh-hk.js",
+	"./zh-hk.js": "./node_modules/moment/locale/zh-hk.js",
+	"./zh-tw": "./node_modules/moment/locale/zh-tw.js",
+	"./zh-tw.js": "./node_modules/moment/locale/zh-tw.js"
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./node_modules/moment/locale recursive ^\\.\\/.*$";
+
+/***/ }),
+
 /***/ "./src/$$_lazy_route_resource lazy recursive":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26,8 +293,8 @@ var map = {
 	],
 	"./transaction/transaction.module": [
 		"./src/app/pages/transaction/transaction.module.ts",
-		"common",
-		"transaction.module"
+		"transaction.module",
+		"common"
 	],
 	"app/pages/pages.module": [
 		"./src/app/pages/pages.module.ts",
@@ -195,6 +462,7 @@ var CoreModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BackendService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -206,8 +474,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// import 'rxjs/add/operator/map';
-// import { Observable } from 'rxjs/Rx';
+
 var BackendService = /** @class */ (function () {
     function BackendService(http) {
         this.http = http;
@@ -261,9 +528,11 @@ var BackendService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__users_service__ = __webpack_require__("./src/app/@core/data/users.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__state_service__ = __webpack_require__("./src/app/@core/data/state.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__users_service__ = __webpack_require__("./src/app/@core/data/users.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__state_service__ = __webpack_require__("./src/app/@core/data/state.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -275,7 +544,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SERVICES = [__WEBPACK_IMPORTED_MODULE_2__users_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_3__state_service__["a" /* StateService */], __WEBPACK_IMPORTED_MODULE_4__backend_service__["a" /* BackendService */]];
+
+
+var SERVICES = [__WEBPACK_IMPORTED_MODULE_3__users_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_4__state_service__["a" /* StateService */], __WEBPACK_IMPORTED_MODULE_5__backend_service__["a" /* BackendService */]];
 var DataModule = /** @class */ (function () {
     function DataModule() {
     }
@@ -288,7 +559,7 @@ var DataModule = /** @class */ (function () {
     };
     DataModule = DataModule_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"]],
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_6__angular_http__["c" /* HttpModule */]],
             providers: SERVICES.slice()
         })
     ], DataModule);
@@ -516,10 +787,13 @@ var AnalyticsService = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth_auth_options__ = __webpack_require__("./node_modules/@nebular/auth/auth.options.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nebular_auth_helpers__ = __webpack_require__("./node_modules/@nebular/auth/helpers.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nebular_auth_services_auth_service__ = __webpack_require__("./node_modules/@nebular/auth/services/auth.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators_tap__ = __webpack_require__("./node_modules/rxjs/_esm5/operators/tap.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_users_service__ = __webpack_require__("./src/app/@core/data/users.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_cookie_service__ = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -545,14 +819,17 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 
 
+
+
 var NgxLoginMoniComponent = /** @class */ (function () {
-    function NgxLoginMoniComponent(service, config, router, backend, cookie) {
+    function NgxLoginMoniComponent(service, config, router, backend, cookie, logservice) {
         if (config === void 0) { config = {}; }
         this.service = service;
         this.config = config;
         this.router = router;
         this.backend = backend;
         this.cookie = cookie;
+        this.logservice = logservice;
         this.redirectDelay = 0;
         this.showMessages = {};
         this.provider = "";
@@ -561,6 +838,7 @@ var NgxLoginMoniComponent = /** @class */ (function () {
         this.user = {};
         this.submitted = false;
         this.socialLinks = [];
+        this.userget = {};
         this.redirectDelay = this.getConfigValue("forms.login.redirectDelay");
         this.showMessages = this.getConfigValue("forms.login.showMessages");
         this.provider = this.getConfigValue("forms.login.provider");
@@ -576,6 +854,7 @@ var NgxLoginMoniComponent = /** @class */ (function () {
             _this.submitted = false;
             if (result.isSuccess()) {
                 _this.messages = result.getMessages();
+                console.log(result);
             }
             else {
                 _this.errors = result.getErrors();
@@ -591,6 +870,24 @@ var NgxLoginMoniComponent = /** @class */ (function () {
                     _this.cookie.deleteAll();
                     _this.cookie.set("Type", "mona");
                 }
+                _this.service.onTokenChange().subscribe(function (token) {
+                    if (token.isValid()) {
+                        _this.userget = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+                        console.log(_this.userget);
+                        var data = {
+                            USERNAME: _this.userget.USER_NAME,
+                            DATETIME_LOGIN: __WEBPACK_IMPORTED_MODULE_9_moment__().format(),
+                            COMPONENT: _this.cookie.get("Type") == "moni" ? "MONI" : "MOKA",
+                            USER_ID: _this.userget.ID_USER
+                        };
+                        console.log(data);
+                        _this.logservice.postreq("LOGIN_LOGS", data).subscribe(function (response) {
+                            console.log("masuksini");
+                        }, function (error) {
+                            console.log(error);
+                        });
+                    }
+                });
                 setTimeout(function () {
                     return _this.router.navigateByUrl(redirect);
                 }, _this.redirectDelay);
@@ -606,9 +903,10 @@ var NgxLoginMoniComponent = /** @class */ (function () {
             template: "\n    <nb-auth-block>\n    <img src=\"../../../../../assets/logo.png\" alt=\"\"><br><br><br>\n      <h2 class=\"title\">Sign In Moni</h2>\n      <form (ngSubmit)=\"login()\" #form=\"ngForm\" autocomplete=\"nope\">\n        <div *ngIf=\"showMessages.error && errors && errors.length > 0 && !submitted\"\n             class=\"alert alert-danger\" role=\"alert\">\n          <div><strong>Oh snap!</strong></div>\n          <div *ngFor=\"let error of errors\">{{ error }}</div>\n        </div>\n        <div *ngIf=\"showMessages.success && messages && messages.length > 0 && !submitted\"\n             class=\"alert alert-success\" role=\"alert\">\n          <div *ngFor=\"let message of messages\">{{ message }}</div>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"input-user ID\" class=\"sr-only\">User ID</label>\n          <input name=\"email\" [(ngModel)]=\"user.email\" id=\"input-email\" \n                 class=\"form-control\" placeholder=\"User ID\" #email=\"ngModel\" autofocus>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"input-password\" class=\"sr-only\">Password</label>\n          <input name=\"password\" [(ngModel)]=\"user.password\" type=\"password\" id=\"input-password\"\n                 class=\"form-control\" placeholder=\"Password\" #password=\"ngModel\"\n                 [class.form-control-danger]=\"password.invalid && password.touched\"\n                 [required]=\"getConfigValue('forms.validation.password.required')\"\n                 [minlength]=\"getConfigValue('forms.validation.password.minLength')\"\n                 [maxlength]=\"getConfigValue('forms.validation.password.maxLength')\">\n          <small class=\"form-text error\" *ngIf=\"password.invalid && password.touched && password.errors?.required\">\n            Password is required!\n          </small>\n          <small\n            class=\"form-text error\"\n            *ngIf=\"password.invalid && password.touched && (password.errors?.minlength || password.errors?.maxlength)\">\n            Password should contains\n            from {{ getConfigValue('forms.validation.password.minLength') }}\n            to {{ getConfigValue('forms.validation.password.maxLength') }}\n            characters\n          </small>\n        </div>\n        <div class=\"form-group accept-group col-sm-12\">\n          <nb-checkbox name=\"rememberMe\" [(ngModel)]=\"user.rememberMe\">Remember me</nb-checkbox>\n          <a class=\"forgot-password\" routerLink=\"../request-password\">Forgot Password?</a>\n        </div>\n        <button [disabled]=\"submitted || !form.valid\" class=\"btn btn-block btn-hero-success\"\n                [class.btn-pulse]=\"submitted\">\n          Sign In\n        </button>\n      </form>\n      <div class=\"links\">\n        <ng-container *ngIf=\"socialLinks && socialLinks.length > 0\">\n          <small class=\"form-text\">Or connect with:</small>\n          <div class=\"socials\">\n            <ng-container *ngFor=\"let socialLink of socialLinks\">\n              <a *ngIf=\"socialLink.link\"\n                 [routerLink]=\"socialLink.link\"\n                 [attr.target]=\"socialLink.target\"\n                 [attr.class]=\"socialLink.icon\"\n                 [class.with-icon]=\"socialLink.icon\">{{ socialLink.title }}</a>\n              <a *ngIf=\"socialLink.url\"\n                 [attr.href]=\"socialLink.url\"\n                 [attr.target]=\"socialLink.target\"\n                 [attr.class]=\"socialLink.icon\"\n                 [class.with-icon]=\"socialLink.icon\">{{ socialLink.title }}</a>\n            </ng-container>\n          </div>\n        </ng-container>\n      </div>\n    </nb-auth-block>\n  "
         }),
         __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_2__nebular_auth_auth_options__["b" /* NB_AUTH_OPTIONS */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__nebular_auth_services_auth_service__["a" /* NbAuthService */], Object, __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__nebular_auth__["e" /* NbAuthService */], Object, __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_6__core_data_users_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_7_ngx_cookie_service__["a" /* CookieService */]])
+            __WEBPACK_IMPORTED_MODULE_7_ngx_cookie_service__["a" /* CookieService */],
+            __WEBPACK_IMPORTED_MODULE_8__core_data_backend_service__["a" /* BackendService */]])
     ], NgxLoginMoniComponent);
     return NgxLoginMoniComponent;
 }());
@@ -643,10 +941,13 @@ var AuthGuard = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth_auth_options__ = __webpack_require__("./node_modules/@nebular/auth/auth.options.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nebular_auth_helpers__ = __webpack_require__("./node_modules/@nebular/auth/helpers.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nebular_auth_services_auth_service__ = __webpack_require__("./node_modules/@nebular/auth/services/auth.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators_tap__ = __webpack_require__("./node_modules/rxjs/_esm5/operators/tap.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_users_service__ = __webpack_require__("./src/app/@core/data/users.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_cookie_service__ = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -672,14 +973,17 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 
 
+
+
 var NgxLoginComponent = /** @class */ (function () {
-    function NgxLoginComponent(service, config, router, backend, cookie) {
+    function NgxLoginComponent(service, config, router, backend, cookie, logservice) {
         if (config === void 0) { config = {}; }
         this.service = service;
         this.config = config;
         this.router = router;
         this.backend = backend;
         this.cookie = cookie;
+        this.logservice = logservice;
         this.redirectDelay = 0;
         this.showMessages = {};
         this.provider = "";
@@ -688,6 +992,7 @@ var NgxLoginComponent = /** @class */ (function () {
         this.user = {};
         this.submitted = false;
         this.socialLinks = [];
+        this.userget = {};
         this.redirectDelay = this.getConfigValue("forms.login.redirectDelay");
         this.showMessages = this.getConfigValue("forms.login.showMessages");
         this.provider = this.getConfigValue("forms.login.provider");
@@ -718,6 +1023,24 @@ var NgxLoginComponent = /** @class */ (function () {
                     _this.cookie.deleteAll();
                     _this.cookie.set("Type", "mona");
                 }
+                _this.service.onTokenChange().subscribe(function (token) {
+                    if (token.isValid()) {
+                        _this.userget = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+                        console.log("herewego");
+                        var data = {
+                            USERNAME: _this.userget.USER_NAME,
+                            DATETIME_LOGIN: __WEBPACK_IMPORTED_MODULE_9_moment__().format(),
+                            COMPONENT: _this.cookie.get("Type") == "moni" ? "MONI" : "MOKA",
+                            USER_ID: _this.userget.ID_USER
+                        };
+                        console.log(data);
+                        _this.logservice.postreq("LOGIN_LOGS", data).subscribe(function (response) {
+                            console.log("masuksini");
+                        }, function (error) {
+                            console.log(error);
+                        });
+                    }
+                });
                 setTimeout(function () {
                     return _this.router.navigateByUrl(redirect);
                 }, _this.redirectDelay);
@@ -733,9 +1056,10 @@ var NgxLoginComponent = /** @class */ (function () {
             template: "\n    <nb-auth-block>\n    <img src=\"../../../../../assets/logo.png\" alt=\"\"><br><br><br>\n      <h2 class=\"title\">Sign In</h2>\n      <form (ngSubmit)=\"login()\" #form=\"ngForm\" autocomplete=\"nope\">\n        <div *ngIf=\"showMessages.error && errors && errors.length > 0 && !submitted\"\n             class=\"alert alert-danger\" role=\"alert\">\n          <div><strong>Oh snap!</strong></div>\n          <div *ngFor=\"let error of errors\">{{ error }}</div>\n        </div>\n        <div *ngIf=\"showMessages.success && messages && messages.length > 0 && !submitted\"\n             class=\"alert alert-success\" role=\"alert\">\n          <div *ngFor=\"let message of messages\">{{ message }}</div>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"input-user ID\" class=\"sr-only\">User ID</label>\n          <input name=\"email\" [(ngModel)]=\"user.email\" id=\"input-email\" \n                 class=\"form-control\" placeholder=\"User ID\" #email=\"ngModel\" autofocus>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"input-password\" class=\"sr-only\">Password</label>\n          <input name=\"password\" [(ngModel)]=\"user.password\" type=\"password\" id=\"input-password\"\n                 class=\"form-control\" placeholder=\"Password\" #password=\"ngModel\"\n                 [class.form-control-danger]=\"password.invalid && password.touched\"\n                 [required]=\"getConfigValue('forms.validation.password.required')\"\n                 [minlength]=\"getConfigValue('forms.validation.password.minLength')\"\n                 [maxlength]=\"getConfigValue('forms.validation.password.maxLength')\">\n          <small class=\"form-text error\" *ngIf=\"password.invalid && password.touched && password.errors?.required\">\n            Password is required!\n          </small>\n          <small\n            class=\"form-text error\"\n            *ngIf=\"password.invalid && password.touched && (password.errors?.minlength || password.errors?.maxlength)\">\n            Password should contains\n            from {{ getConfigValue('forms.validation.password.minLength') }}\n            to {{ getConfigValue('forms.validation.password.maxLength') }}\n            characters\n          </small>\n        </div>\n        <div class=\"form-group accept-group col-sm-12\">\n          <nb-checkbox name=\"rememberMe\" [(ngModel)]=\"user.rememberMe\">Remember me</nb-checkbox>\n          <a class=\"forgot-password\" routerLink=\"../request-password\">Forgot Password?</a>\n        </div>\n        <button [disabled]=\"submitted || !form.valid\" class=\"btn btn-block btn-hero-success\"\n                [class.btn-pulse]=\"submitted\">\n          Sign In\n        </button>\n      </form>\n      <div class=\"links\">\n        <ng-container *ngIf=\"socialLinks && socialLinks.length > 0\">\n          <small class=\"form-text\">Or connect with:</small>\n          <div class=\"socials\">\n            <ng-container *ngFor=\"let socialLink of socialLinks\">\n              <a *ngIf=\"socialLink.link\"\n                 [routerLink]=\"socialLink.link\"\n                 [attr.target]=\"socialLink.target\"\n                 [attr.class]=\"socialLink.icon\"\n                 [class.with-icon]=\"socialLink.icon\">{{ socialLink.title }}</a>\n              <a *ngIf=\"socialLink.url\"\n                 [attr.href]=\"socialLink.url\"\n                 [attr.target]=\"socialLink.target\"\n                 [attr.class]=\"socialLink.icon\"\n                 [class.with-icon]=\"socialLink.icon\">{{ socialLink.title }}</a>\n            </ng-container>\n          </div>\n        </ng-container>\n      </div>\n    </nb-auth-block>\n  "
         }),
         __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_2__nebular_auth_auth_options__["b" /* NB_AUTH_OPTIONS */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__nebular_auth_services_auth_service__["a" /* NbAuthService */], Object, __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__nebular_auth__["e" /* NbAuthService */], Object, __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_6__core_data_users_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_7_ngx_cookie_service__["a" /* CookieService */]])
+            __WEBPACK_IMPORTED_MODULE_7_ngx_cookie_service__["a" /* CookieService */],
+            __WEBPACK_IMPORTED_MODULE_8__core_data_backend_service__["a" /* BackendService */]])
     ], NgxLoginComponent);
     return NgxLoginComponent;
 }());
@@ -1738,7 +2062,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var BASE_MODULES = [__WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"]];
+var BASE_MODULES = [
+    __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+    __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
+    __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"]
+];
 var NB_MODULES = [
     __WEBPACK_IMPORTED_MODULE_4__nebular_theme__["b" /* NbCardModule */],
     __WEBPACK_IMPORTED_MODULE_4__nebular_theme__["e" /* NbLayoutModule */],
@@ -1764,7 +2092,7 @@ var COMPONENTS = [
     __WEBPACK_IMPORTED_MODULE_8__layouts__["a" /* OneColumnLayoutComponent */],
     __WEBPACK_IMPORTED_MODULE_8__layouts__["b" /* SampleLayoutComponent */],
     __WEBPACK_IMPORTED_MODULE_8__layouts__["c" /* ThreeColumnsLayoutComponent */],
-    __WEBPACK_IMPORTED_MODULE_8__layouts__["d" /* TwoColumnsLayoutComponent */]
+    __WEBPACK_IMPORTED_MODULE_8__layouts__["d" /* TwoColumnsLayoutComponent */],
 ];
 var PIPES = [__WEBPACK_IMPORTED_MODULE_7__pipes__["a" /* CapitalizePipe */], __WEBPACK_IMPORTED_MODULE_7__pipes__["b" /* PluralPipe */], __WEBPACK_IMPORTED_MODULE_7__pipes__["c" /* RoundPipe */], __WEBPACK_IMPORTED_MODULE_7__pipes__["d" /* TimingPipe */]];
 var NB_THEME_PROVIDERS = __WEBPACK_IMPORTED_MODULE_4__nebular_theme__["o" /* NbThemeModule */].forRoot({
@@ -1936,20 +2264,21 @@ var AppComponent = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_core_module__ = __webpack_require__("./src/app/@core/core.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__theme_components_auth_login_login_component__ = __webpack_require__("./src/app/@theme/components/auth/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__theme_components_auth_login_moni_login_moni_component__ = __webpack_require__("./src/app/@theme/components/auth/login-moni/login.moni.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__theme_theme_module__ = __webpack_require__("./src/app/@theme/theme.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__security_auth_guard_service__ = __webpack_require__("./src/app/security/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ngx_cookie_service__ = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_core_module__ = __webpack_require__("./src/app/@core/core.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__theme_components_auth_login_login_component__ = __webpack_require__("./src/app/@theme/components/auth/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__theme_components_auth_login_moni_login_moni_component__ = __webpack_require__("./src/app/@theme/components/auth/login-moni/login.moni.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__theme_theme_module__ = __webpack_require__("./src/app/@theme/theme.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__security_auth_guard_service__ = __webpack_require__("./src/app/security/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ngx_cookie_service__ = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1976,30 +2305,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_7__theme_components_auth_login_login_component__["a" /* NgxLoginComponent */], __WEBPACK_IMPORTED_MODULE_8__theme_components_auth_login_moni_login_moni_component__["a" /* NgxLoginMoniComponent */]],
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__theme_components_auth_login_login_component__["a" /* NgxLoginComponent */], __WEBPACK_IMPORTED_MODULE_9__theme_components_auth_login_moni_login_moni_component__["a" /* NgxLoginMoniComponent */]],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_10__app_routing_module__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["c" /* NgbModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_9__theme_theme_module__["a" /* ThemeModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_6__core_core_module__["a" /* CoreModule */].forRoot()
+                __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_11__app_routing_module__["a" /* AppRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["c" /* NgbModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_10__theme_theme_module__["a" /* ThemeModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_7__core_core_module__["a" /* CoreModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_5__angular_http__["c" /* HttpModule */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */]],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_14_ngx_cookie_service__["a" /* CookieService */],
+                __WEBPACK_IMPORTED_MODULE_15_ngx_cookie_service__["a" /* CookieService */],
                 {
                     provide: __WEBPACK_IMPORTED_MODULE_0__angular_common__["APP_BASE_HREF"],
                     useValue: "/"
                 },
-                { provide: __WEBPACK_IMPORTED_MODULE_12__nebular_auth__["a" /* NB_AUTH_TOKEN_CLASS */], useValue: __WEBPACK_IMPORTED_MODULE_12__nebular_auth__["c" /* NbAuthJWTToken */] },
-                __WEBPACK_IMPORTED_MODULE_13__security_auth_guard_service__["a" /* AuthGuard */]
+                { provide: __WEBPACK_IMPORTED_MODULE_13__nebular_auth__["a" /* NB_AUTH_TOKEN_CLASS */], useValue: __WEBPACK_IMPORTED_MODULE_13__nebular_auth__["c" /* NbAuthJWTToken */] },
+                __WEBPACK_IMPORTED_MODULE_14__security_auth_guard_service__["a" /* AuthGuard */],
+                __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */]
             ]
         })
     ], AppModule);

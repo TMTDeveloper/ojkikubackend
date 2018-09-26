@@ -24982,29 +24982,40 @@ var AssignmentBarangComponent = /** @class */ (function () {
     };
     AssignmentBarangComponent.prototype.updateData = function () {
         var _this = this;
-        var data = {
-            KD_ASSIGN: this.generateCode(),
-            KD_BARANG: this.formData.barang,
-            KD_MERK: this.formData.merk,
-            SERIAL_NUMBER: this.formData.serialNumber,
-            QTY: this.formData.qty,
-            STATUS: this.formData.status.toUpperCase(),
-            TEAM_ID: this.findTeam(this.formData.team),
-            USER_ID: this.findName(this.formData.team),
-            DEPARTMENT: this.formData.department,
-            TANGGAL_ASSIGN: this.dateAssignment.jsdate,
-            DATE_ASSIGN: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
-            USER_TRANSACTION: this.user.ID_USER,
-            DATE_TIME_TRANSACTION: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
-        };
-        console.log(this.dateAssignment);
-        console.log(data);
-        console.log(this.assignments);
-        this.service.postreq("t_assignments", data).subscribe(function (response) {
-            _this.toastr.success("Data Saved!");
-        }, function (error) {
-            _this.toastr.error("Data Error!");
-            console.log(error);
+        this.service
+            .getreq("t_assignments")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.assignments = response;
+            }
+        })
+            .then(function () {
+            var data = {
+                KD_ASSIGN: _this.generateCode(),
+                KD_BARANG: _this.formData.barang,
+                KD_MERK: _this.formData.merk,
+                SERIAL_NUMBER: _this.formData.serialNumber,
+                QTY: _this.formData.qty,
+                STATUS: _this.formData.status.toUpperCase(),
+                TEAM_ID: _this.findTeam(_this.formData.team),
+                USER_ID: _this.findName(_this.formData.team),
+                DEPARTMENT: _this.formData.department,
+                TANGGAL_ASSIGN: _this.dateAssignment.jsdate,
+                DATE_ASSIGN: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                USER_TRANSACTION: _this.user.ID_USER,
+                DATE_TIME_TRANSACTION: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                TYPE_ASSIGN: "ASSIGN"
+            };
+            console.log(_this.dateAssignment);
+            console.log(data);
+            console.log(_this.assignments);
+            _this.service.postreq("t_assignments", data).subscribe(function (response) {
+                _this.toastr.success("Data Saved!");
+            }, function (error) {
+                _this.toastr.error("Data Error!");
+                console.log(error);
+            });
         });
     };
     AssignmentBarangComponent.prototype.generateCode = function () {
@@ -25062,6 +25073,520 @@ var AssignmentBarangComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_7__nebular_auth__["e" /* NbAuthService */]])
     ], AssignmentBarangComponent);
     return AssignmentBarangComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/assignment-kembali/assignment.kembali.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\r\n  <nb-card-header>Pengembalian Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barang\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\" [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"demo-radio col-sm-12\">\r\n          <div class=\"row\">\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" name=\"customRadio\" [value]=\"true\" [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Individu</span>\r\n            </label>\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" [value]=\"false\" checked [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Department</span>\r\n            </label>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" [disabled]=\"!formData.peruntukkan\">\r\n              <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Department\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.department\" [disabled]=\"formData.peruntukkan\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Dikembalikan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Keterangan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" \r\n          (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/assignment-kembali/assignment.kembali.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AssignmentKembaliComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+var AssignmentKembaliComponent = /** @class */ (function () {
+    function AssignmentKembaliComponent(modalService, toastr, service, authService) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.authService = authService;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.myDatePickerOptions = {
+            // other options...
+            dateFormat: "dd-mm-yyyy"
+        };
+        this.tabledata = [];
+        this.formData = {
+            barang: "",
+            merk: "",
+            serialNumber: "",
+            team: "",
+            name: "",
+            department: "",
+            status: "",
+            peruntukkan: true,
+            keterangan: "",
+            qty: 0
+        };
+        this.team = [];
+        this.users = [];
+        this.barang = [];
+        this.merk = [];
+        this.assignments = [];
+        this.getUserInfo();
+        this.getUserBank();
+        this.getBarang();
+        this.getMerk();
+        this.getUsers();
+        this.getAssignment();
+    }
+    AssignmentKembaliComponent.prototype.getAssignment = function () {
+        var _this = this;
+        this.service
+            .getreq("t_assignments")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.assignments = response;
+            }
+        });
+    };
+    AssignmentKembaliComponent.prototype.getUserBank = function () {
+        var _this = this;
+        if (this.user.ID_USER != "admin") {
+            this.service
+                .getreq("mst_user_banks")
+                .toPromise()
+                .then(function (response) {
+                if (response != null) {
+                    var arr = response.filter(function (item) {
+                        return item.ID_USER == _this.user.ID_USER;
+                    });
+                    if (arr[0] != null) {
+                        _this.user.type = arr[0].ID_BANK;
+                        console.log(_this.user);
+                    }
+                }
+            });
+        }
+        else {
+            this.user.type = "admin";
+        }
+    };
+    AssignmentKembaliComponent.prototype.getUsers = function () {
+        var _this = this;
+        this.service
+            .getreq("mst_users")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                response = response.sort();
+                for (var i in response) {
+                    if (response[i].TEAM != "admin") {
+                        _this.team[i] =
+                            response[i].TEAM +
+                                " " +
+                                response[i].ID_USER +
+                                " " +
+                                response[i].USER_NAME;
+                    }
+                }
+            }
+        });
+    };
+    AssignmentKembaliComponent.prototype.getBarang = function () {
+        var _this = this;
+        this.service
+            .getreq("m_barangs")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.barang = response;
+            }
+        });
+    };
+    AssignmentKembaliComponent.prototype.getMerk = function () {
+        var _this = this;
+        this.service
+            .getreq("m_merks")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.merk = response;
+            }
+        });
+    };
+    AssignmentKembaliComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+            }
+        });
+    };
+    AssignmentKembaliComponent.prototype.updateData = function () {
+        var _this = this;
+        this.service
+            .getreq("t_assignments")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.assignments = response;
+            }
+        })
+            .then(function () {
+            var data = {
+                KD_ASSIGN: _this.generateCode(),
+                KD_BARANG: _this.formData.barang,
+                KD_MERK: _this.formData.merk,
+                SERIAL_NUMBER: _this.formData.serialNumber,
+                QTY: _this.formData.qty,
+                STATUS: _this.formData.status.toUpperCase(),
+                TEAM_ID: _this.findTeam(_this.formData.team),
+                USER_ID: _this.findName(_this.formData.team),
+                DEPARTMENT: _this.formData.department,
+                TANGGAL_ASSIGN: _this.dateAssignment.jsdate,
+                DATE_ASSIGN: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                USER_TRANSACTION: _this.user.ID_USER,
+                DATE_TIME_TRANSACTION: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                TYPE_ASSIGN: "KEMBALI"
+            };
+            console.log(_this.dateAssignment);
+            console.log(data);
+            console.log(_this.assignments);
+            _this.service.postreq("t_assignments", data).subscribe(function (response) {
+                _this.toastr.success("Data Saved!");
+            }, function (error) {
+                _this.toastr.error("Data Error!");
+                console.log(error);
+            });
+        });
+    };
+    AssignmentKembaliComponent.prototype.generateCode = function () {
+        var counter = this.assignments.length + 1;
+        if (counter < 10) {
+            return "AS00" + counter.toString();
+        }
+        else if (counter < 100) {
+            return "AS0" + counter.toString();
+        }
+        else if (counter < 1000) {
+            return "AS" + counter.toString();
+        }
+    };
+    AssignmentKembaliComponent.prototype.findTeam = function (team) {
+        var result = "";
+        for (var i = 0; i < team.length; i++) {
+            if (team.charAt(i) == " ") {
+                break;
+            }
+            result = result + team.charAt(i);
+        }
+        return result;
+    };
+    AssignmentKembaliComponent.prototype.findName = function (team) {
+        var result = "";
+        var safeI = 0;
+        for (var i = 0; i < team.length; i++) {
+            if (team.charAt(i) == " " && safeI > 0) {
+                break;
+            }
+            if (team.charAt(i) == " " && safeI == 0) {
+                safeI = i;
+            }
+            if (i > safeI && safeI != 0) {
+                result = result + team.charAt(i);
+            }
+            console.log(result);
+            console.log(safeI);
+        }
+        return result;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], AssignmentKembaliComponent.prototype, "myForm", void 0);
+    AssignmentKembaliComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-indicator-kembali",
+            template: __webpack_require__("./src/app/pages/transaction/assignment-kembali/assignment.kembali.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_7__nebular_auth__["e" /* NbAuthService */]])
+    ], AssignmentKembaliComponent);
+    return AssignmentKembaliComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/assignment-pinjam/assignment.pinjam.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\r\n  <nb-card-header>Peminjaman Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barang\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\" [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"demo-radio col-sm-12\">\r\n          <div class=\"row\">\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" name=\"customRadio\" [value]=\"true\" [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Individu</span>\r\n            </label>\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" [value]=\"false\" checked [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Department</span>\r\n            </label>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" [disabled]=\"!formData.peruntukkan\">\r\n              <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Department\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.department\" [disabled]=\"formData.peruntukkan\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Dipinjam\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Keterangan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" \r\n          (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/assignment-pinjam/assignment.pinjam.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AssignmentPinjamComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+var AssignmentPinjamComponent = /** @class */ (function () {
+    function AssignmentPinjamComponent(modalService, toastr, service, authService) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.authService = authService;
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.myDatePickerOptions = {
+            // other options...
+            dateFormat: "dd-mm-yyyy"
+        };
+        this.tabledata = [];
+        this.formData = {
+            barang: "",
+            merk: "",
+            serialNumber: "",
+            team: "",
+            name: "",
+            department: "",
+            status: "",
+            peruntukkan: true,
+            keterangan: "",
+            qty: 0
+        };
+        this.team = [];
+        this.users = [];
+        this.barang = [];
+        this.merk = [];
+        this.assignments = [];
+        this.getUserInfo();
+        this.getUserBank();
+        this.getBarang();
+        this.getMerk();
+        this.getUsers();
+        this.getAssignment();
+    }
+    AssignmentPinjamComponent.prototype.getAssignment = function () {
+        var _this = this;
+        this.service
+            .getreq("t_assignments")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.assignments = response;
+            }
+        });
+    };
+    AssignmentPinjamComponent.prototype.getUserBank = function () {
+        var _this = this;
+        if (this.user.ID_USER != "admin") {
+            this.service
+                .getreq("mst_user_banks")
+                .toPromise()
+                .then(function (response) {
+                if (response != null) {
+                    var arr = response.filter(function (item) {
+                        return item.ID_USER == _this.user.ID_USER;
+                    });
+                    if (arr[0] != null) {
+                        _this.user.type = arr[0].ID_BANK;
+                        console.log(_this.user);
+                    }
+                }
+            });
+        }
+        else {
+            this.user.type = "admin";
+        }
+    };
+    AssignmentPinjamComponent.prototype.getUsers = function () {
+        var _this = this;
+        this.service
+            .getreq("mst_users")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                response = response.sort();
+                for (var i in response) {
+                    if (response[i].TEAM != "admin") {
+                        _this.team[i] =
+                            response[i].TEAM +
+                                " " +
+                                response[i].ID_USER +
+                                " " +
+                                response[i].USER_NAME;
+                    }
+                }
+            }
+        });
+    };
+    AssignmentPinjamComponent.prototype.getBarang = function () {
+        var _this = this;
+        this.service
+            .getreq("m_barangs")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.barang = response;
+            }
+        });
+    };
+    AssignmentPinjamComponent.prototype.getMerk = function () {
+        var _this = this;
+        this.service
+            .getreq("m_merks")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.merk = response;
+            }
+        });
+    };
+    AssignmentPinjamComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+            }
+        });
+    };
+    AssignmentPinjamComponent.prototype.updateData = function () {
+        var _this = this;
+        this.service
+            .getreq("t_assignments")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.assignments = response;
+            }
+        })
+            .then(function () {
+            var data = {
+                KD_ASSIGN: _this.generateCode(),
+                KD_BARANG: _this.formData.barang,
+                KD_MERK: _this.formData.merk,
+                SERIAL_NUMBER: _this.formData.serialNumber,
+                QTY: _this.formData.qty,
+                STATUS: _this.formData.status.toUpperCase(),
+                TEAM_ID: _this.findTeam(_this.formData.team),
+                USER_ID: _this.findName(_this.formData.team),
+                DEPARTMENT: _this.formData.department,
+                TANGGAL_ASSIGN: _this.dateAssignment.jsdate,
+                DATE_ASSIGN: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                USER_TRANSACTION: _this.user.ID_USER,
+                DATE_TIME_TRANSACTION: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+                TYPE_ASSIGN: "PINJAM"
+            };
+            console.log(_this.dateAssignment);
+            console.log(data);
+            console.log(_this.assignments);
+            _this.service.postreq("t_assignments", data).subscribe(function (response) {
+                _this.toastr.success("Data Saved!");
+            }, function (error) {
+                _this.toastr.error("Data Error!");
+                console.log(error);
+            });
+        });
+    };
+    AssignmentPinjamComponent.prototype.generateCode = function () {
+        var counter = this.assignments.length + 1;
+        if (counter < 10) {
+            return "AS00" + counter.toString();
+        }
+        else if (counter < 100) {
+            return "AS0" + counter.toString();
+        }
+        else if (counter < 1000) {
+            return "AS" + counter.toString();
+        }
+    };
+    AssignmentPinjamComponent.prototype.findTeam = function (team) {
+        var result = "";
+        for (var i = 0; i < team.length; i++) {
+            if (team.charAt(i) == " ") {
+                break;
+            }
+            result = result + team.charAt(i);
+        }
+        return result;
+    };
+    AssignmentPinjamComponent.prototype.findName = function (team) {
+        var result = "";
+        var safeI = 0;
+        for (var i = 0; i < team.length; i++) {
+            if (team.charAt(i) == " " && safeI > 0) {
+                break;
+            }
+            if (team.charAt(i) == " " && safeI == 0) {
+                safeI = i;
+            }
+            if (i > safeI && safeI != 0) {
+                result = result + team.charAt(i);
+            }
+            console.log(result);
+            console.log(safeI);
+        }
+        return result;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], AssignmentPinjamComponent.prototype, "myForm", void 0);
+    AssignmentPinjamComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-indicator-pinjam",
+            template: __webpack_require__("./src/app/pages/transaction/assignment-pinjam/assignment.pinjam.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_7__nebular_auth__["e" /* NbAuthService */]])
+    ], AssignmentPinjamComponent);
+    return AssignmentPinjamComponent;
 }());
 
 
@@ -31283,7 +31808,7 @@ var ReportAssignmentComponent = /** @class */ (function () {
         this.getDataReport();
     }
     ReportAssignmentComponent.prototype.onInputFieldChanged = function (event) {
-        console.log('onInputFieldChanged(): Value: ', event.value, ' - dateFormat: ', event.dateFormat, ' - valid: ', event.valid);
+        console.log("onInputFieldChanged(): Value: ", event.value, " - dateFormat: ", event.dateFormat, " - valid: ", event.valid);
         this.refreshData();
     };
     ReportAssignmentComponent.prototype.getDataReport = function () {
@@ -31297,7 +31822,12 @@ var ReportAssignmentComponent = /** @class */ (function () {
                 response.forEach(function (element) {
                     element.DATE_ASSIGN = __WEBPACK_IMPORTED_MODULE_4_moment__(element.DATE_ASSIGN).format("DD-MM-YYYY");
                 });
-                _this.dataFull = response;
+                var arr = response.filter(function (item) {
+                    return item.TYPE_ASSIGN == "ASSIGN";
+                });
+                if (arr != null) {
+                    _this.dataFull = arr;
+                }
             }
         });
     };
@@ -32811,6 +33341,1098 @@ var ReportBeliComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pages/transaction/report-kembali/report.kembali.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\r\n  <nb-card-header>Report Pengembalian</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Kembali\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Assign</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Team Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Name</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Department</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Kembali</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_ASSIGN }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.TEAM_ID}}</td>\r\n              <td>{{ item.USER_ID}}</td>\r\n              <td>{{ item.USER_NAME}}</td>\r\n              <td>{{ item.DEPARTMENT}}</td>\r\n              <td>{{ item.DATE_ASSIGN}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n  \r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\" >Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/report-kembali/report.kembali.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportKembaliComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_jspdf__ = __webpack_require__("./node_modules/jspdf/dist/jspdf.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_jspdf___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_jspdf__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_html2canvas__ = __webpack_require__("./node_modules/html2canvas/dist/npm/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_html2canvas___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_html2canvas__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+
+
+
+var ReportKembaliComponent = /** @class */ (function () {
+    function ReportKembaliComponent(modalService, toastr, service, authService) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.authService = authService;
+        this.myDatePickerOptions = {
+            // other options...
+            dateFormat: "dd-mm-yyyy"
+        };
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.approved = true;
+        this.print = true;
+        this.tabledata = [];
+        this.dateAssignment = { jsdate: __WEBPACK_IMPORTED_MODULE_4_moment__().format() };
+        this.selected = {};
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: false
+            },
+            edit: {
+                editButtonContent: '<i class="ion-search"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: true
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: false
+            },
+            mode: "external",
+            sort: true,
+            hideSubHeader: true,
+            actions: {
+                add: true,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Detail",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                KD_ASSIGN: {
+                    title: "Kode Assign",
+                    type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "10%"
+                },
+                KD_BARANG: {
+                    title: "User ID",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%"
+                },
+                STATUS_ORDER: {
+                    title: "Status Order",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%"
+                },
+                DATE_ORDER: {
+                    title: "Tanggal Order",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%",
+                    valuePrepareFunction: function (date) {
+                        return __WEBPACK_IMPORTED_MODULE_4_moment__(date).format("DD-MM-YYYY");
+                    }
+                },
+                TOTAL_ITEM: {
+                    title: "Total Item",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "15%"
+                }
+            }
+        };
+        this.formData = {
+            periode: [
+                {
+                    id: "TW1",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "TW2",
+                    desc: "Triwulan 2"
+                },
+                {
+                    id: "TW3",
+                    desc: "Triwulan 3"
+                },
+                {
+                    id: "TW4",
+                    desc: "Triwulan 4"
+                }
+            ],
+            periodeSelected: "",
+            ikuData: [],
+            ikuSelected: "",
+            indicatorQualitativeData: [],
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
+            team: ""
+        };
+        this.barang = [];
+        this.merk = [];
+        this.order = [];
+        this.team = [];
+        this.orderDt = [];
+        this.dataFull = [];
+        this.dataReport = [];
+        this.getUserInfo();
+        this.getUsers();
+        this.getDataReport();
+    }
+    ReportKembaliComponent.prototype.onInputFieldChanged = function (event) {
+        console.log("onInputFieldChanged(): Value: ", event.value, " - dateFormat: ", event.dateFormat, " - valid: ", event.valid);
+        this.refreshData();
+    };
+    ReportKembaliComponent.prototype.getDataReport = function () {
+        var _this = this;
+        this.service
+            .getreq("report_assign_barangs")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                console.log(response);
+                response.forEach(function (element) {
+                    element.DATE_ASSIGN = __WEBPACK_IMPORTED_MODULE_4_moment__(element.DATE_ASSIGN).format("DD-MM-YYYY");
+                });
+                var arr = response.filter(function (item) {
+                    return item.TYPE_ASSIGN == "KEMBALI";
+                });
+                if (arr != null) {
+                    _this.dataFull = arr;
+                }
+            }
+        });
+    };
+    ReportKembaliComponent.prototype.getUsers = function () {
+        var _this = this;
+        this.service
+            .getreq("mst_users")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                response = response.sort();
+                for (var i in response) {
+                    if (response[i].TEAM != "admin") {
+                        _this.team[i] =
+                            response[i].TEAM +
+                                " " +
+                                response[i].ID_USER +
+                                " " +
+                                response[i].USER_NAME;
+                    }
+                }
+            }
+        })
+            .then(function () {
+            _this.getOrder();
+        });
+    };
+    ReportKembaliComponent.prototype.refreshData = function () {
+        var _this = this;
+        console.log(this.dataFull);
+        console.log(this.findName(this.formData.team));
+        console.log(this.dateAssignment.jsdate);
+        this.dataReport = this.dataFull.filter(function (item) {
+            return (item.USER_ID == _this.findName(_this.formData.team) &&
+                item.DATE_ASSIGN ==
+                    __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
+        });
+        console.log(this.dataReport);
+    };
+    ReportKembaliComponent.prototype.getOrder = function () {
+        var _this = this;
+        this.service
+            .getreq("t_order_hds")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.order = response;
+            }
+        })
+            .then(function () {
+            _this.service
+                .getreq("t_order_dts")
+                .toPromise()
+                .then(function (response) {
+                if (response != null) {
+                    _this.orderDt = response;
+                    _this.order.forEach(function (element, ind) {
+                        var arr = response.filter(function (item) {
+                            return element.KD_ORDER == item.KD_ORDER;
+                        });
+                        console.log(arr);
+                        if (arr != null) {
+                            element.TOTAL_ITEM = arr.length;
+                        }
+                    });
+                    _this.tabledata = _this.order;
+                    _this.source.load(_this.tabledata);
+                    _this.refreshData();
+                }
+            });
+        });
+    };
+    ReportKembaliComponent.prototype.getBarang = function () {
+        var _this = this;
+        this.service
+            .getreq("m_barangs")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.barang = response;
+            }
+        });
+    };
+    ReportKembaliComponent.prototype.getMerk = function () {
+        var _this = this;
+        this.service
+            .getreq("m_merks")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.merk = response;
+            }
+        });
+    };
+    ReportKembaliComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+            }
+        });
+    };
+    // create(event) {
+    //   let arr = this.orderDt.filter(item => {
+    //     return item.KD_ORDER == event.data.KD_ORDER;
+    //   });
+    //   if (arr != null) {
+    //     arr.forEach(element => {
+    //       let arrBarang = this.barang.filter(item => {
+    //         return item.KD_BARANG == element.KD_BARANG;
+    //       });
+    //       if (arrBarang != null) {
+    //         element.NM_BARANG = arrBarang[0].NM_BARANG;
+    //       }
+    //       let arrMerk = this.merk.filter(item => {
+    //         return item.KD_MERK == element.KD_MERK;
+    //       });
+    //       if (arrMerk != null) {
+    //         element.NM_MERK = arrMerk[0].NM_MERK;
+    //       }
+    //     });
+    //     this.activeModal = this.modalService.open(ReportAtkModalComponent, {
+    //       windowClass: "xlModal",
+    //       container: "nb-layout",
+    //       backdrop: "static"
+    //     });
+    //     this.activeModal.componentInstance.dataSource = arr;
+    //   } else {
+    //     this.toastr.error("Data does not exist!");
+    //   }
+    // }
+    ReportKembaliComponent.prototype.loadData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var respIku, arr;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.service
+                            .getreq("mst_ikus")
+                            .toPromise()
+                            .then(function (response) {
+                            if (response != null) {
+                                respIku = response;
+                            }
+                        })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, respIku.filter(function (item) {
+                                return item.TIPE_IKU == "QUALITATIVE";
+                            })];
+                    case 2:
+                        arr = _a.sent();
+                        if (arr[0] != null) {
+                            this.formData.ikuData = arr;
+                        }
+                        else {
+                            this.toastr.error("Tidak Ditemukan IKU Qualitative Data");
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ReportKembaliComponent.prototype.changeApproveprint = function (event) {
+        console.log("woi");
+        console.log(this.selected);
+        this.selected = event.data;
+        if (event.data.STATUS_ORDER != "APPROVED") {
+            this.print = true;
+        }
+    };
+    ReportKembaliComponent.prototype.approve = function () {
+        var _this = this;
+        console.log(JSON.stringify(this.selected));
+        if (JSON.stringify(this.selected) === "{}") {
+            this.toastr.error("No Data Selected");
+        }
+        else {
+            this.tabledata.forEach(function (element) {
+                if (element.KD_ORDER == _this.selected.KD_ORDER) {
+                    element.STATUS_ORDER = "APPROVED";
+                }
+            });
+            this.selected.STATUS_ORDER = "APPROVED";
+            var data = this.selected;
+            console.log(data);
+            this.service.patchreq("t_order_hds", data).subscribe(function (response) {
+                console.log(response);
+                _this.refreshData();
+                _this.toastr.success("Data Updated!");
+            }, function (error) {
+                //console.log("indicator detail");
+                console.log(error);
+                _this.toastr.error("Data Error!");
+            });
+        }
+    };
+    ReportKembaliComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KODE_IKU == event.newData.KODE_IKU) {
+                element.KODE_IKU = event.newData.KODE_IKU;
+                element.DESKRIPSI = event.newData.DESKRIPSI;
+                element.TIPE_IKU = event.newData.TIPE_IKU;
+                _this.service
+                    .patchreq("mst_ikus", _this.tabledata[ind])
+                    .subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    ReportKembaliComponent.prototype.updateData = function () {
+        var _this = this;
+        var kd_order = this.generateCode();
+        this.tabledata.forEach(function (element) {
+            element.KD_ORDER = kd_order;
+        });
+        var data = {
+            KD_ORDER: kd_order,
+            TEAM_ID: this.user.TEAM,
+            USER_ID: this.user.ID_USER,
+            DEPARTMENT: "",
+            DATE_ORDER: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+            STATUS_ORDER: "CONFIRMED",
+            USER_TRANSACTION: this.user.USER_NAME,
+            DATE_TIME_TRANSACTION: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        this.service.postreq("t_order_hds", data).subscribe(function (response) {
+            console.log(response);
+            _this.toastr.success("Data Saved!");
+            _this.tabledata.forEach(function (element) {
+                _this.service.postreq("t_order_dts", element).subscribe(function (response) {
+                    console.log(response);
+                }, function (error) {
+                    //console.log("indicator detail");
+                    console.log(error);
+                });
+            });
+        }, function (error) {
+            //console.log("indicator detail");
+            console.log(error);
+            _this.toastr.error("Data Error!");
+        });
+    };
+    ReportKembaliComponent.prototype.generateCode = function () {
+        var counter = this.order.length + 1;
+        if (counter < 10) {
+            return "OR00" + counter.toString();
+        }
+        else if (counter < 100) {
+            return "OR0" + counter.toString();
+        }
+        else if (counter < 1000) {
+            return "OR" + counter.toString();
+        }
+    };
+    ReportKembaliComponent.prototype.findName = function (team) {
+        var result = "";
+        var safeI = 0;
+        for (var i = 0; i < team.length; i++) {
+            if (team.charAt(i) == " " && safeI > 0) {
+                break;
+            }
+            if (team.charAt(i) == " " && safeI == 0) {
+                safeI = i;
+            }
+            if (i > safeI && safeI != 0) {
+                result = result + team.charAt(i);
+            }
+            console.log(result);
+            console.log(safeI);
+        }
+        return result;
+    };
+    ReportKembaliComponent.prototype.printPdf = function (id) {
+        ////console.log(this.dataInput);
+        var element = document.getElementById(id);
+        var divHeight = element.offsetHeight;
+        var divWidth = element.offsetWidth;
+        var ratio = divHeight / divWidth;
+        // Create your table here (The dynamic table needs to be converted to canvas).
+        __WEBPACK_IMPORTED_MODULE_9_html2canvas__(element, {
+            useCORS: true
+        }).then(function (canvas) {
+            var width = canvas.width;
+            var height = canvas.height;
+            var imgData = canvas.toDataURL("image/png");
+            var orientation = element.id == "print_tab1" ? "portrait" : "landscape";
+            var doc = new __WEBPACK_IMPORTED_MODULE_8_jspdf__({
+                orientation: "landscape",
+                unit: "mm",
+                format: [Math.floor(width * 0.264583) + 5, 210]
+            });
+            doc.addImage(canvas.toDataURL("image/PNG"), "PNG", 2, 2);
+            doc.save("Report-" + Date.now() + ".pdf");
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], ReportKembaliComponent.prototype, "myForm", void 0);
+    ReportKembaliComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-report-assignment",
+            template: __webpack_require__("./src/app/pages/transaction/report-kembali/report.kembali.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_7__nebular_auth__["e" /* NbAuthService */]])
+    ], ReportKembaliComponent);
+    return ReportKembaliComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/report-pinjam/report.pinjam.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\r\n  <nb-card-header>Report Peminjaman</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Peminjaman\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Assign</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Team Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Name</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Department</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Peminjaman</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_ASSIGN }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.TEAM_ID}}</td>\r\n              <td>{{ item.USER_ID}}</td>\r\n              <td>{{ item.USER_NAME}}</td>\r\n              <td>{{ item.DEPARTMENT}}</td>\r\n              <td>{{ item.DATE_ASSIGN}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n  \r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\" >Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/report-pinjam/report.pinjam.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportPinjamComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_jspdf__ = __webpack_require__("./node_modules/jspdf/dist/jspdf.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_jspdf___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_jspdf__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_html2canvas__ = __webpack_require__("./node_modules/html2canvas/dist/npm/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_html2canvas___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_html2canvas__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+
+
+
+var ReportPinjamComponent = /** @class */ (function () {
+    function ReportPinjamComponent(modalService, toastr, service, authService) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.authService = authService;
+        this.myDatePickerOptions = {
+            // other options...
+            dateFormat: "dd-mm-yyyy"
+        };
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.approved = true;
+        this.print = true;
+        this.tabledata = [];
+        this.dateAssignment = { jsdate: __WEBPACK_IMPORTED_MODULE_4_moment__().format() };
+        this.selected = {};
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: false
+            },
+            edit: {
+                editButtonContent: '<i class="ion-search"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: true
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: false
+            },
+            mode: "external",
+            sort: true,
+            hideSubHeader: true,
+            actions: {
+                add: true,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Detail",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                KD_ASSIGN: {
+                    title: "Kode Assign",
+                    type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "10%"
+                },
+                KD_BARANG: {
+                    title: "User ID",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%"
+                },
+                STATUS_ORDER: {
+                    title: "Status Order",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%"
+                },
+                DATE_ORDER: {
+                    title: "Tanggal Order",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%",
+                    valuePrepareFunction: function (date) {
+                        return __WEBPACK_IMPORTED_MODULE_4_moment__(date).format("DD-MM-YYYY");
+                    }
+                },
+                TOTAL_ITEM: {
+                    title: "Total Item",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "15%"
+                }
+            }
+        };
+        this.formData = {
+            periode: [
+                {
+                    id: "TW1",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "TW2",
+                    desc: "Triwulan 2"
+                },
+                {
+                    id: "TW3",
+                    desc: "Triwulan 3"
+                },
+                {
+                    id: "TW4",
+                    desc: "Triwulan 4"
+                }
+            ],
+            periodeSelected: "",
+            ikuData: [],
+            ikuSelected: "",
+            indicatorQualitativeData: [],
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
+            team: ""
+        };
+        this.barang = [];
+        this.merk = [];
+        this.order = [];
+        this.team = [];
+        this.orderDt = [];
+        this.dataFull = [];
+        this.dataReport = [];
+        this.getUserInfo();
+        this.getUsers();
+        this.getDataReport();
+    }
+    ReportPinjamComponent.prototype.onInputFieldChanged = function (event) {
+        console.log("onInputFieldChanged(): Value: ", event.value, " - dateFormat: ", event.dateFormat, " - valid: ", event.valid);
+        this.refreshData();
+    };
+    ReportPinjamComponent.prototype.getDataReport = function () {
+        var _this = this;
+        this.service
+            .getreq("report_assign_barangs")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                console.log(response);
+                response.forEach(function (element) {
+                    element.DATE_ASSIGN = __WEBPACK_IMPORTED_MODULE_4_moment__(element.DATE_ASSIGN).format("DD-MM-YYYY");
+                });
+                var arr = response.filter(function (item) {
+                    return item.TYPE_ASSIGN == "PINJAM";
+                });
+                if (arr != null) {
+                    _this.dataFull = arr;
+                }
+            }
+        });
+    };
+    ReportPinjamComponent.prototype.getUsers = function () {
+        var _this = this;
+        this.service
+            .getreq("mst_users")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                response = response.sort();
+                for (var i in response) {
+                    if (response[i].TEAM != "admin") {
+                        _this.team[i] =
+                            response[i].TEAM +
+                                " " +
+                                response[i].ID_USER +
+                                " " +
+                                response[i].USER_NAME;
+                    }
+                }
+            }
+        })
+            .then(function () {
+            _this.getOrder();
+        });
+    };
+    ReportPinjamComponent.prototype.refreshData = function () {
+        var _this = this;
+        console.log(this.dataFull);
+        console.log(this.findName(this.formData.team));
+        console.log(this.dateAssignment.jsdate);
+        this.dataReport = this.dataFull.filter(function (item) {
+            return (item.USER_ID == _this.findName(_this.formData.team) &&
+                item.DATE_ASSIGN ==
+                    __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
+        });
+        console.log(this.dataReport);
+    };
+    ReportPinjamComponent.prototype.getOrder = function () {
+        var _this = this;
+        this.service
+            .getreq("t_order_hds")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.order = response;
+            }
+        })
+            .then(function () {
+            _this.service
+                .getreq("t_order_dts")
+                .toPromise()
+                .then(function (response) {
+                if (response != null) {
+                    _this.orderDt = response;
+                    _this.order.forEach(function (element, ind) {
+                        var arr = response.filter(function (item) {
+                            return element.KD_ORDER == item.KD_ORDER;
+                        });
+                        console.log(arr);
+                        if (arr != null) {
+                            element.TOTAL_ITEM = arr.length;
+                        }
+                    });
+                    _this.tabledata = _this.order;
+                    _this.source.load(_this.tabledata);
+                    _this.refreshData();
+                }
+            });
+        });
+    };
+    ReportPinjamComponent.prototype.getBarang = function () {
+        var _this = this;
+        this.service
+            .getreq("m_barangs")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.barang = response;
+            }
+        });
+    };
+    ReportPinjamComponent.prototype.getMerk = function () {
+        var _this = this;
+        this.service
+            .getreq("m_merks")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.merk = response;
+            }
+        });
+    };
+    ReportPinjamComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+            }
+        });
+    };
+    // create(event) {
+    //   let arr = this.orderDt.filter(item => {
+    //     return item.KD_ORDER == event.data.KD_ORDER;
+    //   });
+    //   if (arr != null) {
+    //     arr.forEach(element => {
+    //       let arrBarang = this.barang.filter(item => {
+    //         return item.KD_BARANG == element.KD_BARANG;
+    //       });
+    //       if (arrBarang != null) {
+    //         element.NM_BARANG = arrBarang[0].NM_BARANG;
+    //       }
+    //       let arrMerk = this.merk.filter(item => {
+    //         return item.KD_MERK == element.KD_MERK;
+    //       });
+    //       if (arrMerk != null) {
+    //         element.NM_MERK = arrMerk[0].NM_MERK;
+    //       }
+    //     });
+    //     this.activeModal = this.modalService.open(ReportAtkModalComponent, {
+    //       windowClass: "xlModal",
+    //       container: "nb-layout",
+    //       backdrop: "static"
+    //     });
+    //     this.activeModal.componentInstance.dataSource = arr;
+    //   } else {
+    //     this.toastr.error("Data does not exist!");
+    //   }
+    // }
+    ReportPinjamComponent.prototype.loadData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var respIku, arr;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.service
+                            .getreq("mst_ikus")
+                            .toPromise()
+                            .then(function (response) {
+                            if (response != null) {
+                                respIku = response;
+                            }
+                        })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, respIku.filter(function (item) {
+                                return item.TIPE_IKU == "QUALITATIVE";
+                            })];
+                    case 2:
+                        arr = _a.sent();
+                        if (arr[0] != null) {
+                            this.formData.ikuData = arr;
+                        }
+                        else {
+                            this.toastr.error("Tidak Ditemukan IKU Qualitative Data");
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ReportPinjamComponent.prototype.changeApproveprint = function (event) {
+        console.log("woi");
+        console.log(this.selected);
+        this.selected = event.data;
+        if (event.data.STATUS_ORDER != "APPROVED") {
+            this.print = true;
+        }
+    };
+    ReportPinjamComponent.prototype.approve = function () {
+        var _this = this;
+        console.log(JSON.stringify(this.selected));
+        if (JSON.stringify(this.selected) === "{}") {
+            this.toastr.error("No Data Selected");
+        }
+        else {
+            this.tabledata.forEach(function (element) {
+                if (element.KD_ORDER == _this.selected.KD_ORDER) {
+                    element.STATUS_ORDER = "APPROVED";
+                }
+            });
+            this.selected.STATUS_ORDER = "APPROVED";
+            var data = this.selected;
+            console.log(data);
+            this.service.patchreq("t_order_hds", data).subscribe(function (response) {
+                console.log(response);
+                _this.refreshData();
+                _this.toastr.success("Data Updated!");
+            }, function (error) {
+                //console.log("indicator detail");
+                console.log(error);
+                _this.toastr.error("Data Error!");
+            });
+        }
+    };
+    ReportPinjamComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KODE_IKU == event.newData.KODE_IKU) {
+                element.KODE_IKU = event.newData.KODE_IKU;
+                element.DESKRIPSI = event.newData.DESKRIPSI;
+                element.TIPE_IKU = event.newData.TIPE_IKU;
+                _this.service
+                    .patchreq("mst_ikus", _this.tabledata[ind])
+                    .subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    ReportPinjamComponent.prototype.updateData = function () {
+        var _this = this;
+        var kd_order = this.generateCode();
+        this.tabledata.forEach(function (element) {
+            element.KD_ORDER = kd_order;
+        });
+        var data = {
+            KD_ORDER: kd_order,
+            TEAM_ID: this.user.TEAM,
+            USER_ID: this.user.ID_USER,
+            DEPARTMENT: "",
+            DATE_ORDER: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+            STATUS_ORDER: "CONFIRMED",
+            USER_TRANSACTION: this.user.USER_NAME,
+            DATE_TIME_TRANSACTION: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        this.service.postreq("t_order_hds", data).subscribe(function (response) {
+            console.log(response);
+            _this.toastr.success("Data Saved!");
+            _this.tabledata.forEach(function (element) {
+                _this.service.postreq("t_order_dts", element).subscribe(function (response) {
+                    console.log(response);
+                }, function (error) {
+                    //console.log("indicator detail");
+                    console.log(error);
+                });
+            });
+        }, function (error) {
+            //console.log("indicator detail");
+            console.log(error);
+            _this.toastr.error("Data Error!");
+        });
+    };
+    ReportPinjamComponent.prototype.generateCode = function () {
+        var counter = this.order.length + 1;
+        if (counter < 10) {
+            return "OR00" + counter.toString();
+        }
+        else if (counter < 100) {
+            return "OR0" + counter.toString();
+        }
+        else if (counter < 1000) {
+            return "OR" + counter.toString();
+        }
+    };
+    ReportPinjamComponent.prototype.findName = function (team) {
+        var result = "";
+        var safeI = 0;
+        for (var i = 0; i < team.length; i++) {
+            if (team.charAt(i) == " " && safeI > 0) {
+                break;
+            }
+            if (team.charAt(i) == " " && safeI == 0) {
+                safeI = i;
+            }
+            if (i > safeI && safeI != 0) {
+                result = result + team.charAt(i);
+            }
+            console.log(result);
+            console.log(safeI);
+        }
+        return result;
+    };
+    ReportPinjamComponent.prototype.printPdf = function (id) {
+        ////console.log(this.dataInput);
+        var element = document.getElementById(id);
+        var divHeight = element.offsetHeight;
+        var divWidth = element.offsetWidth;
+        var ratio = divHeight / divWidth;
+        // Create your table here (The dynamic table needs to be converted to canvas).
+        __WEBPACK_IMPORTED_MODULE_9_html2canvas__(element, {
+            useCORS: true
+        }).then(function (canvas) {
+            var width = canvas.width;
+            var height = canvas.height;
+            var imgData = canvas.toDataURL("image/png");
+            var orientation = element.id == "print_tab1" ? "portrait" : "landscape";
+            var doc = new __WEBPACK_IMPORTED_MODULE_8_jspdf__({
+                orientation: "landscape",
+                unit: "mm",
+                format: [Math.floor(width * 0.264583) + 5, 210]
+            });
+            doc.addImage(canvas.toDataURL("image/PNG"), "PNG", 2, 2);
+            doc.save("Report-" + Date.now() + ".pdf");
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], ReportPinjamComponent.prototype, "myForm", void 0);
+    ReportPinjamComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-report-assignment",
+            template: __webpack_require__("./src/app/pages/transaction/report-pinjam/report.pinjam.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_7__nebular_auth__["e" /* NbAuthService */]])
+    ], ReportPinjamComponent);
+    return ReportPinjamComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/transaction/transaction.component.html":
 /***/ (function(module, exports) {
 
@@ -32974,12 +34596,20 @@ var TransactionModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__report_atk_modal_report_atk_modal_component__ = __webpack_require__("./src/app/pages/transaction/report-atk/modal/report.atk.modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__report_assignment_report_assignment_component__ = __webpack_require__("./src/app/pages/transaction/report-assignment/report.assignment.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__report_beli_report_beli_component__ = __webpack_require__("./src/app/pages/transaction/report-beli/report.beli.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__assignment_pinjam_assignment_pinjam_component__ = __webpack_require__("./src/app/pages/transaction/assignment-pinjam/assignment.pinjam.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__assignment_kembali_assignment_kembali_component__ = __webpack_require__("./src/app/pages/transaction/assignment-kembali/assignment.kembali.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__report_pinjam_report_pinjam_component__ = __webpack_require__("./src/app/pages/transaction/report-pinjam/report.pinjam.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__report_kembali_report_kembali_component__ = __webpack_require__("./src/app/pages/transaction/report-kembali/report.kembali.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -33069,7 +34699,23 @@ var routes = [
             {
                 path: "report-beli",
                 component: __WEBPACK_IMPORTED_MODULE_24__report_beli_report_beli_component__["a" /* ReportBeliComponent */]
-            }
+            },
+            {
+                path: "assignment-pinjam",
+                component: __WEBPACK_IMPORTED_MODULE_25__assignment_pinjam_assignment_pinjam_component__["a" /* AssignmentPinjamComponent */]
+            },
+            {
+                path: "assignment-kembali",
+                component: __WEBPACK_IMPORTED_MODULE_26__assignment_kembali_assignment_kembali_component__["a" /* AssignmentKembaliComponent */]
+            },
+            {
+                path: "report-pinjam",
+                component: __WEBPACK_IMPORTED_MODULE_27__report_pinjam_report_pinjam_component__["a" /* ReportPinjamComponent */]
+            },
+            {
+                path: "report-kembali",
+                component: __WEBPACK_IMPORTED_MODULE_28__report_kembali_report_kembali_component__["a" /* ReportKembaliComponent */]
+            },
         ]
     }
 ];
@@ -33108,7 +34754,11 @@ var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_14__realisasi_strategic_realisasi_strategic_component__["a" /* RealisasiStrategicComponent */],
     __WEBPACK_IMPORTED_MODULE_16__moka_chart_moka_chart_component__["a" /* MokaChartComponent */],
     __WEBPACK_IMPORTED_MODULE_23__report_assignment_report_assignment_component__["a" /* ReportAssignmentComponent */],
-    __WEBPACK_IMPORTED_MODULE_24__report_beli_report_beli_component__["a" /* ReportBeliComponent */]
+    __WEBPACK_IMPORTED_MODULE_24__report_beli_report_beli_component__["a" /* ReportBeliComponent */],
+    __WEBPACK_IMPORTED_MODULE_25__assignment_pinjam_assignment_pinjam_component__["a" /* AssignmentPinjamComponent */],
+    __WEBPACK_IMPORTED_MODULE_26__assignment_kembali_assignment_kembali_component__["a" /* AssignmentKembaliComponent */],
+    __WEBPACK_IMPORTED_MODULE_28__report_kembali_report_kembali_component__["a" /* ReportKembaliComponent */],
+    __WEBPACK_IMPORTED_MODULE_27__report_pinjam_report_pinjam_component__["a" /* ReportPinjamComponent */]
 ];
 
 

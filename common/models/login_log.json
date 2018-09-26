@@ -6,15 +6,23 @@
     "validateUpsert": true
   },
   "properties": {
+    "COMPONENT": {
+      "type": "string",
+      "required": true
+
+    },
     "USERNAME": {
       "type": "string",
       "required": true
 
     },
+    "USER_ID": {
+      "type": "string",
+      "required": true
+    },
     "DATETIME_LOGIN": {
       "type": "date",
       "required": true
-
     }
   },
   "validations": [],

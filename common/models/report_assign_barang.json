@@ -69,6 +69,10 @@
       "DATE_TIME_TRANSACTION": {
         "type": "date",
         "required": true
+      },
+      "TYPE_ASSIGN": {
+        "type": "string",
+        "required": true
       }
   
     },
