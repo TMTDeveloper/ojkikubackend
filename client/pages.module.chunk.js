@@ -172,10 +172,6 @@ var MENU_ITEM_ADMIN = [
             {
                 title: "Realisasi MOKA",
                 link: "/pages/transaction/moka-realisasi"
-            },
-            {
-                title: "Chart MOKA",
-                link: "/pages/transaction/moka-chart"
             }
         ]
     }
@@ -242,10 +238,6 @@ var MENU_ITEM_USER = [
             {
                 title: "Realisasi MOKA",
                 link: "/pages/transaction/moka-realisasi"
-            },
-            {
-                title: "Chart MOKA",
-                link: "/pages/transaction/moka-chart"
             }
         ]
     }
@@ -288,12 +280,8 @@ var MENU_MONI = [
                 link: "/pages/transaction/beli-barang"
             },
             {
-                title: "Detail Atk",
+                title: "Order Atk",
                 link: "/pages/transaction/detail-atk"
-            },
-            {
-                title: "Report Atk",
-                link: "/pages/transaction/report-atk"
             },
             {
                 title: "Peminjaman Barang",
@@ -324,6 +312,14 @@ var MENU_MONI = [
             {
                 title: "Report Beli",
                 link: "/pages/transaction/report-beli"
+            },
+            {
+                title: "Report Atk",
+                link: "/pages/transaction/report-atk"
+            },
+            {
+                title: "Report Inventory",
+                link: "/pages/transaction/report-inv"
             }
         ]
     }

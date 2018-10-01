@@ -33134,7 +33134,7 @@ var ReportIkuComponent = /** @class */ (function () {
 /***/ "./src/app/pages/report/report-moka/report.moka.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>MOKA Realisasi</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-4\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Dokumen\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\r\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.DOC_NAME}}\">{{ data.DOC_NAME }}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Bank\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\r\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.documentSelected||!formData.bankSelected\" \r\n        (click)=\"getData()\">Get Data</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n\r\n<nb-card>\r\n  <nb-card-body>\r\n    <div class=\"ikureportable\">\r\n      <table class=\"table table-hover\">\r\n        <thead>\r\n          <tr>\r\n            <th>Tipe Dokumen</th>\r\n            <th>Tahun</th>\r\n            <th>Keterangan</th>\r\n            <th>Start Date</th>\r\n            <th>Target Date</th>\r\n            <th>Realization Date</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n            <tr *ngFor=\"let item of tabledata\" [ngClass]=\"{'table-success': item.WARNA == 0, 'table-warning': item.WARNA == 3, 'table-danger': item.WARNA > 3}\">\r\n                <td >{{ item.TIPE_DOKUMEN }}</td>\r\n                <td>{{ item.YEAR }}</td>\r\n                <td>{{ item.KETERANGAN }}</td>\r\n                <td >{{ item.START_DATE }}</td>\r\n                <td>{{ item.TARGET_DATE }}</td>\r\n                <td >{{ item.REALIZATION_DATE }}</td>\r\n              </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>MOKA Realisasi</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-4\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Dokumen\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\r\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.DOC_NAME}}\">{{ data.DOC_NAME }}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Bank\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\r\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.documentSelected||!formData.bankSelected\"\r\n          (click)=\"getData()\">Get Data</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n\r\n<nb-card>\r\n  <nb-card-body>\r\n    <div class=\"ikureportable\">\r\n      <table class=\"table table-hover\">\r\n        <thead>\r\n          <tr>\r\n            <th>Tipe Dokumen</th>\r\n            <th>Tahun</th>\r\n            <th>Keterangan</th>\r\n            <th>Start Date</th>\r\n            <th>Target Date</th>\r\n            <th>Realization Date</th>\r\n            <th>Status</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of tabledata\" [ngClass]=\"{'table-success': item.WARNA == 0, 'table-warning': item.WARNA == 3, 'table-danger': item.WARNA > 3,'table-info':item.WARNA==1}\">\r\n            <td>{{ item.TIPE_DOKUMEN }}</td>\r\n            <td>{{ item.YEAR }}</td>\r\n            <td>{{ item.KETERANGAN }}</td>\r\n            <td>{{ item.START_DATE }}</td>\r\n            <td>{{ item.TARGET_DATE }}</td>\r\n            <td>{{ item.REALIZATION_DATE }}</td>\r\n            <td>{{ item.WARNA==3?'Tepat Waktu':item.WARNA==0?'Lebih Cepat':item.WARNA==1?'Realization Date\r\n              Kosong':'Terlambat' }}</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -33270,36 +33270,36 @@ var ReportMokaComponent = /** @class */ (function () {
                     type: "date",
                     filter: false,
                     editable: false,
-                    width: "5%",
+                    width: "5%"
                 },
                 REALIZATION_DATE: {
                     title: "Realization Date",
                     type: "string",
                     filter: false,
                     editable: true,
-                    width: "15%",
+                    width: "15%"
                 },
                 KETERANGAN: {
                     title: "Keterangan",
                     type: "string",
                     filter: false,
                     editable: true,
-                    width: "20%",
+                    width: "20%"
                 },
                 UPDATEBY_USER: {
                     title: "Updated By",
                     type: "string",
                     filter: false,
                     editable: true,
-                    width: "10%",
+                    width: "10%"
                 },
                 USER_REALIZATION: {
                     title: "Updated",
                     type: "string",
                     filter: false,
                     editable: false,
-                    width: "10%",
-                },
+                    width: "10%"
+                }
             }
         };
         this.formData = {
@@ -33323,7 +33323,7 @@ var ReportMokaComponent = /** @class */ (function () {
         this.service.getreq("mst_documents").subscribe(function (response) {
             if (response != null) {
                 var documentFilter = response.filter(function (item) {
-                    return (item.FLAG == 'Y');
+                    return item.FLAG == "Y";
                 });
                 if (documentFilter[0] != null) {
                     _this.formData.documentData = documentFilter;
@@ -33337,14 +33337,20 @@ var ReportMokaComponent = /** @class */ (function () {
             var monaTargetData, monaRealisasi, arrMonaTargetData, monaTargetdetail_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.service.getreq("trn_monas").toPromise().then(function (resp) {
+                    case 0: return [4 /*yield*/, this.service
+                            .getreq("trn_monas")
+                            .toPromise()
+                            .then(function (resp) {
                             if (resp != null) {
                                 monaTargetData = resp;
                             }
                         })];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.service.getreq("trn_mona_realizations").toPromise().then(function (res) {
+                        return [4 /*yield*/, this.service
+                                .getreq("trn_mona_realizations")
+                                .toPromise()
+                                .then(function (res) {
                                 if (res != null) {
                                     monaRealisasi = res;
                                 }
@@ -33382,7 +33388,7 @@ var ReportMokaComponent = /** @class */ (function () {
                                 detail.START_DATE = __WEBPACK_IMPORTED_MODULE_1_moment__(element.START_DATE).format("DD/MM/YYYY");
                                 detail.TARGET_DATE = __WEBPACK_IMPORTED_MODULE_1_moment__(element.TARGET_DATE).format("DD/MM/YYYY");
                                 var arrBank = _this.formData.bankData.filter(function (item) {
-                                    return (item.ID_BANK == element.ID_BANK);
+                                    return item.ID_BANK == element.ID_BANK;
                                 });
                                 if (arrBank[0] != null) {
                                     detail.ID_BANK = arrBank[0].DESCRIPTION;
@@ -33392,19 +33398,22 @@ var ReportMokaComponent = /** @class */ (function () {
                                         items.TIPE_DOKUMEN == detail.TIPE_DOKUMEN &&
                                         items.YEAR == detail.YEAR);
                                 });
+                                if (detail.REALIZATION_DATE === "") {
+                                    detail.WARNA = "1";
+                                }
                                 if (arrs[0] != null) {
                                     if (arrs[0].REALIZATION_DATE != null) {
                                         detail.REALIZATION_DATE = __WEBPACK_IMPORTED_MODULE_1_moment__(arrs[0].REALIZATION_DATE).format("DD/MM/YYYY");
                                         detail.UPDATEBY_USER = arrs[0].UPDATEBY_USER;
                                     }
-                                    if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YY").isSame(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YY")) == true) {
-                                        detail.WARNA = "0";
+                                    if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YYYY").isSame(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YYYY")) == true) {
+                                        detail.WARNA = "3"; //warning
                                     }
-                                    else if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YY").isSameOrBefore(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YY").add(3, 'd')) == true) {
-                                        detail.WARNA = "3";
+                                    else if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YYYY").isBefore(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YYYY")) == true) {
+                                        detail.WARNA = "0"; //success
                                     }
-                                    else if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YY").isSameOrAfter(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YY").add(5, 'd')) == true) {
-                                        detail.WARNA = "5";
+                                    else if (__WEBPACK_IMPORTED_MODULE_1_moment__(detail.REALIZATION_DATE, "DD/MM/YYYY").isAfter(__WEBPACK_IMPORTED_MODULE_1_moment__(detail.TARGET_DATE, "DD/MM/YYYY")) == true) {
+                                        detail.WARNA = "5"; //merah
                                     }
                                     detail.KETERANGAN = arrs[0].KETERANGAN;
                                     detail.USER_REALIZATION = arrs[0].USER_REALIZATION;
@@ -33480,13 +33489,15 @@ var ReportMokaComponent = /** @class */ (function () {
         var str = value.split("/");
         return str[2] + "-" + str[1] + "-" + str[0];
     };
+    ReportMokaComponent.prototype.stringify = function (table) {
+        return JSON.stringify(table);
+    };
     ReportMokaComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-report-moka",
             template: __webpack_require__("./src/app/pages/report/report-moka/report.moka.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__core_data_backend_service__["a" /* BackendService */],
-            __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__core_data_backend_service__["a" /* BackendService */], __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]])
     ], ReportMokaComponent);
     return ReportMokaComponent;
 }());

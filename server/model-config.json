@@ -142,5 +142,9 @@
   "report_beli_barang": {
     "dataSource": "ikudb",
     "public": true
+  },
+  "cek_stock": {
+    "dataSource": "ikudb",
+    "public": true
   }
 }

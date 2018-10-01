@@ -25754,26 +25754,36 @@ var BeliBarangComponent = /** @class */ (function () {
     };
     BeliBarangComponent.prototype.updateData = function () {
         var _this = this;
-        var data = {
-            KD_BELI: this.generateCode(),
-            KD_BARANG: this.formData.barang,
-            KD_MERK: this.formData.merk,
-            SERIAL_NUMBER: this.formData.serialNumber,
-            QTY_BELI: this.formData.qty,
-            STATUS: this.formData.status.toUpperCase(),
-            TANGGAL_BELI: this.dateAssignment.jsdate,
-            HARGA_UNIT: this.formData.harga,
-            USER_TRANSACTION: this.user.ID_USER,
-            DATE_TIME_TRANSACTION: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
-        };
-        console.log(this.dateAssignment);
-        console.log(data);
-        console.log(this.assignments);
-        this.service.postreq("t_beli_barangs", data).subscribe(function (response) {
-            _this.toastr.success("Data Saved!");
-        }, function (error) {
-            _this.toastr.error("Data Error!");
-            console.log(error);
+        this.service
+            .getreq("t_beli_barangs")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.assignments = response;
+            }
+        })
+            .then(function () {
+            var data = {
+                KD_BELI: _this.generateCode(),
+                KD_BARANG: _this.formData.barang,
+                KD_MERK: _this.formData.merk,
+                SERIAL_NUMBER: _this.formData.serialNumber,
+                QTY_BELI: _this.formData.qty,
+                STATUS: _this.formData.status.toUpperCase(),
+                TANGGAL_BELI: _this.dateAssignment.jsdate,
+                HARGA_UNIT: _this.formData.harga,
+                USER_TRANSACTION: _this.user.ID_USER,
+                DATE_TIME_TRANSACTION: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+            };
+            console.log(_this.dateAssignment);
+            console.log(data);
+            console.log(_this.assignments);
+            _this.service.postreq("t_beli_barangs", data).subscribe(function (response) {
+                _this.toastr.success("Data Saved!");
+            }, function (error) {
+                _this.toastr.error("Data Error!");
+                console.log(error);
+            });
         });
     };
     BeliBarangComponent.prototype.generateCode = function () {
@@ -33341,6 +33351,574 @@ var ReportBeliComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pages/transaction/report-inv/report.inv.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nb-card>\r\n  <nb-card-header>Report Inventory</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Barang\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barangSelected\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of barang | orderBy \" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG==''?\"\":data.KD_BARANG+\"\r\n            \"+\"-\"+\" \"+data.NM_BARANG}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Merk\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merkSelected\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of merk | orderBy \" value=\"{{data.KD_MERK}}\">{{data.KD_MERK==''?\"\":data.KD_MERK+\" \"+\"-\"+\" \"+data.NM_MERK}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Flag Active</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY}}</td>\r\n              <td>{{ item.FLAG_ACTIVE}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\">Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/transaction/report-inv/report.inv.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportInvComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_jspdf__ = __webpack_require__("./node_modules/jspdf/dist/jspdf.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_jspdf___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_jspdf__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_html2canvas__ = __webpack_require__("./node_modules/html2canvas/dist/npm/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_html2canvas___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_html2canvas__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+
+
+
+var ReportInvComponent = /** @class */ (function () {
+    function ReportInvComponent(modalService, toastr, service, authService) {
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.service = service;
+        this.authService = authService;
+        this.myDatePickerOptions = {
+            // other options...
+            dateFormat: "dd-mm-yyyy"
+        };
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.approved = true;
+        this.print = true;
+        this.tabledata = [];
+        this.dateAssignment = { jsdate: __WEBPACK_IMPORTED_MODULE_4_moment__().format() };
+        this.selected = {};
+        this.settings = {
+            add: {
+                addButtonContent: '<i class="nb-plus"></i>',
+                createButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmCreate: false
+            },
+            edit: {
+                editButtonContent: '<i class="ion-search"></i>',
+                saveButtonContent: '<i class="nb-checkmark"></i>',
+                cancelButtonContent: '<i class="nb-close"></i>',
+                confirmSave: true
+            },
+            delete: {
+                deleteButtonContent: '<i class="nb-trash"></i>',
+                confirmDelete: false
+            },
+            mode: "external",
+            sort: true,
+            hideSubHeader: true,
+            actions: {
+                add: true,
+                edit: true,
+                delete: false,
+                position: "right",
+                columnTitle: "Detail",
+                width: "10%"
+            },
+            pager: {
+                display: true,
+                perPage: 30
+            },
+            columns: {
+                KD_ASSIGN: {
+                    title: "Kode Assign",
+                    type: "number",
+                    filter: false,
+                    editable: false,
+                    width: "10%"
+                },
+                KD_BARANG: {
+                    title: "User ID",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%"
+                },
+                STATUS_ORDER: {
+                    title: "Status Order",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%"
+                },
+                DATE_ORDER: {
+                    title: "Tanggal Order",
+                    type: "string",
+                    filter: true,
+                    editable: false,
+                    width: "30%",
+                    valuePrepareFunction: function (date) {
+                        return __WEBPACK_IMPORTED_MODULE_4_moment__(date).format("DD-MM-YYYY");
+                    }
+                },
+                TOTAL_ITEM: {
+                    title: "Total Item",
+                    type: "number",
+                    filter: false,
+                    editable: true,
+                    width: "15%"
+                }
+            }
+        };
+        this.formData = {
+            periode: [
+                {
+                    id: "TW1",
+                    desc: "Triwulan 1"
+                },
+                {
+                    id: "TW2",
+                    desc: "Triwulan 2"
+                },
+                {
+                    id: "TW3",
+                    desc: "Triwulan 3"
+                },
+                {
+                    id: "TW4",
+                    desc: "Triwulan 4"
+                }
+            ],
+            periodeSelected: "",
+            ikuData: [],
+            ikuSelected: "",
+            indicatorQualitativeData: [],
+            yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
+            team: "",
+            barangSelected: "",
+            merkSelected: ""
+        };
+        this.barang = [];
+        this.merk = [];
+        this.order = [];
+        this.team = [];
+        this.orderDt = [];
+        this.dataFull = [];
+        this.dataReport = [];
+        this.getUserInfo();
+        this.getUsers();
+        this.getDataReport();
+        this.getBarang();
+        this.getMerk();
+    }
+    ReportInvComponent.prototype.onInputFieldChanged = function (event) {
+        console.log("onInputFieldChanged(): Value: ", event.value, " - dateFormat: ", event.dateFormat, " - valid: ", event.valid);
+        this.refreshData();
+    };
+    ReportInvComponent.prototype.getDataReport = function () {
+        var _this = this;
+        this.service
+            .getreq("CEK_STOCKS")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                console.log(response);
+                _this.dataFull = response;
+            }
+        });
+    };
+    ReportInvComponent.prototype.getUsers = function () {
+        var _this = this;
+        this.service
+            .getreq("mst_users")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                response = response.sort();
+                for (var i in response) {
+                    if (response[i].TEAM != "admin") {
+                        _this.team[i] =
+                            response[i].TEAM +
+                                " " +
+                                response[i].ID_USER +
+                                " " +
+                                response[i].USER_NAME;
+                    }
+                }
+            }
+        })
+            .then(function () {
+            _this.getOrder();
+        });
+    };
+    ReportInvComponent.prototype.refreshData = function () {
+        var _this = this;
+        // console.log(this.dataFull);
+        // console.log(this.findName(this.formData.team));
+        // console.log(moment(this.dateAssignment.jsdate).format("DD-MM-YYYY"));
+        // this.dataReport = this.dataFull.filter(item => {
+        //   return (
+        //     item.ID_USER == this.findName(this.formData.team) &&
+        //     item.TANGGAL_BELI ==
+        //       moment(this.dateAssignment.jsdate).format("DD-MM-YYYY")
+        //   );
+        // });
+        // console.log(this.dataReport);
+        this.dataReport = this.dataFull.filter(function (item) {
+            return _this.formData.barangSelected == "" ||
+                _this.formData.merkSelected == ""
+                ? item.KD_BARANG == _this.formData.barangSelected ||
+                    item.KD_MERK == _this.formData.merkSelected
+                : item.KD_BARANG == _this.formData.barangSelected &&
+                    item.KD_MERK == _this.formData.merkSelected;
+        });
+        console.log(this.formData);
+        console.log(this.dataReport);
+    };
+    ReportInvComponent.prototype.getOrder = function () {
+        var _this = this;
+        this.service
+            .getreq("t_order_hds")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                _this.order = response;
+            }
+        })
+            .then(function () {
+            _this.service
+                .getreq("t_order_dts")
+                .toPromise()
+                .then(function (response) {
+                if (response != null) {
+                    _this.orderDt = response;
+                    _this.order.forEach(function (element, ind) {
+                        var arr = response.filter(function (item) {
+                            return element.KD_ORDER == item.KD_ORDER;
+                        });
+                        console.log(arr);
+                        if (arr != null) {
+                            element.TOTAL_ITEM = arr.length;
+                        }
+                    });
+                    _this.tabledata = _this.order;
+                    _this.source.load(_this.tabledata);
+                    _this.refreshData();
+                }
+            });
+        });
+    };
+    ReportInvComponent.prototype.getBarang = function () {
+        var _this = this;
+        this.service
+            .getreq("m_barangs")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                response.push({
+                    KD_BARANG: "",
+                    NM_BARANG: "",
+                    FLAG_ACTIVE: "",
+                    USER_UPDATE: "",
+                    DATETIME_UPDATE: ""
+                });
+                _this.barang = response;
+            }
+        });
+    };
+    ReportInvComponent.prototype.getMerk = function () {
+        var _this = this;
+        this.service
+            .getreq("m_merks")
+            .toPromise()
+            .then(function (response) {
+            if (response != null) {
+                response.push({
+                    KD_MERK: "",
+                    NM_MERK: "",
+                    FLAG_ACTIVE: "",
+                    USER_UPDATE: "",
+                    DATETIME_UPDATE: ""
+                });
+                _this.merk = response;
+            }
+        });
+    };
+    ReportInvComponent.prototype.getUserInfo = function () {
+        var _this = this;
+        this.authService.onTokenChange().subscribe(function (token) {
+            if (token.isValid()) {
+                _this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+            }
+        });
+    };
+    // create(event) {
+    //   let arr = this.orderDt.filter(item => {
+    //     return item.KD_ORDER == event.data.KD_ORDER;
+    //   });
+    //   if (arr != null) {
+    //     arr.forEach(element => {
+    //       let arrBarang = this.barang.filter(item => {
+    //         return item.KD_BARANG == element.KD_BARANG;
+    //       });
+    //       if (arrBarang != null) {
+    //         element.NM_BARANG = arrBarang[0].NM_BARANG;
+    //       }
+    //       let arrMerk = this.merk.filter(item => {
+    //         return item.KD_MERK == element.KD_MERK;
+    //       });
+    //       if (arrMerk != null) {
+    //         element.NM_MERK = arrMerk[0].NM_MERK;
+    //       }
+    //     });
+    //     this.activeModal = this.modalService.open(ReportAtkModalComponent, {
+    //       windowClass: "xlModal",
+    //       container: "nb-layout",
+    //       backdrop: "static"
+    //     });
+    //     this.activeModal.componentInstance.dataSource = arr;
+    //   } else {
+    //     this.toastr.error("Data does not exist!");
+    //   }
+    // }
+    ReportInvComponent.prototype.loadData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var respIku, arr;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.service
+                            .getreq("mst_ikus")
+                            .toPromise()
+                            .then(function (response) {
+                            if (response != null) {
+                                respIku = response;
+                            }
+                        })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, respIku.filter(function (item) {
+                                return item.TIPE_IKU == "QUALITATIVE";
+                            })];
+                    case 2:
+                        arr = _a.sent();
+                        if (arr[0] != null) {
+                            this.formData.ikuData = arr;
+                        }
+                        else {
+                            this.toastr.error("Tidak Ditemukan IKU Qualitative Data");
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ReportInvComponent.prototype.changeApproveprint = function (event) {
+        console.log("woi");
+        console.log(this.selected);
+        this.selected = event.data;
+        if (event.data.STATUS_ORDER != "APPROVED") {
+            this.print = true;
+        }
+    };
+    ReportInvComponent.prototype.approve = function () {
+        var _this = this;
+        console.log(JSON.stringify(this.selected));
+        if (JSON.stringify(this.selected) === "{}") {
+            this.toastr.error("No Data Selected");
+        }
+        else {
+            this.tabledata.forEach(function (element) {
+                if (element.KD_ORDER == _this.selected.KD_ORDER) {
+                    element.STATUS_ORDER = "APPROVED";
+                }
+            });
+            this.selected.STATUS_ORDER = "APPROVED";
+            var data = this.selected;
+            console.log(data);
+            this.service.patchreq("t_order_hds", data).subscribe(function (response) {
+                console.log(response);
+                _this.refreshData();
+                _this.toastr.success("Data Updated!");
+            }, function (error) {
+                //console.log("indicator detail");
+                console.log(error);
+                _this.toastr.error("Data Error!");
+            });
+        }
+    };
+    ReportInvComponent.prototype.submit = function (event) {
+        var _this = this;
+        this.tabledata.forEach(function (element, ind) {
+            if (element.KODE_IKU == event.newData.KODE_IKU) {
+                element.KODE_IKU = event.newData.KODE_IKU;
+                element.DESKRIPSI = event.newData.DESKRIPSI;
+                element.TIPE_IKU = event.newData.TIPE_IKU;
+                _this.service
+                    .patchreq("mst_ikus", _this.tabledata[ind])
+                    .subscribe(function (response) {
+                    console.log(JSON.stringify(response));
+                    event.confirm.resolve(event.newData);
+                    _this.toastr.success("Data Updated!");
+                });
+            }
+        });
+    };
+    ReportInvComponent.prototype.updateData = function () {
+        var _this = this;
+        var kd_order = this.generateCode();
+        this.tabledata.forEach(function (element) {
+            element.KD_ORDER = kd_order;
+        });
+        var data = {
+            KD_ORDER: kd_order,
+            TEAM_ID: this.user.TEAM,
+            USER_ID: this.user.ID_USER,
+            DEPARTMENT: "",
+            DATE_ORDER: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
+            STATUS_ORDER: "CONFIRMED",
+            USER_TRANSACTION: this.user.USER_NAME,
+            DATE_TIME_TRANSACTION: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
+        };
+        this.service.postreq("t_order_hds", data).subscribe(function (response) {
+            console.log(response);
+            _this.toastr.success("Data Saved!");
+            _this.tabledata.forEach(function (element) {
+                _this.service.postreq("t_order_dts", element).subscribe(function (response) {
+                    console.log(response);
+                }, function (error) {
+                    //console.log("indicator detail");
+                    console.log(error);
+                });
+            });
+        }, function (error) {
+            //console.log("indicator detail");
+            console.log(error);
+            _this.toastr.error("Data Error!");
+        });
+    };
+    ReportInvComponent.prototype.generateCode = function () {
+        var counter = this.order.length + 1;
+        if (counter < 10) {
+            return "OR00" + counter.toString();
+        }
+        else if (counter < 100) {
+            return "OR0" + counter.toString();
+        }
+        else if (counter < 1000) {
+            return "OR" + counter.toString();
+        }
+    };
+    ReportInvComponent.prototype.findName = function (team) {
+        var result = "";
+        var safeI = 0;
+        for (var i = 0; i < team.length; i++) {
+            if (team.charAt(i) == " " && safeI > 0) {
+                break;
+            }
+            if (team.charAt(i) == " " && safeI == 0) {
+                safeI = i;
+            }
+            if (i > safeI && safeI != 0) {
+                result = result + team.charAt(i);
+            }
+            console.log(result);
+            console.log(safeI);
+        }
+        return result;
+    };
+    ReportInvComponent.prototype.printPdf = function (id) {
+        ////console.log(this.dataInput);
+        var element = document.getElementById(id);
+        var divHeight = element.offsetHeight;
+        var divWidth = element.offsetWidth;
+        var ratio = divHeight / divWidth;
+        // Create your table here (The dynamic table needs to be converted to canvas).
+        __WEBPACK_IMPORTED_MODULE_9_html2canvas__(element, {
+            useCORS: true
+        }).then(function (canvas) {
+            var width = canvas.width;
+            var height = canvas.height;
+            var imgData = canvas.toDataURL("image/png");
+            var orientation = element.id == "print_tab1" ? "portrait" : "landscape";
+            var doc = new __WEBPACK_IMPORTED_MODULE_8_jspdf__({
+                orientation: "landscape",
+                unit: "mm",
+                format: [Math.floor(width * 0.264583) + 5, 210]
+            });
+            doc.addImage(canvas.toDataURL("image/PNG"), "PNG", 2, 2);
+            doc.save("Report-" + Date.now() + ".pdf");
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
+    ], ReportInvComponent.prototype, "myForm", void 0);
+    ReportInvComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: "ngx-report-inv",
+            template: __webpack_require__("./src/app/pages/transaction/report-inv/report.inv.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
+            __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__["a" /* BackendService */],
+            __WEBPACK_IMPORTED_MODULE_7__nebular_auth__["e" /* NbAuthService */]])
+    ], ReportInvComponent);
+    return ReportInvComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/transaction/report-kembali/report.kembali.component.html":
 /***/ (function(module, exports) {
 
@@ -34600,12 +35178,14 @@ var TransactionModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__assignment_kembali_assignment_kembali_component__ = __webpack_require__("./src/app/pages/transaction/assignment-kembali/assignment.kembali.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__report_pinjam_report_pinjam_component__ = __webpack_require__("./src/app/pages/transaction/report-pinjam/report.pinjam.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__report_kembali_report_kembali_component__ = __webpack_require__("./src/app/pages/transaction/report-kembali/report.kembali.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__report_inv_report_inv_component__ = __webpack_require__("./src/app/pages/transaction/report-inv/report.inv.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -34716,6 +35296,10 @@ var routes = [
                 path: "report-kembali",
                 component: __WEBPACK_IMPORTED_MODULE_28__report_kembali_report_kembali_component__["a" /* ReportKembaliComponent */]
             },
+            {
+                path: "report-inv",
+                component: __WEBPACK_IMPORTED_MODULE_29__report_inv_report_inv_component__["a" /* ReportInvComponent */]
+            }
         ]
     }
 ];
@@ -34758,7 +35342,8 @@ var routedComponents = [
     __WEBPACK_IMPORTED_MODULE_25__assignment_pinjam_assignment_pinjam_component__["a" /* AssignmentPinjamComponent */],
     __WEBPACK_IMPORTED_MODULE_26__assignment_kembali_assignment_kembali_component__["a" /* AssignmentKembaliComponent */],
     __WEBPACK_IMPORTED_MODULE_28__report_kembali_report_kembali_component__["a" /* ReportKembaliComponent */],
-    __WEBPACK_IMPORTED_MODULE_27__report_pinjam_report_pinjam_component__["a" /* ReportPinjamComponent */]
+    __WEBPACK_IMPORTED_MODULE_27__report_pinjam_report_pinjam_component__["a" /* ReportPinjamComponent */],
+    __WEBPACK_IMPORTED_MODULE_29__report_inv_report_inv_component__["a" /* ReportInvComponent */]
 ];
 
 

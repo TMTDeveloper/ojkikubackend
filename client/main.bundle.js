@@ -887,7 +887,8 @@ var NgxLoginMoniComponent = /** @class */ (function () {
                             console.log(error);
                         });
                     }
-                });
+                }).unsubscribe();
+                ;
                 setTimeout(function () {
                     return _this.router.navigateByUrl(redirect);
                 }, _this.redirectDelay);
@@ -1023,7 +1024,9 @@ var NgxLoginComponent = /** @class */ (function () {
                     _this.cookie.deleteAll();
                     _this.cookie.set("Type", "mona");
                 }
-                _this.service.onTokenChange().subscribe(function (token) {
+                _this.service
+                    .onTokenChange()
+                    .subscribe(function (token) {
                     if (token.isValid()) {
                         _this.userget = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
                         console.log("herewego");
@@ -1040,7 +1043,8 @@ var NgxLoginComponent = /** @class */ (function () {
                             console.log(error);
                         });
                     }
-                });
+                })
+                    .unsubscribe();
                 setTimeout(function () {
                     return _this.router.navigateByUrl(redirect);
                 }, _this.redirectDelay);
@@ -2132,14 +2136,12 @@ var ThemeModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_login_component__ = __webpack_require__("./src/app/@theme/components/auth/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__theme_components_auth_login_moni_login_moni_component__ = __webpack_require__("./src/app/@theme/components/auth/login-moni/login.moni.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -2179,20 +2181,20 @@ var routes = [
             }
         ]
     },
-    {
-        path: "moni",
-        component: __WEBPACK_IMPORTED_MODULE_2__nebular_auth__["b" /* NbAuthComponent */],
-        children: [
-            {
-                path: "",
-                component: __WEBPACK_IMPORTED_MODULE_4__theme_components_auth_login_moni_login_moni_component__["a" /* NgxLoginMoniComponent */]
-            },
-            {
-                path: "login",
-                component: __WEBPACK_IMPORTED_MODULE_4__theme_components_auth_login_moni_login_moni_component__["a" /* NgxLoginMoniComponent */]
-            },
-        ]
-    },
+    // {
+    //   path: "moni",
+    //   component: NbAuthComponent,
+    //   children: [
+    //     {
+    //       path: "",
+    //       component: NgxLoginMoniComponent
+    //     },
+    //     {
+    //       path: "login",
+    //       component: NgxLoginMoniComponent
+    //     },
+    //   ]
+    // },
     { path: "**", redirectTo: "auth" }
 ];
 var config = {
