@@ -379,7 +379,7 @@ var NB_CORE_PROVIDERS = __WEBPACK_IMPORTED_MODULE_6__data_data_module__["a" /* D
                 login: {
                     alwaysFail: false,
                     rememberMe: true,
-                    endpoint: "http://10.201.6.68:8888/api/LOGIN_IKUs/login",
+                    endpoint: "http://10.201.6.68:8889/api/LOGIN_IKUs/login",
                     method: "post",
                     redirect: {
                         success: "/pages",
@@ -479,7 +479,7 @@ var BackendService = /** @class */ (function () {
     function BackendService(http) {
         this.http = http;
         // baseurlxpay:string='http://202.158.20.141:5001/xpay-service/api/'
-        this.baseurl = "http://10.201.6.68:8888/api/";
+        this.baseurl = "http://10.201.6.68:8889/api/";
         this.moni = false;
     }
     BackendService.prototype.getreq = function (url) {
@@ -2135,7 +2135,7 @@ var ThemeModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_login_component__ = __webpack_require__("./src/app/@theme/components/auth/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_moni_login_moni_component__ = __webpack_require__("./src/app/@theme/components/auth/login-moni/login.moni.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2152,16 +2152,16 @@ var routes = [
         loadChildren: "app/pages/pages.module#PagesModule"
     },
     {
-        path: "auth",
+        path: "moni",
         component: __WEBPACK_IMPORTED_MODULE_2__nebular_auth__["b" /* NbAuthComponent */],
         children: [
             {
                 path: "",
-                component: __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_login_component__["a" /* NgxLoginComponent */]
+                component: __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_moni_login_moni_component__["a" /* NgxLoginMoniComponent */]
             },
             {
                 path: "login",
-                component: __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_login_component__["a" /* NgxLoginComponent */]
+                component: __WEBPACK_IMPORTED_MODULE_3__theme_components_auth_login_moni_login_moni_component__["a" /* NgxLoginMoniComponent */]
             },
             {
                 path: "register",
@@ -2195,7 +2195,7 @@ var routes = [
     //     },
     //   ]
     // },
-    { path: "**", redirectTo: "auth" }
+    { path: "**", redirectTo: "moni" }
 ];
 var config = {
     useHash: true
