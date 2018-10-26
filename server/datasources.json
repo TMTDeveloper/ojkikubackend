@@ -27,5 +27,18 @@
         "pass": "dahsyat5"
       }
     }]
+  },
+  "Email": {
+    "connector": "mail",
+    "transports": [{
+      "type": "SMTP",
+      "host": "https://mail.ojk.go.id/ews/Exchange.asmx",
+      "secure": false,
+      "port": 587,
+      "auth": {
+        "user": "corp\\dpb1_dahsyat",
+        "pass": "dahsyat5"
+      }
+    }]
   }
 }

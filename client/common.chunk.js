@@ -21488,13 +21488,13 @@ THeadModule = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ng2_smart_table_module__ = __webpack_require__("./node_modules/ng2-smart-table/ng2-smart-table.module.js");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__ng2_smart_table_module__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__ng2_smart_table_module__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_cell_cell_editors_default_editor__ = __webpack_require__("./node_modules/ng2-smart-table/components/cell/cell-editors/default-editor.js");
-/* unused harmony reexport DefaultEditor */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__components_cell_cell_editors_default_editor__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lib_data_set_cell__ = __webpack_require__("./node_modules/ng2-smart-table/lib/data-set/cell.js");
 /* unused harmony reexport Cell */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lib_data_source_local_local_data_source__ = __webpack_require__("./node_modules/ng2-smart-table/lib/data-source/local/local.data-source.js");
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__lib_data_source_local_local_data_source__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__lib_data_source_local_local_data_source__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lib_data_source_server_server_data_source__ = __webpack_require__("./node_modules/ng2-smart-table/lib/data-source/server/server.data-source.js");
 /* unused harmony reexport ServerDataSource */
 

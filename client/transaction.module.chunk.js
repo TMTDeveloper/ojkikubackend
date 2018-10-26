@@ -24866,7 +24866,7 @@ var AssignmentBarangComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.myDatePickerOptions = {
             // other options...
             dateFormat: "dd-mm-yyyy"
@@ -25123,7 +25123,7 @@ var AssignmentKembaliComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.myDatePickerOptions = {
             // other options...
             dateFormat: "dd-mm-yyyy"
@@ -25380,7 +25380,7 @@ var AssignmentPinjamComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.myDatePickerOptions = {
             // other options...
             dateFormat: "dd-mm-yyyy"
@@ -25637,7 +25637,7 @@ var BeliBarangComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.myDatePickerOptions = {
             // other options...
             dateFormat: "dd-mm-yyyy"
@@ -25900,7 +25900,7 @@ var DetailAtkComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
             add: {
@@ -26256,7 +26256,7 @@ var DetailAtkModalComponent = /** @class */ (function () {
         };
         this.merk = [];
         this.barang = [];
-        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["b" /* LocalDataSource */]();
     }
     DetailAtkModalComponent.prototype.ngOnInit = function () {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -26382,7 +26382,7 @@ var IndicatorQualitativeComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
             add: {
@@ -26728,7 +26728,7 @@ var IndicatorQualitativeModalComponent = /** @class */ (function () {
             descriptionIndicator: "",
             indicatorQualitativeData: []
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["b" /* LocalDataSource */]();
     }
     IndicatorQualitativeModalComponent.prototype.ngOnInit = function () {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -26917,7 +26917,7 @@ var IndicatorQuantitativeComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
             add: {
@@ -27637,7 +27637,7 @@ var IndicatorQuantitativeModalComponent = /** @class */ (function () {
             realisasi3: "",
             remark: ""
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["b" /* LocalDataSource */]();
     }
     IndicatorQuantitativeModalComponent.prototype.addNewData = function () {
         var _this = this;
@@ -28318,14 +28318,23 @@ var MokaChartComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/transaction/moka-realisasi/button.moka.realisasi.component.ts":
+/***/ "./src/app/pages/transaction/moka-realisasi/CustomEditorComponent.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MokaRealisasiDatePicker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomEditorComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("./node_modules/moment/moment.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__ = __webpack_require__("./node_modules/ng2-smart-table/index.js");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -28337,32 +28346,68 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var MokaRealisasiDatePicker = /** @class */ (function () {
-    function MokaRealisasiDatePicker() {
+var CustomEditorComponent = /** @class */ (function (_super) {
+    __extends(CustomEditorComponent, _super);
+    function CustomEditorComponent() {
+        var _this = _super.call(this) || this;
+        _this.myDatePickerOptions = {
+            // other options...
+            dateFormat: "dd/mm/yyyy"
+        };
+        _this.dateAssignment = { date: { year: 2018, month: 10, day: 9 } };
+        return _this;
     }
-    MokaRealisasiDatePicker.prototype.ngOnInit = function () {
-        this.date = __WEBPACK_IMPORTED_MODULE_1_moment__(this.value).format("DD/MM/YYYY");
-        console.log(this.value);
-        console.log(this.date);
+    CustomEditorComponent.prototype.onInputFieldChanged = function (event) {
+        this.updateValue();
     };
-    MokaRealisasiDatePicker.prototype.onDateSelect = function () {
-        console.log('woi1');
+    CustomEditorComponent.prototype.ngAfterViewInit = function () {
+        if (this.cell.newValue !== "") {
+            var dateInit = this.cell.getValue();
+            this.dateAssignment = {
+                date: {
+                    year: parseInt(dateInit.substring(6, 10)),
+                    month: parseInt(dateInit.substring(3, 5)),
+                    day: parseInt(dateInit.substring(0, 2))
+                }
+            };
+        }
     };
-    MokaRealisasiDatePicker.prototype.submit = function () {
-        console.log('woi');
+    CustomEditorComponent.prototype.pad = function (n) {
+        return ("00" + n).slice(-2);
+    };
+    CustomEditorComponent.prototype.updateValue = function () {
+        console.log(this.dateAssignment.date.day +
+            "/" +
+            this.dateAssignment.date.month +
+            "/" +
+            this.dateAssignment.date.year);
+        this.cell.newValue =
+            this.pad(this.dateAssignment.date.day).toString() +
+                "/" +
+                this.pad(this.dateAssignment.date.month).toString() +
+                "/" +
+                this.dateAssignment.date.year.toString();
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", Object)
-    ], MokaRealisasiDatePicker.prototype, "value", void 0);
-    MokaRealisasiDatePicker = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("name"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+    ], CustomEditorComponent.prototype, "name", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("url"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+    ], CustomEditorComponent.prototype, "url", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("htmlValue"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+    ], CustomEditorComponent.prototype, "htmlValue", void 0);
+    CustomEditorComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            template: "\n    <input class=\"form-control\"  ngbDatepicker (dateSelect)=\"onDateSelect($event)\" (click)=\"d.toggle()\" [(ngModel)]=\"this.date\" #d=\"ngbDatepicker\">\n  ",
+            template: "\n  <my-date-picker name=\"mydate\" [(ngModel)]=\"dateAssignment\" [options]=\"myDatePickerOptions\"  (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\n  "
         }),
         __metadata("design:paramtypes", [])
-    ], MokaRealisasiDatePicker);
-    return MokaRealisasiDatePicker;
-}());
+    ], CustomEditorComponent);
+    return CustomEditorComponent;
+}(__WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* DefaultEditor */]));
 
 
 
@@ -28371,7 +28416,7 @@ var MokaRealisasiDatePicker = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/moka-realisasi/moka.realisasi.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>MOKA Realisasi</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-4\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Dokumen\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\r\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.DOC_NAME}}\">{{ data.DOC_NAME }}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Bank\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\r\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.documentSelected||!formData.bankSelected\" \r\n        (click)=\"getData()\">Get Data</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" \r\n          (click)=\"updateData()\">Update Data</button>\r\n      </div>\r\n    </div>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>MOKA Realisasi</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-4\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.years\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Dokumen\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.documentSelected\">\r\n              <option *ngFor=\"let data of formData.documentData\" value=\"{{data.DOC_NAME}}\">{{ data.DOC_NAME }}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-4 col-form-label\">Bank\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-8\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.bankSelected\">\r\n              <option *ngFor=\"let data of formData.bankData\" value=\"{{data.ID_BANK}}\">{{data.DESCRIPTION}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" \r\n        (click)=\"getData()\">Get Data</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (editConfirm)=\"submit($event)\" (createConfirm)=\"addData($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" \r\n          (click)=\"updateData()\">Update Data</button>\r\n      </div>\r\n    </div>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n    <br>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -28389,6 +28434,7 @@ module.exports = "<nb-card>\r\n  <nb-card-header>MOKA Realisasi</nb-card-header>
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nebular_auth__ = __webpack_require__("./node_modules/@nebular/auth/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__CustomEditorComponent__ = __webpack_require__("./src/app/pages/transaction/moka-realisasi/CustomEditorComponent.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -28441,13 +28487,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var MokaRealisasiComponent = /** @class */ (function () {
     function MokaRealisasiComponent(modalService, toastr, service, authService) {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
             add: {
@@ -28460,7 +28507,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
                 editButtonContent: '<i class="nb-edit"></i>',
                 saveButtonContent: '<i class="nb-checkmark"></i>',
                 cancelButtonContent: '<i class="nb-close"></i>',
-                confirmSave: false
+                confirmSave: true
             },
             delete: {
                 deleteButtonContent: '<i class="nb-trash"></i>',
@@ -28515,7 +28562,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
                     type: "date",
                     filter: false,
                     editable: false,
-                    width: "5%",
+                    width: "5%"
                 },
                 REALIZATION_DATE: {
                     title: "Realization Date",
@@ -28523,28 +28570,33 @@ var MokaRealisasiComponent = /** @class */ (function () {
                     filter: false,
                     editable: true,
                     width: "15%",
+                    editor: {
+                        type: "custom",
+                        component: __WEBPACK_IMPORTED_MODULE_8__CustomEditorComponent__["a" /* CustomEditorComponent */]
+                    }
+                    //renderComponent: MokaRealisasiDatePicker
                 },
                 KETERANGAN: {
                     title: "Keterangan",
                     type: "string",
                     filter: false,
                     editable: true,
-                    width: "20%",
+                    width: "20%"
                 },
                 UPDATEBY_USER: {
                     title: "Updated By",
                     type: "string",
                     filter: false,
-                    editable: true,
-                    width: "10%",
+                    editable: false,
+                    width: "10%"
                 },
                 USER_REALIZATION: {
                     title: "Updated",
                     type: "string",
                     filter: false,
                     editable: false,
-                    width: "10%",
-                },
+                    width: "10%"
+                }
             }
         };
         this.formData = {
@@ -28570,7 +28622,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
         this.service.getreq("mst_documents").subscribe(function (response) {
             if (response != null) {
                 var documentFilter = response.filter(function (item) {
-                    return (item.FLAG == 'Y');
+                    return item.FLAG == "Y";
                 });
                 if (documentFilter[0] != null) {
                     _this.formData.documentData = documentFilter;
@@ -28581,17 +28633,33 @@ var MokaRealisasiComponent = /** @class */ (function () {
     MokaRealisasiComponent.prototype.getUserBank = function () {
         var _this = this;
         if (this.user.ID_USER != "admin") {
-            this.service.getreq("mst_user_banks").toPromise().then(function (response) {
+            this.service
+                .getreq("mst_user_banks")
+                .toPromise()
+                .then(function (response) {
                 if (response != null) {
                     var arr = response.filter(function (item) {
-                        return (item.ID_USER == _this.user.ID_USER);
+                        return item.ID_USER == _this.user.ID_USER;
                     });
+                    console.log(arr);
                     if (arr[0] != null) {
                         _this.user.type = arr[0].ID_BANK;
                     }
+                    console.log(_this.user.type);
                     _this.formData.bankData = _this.formData.bankData.filter(function (item) {
-                        return (item.ID_BANK == _this.user.type);
+                        return item.ID_BANK == _this.user.type;
                     });
+                    _this.formData.bankData.unshift({
+                        DATETIME_CREATED: "",
+                        DATETIME_UPDATED: "",
+                        DESCRIPTION: "",
+                        FLAG_ACTIVE: "",
+                        ID_BANK: "",
+                        INISIAL: "",
+                        USER_CREATED: "",
+                        USER_UPDATED: ""
+                    });
+                    console.log(_this.formData.bankData);
                 }
             });
         }
@@ -28613,14 +28681,22 @@ var MokaRealisasiComponent = /** @class */ (function () {
             var monaTargetData, monaRealisasi, arrMonaTargetData, monaTargetdetail_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.service.getreq("trn_monas").toPromise().then(function (resp) {
-                            if (resp != null) {
-                                monaTargetData = resp;
-                            }
-                        })];
+                    case 0:
+                        console.log(this.formData);
+                        return [4 /*yield*/, this.service
+                                .getreq("trn_monas")
+                                .toPromise()
+                                .then(function (resp) {
+                                if (resp != null) {
+                                    monaTargetData = resp;
+                                }
+                            })];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.service.getreq("trn_mona_realizations").toPromise().then(function (res) {
+                        return [4 /*yield*/, this.service
+                                .getreq("trn_mona_realizations")
+                                .toPromise()
+                                .then(function (res) {
                                 if (res != null) {
                                     monaRealisasi = res;
                                 }
@@ -28648,7 +28724,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
                                     USER_REALIZATION: "",
                                     KETERANGAN: "",
                                     YEAR: 0,
-                                    UPDATEBY_USER: "",
+                                    UPDATEBY_USER: ""
                                 };
                                 detail.NO = index + 1;
                                 detail.KODE_BANK = element.ID_BANK;
@@ -28657,7 +28733,7 @@ var MokaRealisasiComponent = /** @class */ (function () {
                                 detail.START_DATE = __WEBPACK_IMPORTED_MODULE_4_moment__(element.START_DATE).format("DD/MM/YYYY");
                                 detail.TARGET_DATE = __WEBPACK_IMPORTED_MODULE_4_moment__(element.TARGET_DATE).format("DD/MM/YYYY");
                                 var arrBank = _this.formData.bankData.filter(function (item) {
-                                    return (item.ID_BANK == element.ID_BANK);
+                                    return item.ID_BANK == element.ID_BANK;
                                 });
                                 if (arrBank[0] != null) {
                                     detail.ID_BANK = arrBank[0].DESCRIPTION;
@@ -28744,6 +28820,9 @@ var MokaRealisasiComponent = /** @class */ (function () {
         //       });
         //   }
         // });
+        console.log(event.newData);
+        event.newData.UPDATEBY_USER = this.user.USER_NAME;
+        event.confirm.resolve(event.newData);
     };
     MokaRealisasiComponent.prototype.dateReformat = function (value) {
         var str = value.split("/");
@@ -28757,7 +28836,9 @@ var MokaRealisasiComponent = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: "ngx-moka-realisasi",
             template: __webpack_require__("./src/app/pages/transaction/moka-realisasi/moka.realisasi.component.html"),
-            styles: ["\n  input:disabled {\n    background-color: rgba(211,211,211, 0.6);\n }"]
+            styles: [
+                "\n      input:disabled {\n        background-color: rgba(211, 211, 211, 0.6);\n      }\n    "
+            ]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
             __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */],
@@ -28820,7 +28901,7 @@ var MokaTargetModalComponent = /** @class */ (function () {
             year: __WEBPACK_IMPORTED_MODULE_3_moment__().format("YYYY"),
             bankData: [],
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["b" /* LocalDataSource */]();
     }
     MokaTargetModalComponent.prototype.dateReformat = function (value) {
         return value.year + "-" + value.month + "-" + value.day;
@@ -28922,7 +29003,7 @@ var MokaTargetComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
             add: {
@@ -29233,7 +29314,7 @@ var RealisasiQualitativeModalComponent = /** @class */ (function () {
         this.activeModal = activeModal;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
             add: {
@@ -29510,7 +29591,7 @@ var RealisasiQualitativeComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
             add: {
@@ -29919,7 +30000,7 @@ var RealisasiQuantitativeComponent = /** @class */ (function () {
         this.toastr = toastr;
         this.service = service;
         this.authService = authService;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
             add: {
@@ -31106,7 +31187,7 @@ var RealisasiStrategicComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.settings = {
             add: {
@@ -31701,7 +31782,7 @@ var ReportAssignmentComponent = /** @class */ (function () {
             // other options...
             dateFormat: "dd-mm-yyyy"
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.approved = true;
         this.print = true;
         this.tabledata = [];
@@ -32208,7 +32289,7 @@ var ReportAtkModalComponent = /** @class */ (function () {
         };
         this.merk = [];
         this.barang = [];
-        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.dataSource = [];
         this.settings = {
@@ -32404,7 +32485,7 @@ var ReportAtkComponent = /** @class */ (function () {
             // other options...
             dateFormat: "dd-mm-yyyy"
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.approved = true;
         this.print = true;
         this.tabledata = [];
@@ -32899,7 +32980,7 @@ var ReportBeliComponent = /** @class */ (function () {
             // other options...
             dateFormat: "dd-mm-yyyy"
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.approved = true;
         this.print = true;
         this.tabledata = [];
@@ -33440,7 +33521,7 @@ var ReportInvComponent = /** @class */ (function () {
             // other options...
             dateFormat: "dd-mm-yyyy"
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.approved = true;
         this.print = true;
         this.tabledata = [];
@@ -34008,7 +34089,7 @@ var ReportKembaliComponent = /** @class */ (function () {
             // other options...
             dateFormat: "dd-mm-yyyy"
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.approved = true;
         this.print = true;
         this.tabledata = [];
@@ -34554,7 +34635,7 @@ var ReportPinjamComponent = /** @class */ (function () {
             // other options...
             dateFormat: "dd-mm-yyyy"
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.approved = true;
         this.print = true;
         this.tabledata = [];
@@ -35068,7 +35149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__indicator_quantitative_modal_indicator_quantitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-quantitative/modal/indicator.quantitative.modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-qualitative/modal/indicator.qualitative.modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/button.realisasi.quantitative.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_button_moka_realisasi_component__ = __webpack_require__("./src/app/pages/transaction/moka-realisasi/button.moka.realisasi.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_CustomEditorComponent__ = __webpack_require__("./src/app/pages/transaction/moka-realisasi/CustomEditorComponent.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__moka_target_modal_moka_target_modal_component__ = __webpack_require__("./src/app/pages/transaction/moka-target/modal/moka.target.modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__realisasi_qualitative_modal_realisasi_qualitative_modal_component__ = __webpack_require__("./src/app/pages/transaction/realisasi-qualitative/modal/realisasi.qualitative.modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__indicator_strategic_modal_indicator_strategic_modal_component__ = __webpack_require__("./src/app/pages/transaction/indicator-strategic/modal/indicator.strategic.modal.component.ts");
@@ -35110,7 +35191,7 @@ var TransactionModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* Ng2SmartTableModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["c" /* Ng2SmartTableModule */],
                 __WEBPACK_IMPORTED_MODULE_2__transaction_router_module__["a" /* TransactionRouterModule */],
                 __WEBPACK_IMPORTED_MODULE_6_ng2_currency_mask__["CurrencyMaskModule"],
                 __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["a" /* ToastrModule */].forRoot(),
@@ -35119,7 +35200,7 @@ var TransactionModule = /** @class */ (function () {
             ],
             declarations: __WEBPACK_IMPORTED_MODULE_2__transaction_router_module__["b" /* routedComponents */].concat([
                 __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_button_moka_realisasi_component__["a" /* MokaRealisasiDatePicker */]
+                __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_CustomEditorComponent__["a" /* CustomEditorComponent */]
             ]),
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_11__moka_target_modal_moka_target_modal_component__["a" /* MokaTargetModalComponent */],
@@ -35127,7 +35208,7 @@ var TransactionModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_7__indicator_quantitative_modal_indicator_quantitative_modal_component__["a" /* IndicatorQuantitativeModalComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__indicator_qualitative_modal_indicator_qualitative_modal_component__["a" /* IndicatorQualitativeModalComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__realisasi_qualitative_button_realisasi_quantitative_component__["a" /* ButtonRenderComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_button_moka_realisasi_component__["a" /* MokaRealisasiDatePicker */],
+                __WEBPACK_IMPORTED_MODULE_10__moka_realisasi_CustomEditorComponent__["a" /* CustomEditorComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__indicator_strategic_modal_indicator_strategic_modal_component__["a" /* IndicatorStrategicModalComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__detail_atk_modal_detail_atk_modal_component__["a" /* DetailAtkModalComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__moka_chart_moka_chart_component__["a" /* MokaChartComponent */],

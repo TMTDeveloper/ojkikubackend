@@ -172,6 +172,10 @@ var MENU_ITEM_ADMIN = [
             {
                 title: "Realisasi MOKA",
                 link: "/pages/transaction/moka-realisasi"
+            },
+            {
+                title: "Chart MOKA",
+                link: "/pages/transaction/moka-chart"
             }
         ]
     }
@@ -238,6 +242,10 @@ var MENU_ITEM_USER = [
             {
                 title: "Realisasi MOKA",
                 link: "/pages/transaction/moka-realisasi"
+            },
+            {
+                title: "Chart MOKA",
+                link: "/pages/transaction/moka-chart"
             }
         ]
     }

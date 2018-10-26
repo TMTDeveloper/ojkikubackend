@@ -379,7 +379,7 @@ var NB_CORE_PROVIDERS = __WEBPACK_IMPORTED_MODULE_6__data_data_module__["a" /* D
                 login: {
                     alwaysFail: false,
                     rememberMe: true,
-                    endpoint: "http://10.201.6.68:8889/api/LOGIN_IKUs/login",
+                    endpoint: "http://10.201.6.68:8888/api/LOGIN_IKUs/login",
                     method: "post",
                     redirect: {
                         success: "/pages",
@@ -479,7 +479,7 @@ var BackendService = /** @class */ (function () {
     function BackendService(http) {
         this.http = http;
         // baseurlxpay:string='http://202.158.20.141:5001/xpay-service/api/'
-        this.baseurl = "http://10.201.6.68:8889/api/";
+        this.baseurl = "http://10.201.6.68:8888/api/";
         this.moni = false;
     }
     BackendService.prototype.getreq = function (url) {
@@ -2152,7 +2152,7 @@ var routes = [
         loadChildren: "app/pages/pages.module#PagesModule"
     },
     {
-        path: "moni",
+        path: "auth",
         component: __WEBPACK_IMPORTED_MODULE_2__nebular_auth__["b" /* NbAuthComponent */],
         children: [
             {
@@ -2195,7 +2195,7 @@ var routes = [
     //     },
     //   ]
     // },
-    { path: "**", redirectTo: "moni" }
+    { path: "**", redirectTo: "auth" }
 ];
 var config = {
     useHash: true

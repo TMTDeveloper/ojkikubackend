@@ -41,7 +41,7 @@ var DocumentComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
         this.settings = {
@@ -200,7 +200,7 @@ var IkuComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
         this.settings = {
@@ -375,7 +375,7 @@ var MasterBankComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
         this.settings = {
@@ -555,7 +555,7 @@ var MasterBarangComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
         this.settings = {
@@ -756,7 +756,7 @@ var MasterLogMoniComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
         this.settings = {
@@ -959,7 +959,7 @@ var MasterUserLogComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
         this.settings = {
@@ -1127,7 +1127,7 @@ var MasterMerkComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
         this.settings = {
@@ -1293,7 +1293,7 @@ var MasterUserComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.yearPeriode = __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY");
         this.settings = {
@@ -1334,7 +1334,7 @@ var MasterUserComponent = /** @class */ (function () {
                     type: "string",
                     filter: true,
                     editable: false,
-                    width: "30%"
+                    width: "10%"
                 },
                 USER_NAME: {
                     title: "Name",
@@ -1348,10 +1348,17 @@ var MasterUserComponent = /** @class */ (function () {
                     type: "number",
                     filter: true,
                     editable: true,
-                    width: "30%"
+                    width: "10%"
                 },
                 JABATAN: {
                     title: "Jabatan",
+                    type: "number",
+                    filter: true,
+                    editable: true,
+                    width: "30%"
+                },
+                EMAIL: {
+                    title: "Email",
                     type: "number",
                     filter: true,
                     editable: true,
@@ -1405,6 +1412,7 @@ var MasterUserComponent = /** @class */ (function () {
             PASSWORD: event.newData.PASSWORD,
             TEAM: event.newData.TEAM,
             JABATAN: event.newData.JABATAN,
+            EMAIIL: event.newData.EMAIL,
             USER_CREATED: "Admin",
             DATETIME_CREATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format(),
             USER_UPDATED: "Admin",
@@ -1508,7 +1516,7 @@ var MasterModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* Ng2SmartTableModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["c" /* Ng2SmartTableModule */],
                 __WEBPACK_IMPORTED_MODULE_2__master_router_module__["a" /* MasterRouterModule */],
                 __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["a" /* ToastrModule */].forRoot()
             ],
@@ -1673,7 +1681,7 @@ var MasterUserBankComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.toastr = toastr;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.bankData = [];
         this.userData = [];
@@ -1802,7 +1810,7 @@ var MasterUserBankComponent = /** @class */ (function () {
         };
         this.loadData();
     }
-    MasterUserBankComponent.prototype.loadData = function () {
+    MasterUserBankComponent.prototype.loadData = function (bank) {
         var _this = this;
         this.service.getreq("mst_user_banks").subscribe(function (response) {
             if (response != null) {
@@ -1829,7 +1837,8 @@ var MasterUserBankComponent = /** @class */ (function () {
                         _this.service.getreq("mst_banks").subscribe(function (response) {
                             if (response != null) {
                                 _this.bankData = response;
-                                _this.formData.bank = _this.bankData[0].ID_BANK;
+                                _this.formData.bank =
+                                    bank != null ? bank : _this.bankData[0].ID_BANK;
                                 console.log(JSON.stringify(response));
                                 _this.reload();
                             }
@@ -1856,6 +1865,10 @@ var MasterUserBankComponent = /** @class */ (function () {
             }
         });
     };
+    MasterUserBankComponent.prototype.reload = function () {
+        console.log("masuksini");
+        this.source.addFilter({ field: "ID_BANK", search: this.formData.bank });
+    };
     MasterUserBankComponent.prototype.addData = function (event) {
         var _this = this;
         console.log(event.newData);
@@ -1871,30 +1884,27 @@ var MasterUserBankComponent = /** @class */ (function () {
             USER_UPDATED: "Admin",
             DATETIME_UPDATED: __WEBPACK_IMPORTED_MODULE_4_moment__().format()
         };
-        console.log(this.tabledata.filter(function (item) {
-            return (item.ID_USER == event.newData.ID_USER &&
-                item.ID_BANK == _this.formData.bank);
-        })[0]);
         if (this.tabledata.filter(function (item) {
             return (item.ID_USER == event.newData.ID_USER &&
                 item.ID_BANK == _this.formData.bank);
         })[0] == null) {
             this.service.postreq("mst_user_banks", data).subscribe(function (response) {
                 console.log(response);
-                event.confirm.resolve(data);
-                _this.toastr.success("Data Saved!");
-                _this.reload();
+                if (response != null) {
+                    _this.source.reset();
+                    _this.reload();
+                    _this.toastr.success("Data Saved!");
+                    console.log(_this.formData);
+                    event.confirm.resolve(data);
+                    _this.source.load([{}]);
+                    _this.loadData(data.ID_BANK);
+                }
             });
-            this.reload();
         }
         else {
             event.confirm.reject();
             this.toastr.error("Data Already Exist!");
-            this.reload();
         }
-    };
-    MasterUserBankComponent.prototype.reload = function () {
-        this.source.setFilter([{ field: "ID_BANK", search: this.formData.bank }], true);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),

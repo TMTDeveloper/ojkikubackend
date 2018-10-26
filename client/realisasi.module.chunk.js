@@ -297,7 +297,7 @@ var RealisasiModule = /** @class */ (function () {
     }
     RealisasiModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            imports: [__WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* Ng2SmartTableModule */], __WEBPACK_IMPORTED_MODULE_2__realisasi_router_module__["a" /* RealisasiRouterModule */], __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["a" /* ToastrModule */].forRoot()],
+            imports: [__WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["c" /* Ng2SmartTableModule */], __WEBPACK_IMPORTED_MODULE_2__realisasi_router_module__["a" /* RealisasiRouterModule */], __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["a" /* ToastrModule */].forRoot()],
             declarations: __WEBPACK_IMPORTED_MODULE_2__realisasi_router_module__["b" /* routedComponents */].slice(),
             entryComponents: [],
             providers: [__WEBPACK_IMPORTED_MODULE_4__core_data_backend_service__["a" /* BackendService */]]

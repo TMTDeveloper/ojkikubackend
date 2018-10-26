@@ -104,7 +104,7 @@
     "public": true
   },
   "Email": {
-    "dataSource": "myEmailDataSource",
+    "dataSource": "Email",
     "public": true
   },
   "m_barang": {

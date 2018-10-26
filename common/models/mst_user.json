@@ -27,6 +27,9 @@
         "type": "string",
         "required": true
       },
+      "EMAIL": {
+        "type": "string"
+      },
       "USER_CREATED": {
         "type": "string",
         "required": true

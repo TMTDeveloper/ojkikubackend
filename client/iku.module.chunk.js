@@ -84,7 +84,7 @@ var IkuComponent = /** @class */ (function () {
                 }
             }
         };
-        this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["b" /* LocalDataSource */]();
         this.loadData();
     }
     IkuComponent.prototype.loadData = function () {
@@ -227,7 +227,7 @@ var RbbComponent = /** @class */ (function () {
     function RbbComponent(activeModal, service) {
         this.activeModal = activeModal;
         this.service = service;
-        this.source = new __WEBPACK_IMPORTED_MODULE_5_ng2_smart_table__["a" /* LocalDataSource */]();
+        this.source = new __WEBPACK_IMPORTED_MODULE_5_ng2_smart_table__["b" /* LocalDataSource */]();
         this.settings = {
             mode: "inline",
             sort: true,
@@ -740,7 +740,7 @@ var IkuModule = /** @class */ (function () {
     }
     IkuModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            imports: [__WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* Ng2SmartTableModule */], __WEBPACK_IMPORTED_MODULE_2__iku_router_module__["a" /* IkuRouterModule */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_3__theme_theme_module__["a" /* ThemeModule */], __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["c" /* Ng2SmartTableModule */], __WEBPACK_IMPORTED_MODULE_2__iku_router_module__["a" /* IkuRouterModule */]],
             declarations: __WEBPACK_IMPORTED_MODULE_2__iku_router_module__["b" /* routedComponents */].concat([__WEBPACK_IMPORTED_MODULE_4__iku_header_iku_header_component__["b" /* RbbComponent */]]),
             entryComponents: [__WEBPACK_IMPORTED_MODULE_4__iku_header_iku_header_component__["b" /* RbbComponent */]],
             providers: [__WEBPACK_IMPORTED_MODULE_5__core_data_backend_service__["a" /* BackendService */]]
