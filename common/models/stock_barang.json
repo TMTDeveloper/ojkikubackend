@@ -21,8 +21,7 @@
       "required": true
     },
     "SERIAL_NUMBER": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "USER_UPDATE": {
       "type": "string",

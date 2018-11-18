@@ -19,6 +19,9 @@
         "type": "string",
         "required": true
       },
+      "TYPE": {
+        "type": "string"
+      },
       "USER_UPDATE": {
         "type": "string",
         "required": true

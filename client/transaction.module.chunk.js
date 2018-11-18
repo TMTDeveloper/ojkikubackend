@@ -24825,7 +24825,7 @@ module.exports = function() {
 /***/ "./src/app/pages/transaction/assignment-barang/assignment.barang.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Assignment Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barang\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\" [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"demo-radio col-sm-12\">\r\n          <div class=\"row\">\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" name=\"customRadio\" [value]=\"true\" [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Individu</span>\r\n            </label>\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" [value]=\"false\" checked [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Department</span>\r\n            </label>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" [disabled]=\"!formData.peruntukkan\">\r\n              <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Department\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.department\" [disabled]=\"formData.peruntukkan\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Diberikan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Keterangan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" \r\n          (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>Assignment Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Kategori\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.kategori\" (change)=\"refreshOption()\">\r\n              <option value=\"1\">ATK</option>\r\n              <option value=\"2\">NON-ATK</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barangFiltered\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\" [disabled]=\"formData.kategori=='1'\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\"\r\n              [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"demo-radio col-sm-12\">\r\n          <div class=\"row\">\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" name=\"customRadio\" [value]=\"true\" [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Individu</span>\r\n            </label>\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" [value]=\"false\" checked [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Department</span>\r\n            </label>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" [disabled]=\"!formData.peruntukkan\">\r\n              <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Department\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.department\" [disabled]=\"formData.peruntukkan\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Diberikan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Keterangan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -24882,13 +24882,15 @@ var AssignmentBarangComponent = /** @class */ (function () {
             status: "",
             peruntukkan: true,
             keterangan: "",
-            qty: 0
+            qty: 0,
+            kategori: ""
         };
         this.team = [];
         this.users = [];
         this.barang = [];
         this.merk = [];
         this.assignments = [];
+        this.barangFiltered = [];
         this.getUserInfo();
         this.getUserBank();
         this.getBarang();
@@ -24929,6 +24931,14 @@ var AssignmentBarangComponent = /** @class */ (function () {
             this.user.type = "admin";
         }
     };
+    AssignmentBarangComponent.prototype.refreshOption = function () {
+        var _this = this;
+        this.barangFiltered = this.barang.filter(function (item) {
+            return _this.formData.kategori == "1"
+                ? item.TYPE == "1" || item.NM_BARANG == ""
+                : item.TYPE == "2" || item.NM_BARANG == "";
+        });
+    };
     AssignmentBarangComponent.prototype.getUsers = function () {
         var _this = this;
         this.service
@@ -24957,7 +24967,12 @@ var AssignmentBarangComponent = /** @class */ (function () {
             .toPromise()
             .then(function (response) {
             if (response != null) {
+                response.push({
+                    KD_BARANG: "",
+                    NM_BARANG: ""
+                });
                 _this.barang = response;
+                _this.barangFiltered = response;
             }
         });
     };
@@ -25082,7 +25097,7 @@ var AssignmentBarangComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/assignment-kembali/assignment.kembali.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Pengembalian Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barang\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\" [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"demo-radio col-sm-12\">\r\n          <div class=\"row\">\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" name=\"customRadio\" [value]=\"true\" [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Individu</span>\r\n            </label>\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" [value]=\"false\" checked [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Department</span>\r\n            </label>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" [disabled]=\"!formData.peruntukkan\">\r\n              <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Department\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.department\" [disabled]=\"formData.peruntukkan\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Dikembalikan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Keterangan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" \r\n          (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>Pengembalian Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Kategori\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.kategori\" (change)=\"refreshOption()\">\r\n              <option value=\"1\">ATK</option>\r\n              <option value=\"2\">NON-ATK</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barangFiltered\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\" [disabled]=\"formData.kategori=='1'\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\"\r\n              [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"demo-radio col-sm-12\">\r\n          <div class=\"row\">\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" name=\"customRadio\" [value]=\"true\" [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Individu</span>\r\n            </label>\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" [value]=\"false\" checked [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Department</span>\r\n            </label>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" [disabled]=\"!formData.peruntukkan\">\r\n              <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Department\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.department\" [disabled]=\"formData.peruntukkan\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Dikembalikan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Keterangan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -25139,13 +25154,15 @@ var AssignmentKembaliComponent = /** @class */ (function () {
             status: "",
             peruntukkan: true,
             keterangan: "",
-            qty: 0
+            qty: 0,
+            kategori: ""
         };
         this.team = [];
         this.users = [];
         this.barang = [];
         this.merk = [];
         this.assignments = [];
+        this.barangFiltered = [];
         this.getUserInfo();
         this.getUserBank();
         this.getBarang();
@@ -25186,6 +25203,14 @@ var AssignmentKembaliComponent = /** @class */ (function () {
             this.user.type = "admin";
         }
     };
+    AssignmentKembaliComponent.prototype.refreshOption = function () {
+        var _this = this;
+        this.barangFiltered = this.barang.filter(function (item) {
+            return _this.formData.kategori == "1"
+                ? item.TYPE == "1" || item.NM_BARANG == ""
+                : item.TYPE == "2" || item.NM_BARANG == "";
+        });
+    };
     AssignmentKembaliComponent.prototype.getUsers = function () {
         var _this = this;
         this.service
@@ -25214,7 +25239,12 @@ var AssignmentKembaliComponent = /** @class */ (function () {
             .toPromise()
             .then(function (response) {
             if (response != null) {
+                response.push({
+                    KD_BARANG: "",
+                    NM_BARANG: ""
+                });
                 _this.barang = response;
+                _this.barangFiltered = response;
             }
         });
     };
@@ -25339,7 +25369,7 @@ var AssignmentKembaliComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/assignment-pinjam/assignment.pinjam.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Peminjaman Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barang\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\" [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"demo-radio col-sm-12\">\r\n          <div class=\"row\">\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" name=\"customRadio\" [value]=\"true\" [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Individu</span>\r\n            </label>\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" [value]=\"false\" checked [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Department</span>\r\n            </label>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" [disabled]=\"!formData.peruntukkan\">\r\n              <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Department\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.department\" [disabled]=\"formData.peruntukkan\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Dipinjam\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Keterangan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" \r\n          (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>Peminjaman Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Kategori\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.kategori\" (change)=\"refreshOption()\">\r\n              <option value=\"1\">ATK</option>\r\n              <option value=\"2\">NON-ATK</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barangFiltered\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\" [disabled]=\"formData.kategori=='1'\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\"\r\n              [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"demo-radio col-sm-12\">\r\n          <div class=\"row\">\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" name=\"customRadio\" [value]=\"true\" [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Individu</span>\r\n            </label>\r\n            <label class=\"custom-control custom-radio\">\r\n              <input type=\"radio\" class=\"custom-control-input\" [value]=\"false\" checked [(ngModel)]=\"formData.peruntukkan\">\r\n              <span class=\"custom-control-indicator\"></span>\r\n              <span class=\"custom-control-description\">Department</span>\r\n            </label>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" [disabled]=\"!formData.peruntukkan\">\r\n              <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Department\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.department\" [disabled]=\"formData.peruntukkan\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Dipinjam\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Keterangan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.keterangan\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -25396,13 +25426,15 @@ var AssignmentPinjamComponent = /** @class */ (function () {
             status: "",
             peruntukkan: true,
             keterangan: "",
-            qty: 0
+            qty: 0,
+            kategori: ""
         };
         this.team = [];
         this.users = [];
         this.barang = [];
         this.merk = [];
         this.assignments = [];
+        this.barangFiltered = [];
         this.getUserInfo();
         this.getUserBank();
         this.getBarang();
@@ -25443,6 +25475,14 @@ var AssignmentPinjamComponent = /** @class */ (function () {
             this.user.type = "admin";
         }
     };
+    AssignmentPinjamComponent.prototype.refreshOption = function () {
+        var _this = this;
+        this.barangFiltered = this.barang.filter(function (item) {
+            return _this.formData.kategori == "1"
+                ? item.TYPE == "1" || item.NM_BARANG == ""
+                : item.TYPE == "2" || item.NM_BARANG == "";
+        });
+    };
     AssignmentPinjamComponent.prototype.getUsers = function () {
         var _this = this;
         this.service
@@ -25471,7 +25511,12 @@ var AssignmentPinjamComponent = /** @class */ (function () {
             .toPromise()
             .then(function (response) {
             if (response != null) {
+                response.push({
+                    KD_BARANG: "",
+                    NM_BARANG: ""
+                });
                 _this.barang = response;
+                _this.barangFiltered = response;
             }
         });
     };
@@ -25596,7 +25641,7 @@ var AssignmentPinjamComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/beli-barang/beli.barang.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Beli Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barang\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\" [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Beli\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Harga Satuan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\"[(ngModel)]=\"formData.harga\">\r\n          </div>\r\n        </div>\r\n  \r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" \r\n          (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>Beli Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Kategori\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.kategori\" (change)=\"refreshOption()\">\r\n              <option value=\"1\">ATK</option>\r\n              <option value=\"2\">NON-ATK</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barangFiltered\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Serial Number\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.serialNumber\" [disabled]=\"formData.kategori=='1'\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\"\r\n              [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Status\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.status\" [disabled]=\"!formData.peruntukkan\">\r\n              <option value=\"Baru\">Baru</option>\r\n              <option value=\"Bekas\">Bekas</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tanggal Beli\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Harga Satuan\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\"\r\n              [(ngModel)]=\"formData.harga\">\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"updateData()\">Submit</button>\r\n      </div>\r\n\r\n    </div>\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -25654,13 +25699,15 @@ var BeliBarangComponent = /** @class */ (function () {
             peruntukkan: true,
             keterangan: "",
             qty: 0,
-            harga: 0
+            harga: 0,
+            kategori: ""
         };
         this.team = [];
         this.users = [];
         this.barang = [];
         this.merk = [];
         this.assignments = [];
+        this.barangFiltered = [];
         this.getUserInfo();
         this.getUserBank();
         this.getBarang();
@@ -25701,6 +25748,14 @@ var BeliBarangComponent = /** @class */ (function () {
             this.user.type = "admin";
         }
     };
+    BeliBarangComponent.prototype.refreshOption = function () {
+        var _this = this;
+        this.barangFiltered = this.barang.filter(function (item) {
+            return _this.formData.kategori == "1"
+                ? item.TYPE == "1" || item.NM_BARANG == ""
+                : item.TYPE == "2" || item.NM_BARANG == "";
+        });
+    };
     BeliBarangComponent.prototype.getUsers = function () {
         var _this = this;
         this.service
@@ -25729,7 +25784,12 @@ var BeliBarangComponent = /** @class */ (function () {
             .toPromise()
             .then(function (response) {
             if (response != null) {
+                response.push({
+                    KD_BARANG: "",
+                    NM_BARANG: ""
+                });
                 _this.barang = response;
+                _this.barangFiltered = response;
             }
         });
     };
@@ -25991,6 +26051,7 @@ var DetailAtkComponent = /** @class */ (function () {
             yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY")
         };
         this.barang = [];
+        this.barangFiltered = [];
         this.merk = [];
         this.order = [];
         this.loadData();
@@ -26017,7 +26078,12 @@ var DetailAtkComponent = /** @class */ (function () {
             .toPromise()
             .then(function (response) {
             if (response != null) {
+                response.push({
+                    KD_BARANG: "",
+                    NM_BARANG: ""
+                });
                 _this.barang = response;
+                _this.barangFiltered = response;
             }
         });
     };
@@ -26060,6 +26126,7 @@ var DetailAtkComponent = /** @class */ (function () {
         this.activeModal.componentInstance.formData.USER_TRANSACTION = this.user.ID_USER;
         this.activeModal.componentInstance.merk = this.merk;
         this.activeModal.componentInstance.barang = this.barang;
+        this.activeModal.componentInstance.barangFiltered = this.barang;
         this.activeModal.result.then(function (response) { return __awaiter(_this, void 0, void 0, function () {
             var arr, array, counter;
             return __generator(this, function (_a) {
@@ -26209,7 +26276,7 @@ var DetailAtkComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/detail-atk/modal/detail.atk.modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-header\">\r\n  <h4 class=\"modal-title\">Input New Data</h4>\r\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\r\n\r\n  </button>\r\n</div>\r\n<div class=\"modal-body\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barang\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity Order\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\" [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"col-sm-auto\">\r\n      <div class=\"form-group\">\r\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"saveData()\">Submit</button>\r\n        <button type=\"submit\" class=\"btn btn-danger\" (click)=\"closeModal()\">Cancel</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"modal-header\">\r\n  <h4 class=\"modal-title\">Input New Data</h4>\r\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\r\n\r\n  </button>\r\n</div>\r\n<div class=\"modal-body\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"col-sm-8\">\r\n          <div class=\"form-group row\">\r\n              <label class=\"col-sm-2 col-form-label\">Kategori\r\n                <font color=\"red\">*</font>\r\n              </label>\r\n              <div class=\"col-sm-6\">\r\n                <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.kategori\" (change)=\"refreshOption()\">\r\n                  <option value=\"1\">ATK</option>\r\n                  <option value=\"2\">NON-ATK</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Jenis Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barang\">\r\n              <option *ngFor=\"let data of barangFiltered\" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG+\"\r\n                \"+data.NM_BARANG}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Merk Barang\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merk\">\r\n              <option *ngFor=\"let data of merk\" value=\"{{data.KD_MERK}}\">{{data.KD_MERK+\"\r\n                \"+data.NM_MERK}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Quantity Order\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-6\">\r\n            <input class=\"form-control\" currencyMask [options]=\"{ prefix: '', thousands: '.', decimal: ',',precision:'0' }\" [(ngModel)]=\"formData.qty\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"col-sm-auto\">\r\n      <div class=\"form-group\">\r\n        <button type=\"submit\" class=\"btn btn-success\" (click)=\"saveData()\">Submit</button>\r\n        <button type=\"submit\" class=\"btn btn-danger\" (click)=\"closeModal()\">Cancel</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -26252,15 +26319,25 @@ var DetailAtkModalComponent = /** @class */ (function () {
             NO_SR: 0,
             NM_BARANG: "",
             NM_MERK: "",
-            USER_TRANSACTION: ""
+            USER_TRANSACTION: "",
+            kategori: ""
         };
         this.merk = [];
         this.barang = [];
+        this.barangFiltered = [];
         this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["b" /* LocalDataSource */]();
     }
     DetailAtkModalComponent.prototype.ngOnInit = function () {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
+    };
+    DetailAtkModalComponent.prototype.refreshOption = function () {
+        var _this = this;
+        this.barangFiltered = this.barang.filter(function (item) {
+            return _this.formData.kategori == "1"
+                ? item.TYPE == "1" || item.NM_BARANG == ""
+                : item.TYPE == "2" || item.NM_BARANG == "";
+        });
     };
     DetailAtkModalComponent.prototype.saveData = function () {
         var data = {
@@ -31696,7 +31773,7 @@ var RealisasiStrategicComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/report-assignment/report.assignment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Report Assignment</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Pesan\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Assign</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Team Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Name</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Department</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Assign</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_ASSIGN }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.TEAM_ID}}</td>\r\n              <td>{{ item.USER_ID}}</td>\r\n              <td>{{ item.USER_NAME}}</td>\r\n              <td>{{ item.DEPARTMENT}}</td>\r\n              <td>{{ item.DATE_ASSIGN}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n  \r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\" >Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>Report Assignment</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Pesan\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6 row\">\r\n        <label class=\"col-sm-1 col-form-label\">From\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n        </div>\r\n        <label class=\"col-sm-1 col-form-label\">To\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment2\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\" ></my-date-picker>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Assign</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Team Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Name</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Department</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Assign</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_ASSIGN }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.TEAM_ID}}</td>\r\n              <td>{{ item.USER_ID}}</td>\r\n              <td>{{ item.USER_NAME}}</td>\r\n              <td>{{ item.DEPARTMENT}}</td>\r\n              <td>{{ item.DATE_ASSIGN}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\">Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -31786,7 +31863,8 @@ var ReportAssignmentComponent = /** @class */ (function () {
         this.approved = true;
         this.print = true;
         this.tabledata = [];
-        this.dateAssignment = { jsdate: __WEBPACK_IMPORTED_MODULE_4_moment__().format() };
+        this.dateAssignment = null;
+        this.dateAssignment2 = null;
         this.selected = {};
         this.settings = {
             add: {
@@ -31900,6 +31978,8 @@ var ReportAssignmentComponent = /** @class */ (function () {
     }
     ReportAssignmentComponent.prototype.onInputFieldChanged = function (event) {
         console.log("onInputFieldChanged(): Value: ", event.value, " - dateFormat: ", event.dateFormat, " - valid: ", event.valid);
+        console.log(this.dateAssignment);
+        console.log(this.dateAssignment2);
         this.refreshData();
     };
     ReportAssignmentComponent.prototype.getDataReport = function () {
@@ -31950,12 +32030,37 @@ var ReportAssignmentComponent = /** @class */ (function () {
         var _this = this;
         console.log(this.dataFull);
         console.log(this.findName(this.formData.team));
-        console.log(this.dateAssignment.jsdate);
-        this.dataReport = this.dataFull.filter(function (item) {
-            return (item.USER_ID == _this.findName(_this.formData.team) &&
-                item.DATE_ASSIGN ==
-                    __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
-        });
+        if (this.dateAssignment2 == null &&
+            this.dateAssignment != null &&
+            this.formData.team == "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return (item.USER_ID == _this.findName(_this.formData.team) &&
+                    item.DATE_ASSIGN ==
+                        __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
+            });
+        }
+        else if (this.dateAssignment2 == null &&
+            this.dateAssignment == null &&
+            this.formData.team != "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return item.USER_ID == _this.findName(_this.formData.team);
+            });
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            this.formData.team != "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return (item.USER_ID == _this.findName(_this.formData.team) &&
+                    __WEBPACK_IMPORTED_MODULE_4_moment__(item.DATE_ASSIGN, "DD-MM-YYYY").isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY")));
+            });
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            this.formData.team == "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return __WEBPACK_IMPORTED_MODULE_4_moment__(item.DATE_ASSIGN, "DD-MM-YYYY").isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY"));
+            });
+        }
         console.log(this.dataReport);
     };
     ReportAssignmentComponent.prototype.getOrder = function () {
@@ -32242,7 +32347,7 @@ var ReportAssignmentComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/report-atk/modal/report.atk.modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-header\">\r\n  <h4 class=\"modal-title\">Detail Order</h4>\r\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\r\n\r\n  </button>\r\n</div>\r\n<div class=\"modal-body\">\r\n    <div class=\"form-group\">\r\n        <ng2-smart-table [settings]=\"settings\" [source]=\"source\">\r\n        </ng2-smart-table>\r\n      </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"modal-header\">\r\n  <h4 class=\"modal-title\">Detail Order</h4>\r\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeModal()\">\r\n\r\n  </button>\r\n</div>\r\n<div class=\"modal-body\">\r\n  <div *ngIf=\"!print\" class=\"form-group\">\r\n    <ng2-smart-table [settings]=\"settings\" [source]=\"source\">\r\n    </ng2-smart-table>\r\n  </div>\r\n\r\n  <div *ngIf=\"print\" class=\"print_report\" id=\"print_tab1\">\r\n    <font size=\"4\">\r\n      <table class=\"table table-bordered\">\r\n        <thead>\r\n          <tr>\r\n            <th width=\"100px\" style=\"text-align:center\">Kode Order</th>\r\n            <th width=\"100px\" style=\"text-align:center\">User ID</th>\r\n            <th width=\"200px\" style=\"text-align:center\">Status Order</th>\r\n            <th width=\"200px\" style=\"text-align:center\">Tanggal Order</th>\r\n            <th width=\"100px\" style=\"text-align:center\">Total Item</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr>\r\n            <td>{{ dataParent.KD_ORDER }}</td>\r\n            <td>{{ dataParent.USER_ID }}</td>\r\n            <td>{{ dataParent.STATUS_ORDER }}</td>\r\n            <td>{{formatMom(dataParent.DATE_ORDER)}}</td>\r\n            <td>{{ dataParent.TOTAL_ITEM}}</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </font>\r\n    <font size=\"4\">\r\n      <table class=\"table table-bordered\">\r\n        <thead>\r\n          <tr>\r\n            <th width=\"50px\" style=\"text-align:center\">No</th>\r\n            <th width=\"100px\" style=\"text-align:center\">Nama Barang</th>\r\n            <th width=\"200px\" style=\"text-align:center\">Nama Merk</th>\r\n            <th width=\"100px\" style=\"text-align:center\">Qty Order</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of dataSource\">\r\n            <td>{{ item.NO_SR }}</td>\r\n            <td>{{ item.NM_BARANG }}</td>\r\n            <td>{{ item.NM_MERK }}</td>\r\n            <td>{{item.QTY}}</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </font>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <div class=\"col-sm-auto\">\r\n      <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf()\">Print</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -32258,6 +32363,10 @@ module.exports = "<div class=\"modal-header\">\r\n  <h4 class=\"modal-title\">De
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_data_backend_service__ = __webpack_require__("./src/app/@core/data/backend.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("./node_modules/ngx-toastr/esm5/ngx-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jspdf__ = __webpack_require__("./node_modules/jspdf/dist/jspdf.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jspdf___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jspdf__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_html2canvas__ = __webpack_require__("./node_modules/html2canvas/dist/npm/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_html2canvas___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_html2canvas__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -32267,6 +32376,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -32289,9 +32400,11 @@ var ReportAtkModalComponent = /** @class */ (function () {
         };
         this.merk = [];
         this.barang = [];
+        this.print = false;
         this.source = new __WEBPACK_IMPORTED_MODULE_0_ng2_smart_table__["b" /* LocalDataSource */]();
         this.tabledata = [];
         this.dataSource = [];
+        this.dataParent = [];
         this.settings = {
             add: {
                 addButtonContent: '<i class="nb-plus"></i>',
@@ -32361,6 +32474,9 @@ var ReportAtkModalComponent = /** @class */ (function () {
         //Add 'implements OnInit' to the class.
         this.source.load(this.dataSource);
     };
+    ReportAtkModalComponent.prototype.formatMom = function (param) {
+        return __WEBPACK_IMPORTED_MODULE_2_moment__(param).format("DD-MM-YYYY");
+    };
     ReportAtkModalComponent.prototype.saveData = function () {
         var data = {
             KD_ORDER: "",
@@ -32380,6 +32496,41 @@ var ReportAtkModalComponent = /** @class */ (function () {
     };
     ReportAtkModalComponent.prototype.refreshSelected = function (event) {
         // this.selectedData = event.data;
+    };
+    ReportAtkModalComponent.prototype.printPdf = function () {
+        var element = document.getElementById("print_tab1");
+        console.log(element);
+        var element2 = document.getElementById("print_tab1");
+        __WEBPACK_IMPORTED_MODULE_7_html2canvas__(element, {
+            useCORS: true
+        }).then(function (canvas) {
+            var widthEl1 = canvas.width;
+            var height = canvas.height;
+            var doc = new __WEBPACK_IMPORTED_MODULE_6_jspdf__({
+                orientation: "landscape",
+                unit: "mm",
+                format: [Math.floor(widthEl1 * 0.264583) + 5, 210]
+            });
+            doc.addImage(canvas.toDataURL("image/PNG"), "PNG", 2, 2);
+            doc.save("Report-" + Date.now() + ".pdf");
+            // var imgData = canvas.toDataURL("image/png");
+            // let orientation = element.id == "print_tab1" ? "portrait" : "landscape";
+            // html2canvas(element2, { userCORS: true }).then((canvas2: any) => {
+            //   var doc = new jsPDF({
+            //     orientation: "landscape",
+            //     unit: "mm",
+            //     format: [Math.floor(widthEl1 * 0.264583) + 5, 210]
+            //   });
+            //   doc.addImage(canvas.toDataURL("image/PNG"), "PNG", 2, 2);
+            //   doc.addImage(
+            //     canvas2.toDataURL("image/PNG"),
+            //     "PNG",
+            //     2,
+            //     Math.floor(height * 0.264583) + 10
+            //   );
+            //   doc.save(`Report-${Date.now()}.pdf`);
+            // });
+        });
     };
     ReportAtkModalComponent.prototype.closeModal = function () {
         this.activeModal.close();
@@ -32403,7 +32554,7 @@ var ReportAtkModalComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/report-atk/report.atk.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Report ATK</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Pesan\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required></my-date-picker>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (create)=\"create($event)\" (edit)=\"create($event)\"\r\n        (userRowSelect)=\"changeApproveprint($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"approve()\" [disabled]=\"user.TEAM!='admin'\">Approve</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"updateData()\" [disabled]=\"print\">Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>Report ATK</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Pesan\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6 row\">\r\n        <label class=\"col-sm-1 col-form-label\">From\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n        </div>\r\n        <label class=\"col-sm-1 col-form-label\">To\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment2\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (create)=\"create($event)\" (edit)=\"create($event)\"\r\n        (userRowSelect)=\"changeApproveprint($event)\">\r\n      </ng2-smart-table>\r\n    </div>\r\n    \r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\" *ngIf=\"user.TEAM=='admin'\">\r\n        <button type=\" button \" class=\" btn btn-success\r\n        \" (click)=\" approve()\" [disabled]=\"approved\">Approve</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf()\" [(disabled)]=\"print\">Print</button>\r\n      </div>\r\n    </div>\r\n\r\n\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -32486,11 +32637,15 @@ var ReportAtkComponent = /** @class */ (function () {
             dateFormat: "dd-mm-yyyy"
         };
         this.source = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
+        this.sourceChild = new __WEBPACK_IMPORTED_MODULE_1_ng2_smart_table__["b" /* LocalDataSource */]();
         this.approved = true;
         this.print = true;
         this.tabledata = [];
-        this.dateAssignment = { jsdate: __WEBPACK_IMPORTED_MODULE_4_moment__().format() };
+        this.tabledataFull = [];
+        this.dateAssignment = null;
+        this.dateAssignment2 = null;
         this.selected = {};
+        this.childArr = [];
         this.settings = {
             add: {
                 addButtonContent: '<i class="nb-plus"></i>',
@@ -32626,10 +32781,121 @@ var ReportAtkComponent = /** @class */ (function () {
         });
     };
     ReportAtkComponent.prototype.refreshData = function () {
-        this.source.setFilter([
-            { field: "DATE_ORDER", search: this.dateAssignment.jsdate },
-            { field: "USER_ID", search: this.findName(this.formData.team) }
-        ]);
+        // console.log(this.formData);
+        // console.log(this.dateAssignment);
+        // if (
+        //   this.dateAssignment2 == null &&
+        //   this.dateAssignment != null &&
+        //   this.formData.team == ""
+        // ) {
+        //   this.source.setFilter([
+        //     {
+        //       field: "DATE_ORDER",
+        //       search: moment().format("DD-MM-YYYY"),
+        //       filter: (cell?: any, search?: string) => {
+        //         return (
+        //           moment(cell).format("DD-MM-YYYY") ==
+        //           moment(this.dateAssignment.jsdate).format("DD-MM-YYYY")
+        //         );
+        //       }
+        //     }
+        //   ]);
+        // } else if (
+        //   this.dateAssignment2 == null &&
+        //   this.dateAssignment == null &&
+        //   this.formData.team != ""
+        // ) {
+        //   this.source.setFilter([
+        //     {
+        //       field: "USER_ID",
+        //       search: this.findName(this.formData.team)
+        //     }
+        //   ]);
+        // } else if (
+        //   this.dateAssignment2 != null &&
+        //   this.dateAssignment != null &&
+        //   this.formData.team != ""
+        // ) {
+        //   this.source.setFilter([
+        //     {
+        //       field: "DATE_ORDER",
+        //       search: moment().format("DD-MM-YYYY"),
+        //       filter: (cell?: any, search?: string) => {
+        //         return moment(cell, "DD-MM-YYYY").isBetween(
+        //           moment(this.dateAssignment.jsdate, "DD-MM-YYYY"),
+        //           moment(this.dateAssignment2.jsdate, "DD-MM-YYYY")
+        //         );
+        //       }
+        //     },
+        //     {
+        //       field: "USER_ID",
+        //       search: this.findName(this.formData.team)
+        //     }
+        //   ]);
+        // } else if (
+        //   this.dateAssignment2 != null &&
+        //   this.dateAssignment != null &&
+        //   this.formData.team == ""
+        // ) {
+        //   console.log("masuk sini");
+        //   this.source.setFilter([
+        //     {
+        //       field: "DATE_ORDER",
+        //       search: moment(this.dateAssignment.jsdate, "DD-MM-YYYY"),
+        //       filter: function(cell?: any, search?: string): boolean {
+        //         console.log(
+        //           moment(cell, "DD-MM-YYYY").isBetween(
+        //             moment(this.dateAssignment.jsdate, "DD-MM-YYYY"),
+        //             moment(this.dateAssignment2.jsdate, "DD-MM-YYYY")
+        //           )
+        //         );
+        //         return moment(cell, "DD-MM-YYYY").isBetween(
+        //           moment(this.dateAssignment.jsdate, "DD-MM-YYYY"),
+        //           moment(this.dateAssignment2.jsdate, "DD-MM-YYYY")
+        //         );
+        //       }
+        //     }
+        //   ]);
+        // }
+        var _this = this;
+        console.log(this.findName(this.formData.team));
+        if (this.dateAssignment2 == null &&
+            this.dateAssignment != null &&
+            this.formData.team == "") {
+            this.tabledata = this.tabledataFull.filter(function (item) {
+                return (item.USER_ID == _this.findName(_this.formData.team) &&
+                    item.DATE_ORDER ==
+                        __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
+            });
+            this.source.load(this.tabledata);
+        }
+        else if (this.dateAssignment2 == null &&
+            this.dateAssignment == null &&
+            this.formData.team != "") {
+            this.tabledata = this.tabledataFull.filter(function (item) {
+                return item.USER_ID == _this.findName(_this.formData.team);
+            });
+            this.source.load(this.tabledata);
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            this.formData.team != "") {
+            this.tabledata = this.tabledataFull.filter(function (item) {
+                return (item.USER_ID == _this.findName(_this.formData.team) &&
+                    __WEBPACK_IMPORTED_MODULE_4_moment__(item.DATE_ORDER).isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY")));
+            });
+            this.source.load(this.tabledata);
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            this.formData.team == "") {
+            this.tabledata = this.tabledataFull.filter(function (item) {
+                return __WEBPACK_IMPORTED_MODULE_4_moment__(item.DATE_ORDER).isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY"));
+            });
+            this.source.empty();
+            this.source.load(this.tabledata);
+        }
+        console.log(this.tabledata);
     };
     ReportAtkComponent.prototype.getOrder = function () {
         var _this = this;
@@ -32658,6 +32924,7 @@ var ReportAtkComponent = /** @class */ (function () {
                         }
                     });
                     _this.tabledata = _this.order;
+                    _this.tabledataFull = _this.order;
                     _this.source.load(_this.tabledata);
                     _this.refreshData();
                 }
@@ -32725,6 +32992,29 @@ var ReportAtkComponent = /** @class */ (function () {
             this.toastr.error("Data does not exist!");
         }
     };
+    ReportAtkComponent.prototype.generateChild = function (event) {
+        var _this = this;
+        var arr = this.orderDt.filter(function (item) {
+            return item.KD_ORDER == event.data.KD_ORDER;
+        });
+        if (arr != null) {
+            arr.forEach(function (element) {
+                var arrBarang = _this.barang.filter(function (item) {
+                    return item.KD_BARANG == element.KD_BARANG;
+                });
+                if (arrBarang != null) {
+                    element.NM_BARANG = arrBarang[0].NM_BARANG;
+                }
+                var arrMerk = _this.merk.filter(function (item) {
+                    return item.KD_MERK == element.KD_MERK;
+                });
+                if (arrMerk != null) {
+                    element.NM_MERK = arrMerk[0].NM_MERK;
+                }
+            });
+            this.childArr = arr;
+        }
+    };
     ReportAtkComponent.prototype.loadData = function () {
         return __awaiter(this, void 0, void 0, function () {
             var respIku, arr;
@@ -32760,9 +33050,19 @@ var ReportAtkComponent = /** @class */ (function () {
         console.log("woi");
         console.log(this.selected);
         this.selected = event.data;
+        this.generateChild(event);
         if (event.data.STATUS_ORDER != "APPROVED") {
+            console.log("masuksini");
             this.print = true;
+            this.approved = false;
         }
+        else {
+            this.print = false;
+            this.approved = true;
+        }
+    };
+    ReportAtkComponent.prototype.onInputFieldChanged = function (event) {
+        this.refreshData();
     };
     ReportAtkComponent.prototype.approve = function () {
         var _this = this;
@@ -32781,7 +33081,7 @@ var ReportAtkComponent = /** @class */ (function () {
             console.log(data);
             this.service.patchreq("t_order_hds", data).subscribe(function (response) {
                 console.log(response);
-                _this.refreshData();
+                _this.source.refresh();
                 _this.toastr.success("Data Updated!");
             }, function (error) {
                 //console.log("indicator detail");
@@ -32870,6 +33170,17 @@ var ReportAtkComponent = /** @class */ (function () {
         }
         return result;
     };
+    ReportAtkComponent.prototype.printPdf = function () {
+        this.activeModal = this.modalService.open(__WEBPACK_IMPORTED_MODULE_7__modal_report_atk_modal_component__["a" /* ReportAtkModalComponent */], {
+            windowClass: "xlModal",
+            container: "nb-layout",
+            backdrop: "static"
+        });
+        this.activeModal.componentInstance.dataParent = this.selected;
+        this.activeModal.componentInstance.print = true;
+        this.activeModal.componentInstance.dataSource = this.childArr;
+        console.log(this.childArr);
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("myForm"),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["NgForm"])
@@ -32894,7 +33205,7 @@ var ReportAtkComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/report-beli/report.beli.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Report Beli Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Pesan\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Beli Barang</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Harga Unit</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Beli</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_BELI }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY_BELI}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.HARGA_UNIT}}</td>\r\n              <td>{{ item.TANGGAL_BELI}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\" >Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>Report Beli Barang</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\" id=\"tes\">\r\n      <label class=\"col-sm-2 col-form-label\" id=\"tes\">Tanggal Pesan\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6 row\">\r\n        <label class=\"col-sm-1 col-form-label\">From\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n        </div>\r\n        <label class=\"col-sm-1 col-form-label\">To\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment2\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Barang\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.barangSelected\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of barang | orderBy \" value=\"{{data.KD_BARANG}}\">{{data.KD_BARANG==''?\"\":data.KD_BARANG+\"\r\n            \"+\"-\"+\" \"+data.NM_BARANG}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Merk\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.merkSelected\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of merk | orderBy \" value=\"{{data.KD_MERK}}\">{{data.KD_MERK==''?\"\":data.KD_MERK+\"\r\n            \"+\"-\"+\" \"+data.NM_MERK}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Beli Barang</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Harga Unit</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Beli</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_BELI }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY_BELI}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.HARGA_UNIT}}</td>\r\n              <td>{{ item.TANGGAL_BELI}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\">Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -32984,7 +33295,8 @@ var ReportBeliComponent = /** @class */ (function () {
         this.approved = true;
         this.print = true;
         this.tabledata = [];
-        this.dateAssignment = { jsdate: __WEBPACK_IMPORTED_MODULE_4_moment__().format() };
+        this.dateAssignment = null;
+        this.dateAssignment2 = null;
         this.selected = {};
         this.settings = {
             add: {
@@ -33083,7 +33395,9 @@ var ReportBeliComponent = /** @class */ (function () {
             ikuSelected: "",
             indicatorQualitativeData: [],
             yearPeriode: __WEBPACK_IMPORTED_MODULE_4_moment__().format("YYYY"),
-            team: ""
+            team: "",
+            barangSelected: "",
+            merkSelected: ""
         };
         this.barang = [];
         this.merk = [];
@@ -33095,9 +33409,11 @@ var ReportBeliComponent = /** @class */ (function () {
         this.getUserInfo();
         this.getUsers();
         this.getDataReport();
+        this.getBarang();
+        this.getMerk();
     }
     ReportBeliComponent.prototype.onInputFieldChanged = function (event) {
-        console.log('onInputFieldChanged(): Value: ', event.value, ' - dateFormat: ', event.dateFormat, ' - valid: ', event.valid);
+        console.log("onInputFieldChanged(): Value: ", event.value, " - dateFormat: ", event.dateFormat, " - valid: ", event.valid);
         this.refreshData();
     };
     ReportBeliComponent.prototype.getDataReport = function () {
@@ -33143,12 +33459,40 @@ var ReportBeliComponent = /** @class */ (function () {
         var _this = this;
         console.log(this.dataFull);
         console.log(this.findName(this.formData.team));
-        console.log(__WEBPACK_IMPORTED_MODULE_4_moment__(this.dateAssignment.jsdate).format("DD-MM-YYYY"));
-        this.dataReport = this.dataFull.filter(function (item) {
-            return (item.ID_USER == _this.findName(_this.formData.team) &&
-                item.TANGGAL_BELI ==
+        if (this.dateAssignment2 == null &&
+            this.dateAssignment != null &&
+            (this.formData.barangSelected == "" && this.formData.merkSelected == "")) {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return (item.TANGGAL_BELI ==
                     __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
-        });
+            });
+        }
+        else if (this.dateAssignment2 == null && this.dateAssignment == null) {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return _this.formData.barangSelected == "" ||
+                    _this.formData.merkSelected == ""
+                    ? item.KD_BARANG == _this.formData.barangSelected ||
+                        item.KD_MERK == _this.formData.merkSelected
+                    : item.KD_BARANG == _this.formData.barangSelected &&
+                        item.KD_MERK == _this.formData.merkSelected;
+            });
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            (this.formData.barangSelected != "" && this.formData.merkSelected != "")) {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return (item.KD_BARANG == _this.formData.barangSelected &&
+                    item.KD_MERK == _this.formData.merkSelected &&
+                    __WEBPACK_IMPORTED_MODULE_4_moment__(item.TANGGAL_BELI, "DD-MM-YYYY").isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY")));
+            });
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            (this.formData.barangSelected == "" && this.formData.merkSelected == "")) {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return __WEBPACK_IMPORTED_MODULE_4_moment__(item.TANGGAL_BELI, "DD-MM-YYYY").isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY"));
+            });
+        }
         console.log(this.dataReport);
     };
     ReportBeliComponent.prototype.getOrder = function () {
@@ -33191,6 +33535,13 @@ var ReportBeliComponent = /** @class */ (function () {
             .toPromise()
             .then(function (response) {
             if (response != null) {
+                response.push({
+                    KD_BARANG: "",
+                    NM_BARANG: "",
+                    FLAG_ACTIVE: "",
+                    USER_UPDATE: "",
+                    DATETIME_UPDATE: ""
+                });
                 _this.barang = response;
             }
         });
@@ -33202,6 +33553,13 @@ var ReportBeliComponent = /** @class */ (function () {
             .toPromise()
             .then(function (response) {
             if (response != null) {
+                response.push({
+                    KD_MERK: "",
+                    NM_MERK: "",
+                    FLAG_ACTIVE: "",
+                    USER_UPDATE: "",
+                    DATETIME_UPDATE: ""
+                });
                 _this.merk = response;
             }
         });
@@ -33694,6 +34052,7 @@ var ReportInvComponent = /** @class */ (function () {
         //   );
         // });
         // console.log(this.dataReport);
+        console.log(this.formData);
         this.dataReport = this.dataFull.filter(function (item) {
             return _this.formData.barangSelected == "" ||
                 _this.formData.merkSelected == ""
@@ -34003,7 +34362,7 @@ var ReportInvComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/report-kembali/report.kembali.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Report Pengembalian</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Kembali\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Assign</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Team Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Name</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Department</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Kembali</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_ASSIGN }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.TEAM_ID}}</td>\r\n              <td>{{ item.USER_ID}}</td>\r\n              <td>{{ item.USER_NAME}}</td>\r\n              <td>{{ item.DEPARTMENT}}</td>\r\n              <td>{{ item.DATE_ASSIGN}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n  \r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\" >Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>Report Pengembalian</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Kembali\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6 row\">\r\n        <label class=\"col-sm-1 col-form-label\">From\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n        </div>\r\n        <label class=\"col-sm-1 col-form-label\">To\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment2\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\" ></my-date-picker>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Assign</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Team Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Name</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Department</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Kembali</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_ASSIGN }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.TEAM_ID}}</td>\r\n              <td>{{ item.USER_ID}}</td>\r\n              <td>{{ item.USER_NAME}}</td>\r\n              <td>{{ item.DEPARTMENT}}</td>\r\n              <td>{{ item.DATE_ASSIGN}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n  \r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\" >Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -34093,7 +34452,8 @@ var ReportKembaliComponent = /** @class */ (function () {
         this.approved = true;
         this.print = true;
         this.tabledata = [];
-        this.dateAssignment = { jsdate: __WEBPACK_IMPORTED_MODULE_4_moment__().format() };
+        this.dateAssignment = null;
+        this.dateAssignment2 = null;
         this.selected = {};
         this.settings = {
             add: {
@@ -34257,12 +34617,37 @@ var ReportKembaliComponent = /** @class */ (function () {
         var _this = this;
         console.log(this.dataFull);
         console.log(this.findName(this.formData.team));
-        console.log(this.dateAssignment.jsdate);
-        this.dataReport = this.dataFull.filter(function (item) {
-            return (item.USER_ID == _this.findName(_this.formData.team) &&
-                item.DATE_ASSIGN ==
-                    __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
-        });
+        if (this.dateAssignment2 == null &&
+            this.dateAssignment != null &&
+            this.formData.team == "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return (item.USER_ID == _this.findName(_this.formData.team) &&
+                    item.DATE_ASSIGN ==
+                        __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
+            });
+        }
+        else if (this.dateAssignment2 == null &&
+            this.dateAssignment == null &&
+            this.formData.team != "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return item.USER_ID == _this.findName(_this.formData.team);
+            });
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            this.formData.team != "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return (item.USER_ID == _this.findName(_this.formData.team) &&
+                    __WEBPACK_IMPORTED_MODULE_4_moment__(item.DATE_ASSIGN, "DD-MM-YYYY").isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY")));
+            });
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            this.formData.team == "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return __WEBPACK_IMPORTED_MODULE_4_moment__(item.DATE_ASSIGN, "DD-MM-YYYY").isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY"));
+            });
+        }
         console.log(this.dataReport);
     };
     ReportKembaliComponent.prototype.getOrder = function () {
@@ -34549,7 +34934,7 @@ var ReportKembaliComponent = /** @class */ (function () {
 /***/ "./src/app/pages/transaction/report-pinjam/report.pinjam.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nb-card>\r\n  <nb-card-header>Report Peminjaman</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Peminjaman\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Assign</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Team Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Name</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Department</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Peminjaman</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_ASSIGN }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.TEAM_ID}}</td>\r\n              <td>{{ item.USER_ID}}</td>\r\n              <td>{{ item.USER_NAME}}</td>\r\n              <td>{{ item.DEPARTMENT}}</td>\r\n              <td>{{ item.DATE_ASSIGN}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n  \r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\" >Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
+module.exports = "<nb-card>\r\n  <nb-card-header>Report Peminjaman</nb-card-header>\r\n  <nb-card-body>\r\n    <!-- <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group row\">\r\n          <label class=\"col-sm-2 col-form-label\">Tahun\r\n            <font color=\"red\">*</font>\r\n          </label>\r\n          <div class=\"col-sm-2\">\r\n            <input class=\"form-control\" [(ngModel)]=\"formData.yearPeriode\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <!-- <div class=\"form-group row\">\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" [disabled]=\"!formData.ikuSelected||!formData.yearPeriode||!formData.periodeSelected\"\r\n          (click)=\"generateDetail()\">Get Data</button>\r\n      </div>\r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success\" (click)=\"showModal()\">Add Data</button>\r\n    </div>\r\n    \r\n    </div> -->\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Tanggal Peminjaman\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6 row\">\r\n        <label class=\"col-sm-1 col-form-label\">From\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\"></my-date-picker>\r\n        </div>\r\n        <label class=\"col-sm-1 col-form-label\">To\r\n        </label>\r\n        <div class=\"col-sm-3\">\r\n          <my-date-picker name=\"mydate\" [options]=\"myDatePickerOptions\" [(ngModel)]=\"dateAssignment2\" required\r\n            (inputFieldChanged)=\"onInputFieldChanged($event)\" ></my-date-picker>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n      <label class=\"col-sm-2 col-form-label\">Nama Pegawai\r\n        <font color=\"red\">*</font>\r\n      </label>\r\n      <div class=\"col-sm-6\">\r\n        <select name=\"risk_level\" class=\"form-control\" [(ngModel)]=\"formData.team\" (change)=\"refreshData()\">\r\n          <option *ngFor=\"let data of team | orderBy \" value=\"{{data}}\">{{data}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"print_report\" id=\"print_tab1\">\r\n      <font size=\"4\">\r\n        <table class=\"table table-bordered\">\r\n          <thead>\r\n            <tr>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Assign</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Kode Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Nama Barang</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Kode Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Nama Merk</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Serial Number</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Quantity</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Status</th>\r\n              <th width=\"200px\" style=\"text-align:center\">Team Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Id</th>\r\n              <th width=\"100px\" style=\"text-align:center\">User Name</th>\r\n              <th width=\"100px\" style=\"text-align:center\">Department</th>\r\n              <th width=\"150px\" style=\"text-align:center\">Tanggal Peminjaman</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let item of dataReport\">\r\n              <td>{{ item.KD_ASSIGN }}</td>\r\n              <td>{{ item.KD_BARANG }}</td>\r\n              <td>{{ item.NM_BARANG }}</td>\r\n              <td>{{ item.KD_MERK}}</td>\r\n              <td>{{ item.NM_MERK}}</td>\r\n              <td>{{ item.SERIAL_NUMBER}}</td>\r\n              <td>{{ item.QTY}}</td>\r\n              <td>{{ item.STATUS}}</td>\r\n              <td>{{ item.TEAM_ID}}</td>\r\n              <td>{{ item.USER_ID}}</td>\r\n              <td>{{ item.USER_NAME}}</td>\r\n              <td>{{ item.DEPARTMENT}}</td>\r\n              <td>{{ item.DATE_ASSIGN}}</td>\r\n            </tr>\r\n          </tbody>\r\n\r\n        </table>\r\n      </font>\r\n    </div>\r\n\r\n    <div class=\"form-group row\">\r\n  \r\n      <div class=\"col-sm-auto\">\r\n        <button type=\" button \" class=\"btn btn-success \" (click)=\"printPdf('print_tab1')\" >Print</button>\r\n      </div>\r\n    </div>\r\n\r\n  </nb-card-body>\r\n</nb-card>\r\n"
 
 /***/ }),
 
@@ -34639,7 +35024,8 @@ var ReportPinjamComponent = /** @class */ (function () {
         this.approved = true;
         this.print = true;
         this.tabledata = [];
-        this.dateAssignment = { jsdate: __WEBPACK_IMPORTED_MODULE_4_moment__().format() };
+        this.dateAssignment = null;
+        this.dateAssignment2 = null;
         this.selected = {};
         this.settings = {
             add: {
@@ -34803,12 +35189,37 @@ var ReportPinjamComponent = /** @class */ (function () {
         var _this = this;
         console.log(this.dataFull);
         console.log(this.findName(this.formData.team));
-        console.log(this.dateAssignment.jsdate);
-        this.dataReport = this.dataFull.filter(function (item) {
-            return (item.USER_ID == _this.findName(_this.formData.team) &&
-                item.DATE_ASSIGN ==
-                    __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
-        });
+        if (this.dateAssignment2 == null &&
+            this.dateAssignment != null &&
+            this.formData.team == "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return (item.USER_ID == _this.findName(_this.formData.team) &&
+                    item.DATE_ASSIGN ==
+                        __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate).format("DD-MM-YYYY"));
+            });
+        }
+        else if (this.dateAssignment2 == null &&
+            this.dateAssignment == null &&
+            this.formData.team != "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return item.USER_ID == _this.findName(_this.formData.team);
+            });
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            this.formData.team != "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return (item.USER_ID == _this.findName(_this.formData.team) &&
+                    __WEBPACK_IMPORTED_MODULE_4_moment__(item.DATE_ASSIGN, "DD-MM-YYYY").isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY")));
+            });
+        }
+        else if (this.dateAssignment2 != null &&
+            this.dateAssignment != null &&
+            this.formData.team == "") {
+            this.dataReport = this.dataFull.filter(function (item) {
+                return __WEBPACK_IMPORTED_MODULE_4_moment__(item.DATE_ASSIGN, "DD-MM-YYYY").isBetween(__WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment.jsdate, "DD-MM-YYYY"), __WEBPACK_IMPORTED_MODULE_4_moment__(_this.dateAssignment2.jsdate, "DD-MM-YYYY"));
+            });
+        }
         console.log(this.dataReport);
     };
     ReportPinjamComponent.prototype.getOrder = function () {

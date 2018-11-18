@@ -20,8 +20,7 @@
       "required": true
     },
     "SERIAL_NUMBER": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "QTY_BELI": {
       "type": "number",

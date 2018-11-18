@@ -43,7 +43,7 @@ boot(app, __dirname, function (err) {
     app.start();
 });
 
-// var moment = require('moment');
+var moment = require('moment');
 // var CronJob = require('cron').CronJob;
 // new CronJob('1 */1 * * * *', function () {
 //   console.log('cronjob every 10 minutes run');

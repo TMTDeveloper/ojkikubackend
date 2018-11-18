@@ -32,7 +32,7 @@
     "connector": "mail",
     "transports": [{
       "type": "SMTP",
-      "host": "https://mail.ojk.go.id/ews/Exchange.asmx",
+      "host": "http://mail.ojk.go.id",
       "secure": false,
       "port": 587,
       "auth": {
