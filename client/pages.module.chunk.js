@@ -80,7 +80,6 @@ var DashboardModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MENU_ITEM_ADMIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MENU_ITEM_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return MENU_MONI; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return MENU_MONI_USER; });
 var MENU_ITEM_ADMIN = [
     {
         title: "Dashboard",
@@ -333,34 +332,6 @@ var MENU_MONI = [
         ]
     }
 ];
-var MENU_MONI_USER = [
-    {
-        title: "Dashboard",
-        icon: "nb-home",
-        link: "/pages/dashboard",
-        home: true
-    },
-    {
-        title: "Transaction MONI",
-        icon: "nb-compose",
-        children: [
-            {
-                title: "Order Atk",
-                link: "/pages/transaction/detail-atk"
-            }
-        ]
-    },
-    {
-        title: "Report MONI",
-        icon: "nb-compose",
-        children: [
-            {
-                title: "Report Atk",
-                link: "/pages/transaction/report-atk"
-            }
-        ]
-    }
-];
 // {
 //   title: 'FEATURES',
 //   group: true,
@@ -528,13 +499,10 @@ var PagesComponent = /** @class */ (function () {
         // this.service.postreq("LOGIN_LOGS", data).subscribe(response => {
         //   console.log(response);
         // });
+        console.log("ini menu");
+        console.log(this.user);
         if (this.cookie.get("Type") == "moni") {
-            if (this.user.TEAM == "admin") {
-                this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["c" /* MENU_MONI */];
-            }
-            else {
-                this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["d" /* MENU_MONI_USER */];
-            }
+            this.menu = __WEBPACK_IMPORTED_MODULE_1__pages_menu__["c" /* MENU_MONI */];
         }
         else {
             if (this.user.TEAM != "admin") {

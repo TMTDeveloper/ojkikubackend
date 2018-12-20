@@ -2152,7 +2152,7 @@ var routes = [
         loadChildren: "app/pages/pages.module#PagesModule"
     },
     {
-        path: "moni",
+        path: "auth",
         component: __WEBPACK_IMPORTED_MODULE_2__nebular_auth__["b" /* NbAuthComponent */],
         children: [
             {
@@ -2195,7 +2195,7 @@ var routes = [
     //     },
     //   ]
     // },
-    { path: "**", redirectTo: "moni" }
+    { path: "**", redirectTo: "auth" }
 ];
 var config = {
     useHash: true
